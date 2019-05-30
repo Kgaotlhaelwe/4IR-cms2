@@ -55,6 +55,31 @@ export class HomePage implements OnInit{
     console.log(this.orgNames);
 
   }
+  initializeItems() {
+    this.items = this.orgNames
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        console.log(val);
+
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    else if (val == "" || val == null) {
+      this.items = [];
+    }
+    console.log(this.items);
+  }
+
   tribute = 0;
   showContainer() {
     var Charts = document.getElementsByClassName("chartOverlay") as HTMLCollectionOf<HTMLElement>;
@@ -166,13 +191,13 @@ export class HomePage implements OnInit{
   hideSlide() {
     var blurMap = document.getElementById("map");
     // let slider = document.getElementsByClassName("absolutely") as HTMLCollectionOf<HTMLElement>;
-    let arrow = document.getElementById("myArrow");
+    // let arrow = document.getElementById("myArrow");
 
     // arrow[0].style.left = "48%";
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow[0].style.transform = "rotateZ(0DEG)";
     // slider[0].style.bottom = "-180px";
-    arrow.style.transform = "rotateZ(0deg)";
+    // arrow.style.transform = "rotateZ(0deg)";
     blurMap.style.filter = "blur(0px)";
 
     this.state = 0;
