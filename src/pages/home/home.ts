@@ -76,13 +76,13 @@ export class HomePage {
   hideSlide() {
     var blurMap = document.getElementById("map");
     // let slider = document.getElementsByClassName("absolutely") as HTMLCollectionOf<HTMLElement>;
-    let arrow = document.getElementById("myArrow");
+    // let arrow = document.getElementById("myArrow");
 
     // arrow[0].style.left = "48%";
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow[0].style.transform = "rotateZ(0DEG)";
     // slider[0].style.bottom = "-180px";
-    arrow.style.transform = "rotateZ(0deg)";
+    // arrow.style.transform = "rotateZ(0deg)";
     blurMap.style.filter = "blur(0px)";
 
     this.state = 0;
