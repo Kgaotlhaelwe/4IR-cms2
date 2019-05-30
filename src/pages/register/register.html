@@ -41,7 +41,7 @@
                         <input type="email" class="form-control"  [(ngModel)]="email"  placeholder="Organisation Email" value=""/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control"   [(ngModel)]="address"  placeholder="Organisation Address" value=""/>
+                        <input type="text" class="form-control"   [(ngModel)]="address"  placeholder="Organisation Address" value=""  (change)=" setAddress($event)"/>
                     </div>
                 </div>
 
@@ -53,9 +53,7 @@
                       <div class="form-group">
                           <input type="password"  [(ngModel)]="password"  class="form-control" placeholder="password" value=""/>
                       </div>
-                      <div class="form-group">
-                          <input type="file"  [(ngModel)]="image" class="form-control" placeholder="Tel number" value=""/>
-                      </div>
+                    
                     </div>
 
                     <!-- <div class="form-group">
@@ -109,11 +107,7 @@
 
             <button type="button"  (click)="Reg()"  class="btnSubmit">Submit</button>
 
-            <select id="select">
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-          </select>
+            
         </div>
     </div>
 </div>
