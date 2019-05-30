@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
 
     }, 5000);
 
-  
+
 
   }
   ionViewWillEnter() {
@@ -142,15 +142,27 @@ export class HomePage implements OnInit {
         zoom: 8,
 
       });
+      this.showMultipleMarker.addListener('click', () => {
 
+        console.log(this.orgArray[index]);
+        console.log(index);
+        this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
+
+
+      });
     }
+
   }
 
   GoToOrgProfile() {
     this.navCtrl.push(OrganizationProfilePage);
   }
 
-  goToViewPage(){
-
-  }
+  // goToViewPage(name) {
+  //   for (var x = 0; x < this.orgArray.length; x++) {
+  //     if (name == this.orgArray[x].orgName) {
+  //       this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[x] });
+  //     }
+  //   }
+  // }
 }

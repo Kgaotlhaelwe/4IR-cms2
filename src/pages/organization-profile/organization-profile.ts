@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
+declare var firebase;
 /**
  * Generated class for the OrganizationProfilePage page.
  *
@@ -14,12 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'organization-profile.html',
 })
 export class OrganizationProfilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  profileArr = new Array();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public IrMethodsProvider: IrMethodsProvider) {
+    this.IrMethodsProvider.getOrgProfile().then((data: any) => {
+      this.profileArr = data
+      console.log(this.profileArr)
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationProfilePage');
+
+   
   }
 
 }
