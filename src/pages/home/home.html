@@ -1,23 +1,110 @@
-<ion-header>
-  <!-- <ion-navbar> -->
-    <!-- <ion-title>
-      Ionic Blank
-    </ion-title> -->
-  <!-- </ion-navbar> -->
-</ion-header>
+<ion-content>
+  <div class="start">
+    <div class="needs">
+      <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
+      </p>
+      <input type="text" placeholder="Title" class="inp" [(ngModel)]="title"><br>
+      <input type="text" placeholder="Price" class="inp" [(ngModel)]="price">
+      <textarea name="" id="descr" placeholder="Describe your organisation's service here..." rows="5"
+        [(ngModel)]="description"></textarea>
+      <div class="theBtn" (click)="addContributes()">Add to list</div>
+      <br>
+      <button ion-button full class="dag" (click)="pullDown()">
+        <ion-icon name="arrow-down" id="orger"></ion-icon>
+      </button>
+    </div>
+    <div class="chartOverlay" id="theGreenOne">
+      Ratings
+      <div class="chart" id="myRate">
+        <canvas id="ourRatings"></canvas>
+      </div> <br>
+      Views
+      <div class="chart" id="myViews">
+        <canvas id="views"></canvas>
+      </div>
+    </div>
 
-<ion-content padding>
-    <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
-      </ion-searchbar>
-      <ion-list>
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-            {{ item}}
-          </ion-item>
-        </ion-list>
-  <div #map   id="map">
-      
+    <div class="tab">
+      <div class="action">
+        <div>
+
+          <p id="my2001" (click)="goToProfile()"><b id="Orgo">ORGANISATION PROFILE</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="profOverlay">
+      <input type="file" accept="image/jpg, image/jpeg" id="coverUploader" (change)="changeCover($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="logoUploader" (change)="changeLogo($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
+        (change)="getImages($event)">
+      <div class="gallery">
+        <label for="galInput">
+          <div class="adder">
+            <i class="material-icons">add</i></div>
+        </label><br>
+        <div class="array" *ngFor="let x of imagesArr">
+          <img src="{{x.GalUrl}}" alt="" class="images">
+        </div>
+
+      </div>
+      <div class="cont">
+
+        <div class="dismisser" id="profDismisser" (click)="closeProfile()">
+          <ion-icon name="close"></ion-icon>
+        </div>
+        <div class="coverPhoto">
+          <div id="signOut" (click)="signOut()">
+            <p>Sign Out</p>
+          </div>
+          <div class="about">
+            <label for="logoUploader">
+              <img src="../../assets/imgs/logo.png" alt="" class="logo">
+            </label>
+            <h3>About</h3>
+            <p id="breaker">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius doloribus possimus totam
+              voluptas dolore! Cum porro natus officia vero animi?</p>
+            <h3>Address</h3>
+            <p id="breaker">4877 Ugago Street Protea Glen Ext 3</p>
+            <h3>Contact Details</h3>
+            <p id="breaker">0813917127<br>
+              email@example.com</p>
+            <h2 class="keepFixed">Gallery</h2>
+          </div>
+          <h2 id="orgName">John and Jane Doe Internet Cafe</h2>
+          <p class="paragraph">Internet Cafe</p>
+          <label for="coverUploader">
+            <img src="../../assets/imgs/11.jfif" id="coverIMG" alt="">
+          </label>
+
+
+        </div>
+
+        <div class="branches">
+          <img src="../../assets/imgs/11.jfif" id="uploaded-image" alt="" imageViewer>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="content" #map id="map">
+
+      <div class="loader">
+        Loading Map...
+      </div>
+    </div>
+    <!-- <div class="absolutely">
+        <div class="arrow">
+          <div class="clicker" (click)="decideState()">
+            <i class="material-icons" id="myArrow">keyboard_arrow_up</i>
+          </div>
+          <div class="list">
+            <div class="gal" id="push" *ngFor="let a of organizationArr">
+                <span class="tooltiptext">{{a.desc}}</span>
+              <img src="{{a.Url}}" alt="">
+            </div>
+          </div>
+        </div>
+      </div> -->
   </div>
-
-  <button ion-button (click)="GoToOrgProfile()">OrgProfile</button>
-  <button ion-button (click)="logOut()">LogOut</button>
 </ion-content>

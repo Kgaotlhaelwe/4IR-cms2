@@ -17,10 +17,7 @@ declare var firebase;
 export class OrganizationProfilePage {
   profileArr = new Array();
   constructor(public navCtrl: NavController, public navParams: NavParams, public IrMethodsProvider: IrMethodsProvider) {
-    this.IrMethodsProvider.getOrgProfile().then((data: any) => {
-      this.profileArr = data
-      console.log(this.profileArr)
-    })
+    
   }
 
   ionViewDidLoad() {

@@ -1,10 +1,4 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>Register</ion-title>
@@ -14,15 +8,38 @@
 
 
 <ion-content padding>
-   
-  
 
 
 
-  <div class="container register-form">
+
+
+  <div class="container register-form">5
     <div class="form">
-        <div class="note">
-            <p>This is a simpleRegister to Register your Organisation</p>
+      <div class="note">
+        <p>This is a simpleRegister to Register your Organisation</p>
+      </div>
+
+      <div class="form-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="orgName" class="form-control" placeholder="Organisation Name" value="" />
+            </div>
+            <div class="form-group">
+              <input type="tel" [(ngModel)]="cell" class="form-control" placeholder="Tel number" value="" />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" class="form-control" [(ngModel)]="email" placeholder="Organisation Email" value="" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="address" placeholder="Organisation Address"
+                value="" />
+            </div>
+          </div>
+
         </div>
 
         <div class="form-content">
@@ -64,52 +81,52 @@
                           </ion-item>
                         </ion-list>
                     </div> -->
+<!-- 
+          <ion-list>
+            <ion-item>
+              <ion-label>Gaming</ion-label>
+              <ion-select [(ngModel)]="category">
+                <ion-option value="High Education Institution">High Education Institution</ion-option>
+                <ion-option value="Library">Library</ion-option>
+                <ion-option value="Mall">Mall</ion-option>
+                <ion-option value="Learning Center">Learning Center</ion-option>
+                <ion-option value="Internet Cafe">Internet Cafe</ion-option>
+                <ion-option value="Reastuarant / Coffeshop">Reastuarant / Coffeshop </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
 
-                    <ion-list>
-                      <ion-item>
-                        <ion-label>Gaming</ion-label>
-                        <ion-select [(ngModel)]="category">
-                          <ion-option value="High Education Institution">High Education Institution</ion-option>
-                          <ion-option value="Library">Library</ion-option>
-                          <ion-option value="Mall">Mall</ion-option>
-                          <ion-option value="Learning Center">Learning Center</ion-option>
-                          <ion-option value="Internet Cafe">Internet Cafe</ion-option>
-                          <ion-option value="Reastuarant / Coffeshop">Reastuarant / Coffeshop </ion-option>
-                        </ion-select>
-                      </ion-item>
-                    </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label>Services </ion-label>
+              <ion-select [(ngModel)]="service" multiple="true" cancelText="Cancel" okText="Okay">
+                <ion-option value="Testing" selected="true" id="test">Testing</ion-option>
+                <ion-option value="Rapid prototype">Rapid prototype</ion-option>
+                <ion-option value="Consultation" selected="true">Consultation</ion-option>
+                <ion-option value="Research">Research</ion-option>
+                <ion-option value="Training">Training</ion-option>
+                <ion-option value="Incubation">Incubation</ion-option>
+                <ion-option value="pepperoni">Skill Development</ion-option>
 
-                    <ion-list>
-                        <ion-item>
-                          <ion-label>Services </ion-label>
-                          <ion-select [(ngModel)]="service" multiple="true" cancelText="Cancel" okText="Okay">
-                            <ion-option value="Testing" selected="true" id="test">Testing</ion-option>
-                            <ion-option value="Rapid prototype">Rapid prototype</ion-option>
-                            <ion-option value="Consultation" selected="true">Consultation</ion-option>
-                            <ion-option value="Research">Research</ion-option>
-                            <ion-option value="Training">Training</ion-option>
-                            <ion-option value="Incubation">Incubation</ion-option>
-                            <ion-option value="pepperoni">Skill Development</ion-option>
-                           
-                          </ion-select>
-                        </ion-item>
-                      </ion-list>
-  
-                  <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <textarea placeholder="write a description"   [(ngModel)]="description">
-                         
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <textarea placeholder="write a description" [(ngModel)]="description">
+
                           </textarea>
-                      </div>
-                  </div>
-                </div>
+            </div>
+          </div>
+        </div>
 
-            <button type="button"  (click)="Reg()"  class="btnSubmit">Submit</button>
+        <button type="button" (click)="Reg()" class="btnSubmit">Submit</button>
 
             
         </div>
     </div>
-</div>
+  </div>
 
-</ion-content>
+</ion-content> --> -->

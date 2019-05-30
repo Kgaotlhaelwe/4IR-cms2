@@ -10,7 +10,7 @@ import {RegisterPage} from '../pages/register/register' ;
 import {LoginPage} from "../pages/login/login" ;
 import { OrganizationProfilePage} from "../pages/organization-profile/organization-profile"
 import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
-
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +18,8 @@ import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
