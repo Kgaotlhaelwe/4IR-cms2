@@ -7,12 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegisterPage} from '../pages/register/register' ;
+import {LoginPage} from "../pages/login/login" ;
+import { OrganizationProfilePage} from "../pages/organization-profile/organization-profile"
 import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,RegisterPage
+    HomePage,RegisterPage ,LoginPage, OrganizationProfilePage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage, RegisterPage
+    HomePage, RegisterPage,LoginPage ,OrganizationProfilePage
   ],
   providers: [
     StatusBar,

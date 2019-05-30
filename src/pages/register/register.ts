@@ -58,12 +58,18 @@ export class RegisterPage {
     console.log(this.service);
     
     
-      this.IRmethods.register(this.email, this.password,this.address.lat, this.address.lng, this.address.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
+    
+    console.log(this.orgAddressObject.lng);
+    console.log(this.orgAddressObject.lat);
+    
+    
+    
+    
+      this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
        this.navCtrl.push(HomePage)
      })
   
-  
-  }
+}
 
   //this method will automatically set the address(long,lat,region) from the address the user enters
   setAddress(event) {
