@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegisterPage} from '../pages/register/register' ;
 import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
-
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 @NgModule({
   declarations: [
     MyApp,
@@ -16,7 +16,8 @@ import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
