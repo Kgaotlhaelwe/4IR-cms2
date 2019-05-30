@@ -317,15 +317,15 @@ export class IrMethodsProvider {
       console.log(user.uid)
       firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
-        this.profileArr.push(details)
-        console.log(this.profileArr)
-      
+        console.log(details)
+        accpt(details)
+        console.log(details)
       });
 
-      accpt(this.profileArr)
-      console.log(this.profileArr)
     })
   }
+
+  
 
 
 forgetPassword(email){

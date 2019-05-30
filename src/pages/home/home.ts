@@ -1,6 +1,7 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
+import { LoginPage } from '../login/login';
 
 
 
@@ -20,6 +21,14 @@ export class HomePage implements OnInit{
   showMultipleMarker;
   items = new Array()
   orgNames = new Array()
+  name;
+  cell;
+  category;
+  address;
+  desc;
+  downloadurl;
+  downloadurlLogo;
+  email
   constructor(public navCtrl: NavController,public IRmethods: IrMethodsProvider) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -42,9 +51,17 @@ export class HomePage implements OnInit{
     }, 5000);
 
 
-    this.IRmethods.getOrgProfile().then((data: any) => {
-      this.profileArr = data
-      console.log(this.profileArr)
+    this.IRmethods.getOrgProfile().then((data:any) => {
+      this.name = data.name;
+      this.category = data.category;
+      this.cell = data.cell;
+      this.address = data.address;
+      this.desc = data.desc;
+      this.downloadurl = data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.email = data.email;
+
+      console.log(data)
     })
 
   }
@@ -54,6 +71,14 @@ export class HomePage implements OnInit{
     this.orgNames = names;
     console.log(this.orgNames);
 
+  }
+
+  signOut() {
+    this.IRmethods.logout().then(() => {
+      this.navCtrl.push(LoginPage, { out: 'logout' });
+    }, (error) => {
+      console.log(error.message);
+    })
   }
   initializeItems() {
     this.items = this.orgNames
@@ -276,12 +301,12 @@ export class HomePage implements OnInit{
     var prof = document.getElementsByClassName("profOverlay") as HTMLCollectionOf<HTMLElement>;
     var blurMap = document.getElementById("map");
     var profil = document.getElementsByClassName("cont") as HTMLCollectionOf<HTMLElement>;
-    var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
-    var q = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
+    // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    // var q = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
     blurMap.style.filter = "blur(0px)";
-    y[0].style.right = "-260px";
-    y[0].style.opacity = "0";
-    q[0].style.display = "none";
+    // y[0].style.right = "-260px";
+    // y[0].style.opacity = "0";
+    // q[0].style.display = "none";
     profil[0].style.opacity = "0";
     setTimeout(() => {
       if (this.v == 0) {
