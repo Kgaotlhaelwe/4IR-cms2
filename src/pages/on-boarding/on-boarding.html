@@ -1,0 +1,93 @@
+<ion-content>
+  <div class="theBody">
+    <div class="left">
+      <div class="box">
+        <div class="step1" padding>
+          <div class="logo-container">
+            <img src="../../assets/imgs/4IR logo.png" id="logo" alt="">
+          </div>
+          <br><br>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
+            perspiciatis qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore
+            incidunt!</p>
+        </div>
+        <div class="step2">
+          <div class="slide-custom">
+            <div class="theSlider">
+              <div class="slideShow" id="page1">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
+                  animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
+                  provident labore dolorum rem ab.</p>
+                <input type="text" placeholder="Name">
+                <input type="text" placeholder="Address">
+                <input type="text" placeholder="Phone">
+                <input type="text" placeholder="Website"><br>
+                <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"></textarea>
+                <button ion-button class="theButton" (click)="moveToPage2()">NEXT</button>
+              </div>
+              <div class="slideShow" id="page2">
+                <p>Does the organisation have WiFi</p>
+                <select class="select-css">
+                  <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Yes</option>
+                  <option value="opel">No</option>
+                </select><br>
+                <select class="select-css">
+                  <option value="Is it free?" disabled>Is it free?</option>
+                  <option value="saab">Yes</option>
+                  <option value="saab">No</option>
+                </select><br>
+                <select class="select-css">
+                  <option value="Choose Range" disabled>Choose Range</option>
+                  <option value="saab">200MB Free</option>
+                  <option value="saab">1GB Free</option>
+                  <option value="saab">2GB Free</option>
+                  <option value="saab">Unlimited</option>
+                </select>
+                <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
+                <button ion-button class="theButtonBack">BACK</button>
+              </div>
+              <div class="slideShow" id="page3">
+                <p>Almost there, please provide a category for the organisation.</p>
+                <select class="select-css">
+                  <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Yes</option>
+                  <option value="opel">No</option>
+                </select><br>
+                <select class="select-css">
+                  <option value="Is it free?" disabled>Is it free?</option>
+                  <option value="saab">Yes</option>
+                  <option value="saab">No</option>
+                </select><br>
+                <select class="select-css">
+                  <option value="Choose Range" disabled>Choose Range</option>
+                  <option value="saab">200MB Free</option>
+                  <option value="saab">1GB Free</option>
+                  <option value="saab">2GB Free</option>
+                  <option value="saab">Unlimited</option>
+                </select>
+                <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
+                <button ion-button class="theButton" (click)="moveToPage4()">NEXT</button>
+                <button ion-button class="theButtonBack">BACK</button>
+
+              </div>
+              <div class="slideShow" id="page4">
+                <div class="description" padding>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid distinctio et non enim ut quo,
+                  reprehenderit nostrum aperiam qui blanditiis. Optio illo quod ratione facere, adipisci necessitatibus
+                  beatae tempore, perspiciatis doloremque sint quia illum molestias placeat accusantium iusto possimus
+                  officia quo reiciendis. Doloribus, eius consectetur.
+                </div>
+                <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea>
+                <button ion-button class="theButton" (click)="saveToDB()">Done</button>
+                <button ion-button class="theButtonBack">BACK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
