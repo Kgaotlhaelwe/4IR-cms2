@@ -6,18 +6,19 @@
       </button>
     </ion-fab> -->
     <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
-      </ion-searchbar>
-      <ion-list>
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-            {{ item}}
-          </ion-item>
-        </ion-list>
+    </ion-searchbar>
+    <div class="results">
+      <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+          {{ item}}
+        </ion-item>
+    </div>
     <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
       </p>
       <input type="text" placeholder="Title" class="inp" [(ngModel)]="title"><br>
       <input type="text" placeholder="Price" class="inp" [(ngModel)]="price">
-      <textarea name="" id="descr" placeholder="Describe your organisation's service here..." rows="5" [(ngModel)]="description"></textarea>
+      <textarea name="" id="descr" placeholder="Describe your organisation's service here..." rows="5"
+        [(ngModel)]="description"></textarea>
       <div class="theBtn" (click)="addContributes()">Add to list</div>
       <br>
       <button ion-button full color="primary" class="dag" (click)="pullDown()">
@@ -78,7 +79,7 @@
             <p id="breaker">{{address}}</p>
             <h3>Contact Details</h3>
             <p id="breaker">{{contact}}<br>
-            {{email}}</p>
+              {{email}}</p>
             <h2 class="keepFixed">Gallery</h2>
           </div>
           <h2 id="orgName">{{name}}</h2>

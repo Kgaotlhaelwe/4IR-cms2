@@ -293,12 +293,6 @@ page-home {
         animation: mymove 2s;
         animation-iteration-count: infinite;
       }
-      .clicker i {
-        transition: 1.5s;
-        margin-top: -10px;
-        line-height: 40px;
-        /* border: 2px solid red; */
-      }
       
       @keyframes mymove {
         0% {
@@ -792,10 +786,14 @@ page-home {
         overflow-y: scroll;
         /* border: 2px solid red; */
       }
-      .searchBar{
+      .searchBar, .results{
           position: absolute;
           z-index: 10000000000000000000000000000000000000000000000;
-          width: 30%;
+          width: 30vw;
+      }
+      .results{
+        top: 60px;
+        left: 10px;
       }
       #search{
           z-index: 10000000000000000000000000000000000000000000000;
