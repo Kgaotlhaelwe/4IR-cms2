@@ -1,4 +1,8 @@
 page-home {
+    #map{
+        height:100%;
+        width:100%;
+    }
     .start {
         height: 100%;
         width: 100%;
@@ -656,9 +660,11 @@ page-home {
         cursor: pointer;
         position: absolute;
         height: 30px;
+        width: 120px;
+        text-align: center;
         // padding: 10px;
         background: rgba(0, 0, 0, 0.521);
-        line-height: 30px;
+        // line-height: 30px;
         border: 2px solid white;
         border-radius: 40px;
         color: white;
@@ -667,20 +673,26 @@ page-home {
         left: 10px;
         top: 10px;
       }
-      #signOut:hover {
-        position: absolute;
-        height: 30px;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.671);
-        line-height: 30px;
-        border: 2px solid white;
-        border-radius: 40px;
-        color: white;
-        display: flex;
-        font-weight: bolder;
-        left: 10px;
-        top: 10px;
+      #signOut p {
+        text-align: center;
+        // border: 2px solid red;
+        padding-top: 2px;   
+        width: 100%;
       }
+    //   #signOut:hover {
+    //     position: absolute;
+    //     height: 30px;
+    //     padding: 10px;
+    //     background: rgba(0, 0, 0, 0.671);
+    //     line-height: 30px;
+    //     border: 2px solid white;
+    //     border-radius: 40px;
+    //     color: white;
+    //     display: flex;
+    //     font-weight: bolder;
+    //     left: 10px;
+    //     top: 10px;
+    //   }
       #signOut:active {
         position: absolute;
         height: 30px;

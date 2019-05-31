@@ -12,6 +12,7 @@ export class IrMethodsProvider {
   orgArray = new Array();
   detailArray = new Array();
   orgNames = new Array();
+  profileArr = new Array();
   constructor(private ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController, ) {
 
     console.log('Hello 4IrMethodsProvider Provider');
@@ -314,13 +315,17 @@ export class IrMethodsProvider {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
       console.log(user.uid)
-      firebase.database().ref("4IR_Hubs/").on('value', (data: any) => {
+      firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
-      
+        accpt(details)
+        console.log(details)
       });
+
     })
   }
+
+  
 
 
 forgetPassword(email){

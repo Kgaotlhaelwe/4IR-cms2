@@ -1,15 +1,37 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div class="everything">
+  <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      </head>
+  <div class="row">
+    <div class="column" style="background-color:#018790;">
+      <h1>Welcome</h1>
+      <p id="TheLine">______</p>
+      <h3>Welcome to 4IR_Hub
+        <i class="material-icons">tag_faces</i>
+      </h3>
+      <img class="theRocket" src="../../assets/imgs/4IR logo.png">
+    </div>
+    <div class="column" style="background-color: #10243D;">
+      <h2>Sign In</h2>
+      <p class="Account">
+        Don't have an account ?
+        <b style="cursor: pointer; font-weight: 100; text-decoration: underline" (click)="goToSignIn()">Create your account</b>
+      </p>
+      <label for="" class="Labels">
+        <i class="material-icons" id="Theicon">mail</i>
+      </label>
+      <input #email="ngModel" type="text" placeholder="Email" ngModel required>
+      <span style="color: red" *ngIf="!email.valid && email.touched" class="help-block helptext">Please enter your email address</span>
+      <label for="" class="Labels">
+        <i  class="material-icons" id="Theicon">lock</i>
+      </label>
+      <input #password="ngModel" type="password" placeholder="Password" ngModel required>
+      <span style="color: red" *ngIf="!password.valid && password.touched" class="help-block helptext">Please enter your password</span>
+      <p class="thepassword" (click)="forgotpassword(email.value)"> Forgot your Password?</p>
+      <button (click)="SignIn(email.value, password.value)">Login</button>
+    </div>
+  </div>
+</div>

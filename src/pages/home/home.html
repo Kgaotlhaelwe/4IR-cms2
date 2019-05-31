@@ -5,10 +5,13 @@
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-fab> -->
-    <div class="searchBar" padding>
-      <ion-searchbar></ion-searchbar>
-
-    </div>
+    <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
+      </ion-searchbar>
+      <ion-list>
+          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+            {{ item}}
+          </ion-item>
+        </ion-list>
     <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
       </p>
@@ -46,6 +49,16 @@
       <input type="file" accept="image/jpg, image/jpeg" id="logoUploader" (change)="changeLogo($event)">
       <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
         (change)="getImages($event)">
+      <!-- <div class="gallery">
+        <label for="galInput">
+          <div class="adder">
+            <i class="material-icons">add</i></div>
+        </label><br>
+        <div class="array" *ngFor="let x of imagesArr">
+          <img src="{{x.GalUrl}}" alt="" class="images">
+        </div>
+
+      </div> -->
       <div class="cont">
 
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
@@ -57,19 +70,18 @@
           </div>
           <div class="about">
             <label for="logoUploader">
-              <img src="../../assets/imgs/logo.png" alt="" class="logo">
+              <img src="../../assets/imgs/11.jfif" alt="" class="logo">
             </label>
             <h3>About</h3>
-            <p id="breaker">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius doloribus possimus totam
-              voluptas dolore! Cum porro natus officia vero animi?</p>
+            <p id="breaker">{{desc}}</p>
             <h3>Address</h3>
-            <p id="breaker">4877 Ugago Street Protea Glen Ext 3</p>
+            <p id="breaker">{{address}}</p>
             <h3>Contact Details</h3>
-            <p id="breaker">0813917127<br>
-              email@example.com</p>
+            <p id="breaker">{{contact}}<br>
+            {{email}}</p>
             <h2 class="keepFixed">Gallery</h2>
           </div>
-          <h2 id="orgName">John and Jane Doe Internet Cafe</h2>
+          <h2 id="orgName">{{name}}</h2>
           <p class="paragraph">Internet Cafe</p>
           <label for="coverUploader">
             <img src="../../assets/imgs/11.jfif" id="coverIMG" alt="">
@@ -85,7 +97,7 @@
     </div>
 
 
-    <div class="content" id="map">
+    <div class="content" #map id="map">
 
       <div class="loader">
         Loading Map...
