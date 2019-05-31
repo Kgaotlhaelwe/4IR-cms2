@@ -88,6 +88,7 @@ page-on-boarding {
     position: relative;
     p {
       padding: 30px;
+      font-size: 1em;
     }
     input {
       border: 1px solid rgba(0, 0, 0, 0.315);
@@ -109,7 +110,7 @@ page-on-boarding {
   }
   .slideShow:nth-child(4) {
     width: 25%;
-    background: orange;
+    background: white;
   }
   #nxt {
     width: 70%;
@@ -156,7 +157,7 @@ page-on-boarding {
   }
   input {
     margin-top: 20px;
-    width: 80%;
+    width: 85%;
     //   margin: 0 auto;
     background: whitesmoke;
   }
@@ -166,12 +167,14 @@ page-on-boarding {
     position: absolute;
     right: 10%;
     bottom: 40px;
+    width:30%;
   }
   .theButtonBack {
     border-radius: 50px;
     position: absolute;
     left: 10%;
     bottom: 40px;
+    width:30%;
   }
   select {
     width: 85%;
@@ -184,6 +187,9 @@ page-on-boarding {
   }
   #page2 {
     padding-top: 50px;
+  }
+  #page4{
+      padding-top:5%;
   }
 
   .select-css {
