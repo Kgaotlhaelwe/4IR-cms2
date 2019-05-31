@@ -94,18 +94,18 @@ export class HomePage {
     // alert("clicked")
     var prof = document.getElementsByClassName("profOverlay") as HTMLCollectionOf<HTMLElement>;
     var profil = document.getElementsByClassName("cont") as HTMLCollectionOf<HTMLElement>;
-    var theGal = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    // var theGal = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
     prof[0].style.display = "block";
     profil[0].style.opacity = "1";
-    theGal[0].style.opacity = "1";
+    // theGal[0].style.opacity = "1";
   }
 
   closeDIV() {
     var x = document.getElementsByClassName("overlay") as HTMLCollectionOf<HTMLElement>;
     var bg = document.getElementsByClassName("cont") as HTMLCollectionOf<HTMLElement>;
-    var imgs = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
-    imgs[0].style.filter = "blur(0)";
-    imgs[0].style.opacity = "1"
+    // var imgs = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    // imgs[0].style.filter = "blur(0)";
+    // imgs[0].style.opacity = "1"
     bg[0].style.filter = "blur(0)";
     x[0].style.opacity = "0";
     setTimeout(() => {
@@ -117,10 +117,10 @@ export class HomePage {
  
 
   showGal() {
-    var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
     var x = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
     if (this.v == 0) {
-      y[0].style.right = "10px";
+      // y[0].style.right = "10px";
 
       setTimeout(() => {
         x[0].style.display = "block";
@@ -128,7 +128,7 @@ export class HomePage {
       this.v = 1;
     } else {
       // x[0].style.display = "none"
-      y[0].style.right = "-260px";
+      // y[0].style.right = "-260px";
 
       setTimeout(() => {
         x[0].style.display = "none";
@@ -160,12 +160,12 @@ export class HomePage {
     var prof = document.getElementsByClassName("profOverlay") as HTMLCollectionOf<HTMLElement>;
     var blurMap = document.getElementById("map");
     var profil = document.getElementsByClassName("cont") as HTMLCollectionOf<HTMLElement>;
-    var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
-    var q = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
+    // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    // var q = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
     blurMap.style.filter = "blur(0px)";
-    y[0].style.right = "-260px";
-    y[0].style.opacity = "0";
-    q[0].style.display = "none";
+    // y[0].style.right = "-260px";
+    // y[0].style.opacity = "0";
+    // q[0].style.display = "none";
     profil[0].style.opacity = "0";
     setTimeout(() => {
       if (this.v == 0) {

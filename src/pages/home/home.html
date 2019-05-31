@@ -14,11 +14,10 @@
       </p>
       <input type="text" placeholder="Title" class="inp" [(ngModel)]="title"><br>
       <input type="text" placeholder="Price" class="inp" [(ngModel)]="price">
-      <textarea name="" id="descr" placeholder="Describe your organisation's service here..." rows="5"
-        [(ngModel)]="description"></textarea>
+      <textarea name="" id="descr" placeholder="Describe your organisation's service here..." rows="5" [(ngModel)]="description"></textarea>
       <div class="theBtn" (click)="addContributes()">Add to list</div>
       <br>
-      <button ion-button full class="dag" (click)="pullDown()">
+      <button ion-button full color="primary" class="dag" (click)="pullDown()">
         <ion-icon name="arrow-down" id="orger"></ion-icon>
       </button>
     </div>
@@ -47,16 +46,6 @@
       <input type="file" accept="image/jpg, image/jpeg" id="logoUploader" (change)="changeLogo($event)">
       <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
         (change)="getImages($event)">
-      <div class="gallery">
-        <label for="galInput">
-          <div class="adder">
-            <i class="material-icons">add</i></div>
-        </label><br>
-        <div class="array" *ngFor="let x of imagesArr">
-          <img src="{{x.GalUrl}}" alt="" class="images">
-        </div>
-
-      </div>
       <div class="cont">
 
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
