@@ -47,25 +47,9 @@ export class RegisterPage {
   }
   
   Reg() {
-
-    console.log(this.orgName);
-    console.log(this.cell);
-    console.log(this.address);
-    console.log(this.description);
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.category);
-    console.log(this.service);
     
     
-    
-    console.log(this.orgAddressObject.lng);
-    console.log(this.orgAddressObject.lat);
-    
-    
-    
-    
-      this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
+    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
        this.navCtrl.push(HomePage)
      })
   
