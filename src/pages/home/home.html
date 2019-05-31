@@ -6,12 +6,12 @@
       </button>
     </ion-fab> -->
     <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
-      </ion-searchbar>
-      <ion-list>
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-            {{ item}}
-          </ion-item>
-        </ion-list>
+    </ion-searchbar>
+    <div class="results">
+      <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+          {{ item}}
+        </ion-item>
+    </div>
     <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
       </p>
@@ -21,7 +21,7 @@
         [(ngModel)]="description"></textarea>
       <div class="theBtn" (click)="addContributes()">Add to list</div>
       <br>
-      <button ion-button full class="dag" (click)="pullDown()">
+      <button ion-button full color="primary" class="dag" (click)="pullDown()">
         <ion-icon name="arrow-down" id="orger"></ion-icon>
       </button>
     </div>
@@ -79,7 +79,7 @@
             <p id="breaker">{{address}}</p>
             <h3>Contact Details</h3>
             <p id="breaker">{{contact}}<br>
-            {{email}}</p>
+              {{email}}</p>
             <h2 class="keepFixed">Gallery</h2>
           </div>
           <h2 id="orgName">{{name}}</h2>

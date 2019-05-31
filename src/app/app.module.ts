@@ -11,10 +11,11 @@ import {LoginPage} from "../pages/login/login" ;
 import { OrganizationProfilePage} from "../pages/organization-profile/organization-profile"
 import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,RegisterPage ,LoginPage, OrganizationProfilePage
+    HomePage,RegisterPage ,LoginPage, OrganizationProfilePage,OnBoardingPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage, RegisterPage,LoginPage ,OrganizationProfilePage
+    HomePage, RegisterPage,LoginPage ,OrganizationProfilePage,OnBoardingPage
   ],
   providers: [
     StatusBar,
