@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
+import { OnBoardingPage } from '../on-boarding/on-boarding';
 declare var google;
 /**
  * Generated class for the RegisterPage page.
@@ -31,7 +32,8 @@ export class RegisterPage {
   serviceArray = new Array();
 
   service ;
-
+  signUpEmail ;
+  signUppassword ;
   HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
 
   Library = ["Research ", "Training "];
@@ -47,76 +49,19 @@ export class RegisterPage {
   }
   
   Reg() {
-
-    console.log(this.orgName);
-    console.log(this.cell);
-    console.log(this.address);
-    console.log(this.description);
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.category);
-    console.log(this.service);
     
     
-    
-    console.log(this.orgAddressObject.lng);
-    console.log(this.orgAddressObject.lat);
-    
-    
-    
-    
-      this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
+    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
        this.navCtrl.push(HomePage)
      })
   
 }
 
   //this method will automatically set the address(long,lat,region) from the address the user enters
-  setAddress(event) {
-    this.getcoo(this.address).then((data: any) => {
-      this.orgAddressObject = data;
-      console.log(this.orgAddressObject);
-    }, Error => {
-      const alert = this.alertCtrl.create({
-        subTitle: 'The address you have entered is invalid, please enter a valid address',
-        buttons: [
-          {
-            text: 'OK',
-            handler: data => {
-              this.address = ""
-            }
-          },
-        ]
-      });
-      alert.present();
-    })
-  }
+  
 
   //this method takes the address and converts it into long,lat and region
-  getcoo(address) {
-    return new Promise((accpt, rej) => {
-      this._ngZone.run(() => {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var arr = results[0].address_components;
-            var arr2 = arr[3];
-            this.latitude = results[0].geometry.location.lat();
-            this.longitude = results[0].geometry.location.lng();
-            let position = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              city: arr2.long_name
-            };
-            accpt(position);
-          }
-          else {
-            rej('')
-          }
-        });
-      });
-    });
-  }
+ 
 
 
   selectCategory() {
@@ -146,4 +91,34 @@ export class RegisterPage {
       })
     }
   }
+
+
+  signUp(){
+
+    if(this.signUpEmail != undefined && this.signUppassword != undefined){
+      this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
+        console.log("sucess");
+        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
+        
+      }).catch((error)=>{
+        const alert = this.alertCtrl.create({
+          title: '',
+          subTitle: error.message ,
+          buttons: ['OK']
+        });
+        alert.present();
+        
+      })
+
+    }else {
+      const alert = this.alertCtrl.create({
+        title: '',
+        subTitle: 'Please eneter all details ',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
+  
+   }
 }
