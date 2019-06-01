@@ -7,10 +7,12 @@
       <div class="box1">
         <div class="step1">
           <div class="inputs">
+            <p id="signIns">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequuntur sed eos laboriosam porro optio possimus ipsum enim animi fuga?</p>
             <input type="email" placeholder="Email" #email class="theInput"><br>
             <input type="password" placeholder="Password" #password class="theInput">
 
             <button ion-button id="nxt" (click)="SignIn(email.value,password.value)">Sign In</button>
+            <button ion-button clear class="password">Forgot password? Click here.</button>
           </div>
         </div>
         <div class="step2"></div>
@@ -23,10 +25,13 @@
         <div class="box1">
           <div class="step1">
             <div class="inputs">
+                <p id="signUps">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequuntur sed eos laboriosam porro optio possimus ipsum enim animi fuga?</p>
+
               <input type="email"  [(ngModel)]="signUpEmail" placeholder="Email" class="theInput"><br>
               <input type="password" [(ngModel)]="signUppassword" placeholder="Password" class="theInput">
 
               <button ion-button id="nxt"  (click)="signUp()">Sign UP </button>
+              <button ion-button clear></button>
             </div>
           </div>
           <div class="step2"></div>
