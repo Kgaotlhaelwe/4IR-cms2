@@ -12,7 +12,7 @@
           {{ item}}
         </ion-item>
     </div>
-    <div class="needs">
+    <!-- <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
       </p>
       <input type="text" placeholder="Title" class="inp" [(ngModel)]="title"><br>
@@ -24,7 +24,7 @@
       <button ion-button full color="primary" class="dag" (click)="pullDown()">
         <ion-icon name="arrow-down" id="orger"></ion-icon>
       </button>
-    </div>
+    </div> -->
     <div class="chartOverlay" id="theGreenOne">
       Ratings
       <div class="chart" id="myRate">
@@ -61,7 +61,13 @@
 
       </div> -->
       <div class="cont">
+        <ion-fab bottom right>
+          <button ion-fab mini>
+            <ion-icon name="images">
 
+            </ion-icon>
+          </button>
+        </ion-fab>
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
           <ion-icon name="close"></ion-icon>
         </div>

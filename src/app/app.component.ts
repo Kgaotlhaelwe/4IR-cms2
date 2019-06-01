@@ -21,7 +21,7 @@ export class MyApp {
           this.rootPage =RegisterPage
         }
         else {
-          this.rootPage = OnBoardingPage
+          this.rootPage = HomePage
         }
       })
       // Okay, so the platform is ready and our plugins are available.
