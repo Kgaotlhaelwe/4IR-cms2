@@ -776,6 +776,9 @@ page-home {
     height: 250px;
     object-fit: contain;
   }
+  .logo:hover{
+    filter: brightness(0.8)
+  }
   .branches {
     width: 100%;
     // border: 2px solid green;
