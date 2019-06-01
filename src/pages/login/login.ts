@@ -66,4 +66,6 @@ export class LoginPage {
   goToSignIn(){
     this.navCtrl.push(RegisterPage)
   }
+
+  
 }

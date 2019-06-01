@@ -14,60 +14,120 @@
         <div class="step2">
           <div class="slide-custom">
             <div class="theSlider">
+
               <div class="slideShow" id="page1">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
                   animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
                   provident labore dolorum rem ab.</p>
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Address">
-                <input type="text" placeholder="Phone">
-                <input type="text" placeholder="Website"><br>
-                <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"></textarea>
-                <button ion-button class="theButton" (click)="moveToPage2()">NEXT</button>
+                <input type="text" placeholder="Name" [(ngModel)]="orgName">
+                <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+                <input type="text" placeholder="Phone" [(ngModel)]="orgPhone">
+                <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
+                <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"
+                  [(ngModel)]="orgDescription"></textarea> <br>
+                <button ion-button  id="movetopage2" class="theButton"  (click)="moveToPage2()">NEXT</button>
               </div>
               <div class="slideShow" id="page2">
                 <p>Does the organisation have WiFi</p>
-                <select class="select-css">
+                <select class="select-css"  [(ngModel)]="offerWifi" (change)="checkWifi()">
                   <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Yes</option>
-                  <option value="opel">No</option>
+
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select><br>
-                <select class="select-css">
+                <select class="select-css"  *ngIf="ShowWifi"  [(ngModel)]="wifi"  (change)="checkWifipayment()">
                   <option value="Is it free?" disabled>Is it free?</option>
-                  <option value="saab">Yes</option>
-                  <option value="saab">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select><br>
-                <select class="select-css">
+                <select class="select-css"  *ngIf="ShowChooseRange"  [(ngModel)]="chooseWifiRange" >
                   <option value="Choose Range" disabled>Choose Range</option>
-                  <option value="saab">200MB Free</option>
-                  <option value="saab">1GB Free</option>
-                  <option value="saab">2GB Free</option>
-                  <option value="saab">Unlimited</option>
+                  <option value="200MB Free">200MB Free</option>
+                  <option value="1GB Free">1GB Free</option>
+                  <option value="2GB Free">2GB Free</option>
+                  <option value="Unlimited">Unlimited</option>
                 </select>
                 <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
-                <button ion-button class="theButtonBack">BACK</button>
+                <button ion-button class="theButtonBack" (click)="theButtonBack3()">BACK</button>
               </div>
               <div class="slideShow" id="page3">
                 <p>Almost there, please provide a category for the organisation.</p>
-                <select class="select-css">
-                  <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Yes</option>
-                  <option value="opel">No</option>
+                <select class="select-css"  (change)="showServices()"   [(ngModel)]="category">
+                  <option value="Do you offer WiFi" disabled> Choose category </option>
+                  <option value="High Education Institution">High Education Institution </option>
+                  <option value="Library">Library</option>
+                  <option value="Learning Center">Learning Center</option>
+                  <option value="InterCafe">InterCafe</option>
+                  <option value="Mall">Mall</option>
+                  <option value="Coffee Shop">Coffee Shop</option>
                 </select><br>
-                <select class="select-css">
-                  <option value="Is it free?" disabled>Is it free?</option>
-                  <option value="saab">Yes</option>
-                  <option value="saab">No</option>
-                </select><br>
-                <select class="select-css">
-                  <option value="Choose Range" disabled>Choose Range</option>
-                  <option value="saab">200MB Free</option>
-                  <option value="saab">1GB Free</option>
-                  <option value="saab">2GB Free</option>
-                  <option value="saab">Unlimited</option>
-                </select>
+
+                <ion-list *ngIf="showheiServices">
+                    <ion-item>
+                    
+                      <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
+                        <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
+                        <ion-option value="Rapid prototype">Rapid prototype</ion-option>
+                        <ion-option value="Consulation" selected="true"> Consulation</ion-option>
+                        <ion-option value="Research">Research</ion-option>
+                        <ion-option value="Applied Research">Applied Research</ion-option>
+                         </ion-select>
+                    </ion-item>
+                  </ion-list>
+
+
+                  <ion-list  *ngIf="showLibaryServices">
+                      <ion-item>
+                      
+                        <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
+                          <ion-option value="Research" selected="true">Research</ion-option>
+                          <ion-option value=">Training">Training</ion-option>
+                         </ion-select>
+                      </ion-item>
+                    </ion-list>
+
+                    
+                  <ion-list  *ngIf="showinternetCafeServices">
+                      <ion-item>
+                      
+                        <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
+                          <ion-option value="internet" selected="true">internet</ion-option>
+                          <ion-option value="printing">printing</ion-option>
+                          <ion-option value="fax">fax</ion-option>
+                         
+                         </ion-select>
+                      </ion-item>
+                    </ion-list>
+
+
+                    <ion-list   *ngIf="showlearningCenterServices">
+                        <ion-item>
+                        
+                          <ion-select [(ngModel)]="learningCenterServices" multiple="true" cancelText="Nah" okText="Okay">
+                            <ion-option value="Training" selected="true">Training</ion-option>
+                            <ion-option value="Skill development">Skill development</ion-option>
+                            <ion-option value="Research">Research</ion-option>
+                            <ion-option value="Incubation">Incubation</ion-option>
+                           </ion-select>
+                        </ion-item>
+                      </ion-list>
+
+                      <ion-list  *ngIf="showMallServices">
+                          <ion-item>
+                          
+                            <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay" >
+                              <ion-option value="Training" selected="true">Training</ion-option>
+                              <ion-option value="Skill development">Skill development</ion-option>
+                              <ion-option value="Research">Research</ion-option>
+                              <ion-option value="Incubation">Incubation</ion-option>
+                             </ion-select>
+                          </ion-item>
+                        </ion-list>
+  
+
+
+               
+             
                 <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
                 <button ion-button class="theButton" (click)="moveToPage4()">NEXT</button>
                 <button ion-button class="theButtonBack">BACK</button>
