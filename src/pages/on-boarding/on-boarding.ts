@@ -64,58 +64,67 @@ export class OnBoardingPage {
 
   }
   moveToPage2() {
-    console.log(this.orgName);
+    // console.log(this.orgName);
 
-    console.log(this.orgPhone);
-    console.log(this.orgWebsite);
-    console.log(this.orgDescription);
+    // console.log(this.orgPhone);
+    // console.log(this.orgWebsite);
+    // console.log(this.orgDescription);
 
-    if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      this.alert("Enter all details ")
-    } else if (this.orgName == undefined) {
-      this.alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
-      this.alert("Enter Address  ")
-    } else if (this.orgPhone == undefined) {
-      this.alert("Enter Phone numbers  ")
-    } else if (this.orgDescription == undefined) {
-      this.alert("Enter Phone numbers  ")
+    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+    //   this.alert("Enter all details ")
+    // } else if (this.orgName == undefined) {
+    //   this.alert("Enter organisation Name ")
+    // } else if (this.orgAdress == undefined) {
+    //   this.alert("Enter Address  ")
+    // } else if (this.orgPhone == undefined) {
+    //   this.alert("Enter Phone numbers  ")
+    // } else if (this.orgDescription == undefined) {
+    //   this.alert("Enter Phone numbers  ")
 
-    } else {
+    // } else {
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-25%";
 
-    }
+    // }
 
 
   }
   moveToPage3() {
 
 
-    if (this.wifi == undefined) {
-      this.wifi = ""
-    } if (this.chooseWifiRange == undefined) {
-      this.chooseWifiRange = ""
-    }
+    // if (this.wifi == undefined) {
+    //   this.wifi = ""
+    // } if (this.chooseWifiRange == undefined) {
+    //   this.chooseWifiRange = ""
+    // }
 
-    if (this.offerWifi != undefined) {
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-50%";
-    } else {
-      this.alert("enter the details")
-}
+    // if (this.offerWifi != undefined) {
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-50%";
+    //     } else {
+    //       this.alert("enter the details")
+    // }
 
-}
+  }
 
 
-theButtonBack3(){
-   var toSlide = document.getElementById("page1");
-    toSlide.style.marginRight = "-55%";
-}
   moveToPage4() {
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-75%";
+  }
+
+  backToPage3() {
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-50%";
+  }
+  backToPage2() {
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-25%";
+  }
+  backToPage1() {
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "0%";
   }
   saveToDB() {
     console.log(this.orgName);
@@ -130,7 +139,7 @@ theButtonBack3(){
     console.log(this.category);
     console.log(this.catService);
     console.log(this.email);
-   
+
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange).then(() => {
       console.log("added successfully");
 
@@ -271,6 +280,171 @@ theButtonBack3(){
       });
     });
   }
+  testCheckboxResult1;
+  testCheckboxOpen1;
+  HEIservices(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
 
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen1 = false;
+        this.testCheckboxResult1 = data;
+        
+      console.log(data);
+      }
+      
+    });
+    alert.present();
+  }
+  testCheckboxResult2;
+  testCheckboxOpen2;
+  LibraryServices(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen2 = false;
+        this.testCheckboxResult2 = data;
+        
+      console.log(data);
+      }
+      
+    });
+    alert.present();
+  }
+  testCheckboxResult3;
+  testCheckboxOpen3;
+  internetCafe(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen3 = false;
+        this.testCheckboxResult3 = data;
+        
+      console.log(data);
+      }
+      
+    });
+    alert.present();
+  }
+
+  testCheckboxResult4;
+  testCheckboxOpen4;
+  learningCenter(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen4 = false;
+        this.testCheckboxResult4 = data;
+        
+      console.log(data);
+      }
+      
+    });
+    alert.present();
+  }
+  testCheckboxResult5;
+  testCheckboxOpen5;
+  mall(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen5 = false;
+        this.testCheckboxResult5 = data;
+        
+      console.log(data);
+      }
+      
+    });
+    alert.present();
+  }
 
 }

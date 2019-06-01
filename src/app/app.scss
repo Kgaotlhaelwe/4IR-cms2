@@ -27,3 +27,40 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0) !important;
     border: 0;
 }
+.item{
+    background: red;
+}
+.item-block {
+    margin: 0 auto;;
+    padding: 0;
+    text-align: initial;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    width: 85%;
+    min-height: 4.4rem;
+    border: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    color: inherit;
+}
+// .ion-select {
+//     display: -webkit-box;
+//     display: -webkit-flex;
+//     display: -ms-flexbox;
+//     display: block;
+//     overflow: hidden;
+//     overflow-x: hidden;
+//     overflow-y: hidden;
+//     width: 100%;
+// }

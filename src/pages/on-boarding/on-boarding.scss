@@ -179,10 +179,11 @@ page-on-boarding {
     bottom: 40px;
     width: 30%;
   }
-  select {
+  select, .customSelect {
     width: 85%;
     margin: 20px auto;
     height: 50px;
+    line-height: 50px;
     border-radius: 50px;
     background: whitesmoke;
     border: 1px solid rgba(0, 0, 0, 0.144);
