@@ -118,14 +118,15 @@ export class IrMethodsProvider {
         desc: desc,
         long: long,
         lat: lat,
+        wifi:wifi ,
+        freeWifi:freeWifi ,
+        wifiRange:wifiRange ,
         region: region,
         downloadurl: "assets/download.png",
         downloadurlLogo: "assets/download.png",
         service: [service],
         address: address ,
-        wifi:wifi ,
-        freeWifi:freeWifi ,
-        wifiRange:wifiRange
+       
       });
       resolve()
     })

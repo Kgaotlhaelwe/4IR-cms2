@@ -19,13 +19,14 @@
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
                   animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
                   provident labore dolorum rem ab.</p>
-                <input type="text" placeholder="Name" [(ngModel)]="orgName">
+                <input type="text" placeholder="Name" [(ngModel)]="orgName" required>
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-                <input type="text" placeholder="Phone" [(ngModel)]="orgPhone">
+                <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
                 <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
-                <button ion-button  id="movetopage2" class="theButton"  (click)="moveToPage2()">NEXT</button>
+                <button ion-button  id="movetopage2" class="theButton"  (click)="  moveToPage2() ">NEXT</button>
+                
               </div>
               <div class="slideShow" id="page2">
                 <p>Does the organisation have WiFi</p>

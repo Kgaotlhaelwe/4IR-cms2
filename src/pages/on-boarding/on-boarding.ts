@@ -50,10 +50,12 @@ export class OnBoardingPage {
   internetCafeService;
   learningCenterServices;
   mallService;
-
+  checkAddress
   // General varable
   orgAddressObject;
   catService = new Array();
+
+  track ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
@@ -64,11 +66,14 @@ export class OnBoardingPage {
 
   }
   moveToPage2() {
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     console.log(this.orgName);
 
     console.log(this.orgPhone);
     console.log(this.orgWebsite);
     console.log(this.orgDescription);
+
+    this.phonenumber() ;
 
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Enter all details ")
@@ -80,8 +85,15 @@ export class OnBoardingPage {
       this.alert("Enter Phone numbers  ")
     } else if (this.orgDescription == undefined) {
       this.alert("Enter Phone numbers  ")
+    }else if (this.track  == 1){
+     this.alert("Enter the correct phone number")
+    }else if (this.checkAddress == 0){
 
-    } else {
+    }else if( this.checkAddress == 0){
+      this.alert("Enter the correct address")
+    }
+    
+    else {
 
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
@@ -131,7 +143,7 @@ theButtonBack3(){
     console.log(this.catService);
     console.log(this.email);
    
-    this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange).then(() => {
+    this.IRmethods.addOrganisation(" ", this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange).then(() => {
       console.log("added successfully");
 
     })
@@ -217,7 +229,9 @@ theButtonBack3(){
       this.orgAddressObject = data;
       console.log(this.orgAddressObject);
     }, Error => {
+      this. checkAddress = 0 ;
       const alert = this.alertCtrl.create({
+        
         subTitle: 'The address you have entered is invalid, please enter a valid address',
         buttons: [
           {
@@ -231,6 +245,7 @@ theButtonBack3(){
       alert.present();
     })
   }
+
 
 
   hei() {
@@ -272,5 +287,20 @@ theButtonBack3(){
     });
   }
 
-
+ 
+   phonenumber() {
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if(this.orgPhone.match(phoneno)) {
+      console.log("correct");
+      this.track = 0
+      
+     // return true;
+    }
+    else {
+      console.log("wrong");
+      this.track = 1 ;
+      //return false;
+    }
+  }
+   
 }
