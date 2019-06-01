@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController ,LoadingController} from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
+import { RegisterPage } from '../register/register';
 
 /**
  * Generated class for the LoginPage page.
@@ -62,4 +63,9 @@ export class LoginPage {
     this.navCtrl.push(HomePage)
   }
 
+  goToSignIn(){
+    this.navCtrl.push(RegisterPage)
+  }
+
+  
 }

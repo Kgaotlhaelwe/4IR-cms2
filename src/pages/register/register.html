@@ -17,14 +17,16 @@
       </div>
     </div>
     <div class="right">
+
+      <!-- SIGN UP  -->
       <div class="box2">
         <div class="box1">
           <div class="step1">
             <div class="inputs">
-              <input type="email" placeholder="Email" class="theInput"><br>
-              <input type="password" placeholder="Password" class="theInput">
+              <input type="email"  [(ngModel)]="signUpEmail" placeholder="Email" class="theInput"><br>
+              <input type="password" [(ngModel)]="signUppassword" placeholder="Password" class="theInput">
 
-              <button ion-button id="nxt">NEXT</button>
+              <button ion-button id="nxt"  (click)="signUp()">Sign UP </button>
             </div>
           </div>
           <div class="step2"></div>

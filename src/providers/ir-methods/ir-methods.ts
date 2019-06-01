@@ -34,7 +34,7 @@ export class IrMethodsProvider {
     })
   }
 
-  register(email, psswrd, lat,long,region,cell,category, Orgname,desc, service , address){
+  register(email, psswrd, lat, long, region, cell, category, Orgname, desc, service, address) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
@@ -43,35 +43,35 @@ export class IrMethodsProvider {
         });
         loading.present();
         return firebase.auth().createUserWithEmailAndPassword(email, psswrd).then(newUser => {
-            var user = firebase.auth().currentUser;
-            firebase
-              .database()
-              .ref("4IR_Hubs/" + user.uid)
-              .set({
-                name: Orgname,
-                email: email,
-                contact: cell,
-                category: category,
-                desc:desc,
-                long : long,
-                lat : lat,
-                region : region,
-                downloadurl: "assets/download.png",
-                downloadurlLogo: "assets/download.png",
-                service:[service],
-                address:address 
-              });
-              var user = firebase.auth().currentUser;
-              user.sendEmailVerification().then(function () {
-                // Email sent.
-              }).catch(function (error) {
-                // An error happened.
-              });
-            resolve();
-            setTimeout(() => {
-              loading.dismiss();
-            }, 100);
-          })
+          var user = firebase.auth().currentUser;
+          firebase
+            .database()
+            .ref("4IR_Hubs/" + user.uid)
+            .set({
+              name: Orgname,
+              email: email,
+              contact: cell,
+              category: category,
+              desc: desc,
+              long: long,
+              lat: lat,
+              region: region,
+              downloadurl: "assets/download.png",
+              downloadurlLogo: "assets/download.png",
+              service: [service],
+              address: address
+            });
+          var user = firebase.auth().currentUser;
+          user.sendEmailVerification().then(function () {
+            // Email sent.
+          }).catch(function (error) {
+            // An error happened.
+          });
+          resolve();
+          setTimeout(() => {
+            loading.dismiss();
+          }, 100);
+        })
           .catch(error => {
             loading.dismiss();
             const alert = this.alertCtrl.create({
@@ -92,6 +92,44 @@ export class IrMethodsProvider {
     });
   }
 
+
+  signUp(email, password) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+        resolve()
+      }).catch((error) => {
+        reject(error)
+      })
+
+    })
+  }
+
+  addOrganisation(email, lat, long, region, cell, category, Orgname, desc, service, address,wifi ,freeWifi,wifiRange){
+    var user = firebase.auth().currentUser;
+    return new Promise ((resolve , reject)=>{
+      firebase
+      .database()
+      .ref("4IR_Hubs/" + user.uid)
+      .set({
+        name: Orgname,
+        email: email,
+        contact: cell,
+        category: category,
+        desc: desc,
+        long: long,
+        lat: lat,
+        region: region,
+        downloadurl: "assets/download.png",
+        downloadurlLogo: "assets/download.png",
+        service: [service],
+        address: address ,
+        wifi:wifi ,
+        freeWifi:freeWifi ,
+        wifiRange:wifiRange
+      });
+      resolve()
+    })
+  }
   checkVerification() {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user) => {
@@ -325,21 +363,21 @@ export class IrMethodsProvider {
     })
   }
 
-  
 
 
-forgetPassword(email){
 
-  return new Promise((resolve, reject)=>{
-    firebase.auth().sendPasswordResetEmail(email) .then(()=> {
-      resolve();
-      } , (error)=>{
+  forgetPassword(email) {
+
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email).then(() => {
+        resolve();
+      }, (error) => {
         reject(error)
-  })
-    
-})
+      })
 
-}
+    })
+
+  }
 
 
 
