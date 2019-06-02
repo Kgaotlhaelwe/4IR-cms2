@@ -129,6 +129,16 @@
                     </ion-select> -->
                   </div>
 
+                  
+                  <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
+
+                    <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
+                      <ion-option value="Training" selected="true">Training</ion-option>
+                      <ion-option value="Skill development">Skill development</ion-option>
+                      <ion-option value="Research">Research</ion-option>
+                      <ion-option value="Incubation">Incubation</ion-option>
+                    </ion-select> -->
+                  </div>
 
 
 
@@ -144,10 +154,10 @@
                  {{orgDescription}}
                 </div>
 
-                <div  *ngFor="let a catService">
-                  {{a}}
-                </div>
-                <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea>
+                <div  *ngFor="let a catService ">
+                  {{a.title}}
+                </div> <br>  <br>  <br>
+                <!-- <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea> -->
                 <button ion-button class="theButton" (click)="saveToDB()">Done</button>
                 <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>
               </div>

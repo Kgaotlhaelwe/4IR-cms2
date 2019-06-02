@@ -111,6 +111,7 @@ export class RegisterPage {
         this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
         
       }).catch((error)=>{
+      
         const alert = this.alertCtrl.create({
           title: '',
           subTitle: error.message ,
