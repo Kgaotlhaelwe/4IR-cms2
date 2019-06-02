@@ -353,7 +353,7 @@ export class IrMethodsProvider {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
       console.log(user.uid)
-      firebase.database().ref("4IR_Hubs/").on('value', (data: any) => {
+      firebase.database().ref("4IR_Hubs/"+user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
         accpt(details)

@@ -64,47 +64,47 @@ export class OnBoardingPage {
 
   }
   moveToPage2() {
-    // console.log(this.orgName);
+    console.log(this.orgName);
 
-    // console.log(this.orgPhone);
-    // console.log(this.orgWebsite);
-    // console.log(this.orgDescription);
+    console.log(this.orgPhone);
+    console.log(this.orgWebsite);
+    console.log(this.orgDescription);
 
-    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-    //   this.alert("Enter all details ")
-    // } else if (this.orgName == undefined) {
-    //   this.alert("Enter organisation Name ")
-    // } else if (this.orgAdress == undefined) {
-    //   this.alert("Enter Address  ")
-    // } else if (this.orgPhone == undefined) {
-    //   this.alert("Enter Phone numbers  ")
-    // } else if (this.orgDescription == undefined) {
-    //   this.alert("Enter Phone numbers  ")
+    if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+      this.alert("Enter all details ")
+    } else if (this.orgName == undefined) {
+      this.alert("Enter organisation Name ")
+    } else if (this.orgAdress == undefined) {
+      this.alert("Enter Address  ")
+    } else if (this.orgPhone == undefined) {
+      this.alert("Enter Phone numbers  ")
+    } else if (this.orgDescription == undefined) {
+      this.alert("Enter Phone numbers  ")
 
-    // } else {
+    } else {
 
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-25%";
 
-    // }
+    }
 
 
   }
   moveToPage3() {
 
 
-    // if (this.wifi == undefined) {
-    //   this.wifi = ""
-    // } if (this.chooseWifiRange == undefined) {
-    //   this.chooseWifiRange = ""
-    // }
+    if (this.wifi == undefined) {
+      this.wifi = ""
+    } if (this.chooseWifiRange == undefined) {
+      this.chooseWifiRange = ""
+    }
 
-    // if (this.offerWifi != undefined) {
+    if (this.offerWifi != undefined) {
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-50%";
-    //     } else {
-    //       this.alert("enter the details")
-    // }
+        } else {
+          this.alert("enter the details")
+    }
 
   }
 
