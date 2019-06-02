@@ -41,6 +41,20 @@ export class OnBoardingPage {
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
 
+heiServices =  [{title: "Testing & Analystical" , description: "Testing and Analytical Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment."},
+
+
+{title:"Rapid Prototyping and Manufacturing" , description:'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications'},
+{title:"Consultation, Technology Audit and Feasibility Study" , description:'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME'},
+{title:"Process or Product Improvement" , description:'Productivity, workflow and quality all improve production facilities and products by applying standard procedures and methods. In many cases, this would also involve testing and analytical services to make the product conform to required specifications on new market demands and regulations'},
+{title:"Applied Development, Engineering and Design" , description:'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies'},
+
+]
+libraryService = [{title : "Research" , description: " involves the step-by-step process used to gather information in order to write a paper, create a presentation, or complete a project. ... They describe, analyze, and/or evaluate information found in primary sources"} ,
+                  {title: "Training" , description:'"The latest information and communication technology (ICT) developments, including data curation, digital preservation, data management planning, institutional repositories, social media, online learning, publishing, e-books and mobile technology offer wonderful new opportunities in the delivery of information services and the way libraries are managed. Librarianship forms the basis of specialization and diverse career opportunities including document management, knowledge management, childrens librarianship, research librarianship and electronic resources management"'}
+
+
+] 
 
 
   // email varaiable 
@@ -55,9 +69,9 @@ export class OnBoardingPage {
   checkAddress
   // General varable
   orgAddressObject;
-  catService = new Array();
+  catService 
 
-  track;
+  Heitrack;
 
   contactValidation;
 
@@ -67,6 +81,8 @@ export class OnBoardingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OnBoardingPage');
     console.log(this.email);
+    console.log(this.heiServices[0].title);
+    
 
   }
   moveToPage2() {
@@ -142,14 +158,14 @@ export class OnBoardingPage {
 
   moveToPage4() {
 
-    if (this.category != undefined && this.catService.length !=  0){
-      var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-75%";
-
-    }else {
-      this.alert("Complete all the Details ")
-    }
+    // if (this.category != undefined && this.catService.length !=  0){
     
+
+    // }else {
+    //   this.alert("Complete all the Details ")
+    // }
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-75%";
   }
 
   backToPage3() {
@@ -352,33 +368,75 @@ export class OnBoardingPage {
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Rapid prototype',
-      value: 'Rapid prototype'
+      label: 'Rapid Prototyping and Manufacturing',
+      value: 'Rapid Prototyping and Manufacturing'
     });
     alert.addInput({
       type: 'checkbox',
-      label: 'Consultation',
-      value: 'Consultation'
+      label: 'Consultation, Technology Audit and Feasibility Study',
+      value: 'Consultation, Technology Audit and Feasibility Study'
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Research',
-      value: 'Research'
+      label: 'Applied Development, Engineering and Design',
+      value: 'Applied Development, Engineering and Design'
     });
 
     alert.addButton('Cancel');
     alert.addButton({
       text: 'Okay',
-      handler: data => {
+      handler: (data:any) => {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen1 = false;
         this.testCheckboxResult1 = data;
-        this.catService = data
+       // this.catService = data
 
-        console.log(data);
+       console.log(data);
+       
+
+       for (let index = 0; index < data.length; index++) {
+          if(data[index] == "Testing & Analystical"){
+            console.log(0);
+            
+
+          }else if(data[index] == "Rapid Prototyping and Manufacturing"){
+            console.log(1);
+            
+          }else if (data[index] == "Consultation, Technology Audit and Feasibility Study"){
+            console.log(3);
+            
+          }else if (data[index] == "Applied Development, Engineering and Design"){
+            console.log(4);
+            
+          }
+         
+       }
+     
+
+        // for (let index = 0; index < this.heiServices.length; index++) {
+        //     console.log(data[index]);
+            
+        //       if(data[index] == this.heiServices[index].title){
+        //         console.log("in");
+                
+        //         this.catService =this.heiServices[index];
+                
+        //       }else {
+        //         console.log("out");
+                
+        //       }
+              
+              
+              
+        // }
+       
+
+    
+
+       console.log(this.catService);
       }
-
+      
     });
     alert.present();
   }
@@ -408,9 +466,27 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen2 = false;
         this.testCheckboxResult2 = data;
-        this.catService = data
 
-        console.log(data);
+
+        for (let index = 0; index <  data.length; index++) {
+          console.log(data[index]);
+          console.log(this.libraryService[index].title);
+          
+            if(data[index] == this.libraryService[index].title){
+              console.log("in");
+              
+              this.catService.push(this.libraryService[index]);
+              
+            }else {
+              console.log("out");
+              
+            }
+       
+        
+        }
+        //this.catService = data
+
+        console.log(this.catService);
       }
 
     });
