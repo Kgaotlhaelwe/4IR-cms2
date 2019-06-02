@@ -1,4 +1,4 @@
-<ion-content>
+<!-- <ion-content>
 
   <div class="theBody">
     <div class="left">
@@ -17,9 +17,9 @@
       </div>
     </div>
     <div class="right">
-
+      <div class="bg"></div>
       <!-- SIGN UP  -->
-      <div class="box2">
+      <!-- <div class="box2">
         <div class="box1">
           <div class="step1">
             <div class="inputs">
@@ -34,4 +34,44 @@
       </div>
     </div>
   </div>
-</ion-content>
+</ion-content>  -->
+
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div class="everything">
+  <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      </head>
+  <div class="row">
+    <div class="column" style="background-color:#f4f4f4e0">
+      <img class="theRocket" src="../../assets/imgs/4IR logo.png">
+      <h2 style="color:#04592ae0">Sign In</h2>
+      <label for="" class="Labels">
+        <i class="material-icons" id="Theicon">mail</i>
+      </label>
+      <input  class="inputColor" #email type="text" placeholder="Email" ngModel required>
+      <label for="" class="Labels">
+        <i  class="material-icons" id="Theicon">lock</i>
+      </label>
+      <input  class="inputColor" #password type="password" placeholder="Password" ngModel required>
+      <p class="thepassword" (click)="forgotpassword(email.value)"> Forgot your Password?</p>
+      <button (click)="SignIn(email.value, password.value)">Login</button>
+    </div>
+    <div class="column"  style="background-color:#04592ae4" >
+        <img class="theRocket" src="../../assets/imgs/4IR logo.png">
+      <h2>Sign Up</h2>
+
+      <label for="" class="Labels">
+        <i class="material-icons" id="Theicon2">mail</i>
+      </label>
+      <input [(ngModel)]="signUpEmail"  type="text" placeholder="Email" ngModel required>
+      <label for="" class="Labels">
+        <i  class="material-icons" id="Theicon2">lock</i>
+      </label>
+      <input [(ngModel)]="signUppassword" type="password" placeholder="Password" ngModel required>
+      <button (click)="signUp()">Register</button>
+    </div>
+  </div>
+</div>
