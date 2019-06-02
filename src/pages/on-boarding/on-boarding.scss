@@ -8,6 +8,15 @@ page-on-boarding {
     //   height: 250px;
     object-fit: cover;
   }
+  
+  #logoBG{
+    background: url("../../assets/imgs/4IR logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width: 80px;
+    height:160px;
+  }
   .theBody {
     width: 100vw;
     height: 100%;
