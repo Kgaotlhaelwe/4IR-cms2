@@ -2,6 +2,7 @@ import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
+import { RegisterPage } from '../register/register';
 
 
 
@@ -75,7 +76,7 @@ export class HomePage implements OnInit{
 
   signOut() {
     this.IRmethods.logout().then(() => {
-      this.navCtrl.push(LoginPage, { out: 'logout' });
+      this.navCtrl.push(RegisterPage, { out: 'logout' });
     }, (error) => {
       console.log(error.message);
     })

@@ -123,7 +123,7 @@ export class RegisterPage {
     }else {
       const alert = this.alertCtrl.create({
         title: '',
-        subTitle: 'Please eneter all details ',
+        subTitle: 'Please enter your email and password ',
         buttons: ['OK']
       });
       alert.present();
