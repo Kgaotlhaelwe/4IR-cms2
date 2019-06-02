@@ -13,6 +13,10 @@
         </div>
         <div class="step2">
           <div class="slide-custom">
+            
+              <div class="dots">
+                  <div id="theDot"></div>
+                </div>
             <div class="theSlider">
 
               <div class="slideShow" id="page1">
@@ -68,7 +72,8 @@
 
 
                 <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
-                    Choose a sevice for your HEI
+                    {{catService}}
+                    
                   <!--                     
                       <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
                         <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
@@ -81,7 +86,7 @@
 
 
                 <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
-                    Choose a sevice for your library
+                    {{catService}}
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
@@ -93,7 +98,7 @@
 
 
                 <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
-                    Choose a sevice for your Internet cafe
+                  {{catService}}
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
@@ -107,26 +112,11 @@
 
 
                 <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
-                    Choose a sevice for your learning centre
-                  <!-- <ion-item>
-
-                    <ion-select [(ngModel)]="learningCenterServices" multiple="true" cancelText="Nah" okText="Okay">
-                      <ion-option value="Training" selected="true">Training</ion-option>
-                      <ion-option value="Skill development">Skill development</ion-option>
-                      <ion-option value="Research">Research</ion-option>
-                      <ion-option value="Incubation">Incubation</ion-option>
-                    </ion-select>
-                  </ion-item> -->
+                   {{catService}}
                 </div>
 
                   <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
 
-                    <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
-                      <ion-option value="Training" selected="true">Training</ion-option>
-                      <ion-option value="Skill development">Skill development</ion-option>
-                      <ion-option value="Research">Research</ion-option>
-                      <ion-option value="Incubation">Incubation</ion-option>
-                    </ion-select> -->
                   </div>
 
 
@@ -158,5 +148,4 @@
     </div>
   </div>
 
-  <div class="customSelect"></div>
 </ion-content>

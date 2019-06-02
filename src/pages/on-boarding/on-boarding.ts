@@ -69,7 +69,7 @@ libraryService = [{title : "Research" , description: " involves the step-by-step
   checkAddress
   // General varable
   orgAddressObject;
-  catService 
+  catService = "Choose a service";
 
   Heitrack;
 
@@ -91,33 +91,32 @@ libraryService = [{title : "Research" , description: " involves the step-by-step
     console.log(this.orgPhone);
     console.log(this.orgWebsite);
     console.log(this.orgDescription);
-    // this.phonenumberValidatin() ;
-    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-    //   this.alert("Please complete all details ")
-    // } else if (this.orgName == undefined) {
-    //   this.alert("Enter organisation Name ")
-    // } else if (this.orgAdress == undefined) {
-    //   this.alert("Enter Address  ")
-    // }else if(this.contactValidation == 1){
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // }else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
-    // else if (this.orgPhone == undefined) {
-    //   this.alert("Enter Phone numbers  ")
-    // } else if (this.orgDescription == undefined) {
-    //   this.alert("Enter Phone numbers  ")
+    this.phonenumberValidatin() ;
+      var toSlide = document.getElementById("page1");
+    if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+      this.alert("Please complete all required fields details.")
+    } else if (this.orgName == undefined) {
+      this.alert("Please enter your organisation's name.")
+    } else if (this.orgAdress == undefined) {
+      this.alert("Please enter the organisation's address")
+    }else if(this.contactValidation == 1){
+      this.alert("The phone number entered is invalid, please verify the phone number to continue.")
+    }else if (this.checkAddress == 1) {
+      this.alert("The address you have entered is invalid, please enter a valid address.")
+    }
+    else if (this.orgPhone == undefined) {
+      this.alert("Please insert the organisation's phone number.")
+    } else if (this.orgDescription == undefined) {
+      this.alert("Please enter the description for your organisation.")
 
-    // } else {
+    } else {
+      toSlide.style.marginLeft = "-25%";
+      var theDot = document.getElementById("theDot");
+      theDot.style.marginLeft = "25%";
+    }
 
-   
-
-    // }
 
 
-
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
 
   }
   moveToPage3() {
@@ -125,47 +124,49 @@ libraryService = [{title : "Research" , description: " involves the step-by-step
 
 
 
-    // if (this.offerWifi == "No") {
-    //   if (this.wifi == undefined) {
-    //     this.wifi = "No"
-    //   } if (this.chooseWifiRange == undefined) {
-    //     this.chooseWifiRange = "No"
-    //   }
+    if (this.offerWifi == "No") {
+      if (this.wifi == undefined) {
+        this.wifi = "No"
+      } if (this.chooseWifiRange == undefined) {
+        this.chooseWifiRange = "No"
+      }
 
-    // }
+    }
 
-    // if (this.offerWifi != undefined) {
-    //   if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-    //     var toSlide = document.getElementById("page1");
-    //     toSlide.style.marginLeft = "-50%";
-    //   } else {
-    //     this.alert("Please complete all details")
-    //   }
+    if (this.offerWifi != undefined) {
+      if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-50%";
+        var theDot = document.getElementById("theDot");
+        theDot.style.marginLeft = "50%";
+      } else {
+        this.alert("Please choose from the options to continue.")
+      }
 
-    // }
+    }
 
-    // else {
+    else {
 
-    //   this.alert("Please complete all details")
-    // }
+      this.alert("Please make sure to answer all required questions.")
+    }
 
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
 
   }
 
 
   moveToPage4() {
 
-    // if (this.category != undefined && this.catService.length !=  0){
+    if (this.category != undefined && this.catService.length !=  0){
     
-
-    // }else {
-    //   this.alert("Complete all the Details ")
-    // }
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-75%";
+    var theDot = document.getElementById("theDot");
+    theDot.style.marginLeft = "75%";
+
+    }else {
+      this.alert("Complete all the Details ")
+    }
   }
 
   backToPage3() {
@@ -390,7 +391,7 @@ libraryService = [{title : "Research" , description: " involves the step-by-step
         console.log('Checkbox data:', data);
         this.testCheckboxOpen1 = false;
         this.testCheckboxResult1 = data;
-       // this.catService = data
+       this.catService = data
 
        console.log(data);
        
