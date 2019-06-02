@@ -35,7 +35,9 @@
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select><br>
-                <select class="select-css" *ngIf="ShowWifi" [(ngModel)]="wifi" (change)="checkWifipayment()">
+              <div *ngIf="ShowWifi">
+                <p>Is it free?</p>
+                <select class="select-css"  [(ngModel)]="wifi" (change)="checkWifipayment()">
                   <option value="Is it free?" disabled>Is it free?</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -47,6 +49,8 @@
                   <option value="2GB Free">2GB Free</option>
                   <option value="Unlimited">Unlimited</option>
                 </select>
+              </div>
+                
                 <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
               </div>

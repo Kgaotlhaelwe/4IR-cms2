@@ -94,9 +94,17 @@ export class IrMethodsProvider {
 
 
   signUp(email, password) {
+    var user = firebase.auth().currentUser;
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-        resolve()
+        firebase
+      .database()
+      .ref("Users/"+"Cms_Users/"+user.uid)
+      .push({
+        email:email ,  
+
+      })
+   resolve()
       }).catch((error) => {
         reject(error)
       })
@@ -104,7 +112,7 @@ export class IrMethodsProvider {
     })
   }
 
-  addOrganisation(email, lat, long, region, cell, category, Orgname, desc, service, address,wifi ,freeWifi,wifiRange){
+  addOrganisation(email, lat, long, region, cell, category, Orgname, desc, service, address,wifi ,freeWifi,wifiRange, website){
     var user = firebase.auth().currentUser;
     return new Promise ((resolve , reject)=>{
       firebase
@@ -120,6 +128,7 @@ export class IrMethodsProvider {
         lat: lat,
         wifi:wifi ,
         freeWifi:freeWifi ,
+        website:website ,
         wifiRange:wifiRange ,
         region: region,
         downloadurl: "assets/download.png",

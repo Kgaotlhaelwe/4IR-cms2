@@ -427,6 +427,7 @@ page-home {
       }
       #profDismisser {
         z-index: 100;
+        line-height: 40px;
       }
       .dismisser {
           transition: 700ms;
@@ -438,7 +439,7 @@ page-home {
         border-radius: 40px;
         position: absolute;
         animation: flash 1s;
-        color: white;
+        color: black;
         animation-iteration-count: infinite;
         right: -20px;
         text-align: center;
@@ -756,6 +757,7 @@ page-home {
         position: absolute;
         left: 50px;
         top: 150px;
+        color: black;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
         border: 0.5px solid rgba(128, 128, 128, 0.178);
       }
@@ -790,10 +792,15 @@ page-home {
           position: absolute;
           z-index: 10000000000000000000000000000000000000000000000;
           width: 30vw;
+          padding: 10px;
       }
       .results{
         top: 60px;
         left: 10px;
+        padding: 10px;
+        .item-inner{
+          padding-left: 20px;
+        }
       }
       #search{
           z-index: 10000000000000000000000000000000000000000000000;

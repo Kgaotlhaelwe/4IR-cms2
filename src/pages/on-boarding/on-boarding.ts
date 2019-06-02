@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
+import { HomePage } from "../../pages/home/home";
+import { LoginPage } from '../login/login';
 declare var google;
 /**
 /**
@@ -55,7 +57,9 @@ export class OnBoardingPage {
   orgAddressObject;
   catService = new Array();
 
-  track ;
+  track;
+
+  contactValidation;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
@@ -71,49 +75,81 @@ export class OnBoardingPage {
     console.log(this.orgPhone);
     console.log(this.orgWebsite);
     console.log(this.orgDescription);
+    // this.phonenumberValidatin() ;
+    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+    //   this.alert("Please complete all details ")
+    // } else if (this.orgName == undefined) {
+    //   this.alert("Enter organisation Name ")
+    // } else if (this.orgAdress == undefined) {
+    //   this.alert("Enter Address  ")
+    // }else if(this.contactValidation == 1){
+    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+    // }else if (this.checkAddress == 1) {
+    //   this.alert("The address you have entered is invalid, please enter a valid address ")
+    // }
+    // else if (this.orgPhone == undefined) {
+    //   this.alert("Enter Phone numbers  ")
+    // } else if (this.orgDescription == undefined) {
+    //   this.alert("Enter Phone numbers  ")
 
-    if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      this.alert("Enter all details ")
-    } else if (this.orgName == undefined) {
-      this.alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
-      this.alert("Enter Address  ")
-    } else if (this.orgPhone == undefined) {
-      this.alert("Enter Phone numbers  ")
-    } else if (this.orgDescription == undefined) {
-      this.alert("Enter Phone numbers  ")
+    // } else {
 
-    } else {
+   
+
+    // }
+
+
 
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-25%";
-
-    }
-
 
   }
   moveToPage3() {
 
 
-    // if (this.wifi == undefined) {
-    //   this.wifi = ""
-    // } if (this.chooseWifiRange == undefined) {
-    //   this.chooseWifiRange = ""
+
+
+    // if (this.offerWifi == "No") {
+    //   if (this.wifi == undefined) {
+    //     this.wifi = "No"
+    //   } if (this.chooseWifiRange == undefined) {
+    //     this.chooseWifiRange = "No"
+    //   }
+
     // }
 
     // if (this.offerWifi != undefined) {
+    //   if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+    //     var toSlide = document.getElementById("page1");
+    //     toSlide.style.marginLeft = "-50%";
+    //   } else {
+    //     this.alert("Please complete all details")
+    //   }
+
+    // }
+
+    // else {
+
+    //   this.alert("Please complete all details")
+    // }
+
+
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-50%";
-    //     } else {
-    //       this.alert("enter the details")
-    // }
 
   }
 
 
   moveToPage4() {
-    var toSlide = document.getElementById("page1");
+
+    if (this.category != undefined && this.catService.length !=  0){
+      var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-75%";
+
+    }else {
+      this.alert("Complete all the Details ")
+    }
+    
   }
 
   backToPage3() {
@@ -142,8 +178,9 @@ export class OnBoardingPage {
     console.log(this.catService);
     console.log(this.email);
 
-    this.IRmethods.addOrganisation(" ", this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange).then(() => {
+    this.IRmethods.addOrganisation(" ", this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       console.log("added successfully");
+      this.navCtrl.push(HomePage);
 
     })
   }
@@ -208,15 +245,15 @@ export class OnBoardingPage {
 
       this.showMallServices = false;
 
-  }else if (this.category == "Mall"){
-    this.showMallServices = true;
-    this.showlearningCenterServices = false;
+    } else if (this.category == "Mall") {
+      this.showMallServices = true;
+      this.showlearningCenterServices = false;
       this.showinternetCafeServices = false;
       this.showLibaryServices = false;
       this.showheiServices = false;
       this.showheiServices = false;
 
-    }else if (this.category == "Coffee Shop"){
+    } else if (this.category == "Coffee Shop") {
 
     }
 
@@ -236,22 +273,27 @@ export class OnBoardingPage {
   setAddress(event) {
     this.getcoo(this.orgAdress).then((data: any) => {
       this.orgAddressObject = data;
+      this.checkAddress = 0
+
       console.log(this.orgAddressObject);
     }, Error => {
-      this. checkAddress = 0 ;
-      const alert = this.alertCtrl.create({
-        
-        subTitle: 'The address you have entered is invalid, please enter a valid address',
-        buttons: [
-          {
-            text: 'OK',
-            handler: data => {
-              this.orgAdress = ""
-            }
-          },
-        ]
-      });
-      alert.present();
+      this.checkAddress = 1;
+
+      console.log(this.checkAddress);
+      
+      // const alert = this.alertCtrl.create({
+
+      //   subTitle: 'The address you have entered is invalid, please enter a valid address',
+      //   buttons: [
+      //     {
+      //       text: 'OK',
+      //       handler: data => {
+      //         this.orgAdress = ""
+      //       }
+      //     },
+      //   ]
+      // })
+      // alert.present();
     })
   }
 
@@ -297,7 +339,7 @@ export class OnBoardingPage {
   }
   testCheckboxResult1;
   testCheckboxOpen1;
-  HEIservices(){
+  HEIservices() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Which planets have you visited?');
 
@@ -332,17 +374,17 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen1 = false;
         this.testCheckboxResult1 = data;
-        this.catService =data 
-        
-      console.log(data);
+        this.catService = data
+
+        console.log(data);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult2;
   testCheckboxOpen2;
-  LibraryServices(){
+  LibraryServices() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Which planets have you visited?');
 
@@ -366,17 +408,17 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen2 = false;
         this.testCheckboxResult2 = data;
-        this.catService =data 
-        
-      console.log(data);
+        this.catService = data
+
+        console.log(data);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult3;
   testCheckboxOpen3;
-  internetCafe(){
+  internetCafe() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Which planets have you visited?');
 
@@ -406,11 +448,11 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen3 = false;
         this.testCheckboxResult3 = data;
-        this.catService =data 
-        
-      console.log(data);
+        this.catService = data
+
+        console.log(data);
       }
-      
+
     });
     alert.present();
   }
@@ -419,7 +461,7 @@ export class OnBoardingPage {
   testCheckboxOpen4;
 
 
-  learningCenter(){
+  learningCenter() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Which planets have you visited?');
 
@@ -448,17 +490,17 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen4 = false;
         this.testCheckboxResult4 = data;
-        this.catService =data 
-        
-      console.log(data);
+        this.catService = data
+
+        console.log(data);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult5;
   testCheckboxOpen5;
-  mall(){
+  mall() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Which planets have you visited?');
 
@@ -482,15 +524,44 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen5 = false;
         this.testCheckboxResult5 = data;
-        
-      console.log(data);
+
+        console.log(data);
       }
-      
+
     });
     alert.present();
   }
 
- 
 
+
+
+
+  phonenumberValidatin() {
+
+    if(this.orgPhone == undefined){
+
+    }else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+    
+      if (this.orgPhone.match(phoneno)) {
+        console.log(this.orgPhone.match(phoneno));
+          this.contactValidation = 0;
+        
+
+      }
+      else {
+        this.contactValidation = 1;
+
+        console.log(this.orgPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+   
+    
+
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController ,LoadingController} from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
@@ -37,7 +37,7 @@ export class RegisterPage {
   HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
 
   Library = ["Research ", "Training "];
-  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone) {
+  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -48,19 +48,7 @@ export class RegisterPage {
 
   }
   
-  Reg() {
-    
-    
-    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName, this.description,  this.service, this.address).then(()=>{
-       this.navCtrl.push(HomePage)
-     })
-  
-}
 
-  //this method will automatically set the address(long,lat,region) from the address the user enters
-  
-
-  //this method takes the address and converts it into long,lat and region
  
 
 
@@ -90,6 +78,28 @@ export class RegisterPage {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+  }
+
+  SignIn(email, password) {
+    console.log(email, password)
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Signing in...',
+      duration: 4000
+    });
+    loading.present();
+    this.IRmethods.loginx(email, password).then((user: any) => {
+      console.log(user);
+    }).catch((error) => {
+      const alert = this.alertCtrl.create({
+        subTitle: error.message,
+        buttons: ['OK'],
+        cssClass: 'myAlert',
+      });
+      loading.dismiss()
+      alert.present();
+    })
+    this.navCtrl.push(HomePage)
   }
 
 

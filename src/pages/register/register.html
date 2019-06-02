@@ -7,10 +7,10 @@
       <div class="box1">
         <div class="step1">
           <div class="inputs">
-            <input type="email" placeholder="Email" class="theInput"><br>
-            <input type="password" placeholder="Password" class="theInput">
+            <input type="email" placeholder="Email" #email class="theInput"><br>
+            <input type="password" placeholder="Password" #password class="theInput">
 
-            <button ion-button id="nxt">NEXT</button>
+            <button ion-button id="nxt" (click)="SignIn(email.value,password.value)">Sign In</button>
           </div>
         </div>
         <div class="step2"></div>
