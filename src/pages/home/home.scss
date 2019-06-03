@@ -164,7 +164,7 @@ page-home {
   .action {
     /* margin-top: 50px; */
     float: right;
-    display: flex;
+    // display: flex;
     width: 250px;
     /* border: 2px solid green */
   }
@@ -796,6 +796,7 @@ page-home {
     z-index: 10000000000000000000000000000000000000000000000;
     max-width: 700px;
     padding: 10px;
+    border-radius: 2px;
   }
   .results {
     top: 60px;
@@ -1149,7 +1150,7 @@ page-home {
       left: 20px;
     }
     #Orgo {
-      display: none;
+      // display: none;
     }
     #my2001 {
       top: 50px;
