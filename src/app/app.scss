@@ -67,9 +67,10 @@
 //     width: 100%;
 // }
 
-.alert-wrapper, .alert-head, .alert-message, .alert-button-group, .alert-button,.button-inner, .alert-sub-title{
+.alert-wrapper, .alert-head, .alert-message, .alert-button-group, .alert-button,.button-inner, .alert-sub-title, .alert-checkbox-group{
     color: white;
     background: #04592a;
+    border: 0;
 }
 .alert-checkbox-button{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0);

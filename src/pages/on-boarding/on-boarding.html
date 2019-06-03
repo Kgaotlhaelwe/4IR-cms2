@@ -4,7 +4,7 @@
       <div class="box">
         <div class="step1" padding>
           <div class="logo-container">
-            <img src="../../assets/imgs/4IR logo.png" id="logo" alt="">
+            <div id="logoBG"></div>
           </div>
           <br><br>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
@@ -13,15 +13,19 @@
         </div>
         <div class="step2">
           <div class="slide-custom">
+            
+              <div class="dots">
+                  <div id="theDot"></div>
+                </div>
             <div class="theSlider">
 
               <div class="slideShow" id="page1">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
                   animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
                   provident labore dolorum rem ab.</p>
-                <input type="text" placeholder="Name" [(ngModel)]="orgName">
+                <input type="text" placeholder="Name" [(ngModel)]="orgName" required>
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-                <input type="text" placeholder="Phone" [(ngModel)]="orgPhone">
+                <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
                 <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
@@ -35,7 +39,9 @@
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select><br>
-                <select class="select-css" *ngIf="ShowWifi" [(ngModel)]="wifi" (change)="checkWifipayment()">
+              <div *ngIf="ShowWifi">
+                <p>Is it free?</p>
+                <select class="select-css"  [(ngModel)]="wifi" (change)="checkWifipayment()">
                   <option value="Is it free?" disabled>Is it free?</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -47,6 +53,8 @@
                   <option value="2GB Free">2GB Free</option>
                   <option value="Unlimited">Unlimited</option>
                 </select>
+              </div>
+                
                 <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
               </div>
@@ -64,7 +72,8 @@
 
 
                 <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
-                    Choose a sevice for your HEI
+                    {{catService}}
+                    
                   <!--                     
                       <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
                         <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
@@ -77,7 +86,7 @@
 
 
                 <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
-                    Choose a sevice for your library
+                    {{catService}}
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
@@ -89,7 +98,7 @@
 
 
                 <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
-                    Choose a sevice for your Internet cafe
+                  {{catService}}
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
@@ -103,19 +112,15 @@
 
 
                 <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
-                    Choose a sevice for your learning centre
-                  <!-- <ion-item>
-
-                    <ion-select [(ngModel)]="learningCenterServices" multiple="true" cancelText="Nah" okText="Okay">
-                      <ion-option value="Training" selected="true">Training</ion-option>
-                      <ion-option value="Skill development">Skill development</ion-option>
-                      <ion-option value="Research">Research</ion-option>
-                      <ion-option value="Incubation">Incubation</ion-option>
-                    </ion-select>
-                  </ion-item> -->
+                   {{catService}}
                 </div>
 
-                  <div *ngIf="showMallServices" class="customSelect" (click)="mallService()">
+                  <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
+
+                  </div>
+
+                  
+                  <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
 
                     <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
                       <ion-option value="Training" selected="true">Training</ion-option>
@@ -128,7 +133,6 @@
 
 
 
-
                 <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
                 <button ion-button class="theButton" (click)="moveToPage4()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage2()">BACK</button>
@@ -136,12 +140,14 @@
               </div>
               <div class="slideShow" id="page4">
                 <div class="description" padding>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid distinctio et non enim ut quo,
-                  reprehenderit nostrum aperiam qui blanditiis. Optio illo quod ratione facere, adipisci necessitatibus
-                  beatae tempore, perspiciatis doloremque sint quia illum molestias placeat accusantium iusto possimus
-                  officia quo reiciendis. Doloribus, eius consectetur.
+                  {{orgName}}
+                 {{orgDescription}}
                 </div>
-                <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea>
+
+                <div  *ngFor="let a catService ">
+                  {{a.title}}
+                </div> <br>  <br>  <br>
+                <!-- <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea> -->
                 <button ion-button class="theButton" (click)="saveToDB()">Done</button>
                 <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>
               </div>
@@ -152,5 +158,4 @@
     </div>
   </div>
 
-  <div class="customSelect"></div>
 </ion-content>

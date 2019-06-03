@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
+import { HomePage } from "../../pages/home/home";
+import { LoginPage } from '../login/login';
 declare var google;
 /**
 /**
@@ -38,22 +40,57 @@ export class OnBoardingPage {
   showinternetCafeServices: boolean = false;
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
+  showCoffeeShopServices:boolean = false ;
+
+  heiServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
 
+  { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
+  { title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
+  { title: "Process or Product Improvement", description: 'Productivity, workflow and quality all improve production facilities and products by applying standard procedures and methods. In many cases, this would also involve testing and analytical services to make the product conform to required specifications on new market demands and regulations' },
+  { title: "Applied Development, Engineering and Design", description: 'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies' },
 
+  ]
+  libraryService = [{ title: "Research", description: " involves the step-by-step process used to gather information in order to write a paper, create a presentation, or complete a project. ... They describe, analyze, and/or evaluate information found in primary sources" },
+  { title: "Training", description: '"The latest information and communication technology (ICT) developments, including data curation, digital preservation, data management planning, institutional repositories, social media, online learning, publishing, e-books and mobile technology offer wonderful new opportunities in the delivery of information services and the way libraries are managed. Librarianship forms the basis of specialization and diverse career opportunities including document management, knowledge management, childrens librarianship, research librarianship and electronic resources management"' }
+
+
+  ]
+
+  learningCenterService = [{title:"Skill Development" , description:" is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools."}
+                           , {title:"Training" , description:"Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role"} ,
+                           {title: "EnterpreneurShip Programme" , description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses."}
+]
+
+mallServices = [{title:"Internet " , description:"Wanting to share your Mall of Africa experience with your friends and family on social media? Needing to send a business email in the midst of shopping? Not a problem! You can surf the internet for free wherever you are at Mall of Africa."},
+                {title:"Training " , description:"Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role"}
+
+]
+
+internetCafeServices = [{title:"Internet" , description:"s a place that offers customers hi-speed internet access, other computer services and variety of PC games. It deals with internet time that a customer buys and it can be sold per hour or minute and sometimes longer"},
+{title:" Printing" , description:'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.'}
+,{title:"fax" , description:"an exact copy of a document made by electronic scanning and transmitted as data by telecommunications links."}
+
+]
+
+coffeeshopServices = [{title:"Internet" , description:"Offering internet to customers"}]
   // email varaiable 
   email = this.navParams.get("email");
-
+//EnterpreneurShip Programme
   // cat services 
   HeiServices;
   LibaryServices;
   internetCafeService;
   learningCenterServices;
   mallService;
-
+  checkAddress
   // General varable
   orgAddressObject;
-  catService = new Array();
+  catService = []
+
+  Heitrack;
+
+  contactValidation;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
@@ -61,57 +98,85 @@ export class OnBoardingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OnBoardingPage');
     console.log(this.email);
+    console.log(this.heiServices[0].title);
+
 
   }
   moveToPage2() {
-    console.log(this.orgName);
-
-    console.log(this.orgPhone);
-    console.log(this.orgWebsite);
-    console.log(this.orgDescription);
-
+    
+    this.phonenumberValidatin() ;
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      this.alert("Enter all details ")
+      this.alert("Please complete all details ")
     } else if (this.orgName == undefined) {
       this.alert("Enter organisation Name ")
     } else if (this.orgAdress == undefined) {
       this.alert("Enter Address  ")
-    } else if (this.orgPhone == undefined) {
+    }else if(this.contactValidation == 1){
+      this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+    }else if (this.checkAddress == 1) {
+      this.alert("The address you have entered is invalid, please enter a valid address ")
+    }
+    else if (this.orgPhone == undefined) {
       this.alert("Enter Phone numbers  ")
     } else if (this.orgDescription == undefined) {
       this.alert("Enter Phone numbers  ")
 
     } else {
 
-    var toSlide = document.getElementById("page1");
+      var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-25%";
 
     }
 
 
+
+    
+
   }
   moveToPage3() {
 
 
-    if (this.wifi == undefined) {
-      this.wifi = ""
-    } if (this.chooseWifiRange == undefined) {
-      this.chooseWifiRange = ""
+
+
+    if (this.offerWifi == "No") {
+      if (this.wifi == undefined) {
+        this.wifi = "No"
+      } if (this.chooseWifiRange == undefined) {
+        this.chooseWifiRange = "No"
+      }
+
     }
 
     if (this.offerWifi != undefined) {
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
-        } else {
-          this.alert("enter the details")
+      if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-50%";
+      } else {
+        this.alert("Please complete all details")
+      }
+
     }
+
+    else {
+
+      this.alert("Please complete all details")
+    }
+
+
 
   }
 
 
   moveToPage4() {
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-75%";
+
+    if (this.category != undefined && this.catService.length !=  0){
+
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-75%";
+    }else {
+      this.alert("Complete all the Details ")
+    }
+    
   }
 
   backToPage3() {
@@ -140,8 +205,9 @@ export class OnBoardingPage {
     console.log(this.catService);
     console.log(this.email);
 
-    this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange).then(() => {
+    this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       console.log("added successfully");
+      this.navCtrl.push(HomePage);
 
     })
   }
@@ -206,6 +272,23 @@ export class OnBoardingPage {
 
       this.showMallServices = false;
 
+    } else if (this.category == "Mall") {
+      this.showMallServices = true;
+      this.showlearningCenterServices = false;
+      this.showinternetCafeServices = false;
+      this.showLibaryServices = false;
+      this.showheiServices = false;
+      this.showheiServices = false;
+
+    } else if (this.category == "Coffee Shop") {
+      this.showCoffeeShopServices =true 
+      this.showlearningCenterServices = false;
+      this.showinternetCafeServices = false;
+      this.showLibaryServices = false;
+      this.showheiServices = false;
+      this.showheiServices = false;
+      this.showMallServices = false;
+
     }
 
 
@@ -224,22 +307,30 @@ export class OnBoardingPage {
   setAddress(event) {
     this.getcoo(this.orgAdress).then((data: any) => {
       this.orgAddressObject = data;
+      this.checkAddress = 0
+
       console.log(this.orgAddressObject);
     }, Error => {
-      const alert = this.alertCtrl.create({
-        subTitle: 'The address you have entered is invalid, please enter a valid address',
-        buttons: [
-          {
-            text: 'OK',
-            handler: data => {
-              this.orgAdress = ""
-            }
-          },
-        ]
-      });
-      alert.present();
+      this.checkAddress = 1;
+
+      console.log(this.checkAddress);
+
+      // const alert = this.alertCtrl.create({
+
+      //   subTitle: 'The address you have entered is invalid, please enter a valid address',
+      //   buttons: [
+      //     {
+      //       text: 'OK',
+      //       handler: data => {
+      //         this.orgAdress = ""
+      //       }
+      //     },
+      //   ]
+      // })
+      // alert.present();
     })
   }
+
 
 
   hei() {
@@ -282,54 +373,94 @@ export class OnBoardingPage {
   }
   testCheckboxResult1;
   testCheckboxOpen1;
-  HEIservices(){
+  HEIservices() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Which planets have you visited?');
+    alert.setTitle('Choose your Services');
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Alderaan',
-      value: 'value1',
+      label: 'Testing & Analystical',
+      value: 'Testing & Analystical',
       checked: true
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Bespin',
-      value: 'value2'
+      label: 'Rapid Prototyping and Manufacturing',
+      value: 'Rapid Prototyping and Manufacturing'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Consultation, Technology Audit and Feasibility Study',
+      value: 'Consultation, Technology Audit and Feasibility Study'
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Applied Development, Engineering and Design',
+      value: 'Applied Development, Engineering and Design'
     });
 
     alert.addButton('Cancel');
     alert.addButton({
       text: 'Okay',
-      handler: data => {
+      handler: (data) => {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen1 = false;
         this.testCheckboxResult1 = data;
-        
-      console.log(data);
+
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Testing & Analystical") {
+            console.log(0);
+            temArray.push(this.heiServices[0])
+
+          } else if (data[index] == "Rapid Prototyping and Manufacturing") {
+
+            temArray.push(this.heiServices[1])
+
+          } else if (data[index] == "Consultation, Technology Audit and Feasibility Study") {
+            console.log(3);
+
+            temArray.push(this.heiServices[2])
+
+          } else if (data[index] == "Applied Development, Engineering and Design") {
+            console.log(4);
+
+            temArray.push(this.heiServices[3])
+
+          }
+
+        }
+
+        console.log(temArray);
+
+        this.catService = temArray;
+        console.log(this.catService);
+        console.log(this.catService);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult2;
   testCheckboxOpen2;
-  LibraryServices(){
+  LibraryServices() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Which planets have you visited?');
+    alert.setTitle('Choose your Services');
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Alderaan',
-      value: 'value1',
+      label: 'Training',
+      value: 'Training',
       checked: true
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Bespin',
-      value: 'value2'
+      label: 'Research',
+      value: 'Research'
     });
 
     alert.addButton('Cancel');
@@ -339,64 +470,108 @@ export class OnBoardingPage {
         console.log('Checkbox data:', data);
         this.testCheckboxOpen2 = false;
         this.testCheckboxResult2 = data;
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Training") {
+            console.log(0);
+            temArray.push(this.libraryService[1])
+
+          } else if (data[index] == "Research") {
+
+            temArray.push(this.libraryService[0])
+          }
+
+        }
+
+        this.catService =temArray ;
+        console.log( this.catService =temArray);
         
-      console.log(data);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult3;
   testCheckboxOpen3;
-  internetCafe(){
+
+
+  internetCafe() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Which planets have you visited?');
+    alert.setTitle('Choose your Services');
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Alderaan',
-      value: 'value1',
+      label: 'Internet',
+      value: 'Internet',
       checked: true
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Bespin',
-      value: 'value2'
+      label: 'Printing',
+      value: 'Printing'
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'fax',
+      value: 'fax'
     });
 
     alert.addButton('Cancel');
     alert.addButton({
       text: 'Okay',
       handler: data => {
-        console.log('Checkbox data:', data);
-        this.testCheckboxOpen3 = false;
-        this.testCheckboxResult3 = data;
-        
-      console.log(data);
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Internet") {
+            console.log(0);
+            temArray.push(this.internetCafeServices[0])
+
+          } else if (data[index] == "Printing") {
+
+            temArray.push(this.learningCenterService[1])
+          }else if (data[index] == "fax"){
+            temArray.push(this.internetCafeServices[2])
+
+          }
+
+        }
+
+        this.catService =temArray ;
+        console.log( this.catService =temArray);
       }
-      
+
     });
     alert.present();
   }
 
   testCheckboxResult4;
   testCheckboxOpen4;
-  learningCenter(){
+
+
+  learningCenter() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Which planets have you visited?');
+    alert.setTitle('Choose your Services');
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Alderaan',
-      value: 'value1',
+      label: 'Skill Development',
+      value: 'Skill Development',
       checked: true
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Bespin',
-      value: 'value2'
+      label: 'Training',
+      value: 'Training'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'EnterpreneurShip Programme',
+      value: 'EnterpreneurShip Programme'
     });
 
     alert.addButton('Cancel');
@@ -404,47 +579,142 @@ export class OnBoardingPage {
       text: 'Okay',
       handler: data => {
         console.log('Checkbox data:', data);
-        this.testCheckboxOpen4 = false;
-        this.testCheckboxResult4 = data;
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Skill Development") {
+            console.log(0);
+            temArray.push(this.learningCenterService[0])
+
+          } else if (data[index] == "Training") {
+
+            temArray.push(this.learningCenterService[1])
+          }else if (data[index] == "EnterpreneurShip Programme"){
+            temArray.push(this.learningCenterService[2])
+
+          }
+
+        }
+
+        this.catService =temArray ;
+        console.log( this.catService =temArray);
         
-      console.log(data);
       }
-      
+
     });
     alert.present();
   }
   testCheckboxResult5;
   testCheckboxOpen5;
-  mall(){
+  mall() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Which planets have you visited?');
+    alert.setTitle('Choose your Services');
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Alderaan',
-      value: 'value1',
+      label: 'Training',
+      value: 'Training',
       checked: true
     });
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Bespin',
-      value: 'value2'
+      label: 'Internet',
+      value: 'Internet'
     });
 
     alert.addButton('Cancel');
     alert.addButton({
       text: 'Okay',
       handler: data => {
-        console.log('Checkbox data:', data);
-        this.testCheckboxOpen5 = false;
-        this.testCheckboxResult5 = data;
-        
-      console.log(data);
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Training") {
+            console.log(0);
+            temArray.push(this.mallServices[0])
+
+          } else if (data[index] == "Internet") {
+
+            temArray.push(this.mallServices[1])
+          }
+
+        }
+
+        this.catService =temArray ;
+        console.log( this.catService =temArray);
       }
-      
+
     });
     alert.present();
+  }
+
+
+
+  Coffeeshops() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Choose your Services');
+
+  
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Internet',
+      value: 'Internet'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        var temArray = []
+        for (let index = 0; index < data.length; index++) {
+
+          if (data[index] == "Internet") {
+            console.log(0);
+            temArray.push(this.coffeeshopServices[0])
+
+          } 
+
+        }
+
+        this.catService =temArray ;
+        console.log( this.catService =temArray);
+      }
+
+    });
+    alert.present();
+  }
+
+
+
+
+  phonenumberValidatin() {
+
+    if (this.orgPhone == undefined) {
+
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+
+      if (this.orgPhone.match(phoneno)) {
+        console.log(this.orgPhone.match(phoneno));
+        this.contactValidation = 0;
+
+
+      }
+      else {
+        this.contactValidation = 1;
+
+        console.log(this.orgPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+
+
   }
 
 }
