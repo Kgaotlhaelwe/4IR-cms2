@@ -46,8 +46,8 @@
       </div>
     </div>
     <div class="profOverlay">
-      <input type="file" accept="image/jpg, image/jpeg" id="coverUploader" (change)="changeCover($event)">
-      <input type="file" accept="image/jpg, image/jpeg" id="logoUploader" (change)="changeLogo($event)">
+      <input type="file"  accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
+      <input type="file"  accept="image/*" id="logoUploader"(change)="UploadLogo($event)">
       <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
         (change)="getImages($event)">
       <!-- <div class="gallery">
@@ -69,6 +69,7 @@
                   </ion-icon>
             </label>
         </ion-fab>
+        <button (click)="EditPrfile()">update profile</button>
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
           <ion-icon name="close"></ion-icon>
         </div>
@@ -78,7 +79,7 @@
           </div>
           <div class="about">
             <label for="logoUploader">
-              <img src="../../assets/imgs/11.jfif" alt="" class="logo">
+              <img src="{{downloadurlLogo}}" alt="" class="logo">
             </label>
             <h3>About</h3>
             <p id="breaker">{{desc}}</p>
@@ -89,12 +90,13 @@
               {{email}}</p>
             <h2 class="keepFixed">Gallery</h2>
           </div>
+         
           <h2 id="orgName">{{name}}</h2>
           <p class="paragraph">Internet Cafe</p>
           <label for="coverUploader">
-            <img src="../../assets/imgs/11.jfif" id="coverIMG" alt="">
+            <img src="{{downloadurl}}" id="coverIMG" alt="">
           </label>
-
+    
 
         </div>
 
@@ -104,7 +106,7 @@
       </div>
     </div>
 
-
+  
     <div class="content" #map id="map">
 
       <div class="loader">

@@ -1,5 +1,5 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,LoadingController,AlertController,ToastController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
@@ -30,7 +30,10 @@ export class HomePage implements OnInit{
   downloadurl;
   downloadurlLogo;
   email
-  constructor(public navCtrl: NavController,public IRmethods: IrMethodsProvider) {
+  d = 1;
+  imageArr;
+  uid
+  constructor(public navCtrl: NavController,public IRmethods: IrMethodsProvider,public loadingCtrl: LoadingController,public alertCtrl:AlertController,public toastCtrl:ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
       console.log(data);
@@ -62,11 +65,136 @@ export class HomePage implements OnInit{
       this.downloadurlLogo = data.downloadurlLogo;
       this.email = data.email;
 
-      console.log(data)
+      console.log(this.downloadurl)
+      console.log(this.downloadurlLogo)
     })
 
   }
 
+
+  EditPrfile(){
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...',
+      duration: 4000000
+    });
+    loading.present();
+    this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
+      console.log('added to db');
+      this.IRmethods.update( this.downloadurl,this.downloadurlLogo).then((data) => {
+        this.imageArr.push(data);
+      });
+      console.log(this.imageArr);
+      loading.dismiss();
+      // this.viewCtrl.dismiss();
+      const toast = this.toastCtrl.create({
+        message: 'Profile successfully updated!',
+        duration: 3000
+      });
+      toast.present();
+      this.navCtrl.pop();
+
+    },
+      Error => {
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          cssClass: "myAlert",
+          subTitle: Error.message,
+          buttons: ['OK']
+        });
+        alert.present();
+      })
+      // this.viewCtrl.dismiss()
+  }
+
+  getUid1() {
+    this.IRmethods.getUserID().then(data => {
+      this.uid = data
+      console.log(this.uid);
+    })
+  }
+  retreivePics1() {
+    this.imageArr.length = 0;
+    this.getUid1();
+    this.IRmethods.GetUserProfile().then(data => {
+      var keys: any = Object.keys(data);
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (this.uid == data[k].uid) {
+          let objt = {
+            downloadurl: data[k].downloadurl
+          }
+          this.imageArr.push(objt);
+        }
+      }
+
+    }, Error => {
+      console.log(Error)
+    });
+
+
+  }
+  UploadProfilePic(event:any){
+    this.d = 1;
+
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+
+    if (this.d == 1) {
+      // opts[0].style.top = "10vh";
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+
+        if (event.target.files[0].size > 1500000) {
+          let alert = this.alertCtrl.create({
+            cssClass: "myAlert",
+            title: "Photo too large",
+            subTitle: "Please choose a photo with 1.5MB or less.",
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        else {
+          reader.onload = (event: any) => {
+            this.downloadurl = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+
+      }
+
+    }
+  }
+
+  UploadLogo(event:any){
+    this.d = 1;
+
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+
+    if (this.d == 1) {
+      // opts[0].style.top = "10vh";
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+
+        if (event.target.files[0].size > 1500000) {
+          let alert = this.alertCtrl.create({
+            cssClass: "myAlert",
+            title: "Photo too large",
+            subTitle: "Please choose a photo with 1.5MB or less.",
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        else {
+          reader.onload = (event: any) => {
+            this.downloadurlLogo = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+
+      }
+
+    }
+  }
   
   storeOrgNames(names) {
     this.orgNames = names;
