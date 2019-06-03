@@ -163,8 +163,6 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
     }
 
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
 
   }
 
