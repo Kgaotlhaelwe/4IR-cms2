@@ -13,6 +13,9 @@ export class IrMethodsProvider {
   detailArray = new Array();
   orgNames = new Array();
   profileArr = new Array();
+  ProfileArr = new Array();
+  url;
+  downloadurLLogo
   constructor(private ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController, ) {
 
     console.log('Hello 4IrMethodsProvider Provider');
@@ -33,6 +36,37 @@ export class IrMethodsProvider {
       })
     })
   }
+  GetUserProfile() {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        let user = firebase.auth().currentUser
+        firebase.database().ref("4IR_Hubs/" + user.uid).on("value", (data: any) => {
+          let DisplayData = data.val();
+          let keys = Object.keys(DisplayData);
+          if (DisplayData !== null) {
+          }
+          for (var i = 0; i < keys.length; i++) {
+            this.storeImgur(DisplayData[keys[i]].downloadurl);
+            this.storeImgur2(DisplayData[keys[i]].downloadurlLogo);
+            console.log(DisplayData[keys[i]].downloadurl)
+          }
+          accpt(DisplayData);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
+
+  storeImgur(url) {
+    this.url = url;
+    console.log(this.url)
+  }
+  storeImgur2(downloadurLLogo) {
+    this.downloadurLLogo = downloadurLLogo;
+    console.log(this.url)
+  }
+
 
   register(email, psswrd, lat, long, region, cell, category, Orgname, desc, service, address) {
     return new Promise((resolve, reject) => {
@@ -356,6 +390,8 @@ export class IrMethodsProvider {
     })
 
   }
+
+  
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
@@ -387,6 +423,73 @@ export class IrMethodsProvider {
 
     })
 
+  }
+
+  uploadProfilePic(pic, name) {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        firebase.storage().ref(name).putString(pic, 'data_url').then(() => {
+          accpt(name);
+          console.log(name);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
+
+  storeToDB1(name) {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        this.ProfileArr.length = 0;
+        var storageRef = firebase.storage().ref(name);
+        storageRef.getDownloadURL().then(url => {
+          console.log(url)
+          var userID = firebase.auth().currentUser;
+          var link = url;
+          firebase.database().ref("4IR_Hubs/"+userID.uid).update({
+            downloadurl: link,
+          });
+          accpt('success');
+        }, Error => {
+          rejc(Error.message);
+          console.log(Error.message);
+        });
+      })
+    })
+  }
+
+  getUserID() {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("4IR_Hubs/"+user.uid).on("value", (data: any) => {
+          var profileDetails = data.val();
+          if (profileDetails !== null) {
+          }
+          console.log(profileDetails);
+          accpt(user.uid);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
+
+
+  update(downloadurl,downloadurlLogo) {
+    this.ProfileArr.length = 0;
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("4IR_Hubs/"+user.uid).update({
+          downloadurlLogo: downloadurlLogo,
+          downloadurl: downloadurl,
+         
+
+        });
+      })
+    })
   }
 
 

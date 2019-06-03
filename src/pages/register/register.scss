@@ -55,7 +55,7 @@
 //     }
 //   }
 
-//   .theInput {
+//   .thecol2 {
 //     color     : black;
 //     border    : 1px solid rgba(0, 0, 0, 0.212);
 //     margin    : 10px auto;
@@ -93,22 +93,23 @@
 // }
 
 
-.everything {
-  position         : absolute;
-  display          : flex;
-  top              : 0;
-  bottom           : 0;
-  left             : 0;
-  right            : 0;
-  width            : 100%;
-  height           : 100%;
-  justify-content  : center;
-  align-items      : center;
-  font-family      : Arial, Helvetica, sans-serif;
-  background-image:linear-gradient(to top, rgba(239, 239, 239, 0.489) ,rgb(255, 255, 255)),url('../../assets/imgs/parl.jpg');
-  // background    : linear-gradient( url("../../assets/imgs/parl.jpg",rgba(255, 255, 255, 0.1), white, rgba(255, 255, 255, 0.1));
-  // box-shadow    : 0 0 10px rgb(0, 0, 0);
-  background-size  : cover;
+.everything{
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.489) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
+  // background: url("../../assets/imgs/parl.jpg");
+  // background-color:rgba(252, 246, 246, 0.523);
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -127,13 +128,13 @@
 .column {
   float  : left;
   padding: 10px;
-  height : 400px;
-  /* Should be removed. Only for demonstration */
-  width          : 650px;
+  height: 350px; /* Should be removed. Only for demonstration */
+  width: 650px;  
   justify-content: center;
   align-items    : center;
   display        : flex;
   flex-direction : column;
+  margin-top:16%;
 }
 
 /* Clear floats after the columns */
@@ -230,7 +231,7 @@ button {
   // margin-top: 80px;
   // height    : 150px;
   position: absolute;
-  height: 20%;
+  height: 25%;
   width :auto;
   top: 0;
 }

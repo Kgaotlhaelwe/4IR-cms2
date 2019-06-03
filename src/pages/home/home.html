@@ -9,8 +9,8 @@
     </ion-searchbar>
     <div class="results">
       <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-          {{ item}}
-        </ion-item>
+        {{ item}}
+      </ion-item>
     </div>
     <!-- <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
@@ -29,8 +29,8 @@
       Ratings
       <div class="chart" id="myRate">
         <canvas id="ourRatings"></canvas>
-      </div> <br>
-      Views
+      </div>
+      <br> Views
       <div class="chart" id="myViews">
         <canvas id="views"></canvas>
       </div>
@@ -40,16 +40,16 @@
       <div class="action">
         <div>
 
-          <p id="my2001" (click)="goToProfile()"><b id="Orgo">ORGANISATION PROFILE</b>
+          <p id="my2001" (click)="goToProfile()">
+            <b id="Orgo">ORGANISATION PROFILE</b>
           </p>
         </div>
       </div>
     </div>
     <div class="profOverlay">
-      <input type="file" accept="image/jpg, image/jpeg" id="coverUploader" (change)="changeCover($event)">
-      <input type="file" accept="image/jpg, image/jpeg" id="logoUploader" (change)="changeLogo($event)">
-      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
-        (change)="getImages($event)">
+      <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
+      <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload" (change)="getImages($event)">
       <!-- <div class="gallery">
         <label for="galInput">
           <div class="adder">
@@ -61,14 +61,24 @@
 
       </div> -->
       <div class="cont">
-        <ion-fab bottom right>
-          
-            <label ion-fab for="galInput">
-            
-                <ion-icon name="images">
-                  </ion-icon>
-            </label>
+        <ion-fab top right>
+
+          <label ion-fab (click)="EditPrfile()">
+
+            <!-- <ion-icon name="images">
+            </ion-icon> -->
+            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+          </label>
         </ion-fab>
+        <ion-fab bottom right>
+
+          <label ion-fab for="galInput">
+
+            <ion-icon name="images">
+            </ion-icon>
+          </label>
+        </ion-fab>
+        <!-- <button (click)="EditPrfile()">update profile</button> -->
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
           <ion-icon name="close"></ion-icon>
         </div>
@@ -78,21 +88,23 @@
           </div>
           <div class="about">
             <label for="logoUploader">
-              <img src="../../assets/imgs/11.jfif" alt="" class="logo">
+              <img src="{{downloadurlLogo}}" alt="" class="logo">
             </label>
-            <h3>About</h3>
-            <p id="breaker">{{desc}}</p>
-            <h3>Address</h3>
-            <p id="breaker">{{address}}</p>
-            <h3>Contact Details</h3>
-            <p id="breaker">{{contact}}<br>
-              {{email}}</p>
-            <h2 class="keepFixed">Gallery</h2>
+            <h6>About</h6>
+            <p class="font" id="breaker">{{desc}}</p>
+            <h6>Address</h6>
+            <p class="font" id="breaker">{{address}}</p>
+            <h6>Contact Details</h6>
+            <p class="font" id="breaker">{{contact}}
+              <br>
+            </p>
+            <h4 class="keepFixed">Gallery</h4>
           </div>
+
           <h2 id="orgName">{{name}}</h2>
-          <p class="paragraph">Internet Cafe</p>
+          <!-- <p class="paragraph">Internet Cafe</p> -->
           <label for="coverUploader">
-            <img src="../../assets/imgs/11.jfif" id="coverIMG" alt="">
+            <img src="{{downloadurl}}" id="coverIMG" alt="">
           </label>
 
 

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController ,LoadingController
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
+import { ModalController } from 'ionic-angular';
+import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 declare var google;
 declare var firebase;
 /**
@@ -38,7 +40,7 @@ export class RegisterPage {
   HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
 
   Library = ["Research ", "Training "];
-  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
+  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController,public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -49,6 +51,11 @@ export class RegisterPage {
 
   }
   
+
+  presentModal() {
+    const modal = this.modalCtrl.create(ForgotpasswordPage);
+    modal.present();
+  }
 
   forgotpassword(PlaceObject: object) {
     return new Promise((resolve, reject) => {
@@ -170,16 +177,15 @@ export class RegisterPage {
     loading.present();
     this.IRmethods.loginx(email, password).then((user: any) => {
       console.log(user);
+      this.navCtrl.push(HomePage)
     }).catch((error) => {
       const alert = this.alertCtrl.create({
         subTitle: error.message,
         buttons: ['OK'],
-        cssClass: 'myAlert',
       });
       loading.dismiss()
-      alert.present();
     })
-    this.navCtrl.push(HomePage)
+
   }
 
 
@@ -193,19 +199,15 @@ export class RegisterPage {
     if(this.signUpEmail != undefined && this.signUppassword != undefined){
       this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
         console.log("sucess");
-        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
-        
+        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })     
       }).catch((error)=>{
-      
         const alert = this.alertCtrl.create({
           title: '',
           subTitle: error.message ,
           buttons: ['OK']
         });
         alert.present();
-        
       })
-
     }else {
       const alert = this.alertCtrl.create({
         title: '',
@@ -214,7 +216,5 @@ export class RegisterPage {
       });
       alert.present();
     }
-
-  
    }
 }
