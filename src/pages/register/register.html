@@ -61,7 +61,7 @@
         <i  class="material-icons" id="Theicon">lock</i>
       </label>
       <input  class="inputColor" #password type="password" placeholder="Password" ngModel required>
-      <p class="thepassword" (click)="forgotpassword(email.value)"> Forgot your Password?</p>
+      <p class="thepassword" (click)="forgotpassword()"> Forgot your Password?</p>
       <button (click)="SignIn(email.value, password.value)">Login</button>
     </div>
     <div class="column"  style="background-color:#04592ae4" >
