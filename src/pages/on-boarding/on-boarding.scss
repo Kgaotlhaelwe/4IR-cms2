@@ -8,6 +8,15 @@ page-on-boarding {
     //   height: 250px;
     object-fit: cover;
   }
+  
+  #logoBG{
+    background: url("../../assets/imgs/4IR logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width: 80px;
+    height:160px;
+  }
   .theBody {
     width: 100vw;
     height: 100%;
@@ -15,7 +24,8 @@ page-on-boarding {
     .left {
       width: 100%;
       height: 100%;
-      background: url("../../assets/imgs/parl.jpg");
+
+      background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
       background-size: cover;
       // filter:  sepia(1);
       position: relative;
@@ -28,7 +38,7 @@ page-on-boarding {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.219);
+        box-shadow: 0 0 15px rgb(0, 0, 0);
         border-radius: 10px;
       }
     }
@@ -44,6 +54,8 @@ page-on-boarding {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     border-right: 1px solid rgba(0, 0, 0, 0.103);
   }
   p {
@@ -53,10 +65,15 @@ page-on-boarding {
   }
   .step2 {
     width: 75%;
-    background: white;
+    background: red;
     position: relative;
+    
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
-
+// #file{
+//   color:green
+// }
   .theInput {
     color: black;
     border: 1px solid black;
@@ -74,8 +91,27 @@ page-on-boarding {
   .slide-custom {
     width: 100%;
     height: 100%;
-    background: grey;
+    // background: grey;
     overflow: hidden;
+    .dots{
+      width: 30%;
+      height: 14px;
+      position: absolute;
+      z-index: 999;
+      border-radius: 20px;
+      border: 2px solid white;
+      left: 50%;
+      padding: 0;
+      bottom: 0;
+      transform: translate(-50%,-5px);
+      #theDot{
+        width: 25%;
+        height: 10px;
+        border-radius: 20px;
+        background: white;
+        transition: 1s;
+      }
+    }
   }
   .theSlider {
     width: 400%;
@@ -88,6 +124,8 @@ page-on-boarding {
     height: 100%;
     text-align: center;
     position: relative;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     p {
       padding: 30px;
       font-size: 1em;
@@ -191,9 +229,13 @@ page-on-boarding {
   }
   #page2 {
     padding-top: 50px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
   #page4 {
     padding-top: 5%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
 
   .select-css {
@@ -243,6 +285,18 @@ page-on-boarding {
   #page1 {
     margin-left: 0%;
     transition: 1s;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  #page3{
+    
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  #showContent{
+    display: grid ;
+    grid-template-columns: repeat(2 1fr)
   }
   /* Hide HTML5 Up and Down arrows. */
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {

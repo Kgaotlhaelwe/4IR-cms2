@@ -12,7 +12,7 @@ import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any;
+  rootPage :any  ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public IRmethods: IrMethodsProvider) {
     platform.ready().then(() => {
@@ -21,7 +21,7 @@ export class MyApp {
           this.rootPage =HomePage
         }
         else {
-          this.rootPage = OnBoardingPage
+          this.rootPage = HomePage
         }
       })
       // Okay, so the platform is ready and our plugins are available.
