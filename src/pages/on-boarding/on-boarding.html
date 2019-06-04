@@ -14,9 +14,15 @@
         <div class="step2">
           <div class="slide-custom">
             
-              <div class="dots">
-                  <div id="theDot"></div>
+              <div class="dots"> 
+                
+                <div >
+                    <progress id="file" max="100" value="{{progressBar}}">  </progress>
                 </div>
+                </div> 
+
+              
+
             <div class="theSlider">
 
               <div class="slideShow" id="page1">
@@ -27,9 +33,14 @@
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
-                <textarea name="" id="orgDesc" placeholder="Organisation Description" cols="4"
+                <textarea name="" id="orgDesc" max-length="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
+              
+                  
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
+             
+             
+               
               </div>
               <div class="slideShow" id="page2">
                 <p>Does the organisation have WiFi</p>
@@ -62,7 +73,7 @@
                 <p>Almost there, please provide a category for the organisation.</p>
                 <select class="select-css" (change)="showServices()" [(ngModel)]="category">
                   <option value="Do you offer WiFi" disabled> Choose category </option>
-                  <option value="High Education Institution">High Education Institution </option>
+                  <option value="Higher Education Institution">Higher Education Institution </option>
                   <option value="Library">Library</option>
                   <option value="Learning Center">Learning Center</option>
                   <option value="InterCafe">InterCafe</option>
@@ -72,7 +83,7 @@
 
 
                 <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
-                    {{catService}}
+                    <!-- {{catService.title}} -->
                     
                   <!--                     
                       <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
@@ -86,7 +97,7 @@
 
 
                 <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
-                    {{catService}}
+                    <!-- {{catService}} -->
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
@@ -98,7 +109,7 @@
 
 
                 <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
-                  {{catService}}
+                  <!-- {{catService}} -->
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
@@ -112,7 +123,7 @@
 
 
                 <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
-                   {{catService}}
+                   <!-- {{catService}} -->
                 </div>
 
                   <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
@@ -140,11 +151,14 @@
               </div>
               <div class="slideShow" id="page4">
                 <div class="description" padding>
-                  {{orgName}}
-                 {{orgDescription}}
+                 
+                  
+
+
+
                 </div>
 
-                <div  *ngFor="let a catService ">
+                <div  *ngFor="let a of catService ">
                   {{a.title}}
                 </div> <br>  <br>  <br>
                 <!-- <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea> -->

@@ -41,6 +41,7 @@ export class OnBoardingPage {
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
   showCoffeeShopServices:boolean = false ;
+  websiteValidation  ;
 
   heiServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
@@ -90,6 +91,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 
   Heitrack;
 
+  progressBar = 25
+
   contactValidation;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
@@ -100,11 +103,15 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
     console.log(this.email);
     console.log(this.heiServices[0].title);
 
+    this. is_urlValidation("www.youtube.com") ;
+
 
   }
   moveToPage2() {
     
     this.phonenumberValidatin() ;
+
+    this.is_urlValidation(this.orgWebsite) ;
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Please complete all details ")
     } else if (this.orgName == undefined) {
@@ -113,6 +120,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
       this.alert("Enter Address  ")
     }else if(this.contactValidation == 1){
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+    }else if ( this.websiteValidation ==1){
+      this.alert("The website address you have entered is invalid, please enter a valid website address ")
     }else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
     }
@@ -124,7 +133,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
     } else {
 
       var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
+      toSlide.style.marginLeft = "-25%";
+      this. progressBar = this.progressBar + 25 
 
     }
 
@@ -151,6 +161,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
       if (this.wifi != undefined && this.chooseWifiRange != undefined) {
         var toSlide = document.getElementById("page1");
         toSlide.style.marginLeft = "-50%";
+        this. progressBar = this.progressBar + 25 
       } else {
         this.alert("Please complete all details")
       }
@@ -170,9 +181,12 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
   moveToPage4() {
 
     if (this.category != undefined && this.catService.length !=  0){
+      console.log(this.catService);
+      
 
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-75%";
+      this. progressBar = this.progressBar + 25
     }else {
       this.alert("Complete all the Details ")
     }
@@ -234,7 +248,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 
   showServices() {
     console.log(this.category);
-    if (this.category == "High Education Institution") {
+    if (this.category == "Higher Education Institution") {
       this.showheiServices = true;
 
       this.showLibaryServices = false;
@@ -406,8 +420,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
       text: 'Okay',
       handler: (data) => {
         console.log('Checkbox data:', data);
-        this.testCheckboxOpen1 = false;
-        this.testCheckboxResult1 = data;
+       // this.testCheckboxOpen1 = false;
+     //   this.testCheckboxResult1 = data;
 
         var temArray = []
         for (let index = 0; index < data.length; index++) {
@@ -434,7 +448,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 
         }
 
-        console.log(temArray);
+        //console.log(temArray);
 
         this.catService = temArray;
         console.log(this.catService);
@@ -705,16 +719,32 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
       }
       else {
         this.contactValidation = 1;
-
         console.log(this.orgPhone.match(phoneno));
         console.log("wrong");
 
-      }
+    }
 
     }
 
+}
 
 
-  }
+ is_urlValidation(str)
+{
+ var  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          this.websiteValidation = 0
+         // return true;
+         console.log("correct");
+         
+        }
+        else
+        {
+          this.websiteValidation = 1
+          console.log("wrong");
+          //return false;
+        }
+}
 
 }

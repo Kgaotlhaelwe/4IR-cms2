@@ -9,8 +9,8 @@
     </ion-searchbar>
     <div class="results">
       <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-          {{ item}}
-        </ion-item>
+        {{ item}}
+      </ion-item>
     </div>
     <!-- <div class="needs">
       <p>Use this section to add your organisation's needs to get support from your potential sponsors and contributors.
@@ -29,8 +29,8 @@
       Ratings
       <div class="chart" id="myRate">
         <canvas id="ourRatings"></canvas>
-      </div> <br>
-      Views
+      </div>
+      <br> Views
       <div class="chart" id="myViews">
         <canvas id="views"></canvas>
       </div>
@@ -40,36 +40,55 @@
       <div class="action">
         <div>
 
-          <p id="my2001" (click)="goToProfile()"><b id="Orgo">ORGANISATION PROFILE</b>
+          <p id="my2001" (click)="goToProfile()">
+            <b id="Orgo">ORGANISATION PROFILE</b>
           </p>
         </div>
       </div>
     </div>
     <div class="profOverlay">
-      <input type="file"  accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
-      <input type="file"  accept="image/*" id="logoUploader"(change)="UploadLogo($event)">
-      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
-        (change)="getImages($event)">
-      <!-- <div class="gallery">
-        <label for="galInput">
-          <div class="adder">
-            <i class="material-icons">add</i></div>
-        </label><br>
-        <div class="array" *ngFor="let x of imagesArr">
-          <img src="{{x.GalUrl}}" alt="" class="images">
+      <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
+      <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload" (change)="getImages($event)">
+      <div class="overlay">
+        <div class="addBranch">
+          <div class="dismisser" (click)="closeDIV()">
+            <i style="color: black" id="DismisIcon" class="material-icons">close</i>
+          </div>
+          <label for="coverUploader">
+            <img src="{{url1}}" alt="" class="coverToUpload">
+          </label>
+          <h3>Edit branch details</h3>
+          <div class="editForm">
+            <input type="text" placeholder="Branch Name" [value]="name1" [(ngModel)]="name1"><br>
+            <input type="email" placeholder="Email" [value]="email1" [(ngModel)]="email1"><br>
+            <input type="text" placeholder="Tel" [value]="tel1" [(ngModel)]="tel1"><br>
+            <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1" [value]="city1"></textarea><br>
+          </div>
+          <button id="submitter" (click)="edit()">submit</button>
         </div>
+      </div>
 
-      </div> -->
+ 
       <div class="cont">
-        <ion-fab bottom right>
-          
-            <label ion-fab for="galInput">
-            
-                <ion-icon name="images">
-                  </ion-icon>
-            </label>
+        <ion-fab top right>
+
+          <label ion-fab (click)="EditPrfile()">
+
+            <!-- <ion-icon name="images">
+            </ion-icon> -->
+            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+          </label>
         </ion-fab>
-        <button (click)="EditPrfile()">update profile</button>
+        <ion-fab bottom right>
+
+          <label ion-fab for="galInput">
+
+            <ion-icon name="images">
+            </ion-icon>
+          </label>
+        </ion-fab>
+        <!-- <button (click)="EditPrfile()">update profile</button> -->
         <div class="dismisser" id="profDismisser" (click)="closeProfile()">
           <ion-icon name="close"></ion-icon>
         </div>
@@ -81,50 +100,65 @@
             <label for="logoUploader">
               <img src="{{downloadurlLogo}}" alt="" class="logo">
             </label>
-            <h3>About</h3>
-            <p id="breaker">{{desc}}</p>
-            <h3>Address</h3>
-            <p id="breaker">{{address}}</p>
-            <h3>Contact Details</h3>
-            <p id="breaker">{{contact}}<br>
-              {{email}}</p>
-            <h2 class="keepFixed">Gallery</h2>
+            <h6>About</h6>
+            <p class="font" id="breaker">{{desc}}</p>
+            <h6>Address</h6>
+            <p class="font" id="breaker">{{address}}</p>
+            <h6>Contact Details</h6>
+            <p class="font" id="breaker">{{contact}}
+              <br>
+            </p>
+            <h4 class="keepFixed">Gallery</h4>
           </div>
-         
+
           <h2 id="orgName">{{name}}</h2>
-          <p class="paragraph">Internet Cafe</p>
+          <!-- <p class="paragraph">Internet Cafe</p> -->
           <label for="coverUploader">
             <img src="{{downloadurl}}" id="coverIMG" alt="">
           </label>
-    
+
 
         </div>
-
-        <div class="branches">
-          <img src="../../assets/imgs/11.jfif" id="uploaded-image" alt="" imageViewer>
+        <div class="uploads">
+          <ion-grid>
+            <ion-row class="gal">
+              <ion-col *ngFor="let a of imagesArr" col-6>
+                <!-- <div class="remover" (click)="removeImage(a.key)"> 
+                  <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+                </div>  -->
+                <img class="image" id="uploaded-image" src={{a.GalUrl}} imageViewer alt="">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
+
+
       </div>
     </div>
 
-  
+
     <div class="content" #map id="map">
 
       <div class="loader">
         Loading Map...
       </div>
     </div>
+
+
     <div class="absolutely">
-        <div class="arrow">
-          <div class="clicker" (click)="decideState()">
-            <i class="material-icons" id="myArrow">keyboard_arrow_up</i>
-          </div>
-          <div class="list">
-            <div class="gal" id="push" *ngFor="let a of organizationArr">
-                <span class="tooltiptext">{{a.desc}}</span>
-              <img src="{{a.Url}}" alt="">
-            </div>
+      <div class="arrow">
+        <div class="clicker" (click)="decideState()">
+        </div>
+        <div class="list">
+          <div class="gal" id="push" *ngFor="let a of orgArray">
+            <span class="tooltiptext">{{a.desc}}</span>
+            <img src="{{a.img}}" alt="">
           </div>
         </div>
       </div>
+    </div>
+
+
+
   </div>
 </ion-content>

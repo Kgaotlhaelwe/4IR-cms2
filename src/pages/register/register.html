@@ -46,13 +46,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <div class="everything">
-  <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      </head>
+      <img class="theRocket" src="../../assets/imgs/4IR logo.png">
   <div class="row">
-    <div class="column" style="background-color:#f4f4f4b1">
-      <!-- <img class="theRocket" src="../../assets/imgs/4IR logo.png"> -->
-      <h2 style="color:#04592ae0">Sign In</h2>
+    <div class="column" style="background-color:#f4f4f4; border: 1px solid rgba(0, 0, 0, 0.2)">
+      <h2 style="color:#0a5e30e0">Sign In</h2>
       <label for="" class="Labels">
         <i class="material-icons" id="Theicon">mail</i>
       </label>
@@ -61,22 +58,29 @@
         <i  class="material-icons" id="Theicon">lock</i>
       </label>
       <input  class="inputColor" #password type="password" placeholder="Password" ngModel required>
-      <p class="thepassword" (click)="forgotpassword()"> Forgot your Password?</p>
       <button (click)="SignIn(email.value, password.value)">Login</button>
+      <p class="thepassword" (click)="forgotpassword(email.value)"> Forgot your password?</p>
     </div>
-    <div class="column"  style="background-color:#04592ae4" >
+
+
+
+
+
+    
+    <div class="column" id="col2"  style="background-color:#04592a" >
         <!-- <img class="theRocket" src="../../assets/imgs/4IR logo.png"> -->
       <h2>Sign Up</h2>
 
       <label for="" class="Labels">
         <i class="material-icons" id="Theicon2">mail</i>
       </label>
-      <input [(ngModel)]="signUpEmail"  type="text" placeholder="Email" ngModel required>
+      <input class="input-green" [(ngModel)]="signUpEmail"  type="text" placeholder="Email" ngModel required>
       <label for="" class="Labels">
         <i  class="material-icons" id="Theicon2">lock</i>
       </label>
-      <input [(ngModel)]="signUppassword" type="password" placeholder="Password" ngModel required>
-      <button (click)="signUp()">Register</button>
+      <input class="input-green" [(ngModel)]="signUppassword" type="password" placeholder="Password" ngModel required>
+      <button class="changeColour" (click)="signUp()" style="color: #04592a">Register</button>
+      <p class="thepassword"></p>
     </div>
   </div>
 </div>

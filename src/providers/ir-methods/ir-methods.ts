@@ -222,7 +222,8 @@ export class IrMethodsProvider {
                 lat: details[keys[x]].lat,
                 img: details[keys[x]].downloadurl,
                 category: details[keys[x]].category,
-                id: keys[x]
+                id: keys[x],
+                desc: details[keys[x]].desc
               }
               this.storeOrgNames(details[keys[x]].name);
               this.orgArray.push(orgObject)
@@ -390,6 +391,8 @@ export class IrMethodsProvider {
     })
 
   }
+
+  
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }

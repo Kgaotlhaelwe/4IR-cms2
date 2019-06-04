@@ -4,7 +4,7 @@
 //     padding   : 0;
 //   }
 //   .theBody {
-//     width  : 100vw;
+//     width  : 100vw;column
 //     height : 100%;
 //     display: flex;
 //     .left {
@@ -55,7 +55,7 @@
 //     }
 //   }
 
-//   .theInput {
+//   .thecol2 {
 //     color     : black;
 //     border    : 1px solid rgba(0, 0, 0, 0.212);
 //     margin    : 10px auto;
@@ -119,18 +119,22 @@
 
 .inputColor {
   color: #04592a;
+  background: rgb(177, 177, 177);
 }
-
+.input-green{
+  background: rgb(177, 177, 177);
+}
 /* Create two equal columns that floats next to each other */
 .column {
   float  : left;
   padding: 10px;
-  height: 500px; /* Should be removed. Only for demonstration */
+  height: 350px; /* Should be removed. Only for demonstration */
   width: 650px;  
   justify-content: center;
   align-items    : center;
   display        : flex;
   flex-direction : column;
+  margin-top:16%;
 }
 
 /* Clear floats after the columns */
@@ -184,7 +188,7 @@ input {
   width           : 80%;
   min-width       : 300px;
   margin          : 9px;
-  height          : 55px;
+  height          : 50px;
   border-bottom   : 2px #ffffff solid;
   border-top      : 2px #ffff solid;
   border-right    : 2px solid white;
@@ -224,8 +228,12 @@ button {
 }
 
 .theRocket {
-  margin-top: 80px;
-  height    : 150px;
+  // margin-top: 80px;
+  // height    : 150px;
+  position: absolute;
+  height: 25%;
+  width :auto;
+  top: 0;
 }
 
 .inputColor {
@@ -239,23 +247,27 @@ button {
   color      : #04592a;
 
 }
-
+.changeColour{
+  background-color: white;
+  color: #495f539e;
+  font-weight: 500
+}
 #Theicon {
-  position: absolute;
+  
   color   : #04592a;
+  text-align: center;
 
 }
 
 #Theicon2 {
   position: absolute;
   color   : white;
-
 }
 
 .Labels {
-  /* border: 2px solid red; */
+  // border: 2px solid red; 
   position : relative;
-  top      : 3.6%;
+  top      : 20px;
   color    : #04592a;
   left     : 30%;
 }
@@ -264,10 +276,6 @@ button {
   .everything {
     /* position          : absolute; */
     display              : flex;
-    /* top               : 0; */
-    /* bottom            : 0; */
-    /* left              : 0; */
-    /* right             : 0; */
     width                : 100%;
     height               : 90%;
     justify-content      : center;
@@ -369,19 +377,8 @@ button {
     color: black;
   }
 
-  button {
-    cursor          : pointer;
-    height          : 45px;
-    width           : 300px;
-    border          : #018790 2px solid;
-    box-shadow      : 0 0 10px #018790;
-    /* border-radius: 100px; */
-    background-color: white;
-    color           : white;
-    font-size       : 1em;
-    font-weight     : 100;
-    background-color: #018790;
-    margin-top      : 30px;
+  #col2{
+    padding-top: 0;
   }
 
   .person {

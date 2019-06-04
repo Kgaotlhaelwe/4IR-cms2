@@ -112,6 +112,9 @@ page-home {
     overflow-y: scroll;
     /* width: 100%; */
   }
+  .font{
+    font-size:2em
+  }
   #myIcon {
     z-index: 100000000000000000000000000000000000000000000000000000;
     color: white;
@@ -164,7 +167,7 @@ page-home {
   .action {
     /* margin-top: 50px; */
     float: right;
-    display: flex;
+    // display: flex;
     width: 250px;
     /* border: 2px solid green */
   }
@@ -247,12 +250,22 @@ page-home {
     cursor: pointer;
     text-align: center;
     padding: 10px;
+    width: 40px;
+    height: 40px;
     font-family: arial, sans-serif;
     font-weight: bolder;
     line-height: 25px;
+    background: gold;
+    border-radius: 50%;
   }
   .arrow {
     text-align: center;
+  }
+  #upArrow{
+    
+    
+      margin-top: -20px;
+    
   }
   .close {
     position: absolute;
@@ -280,9 +293,11 @@ page-home {
     width: 150px;
     height: 25px;
     border: 2px solid rgba(0, 0, 0, 0.5);
-    background: #018790;
+    background: white;
     color: white;
+    border-bottom:goldenrod;
     border-radius: 100px;
+    padding-top: 0;
     position: absolute;
     left: 46%;
     /* z-index: 100000000000000000000000000000000000000000; */
@@ -291,6 +306,9 @@ page-home {
 
     animation: mymove 2s;
     animation-iteration-count: infinite;
+    ion-icon{
+      margin-top: 0;
+    }
   }
 
   @keyframes mymove {
@@ -342,9 +360,10 @@ page-home {
   }
   .keepFixed {
     position: absolute;
-    padding-left: 20px;
+    padding-left: 30px;
     right: -100%;
-    top: 130px;
+    bottom:60%;
+    // top: 10px;
     color: white;
     // background: white;
     width: 100%;
@@ -671,7 +690,7 @@ page-home {
   #signOut p {
     text-align: center;
     // border: 2px solid red;
-    padding-top: 2px;
+    padding-top: 4px;
     width: 100%;
   }
   //   #signOut:hover {
@@ -718,6 +737,7 @@ page-home {
     position: absolute;
     top: 50%;
     left: 50%;
+    font-size: 2.5em;
     // text-align: center;
     margin-left:22%;
     transform: translate(-50%, -50%);
@@ -763,12 +783,21 @@ page-home {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
     border: 0.5px solid rgba(128, 128, 128, 0.178);
   }
+
+  h6{
+    padding-left:6%;
+  }
   .about h3,
   p {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 0px;
     padding-bottom: 0px;
+  
+  }
+  .font{
+    color:black;
+    font-size: 20%
   }
   .about p {
     color: grey;
@@ -793,13 +822,27 @@ page-home {
     overflow-y: scroll;
     /* border: 2px solid red; */
   }
+  .uploads{
+    // margin: 0%;
+    // padding: 0%;
+    // width: 100%;
+    // max-width: 700px;
+    // margin: 0 auto;
+    margin-left:30%;
+margin-top:5%;
+}
+ion-grid{
+  width: 100%;
+  max-width: 750px;
+  color: white;
+}
   .searchBar,
   .results {
     position: absolute;
     z-index: 10000000000000000000000000000000000000000000000;
     max-width: 700px;
     padding: 10px;
-    border-radius: 30%;
+    border-radius: 2px;
   }
   .results {
     top: 60px;
@@ -811,6 +854,7 @@ page-home {
   }
   #search {
     z-index: 10000000000000000000000000000000000000000000000;
+    border-radius: 2px;
   }
   #uploaded-image {
     width: 100px;
@@ -1073,6 +1117,7 @@ page-home {
     p#breaker {
       word-wrap: break-all;
     }
+  
     .cont {
       transition: 700ms;
       width: 90%;
@@ -1153,7 +1198,7 @@ page-home {
       left: 20px;
     }
     #Orgo {
-      display: none;
+      // display: none;
     }
     #my2001 {
       top: 50px;

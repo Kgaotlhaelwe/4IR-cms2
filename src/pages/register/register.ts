@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController ,LoadingController
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
+import { ModalController } from 'ionic-angular';
+import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 declare var google;
 declare var firebase;
 /**
@@ -38,7 +40,7 @@ export class RegisterPage {
   HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
 
   Library = ["Research ", "Training "];
-  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
+  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController,public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -50,7 +52,91 @@ export class RegisterPage {
   }
   
 
- 
+  presentModal() {
+    const modal = this.modalCtrl.create(ForgotpasswordPage);
+    modal.present();
+  }
+
+  // forgotpassword(PlaceObject: object) {
+  //   return new Promise((resolve, reject) => {
+  //     if (this.email == null || this.email == undefined) {
+  //       const alert = this.alertCtrl.create({
+  //         cssClass: "myAlert",
+  //         title: 'Forgot your password?',
+  //         message: "We just need your registered email address to reset your password.",
+          
+  //         // cssClass: 'myAlert',
+  //         inputs: [
+  //           {
+  //             name: 'email',
+  //             placeholder: 'Your email address'
+  //           },
+  //         ],
+  //         buttons: [
+  //           {
+  //             text: 'Cancel',
+  //             handler: data => {
+  //               console.log('Cancel clicked');
+  //             }
+  //           },
+  //           {
+  //             text: 'Send',
+  //             handler: data => {
+  //               console.log('Saved clicked');
+
+  //               this.IRmethods.forgetPassword(data.email).then(()=>{
+  //                 console.log("forgot password works");
+  //                 const alert = this.alertCtrl.create({
+  //                   title: 'Confirmation',
+  //                   subTitle: "Please check your email to reset your password",
+  //                   buttons: ['OK']
+  //                 });
+  //                 alert.present();
+  //               })
+  //             }
+  //           }
+  //         ],
+  //       });
+  //       alert.present();
+  //     }
+  //     else if (this.email != null || this.email != undefined) {
+  //       firebase.auth().sendPasswordResetEmail(this.email).then(() => {
+  //         const alert = this.alertCtrl.create({
+  //           cssClass: "myAlert",
+  //           title: 'Password request Sent',
+  //           subTitle: "We've sent you and email with a reset link, go to your email to recover your account.",
+  //           buttons: ['OK'],
+
+  //         });
+  //         alert.present();
+  //         resolve()
+  //       }, Error => {
+  //         const alert = this.alertCtrl.create({
+  //           cssClass: "myAlert",
+  //           subTitle: Error.message,
+  //           buttons: ['OK'],
+  //           // cssClass: 'myAlert'
+  //         });
+  //         alert.present();
+  //         resolve()
+  //       });
+  //     }
+  //   }).catch((error) => {
+  //     const alert = this.alertCtrl.create({
+  //       cssClass: "myAlert",
+  //       subTitle: error.message,
+  //       buttons: [
+  //         {
+  //           text: 'ok',
+  //           handler: data => {
+  //             console.log('Cancel clicked');
+  //           }
+  //         }
+  //       ],
+  //     });
+  //     alert.present();
+  //   })
+  // }
 
 
   selectCategory() {
@@ -89,39 +175,40 @@ export class RegisterPage {
       duration: 4000
     });
     loading.present();
+    
     this.IRmethods.loginx(email, password).then((user: any) => {
       console.log(user);
+      this.navCtrl.push(HomePage)
     }).catch((error) => {
       const alert = this.alertCtrl.create({
         subTitle: error.message,
         buttons: ['OK'],
-        cssClass: 'myAlert',
       });
       loading.dismiss()
-      alert.present();
     })
-    this.navCtrl.push(HomePage)
+
   }
 
 
   signUp(){
-
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...',
+      duration: 4000
+    });
+    loading.present();
     if(this.signUpEmail != undefined && this.signUppassword != undefined){
       this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
         console.log("sucess");
-        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
-        
+        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })     
       }).catch((error)=>{
-      
         const alert = this.alertCtrl.create({
           title: '',
           subTitle: error.message ,
           buttons: ['OK']
         });
         alert.present();
-        
       })
-
     }else {
       const alert = this.alertCtrl.create({
         title: '',
@@ -130,8 +217,6 @@ export class RegisterPage {
       });
       alert.present();
     }
-
-  
    }
 
    forgotpassword(PlaceObject: object) {
