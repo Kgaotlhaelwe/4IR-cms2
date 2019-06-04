@@ -772,4 +772,38 @@ export class HomePage implements OnInit{
     // })
     }
   }
+
+
+
+  
+  galleryUpload(event:any){
+    this.d = 1;
+
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+
+    if (this.d == 1) {
+      // opts[0].style.top = "10vh";
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+
+        if (event.target.files[0].size > 1500000) {
+          let alert = this.alertCtrl.create({
+            cssClass: "myAlert",
+            title: "Photo too large",
+            subTitle: "Please choose a photo with 1.5MB or less.",
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        else {
+          reader.onload = (event: any) => {
+            this.downloadurlLogo = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+
+      }
+
+    }
+  }
 }

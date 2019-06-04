@@ -257,6 +257,8 @@ export class IrMethodsProvider {
     })
 
   }
+
+ 
   createPositionRadius(latitude, longitude) {
     var leftposition, rightposition, downposition, uposititon;
     return new Promise((accpt, rej) => {
@@ -437,6 +439,11 @@ export class IrMethodsProvider {
       })
     })
   }
+
+
+
+
+
 
   storeToDB1(name) {
     return new Promise((accpt, rejc) => {

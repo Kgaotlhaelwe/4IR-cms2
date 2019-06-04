@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController ,LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
@@ -34,13 +34,13 @@ export class RegisterPage {
   items = new Array();
   serviceArray = new Array();
 
-  service ;
-  signUpEmail ;
-  signUppassword ;
+  service;
+  signUpEmail;
+  signUppassword;
   HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
 
   Library = ["Research ", "Training "];
-  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController,public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone,public loadingCtrl:LoadingController) {
+  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -50,7 +50,7 @@ export class RegisterPage {
     console.log(this.category);
 
   }
-  
+
 
   presentModal() {
     const modal = this.modalCtrl.create(ForgotpasswordPage);
@@ -64,7 +64,7 @@ export class RegisterPage {
           cssClass: "myAlert",
           title: 'Forgot your password?',
           message: "We just need your registered email address to reset your password.",
-          
+
           // cssClass: 'myAlert',
           inputs: [
             {
@@ -84,7 +84,7 @@ export class RegisterPage {
               handler: data => {
                 console.log('Saved clicked');
 
-                this.IRmethods.forgetPassword(data.email).then(()=>{
+                this.IRmethods.forgetPassword(data.email).then(() => {
                   console.log("forgot password works");
                   const alert = this.alertCtrl.create({
                     title: 'Confirmation',
@@ -140,8 +140,8 @@ export class RegisterPage {
 
 
   selectCategory() {
-   console.log(this.category);
-   
+    console.log(this.category);
+
 
   }
 
@@ -175,40 +175,18 @@ export class RegisterPage {
       duration: 4000
     });
     loading.present();
-    this.IRmethods.loginx(email, password).then((user: any) => {
-      console.log(user);
-      this.navCtrl.push(HomePage)
-    }).catch((error) => {
-      const alert = this.alertCtrl.create({
-        subTitle: error.message,
-        buttons: ['OK'],
-      });
-      loading.dismiss()
-    })
-
-  }
-
-
-  signUp(){
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 4000
-    });
-    loading.present();
-    if(this.signUpEmail != undefined && this.signUppassword != undefined){
-      this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
-        console.log("sucess");
-        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })     
-      }).catch((error)=>{
+    if (this.signUpEmail != undefined && this.signUppassword != undefined) {
+      this.IRmethods.loginx(email, password).then((user: any) => {
+        console.log(user);
+        this.navCtrl.push(HomePage)
+      }).catch((error) => {
         const alert = this.alertCtrl.create({
-          title: '',
-          subTitle: error.message ,
-          buttons: ['OK']
+          subTitle: error.message,
+          buttons: ['OK'],
         });
-        alert.present();
+        loading.dismiss()
       })
-    }else {
+    } else {
       const alert = this.alertCtrl.create({
         title: '',
         subTitle: 'Please enter your email and password ',
@@ -216,5 +194,36 @@ export class RegisterPage {
       });
       alert.present();
     }
-   }
+
+  }
+
+
+  signUp() {
+    if (this.signUpEmail != undefined && this.signUppassword != undefined) {
+      this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
+        console.log("sucess");
+        let loading = this.loadingCtrl.create({
+          spinner: 'bubbles',
+          content: 'Please wait...',
+          duration: 4000
+        });
+        loading.present();
+        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
+      }).catch((error) => {
+        const alert = this.alertCtrl.create({
+          title: '',
+          subTitle: error.message,
+          buttons: ['OK']
+        });
+        alert.present();
+      })
+    } else {
+      const alert = this.alertCtrl.create({
+        title: '',
+        subTitle: 'Please enter your email and password ',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+  }
 }
