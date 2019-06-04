@@ -35,10 +35,14 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #04592a,
-  secondary:  #32db64,
+  secondary:  green,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  trans:      rgba(0,0,0,0),
+  inactive:   grey,
+  gold:       #ffee00,
+  seeThrough: transparent
 );
 
 $searchbar-md-input-search-icon-color: #04592a;
