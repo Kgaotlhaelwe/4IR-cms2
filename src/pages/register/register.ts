@@ -61,7 +61,7 @@ export class RegisterPage {
     return new Promise((resolve, reject) => {
       if (this.email == null || this.email == undefined) {
         const alert = this.alertCtrl.create({
-          cssClass: "myAlert",
+          // cssClass: "myAlert",
           title: 'Forgot your password?',
           message: "We just need your registered email address to reset your password.",
 
@@ -102,7 +102,7 @@ export class RegisterPage {
       else if (this.email != null || this.email != undefined) {
         firebase.auth().sendPasswordResetEmail(this.email).then(() => {
           const alert = this.alertCtrl.create({
-            cssClass: "myAlert",
+            // cssClass: "myAlert",
             title: 'Password request Sent',
             subTitle: "We've sent you and email with a reset link, go to your email to recover your account.",
             buttons: ['OK'],
@@ -112,7 +112,7 @@ export class RegisterPage {
           resolve()
         }, Error => {
           const alert = this.alertCtrl.create({
-            cssClass: "myAlert",
+            // cssClass: "myAlert",
             subTitle: Error.message,
             buttons: ['OK'],
             // cssClass: 'myAlert'
@@ -123,11 +123,11 @@ export class RegisterPage {
       }
     }).catch((error) => {
       const alert = this.alertCtrl.create({
-        cssClass: "myAlert",
+        // cssClass: "myAlert",
         subTitle: error.message,
         buttons: [
           {
-            text: 'ok',
+            text: 'OK',
             handler: data => {
               console.log('Cancel clicked');
             }
@@ -169,22 +169,22 @@ export class RegisterPage {
 
   SignIn(email, password) {
     console.log(email, password)
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Signing in...',
-      duration: 4000
-    });
-    loading.present();
-    if (this.signUpEmail != undefined && this.signUppassword != undefined) {
+    if (this.email != undefined && this.password != undefined) {
       this.IRmethods.loginx(email, password).then((user: any) => {
         console.log(user);
+        let loading = this.loadingCtrl.create({
+          spinner: 'bubbles',
+          content: 'Signing in...',
+          duration: 4000
+        });
+        loading.present();
         this.navCtrl.push(HomePage)
       }).catch((error) => {
         const alert = this.alertCtrl.create({
           subTitle: error.message,
           buttons: ['OK'],
         });
-        loading.dismiss()
+        alert.present();
       })
     } else {
       const alert = this.alertCtrl.create({
@@ -199,6 +199,7 @@ export class RegisterPage {
 
 
   signUp() {
+    console.log(this.signUpEmail)
     if (this.signUpEmail != undefined && this.signUppassword != undefined) {
       this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
         console.log("sucess");
