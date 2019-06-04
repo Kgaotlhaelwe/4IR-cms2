@@ -55,16 +55,26 @@
       <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
       <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
       <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload" (change)="getImages($event)">
-      <!-- <div class="gallery">
-        <label for="galInput">
-          <div class="adder">
-            <i class="material-icons">add</i></div>
-        </label><br>
-        <div class="array" *ngFor="let x of imagesArr">
-          <img src="{{x.GalUrl}}" alt="" class="images">
+      <div class="overlay">
+        <div class="addBranch">
+          <div class="dismisser" (click)="closeDIV()">
+            <i style="color: black" id="DismisIcon" class="material-icons">close</i>
+          </div>
+          <label for="coverUploader">
+            <img src="{{url1}}" alt="" class="coverToUpload">
+          </label>
+          <h3>Edit branch details</h3>
+          <div class="editForm">
+            <input type="text" placeholder="Branch Name" [value]="name1" [(ngModel)]="name1"><br>
+            <input type="email" placeholder="Email" [value]="email1" [(ngModel)]="email1"><br>
+            <input type="text" placeholder="Tel" [value]="tel1" [(ngModel)]="tel1"><br>
+            <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1" [value]="city1"></textarea><br>
+          </div>
+          <button id="submitter" (click)="edit()">submit</button>
         </div>
+      </div>
 
-      </div> -->
+ 
       <div class="cont">
         <ion-fab top right>
 
@@ -114,10 +124,20 @@
 
 
         </div>
-
-        <div class="branches">
-          <img src="../../assets/imgs/11.jfif" id="uploaded-image" alt="" imageViewer>
+        <div class="uploads">
+          <ion-grid>
+            <ion-row class="gal">
+              <ion-col *ngFor="let a of imagesArr" col-6>
+                <!-- <div class="remover" (click)="removeImage(a.key)"> 
+                  <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+                </div>  -->
+                <img class="image" id="uploaded-image" src={{a.GalUrl}} imageViewer alt="">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
+
+
       </div>
     </div>
 
@@ -128,18 +148,22 @@
         Loading Map...
       </div>
     </div>
+
+
     <div class="absolutely">
-        <div class="arrow">
-          <div class="clicker" (click)="decideState()">
-            <i class="material-icons" id="myArrow">keyboard_arrow_up</i>
-          </div>
-          <div class="list">
-            <div class="gal" id="push" *ngFor="let a of organizationArr">
-                <span class="tooltiptext">{{a.desc}}</span>
-              <img src="{{a.Url}}" alt="">
-            </div>
+      <div class="arrow">
+        <div class="clicker" (click)="decideState()">
+        </div>
+        <div class="list">
+          <div class="gal" id="push" *ngFor="let a of orgArray">
+            <span class="tooltiptext">{{a.desc}}</span>
+            <img src="{{a.img}}" alt="">
           </div>
         </div>
       </div>
+    </div>
+
+
+
   </div>
 </ion-content>

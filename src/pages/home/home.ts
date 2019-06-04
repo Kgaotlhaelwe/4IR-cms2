@@ -1,9 +1,9 @@
-import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
-import { NavController,LoadingController,AlertController,ToastController } from 'ionic-angular';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
-
+declare var firebase;
 
 
 declare var google;
@@ -11,7 +11,7 @@ declare var google;
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
   orgArray = new Array();
   profileArr = new Array();
@@ -22,6 +22,7 @@ export class HomePage implements OnInit{
   showMultipleMarker;
   items = new Array()
   orgNames = new Array()
+  imagesArr = [];
   name;
   cell;
   category;
@@ -29,8 +30,11 @@ export class HomePage implements OnInit{
   desc;
   downloadurl;
   downloadurlLogo;
+  urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
-
+  galleryupload: string;
+  icon = 'assets/imgs/wifi2.svg'
+  locIcon = 'assets/imgs/loc-user.svg'
   mapStyles = [
     {
       "elementType": "geometry",
@@ -246,12 +250,12 @@ export class HomePage implements OnInit{
       ]
     }
   ]
- 
+
   d = 1;
   imageArr;
   uid;
   contact;
-  constructor(public navCtrl: NavController,public IRmethods: IrMethodsProvider,public loadingCtrl: LoadingController,public alertCtrl:AlertController,public toastCtrl:ToastController) {
+  constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
       console.log(this.orgArray);
@@ -273,7 +277,7 @@ export class HomePage implements OnInit{
     }, 5000);
 
 
-    this.IRmethods.getOrgProfile().then((data:any) => {
+    this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
       this.category = data.category;
       this.cell = data.cell;
@@ -291,11 +295,11 @@ export class HomePage implements OnInit{
 
   }
 
-  ionViewWillEnter(){
-    this.initMap() ;
+  ionViewWillEnter() {
+    this.initMap();
 
 
-    this.IRmethods.getOrgProfile().then((data:any) => {
+    this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
       this.category = data.category;
       this.cell = data.cell;
@@ -312,7 +316,7 @@ export class HomePage implements OnInit{
     })
   }
 
-  EditPrfile(){
+  EditPrfile() {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
@@ -321,7 +325,7 @@ export class HomePage implements OnInit{
     loading.present();
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
       console.log('added to db');
-      this.IRmethods.update( this.downloadurl,this.downloadurlLogo).then((data) => {
+      this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
         this.imageArr.push(data);
       });
       console.log(this.imageArr);
@@ -344,7 +348,7 @@ export class HomePage implements OnInit{
         });
         alert.present();
       })
-      // this.viewCtrl.dismiss()
+    // this.viewCtrl.dismiss()
   }
 
   getUid1() {
@@ -374,7 +378,7 @@ export class HomePage implements OnInit{
 
 
   }
-  UploadProfilePic(event:any){
+  UploadProfilePic(event: any) {
     this.d = 1;
 
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
@@ -405,7 +409,7 @@ export class HomePage implements OnInit{
     }
   }
 
-  UploadLogo(event:any){
+  UploadLogo(event: any) {
     this.d = 1;
 
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
@@ -435,7 +439,71 @@ export class HomePage implements OnInit{
 
     }
   }
-  
+
+  getImages(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      (reader.onload = (event: any) => {
+        this.urlGallery1 = event.target.result;
+        console.log(this.urlGallery1);
+        var user = firebase.auth().currentUser.uid;
+        console.log(user);
+        firebase
+          .database()
+          .ref("Gallery/" + user + "/")
+          .push({
+            GalUrl: this.urlGallery1
+          });
+        this.getGallery();
+        this.dismissUploader();
+      }),
+        Error => {
+          alert(Error);
+        };
+      reader.readAsDataURL(event.target.files[0]);
+      this.galleryupload = "Upload More";
+    }
+  }
+
+  getGallery() {
+    console.log("getting gallery");
+    this.retrieveGal().then((data: any) => {
+      this.imagesArr.length = 0;
+      var keys = data.keys;
+      var temp = data.detals;
+      console.log(keys);
+      console.log(temp);
+      for (var x = 0; x < keys.length; x++) {
+        this.imagesArr.push(temp[keys[x]]);
+      }
+      console.log(this.imagesArr);
+    });
+  }
+
+  retrieveGal() {
+    return new Promise((accpt, rej) => {
+      firebase.auth().onAuthStateChanged(function (user) {
+        let dbPath = "Gallery/" + user.uid;
+        firebase
+          .database()
+          .ref(dbPath)
+          .on("value", (data: any) => {
+            if (data.val() != undefined || data.val() != null) {
+              let details = data.val();
+              let key = Object.keys(details);
+
+              let obj = {
+                detals: details,
+                keys: key
+              };
+              console.log(obj);
+              accpt(obj);
+            }
+          });
+      });
+    });
+  }
+
   storeOrgNames(names) {
     this.orgNames = names;
     console.log(this.orgNames);
@@ -443,7 +511,7 @@ export class HomePage implements OnInit{
   }
 
   signOut() {
- 
+
 
     this.IRmethods.logout().then(() => {
       this.navCtrl.push(RegisterPage, { out: 'logout' });
@@ -477,7 +545,7 @@ export class HomePage implements OnInit{
     //   ]
     // });
     // prompt.present();
-  
+
 
   }
   initializeItems() {
@@ -531,7 +599,7 @@ export class HomePage implements OnInit{
   Rehab = 0;
 
   ngOnInit() {
-   
+    this.initMap()
   }
   initMap() {
 
@@ -548,26 +616,56 @@ export class HomePage implements OnInit{
       center: { lat: this.lat, lng: this.lng },
       zoom: 8,
       disableDefaultUI: true,
+      icon: this.icon,
       styles: this.mapStyles
     }
+    var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
     // adding user marker to the map 
-    this.marker = new google.maps.Marker({
+     var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
+      icon: this.locIcon,
+      title:'Your Location',
       position: this.map.getCenter(),
       styles: this.mapStyles
       //animation: google.maps.Animation.DROP,
     });
 
+
+
     setTimeout(() => {
       this.markers();
     }, 8000)
 
+    var contentString = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+    '<div id="bodyContent">'+
+    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+    'sandstone rock formation in the southern part of the '+
+    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+    'south west of the nearest large town, Alice Springs; 450&#160;km '+
+    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+    'Aboriginal people of the area. It has many springs, waterholes, '+
+    'rock caves and ancient paintings. Uluru is listed as a World '+
+    'Heritage Site.</p>'+
+    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+    '(last visited June 22, 2009).</p>'+
+    '</div>'+
+    '</div>'; 
 
-    console.log("test");
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    }); 
 
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
 
   }
   markers() {
@@ -576,7 +674,7 @@ export class HomePage implements OnInit{
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       this.showMultipleMarker = new google.maps.Marker({
         map: this.map,
-        //  icon: this.icon,
+        icon: this.icon,
         position: { lat: parseFloat(this.orgArray[index].lat), lng: parseFloat(this.orgArray[index].long) },
         label: name,
         zoom: 8,
@@ -615,11 +713,11 @@ export class HomePage implements OnInit{
   showSlide() {
     var blurMap = document.getElementById("map");
     let slider = document.getElementsByClassName("absolutely") as HTMLCollectionOf<HTMLElement>;
-    let arrow = document.getElementById("myArrow");
+    // let arrow = document.getElementById("myArrow");
 
     // arrow[0].style.left = "48%";
     // arrow[0].style.transform = "translateX(-60%)";
-    arrow.style.transform = "rotateZ(180deg)";
+    // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
     slider[0].style.bottom = "0";
     blurMap.style.filter = "blur(3px)";
@@ -666,7 +764,7 @@ export class HomePage implements OnInit{
   }
 
 
- 
+
 
   showGal() {
     // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
@@ -736,47 +834,47 @@ export class HomePage implements OnInit{
   title;
   price;
   description;
-  addContributes(){
+  addContributes() {
 
-    if(this.title  == null || this.title == "" || this.title == undefined){
+    if (this.title == null || this.title == "" || this.title == undefined) {
       this.title = " "
       this.pullDown();
     }
-    if(this.description == null || this.description == " " || this.description == "" || this.description == undefined ){
+    if (this.description == null || this.description == " " || this.description == "" || this.description == undefined) {
       // swal("Please state your organisational needs in the fields provided");
     }
-    else{
-  
-    // firebase.auth().onAuthStateChanged(user => {
-    //     firebase.database().ref('contributes/' + user.uid + '/').push({
-    //       Title: this.title,
-    //       Description: this.description,
-    //     }, Error => {
-    //       swal(Error.message);
-    //     });
-     
-    //     const Toast = Swal.mixin({
-    //       toast: true,
-    //       position: 'center',
-    //       showConfirmButton: false,
-    //       timer: 3000
-    //     });
-        
-    //     Toast.fire({
-    //       type: 'success',
-    //       title: 'You have successfully added a contribute'
-    //     })
-    //   this.title="";
-    //   this.description="";
-    //   this.pullDown();
-    // })
+    else {
+
+      // firebase.auth().onAuthStateChanged(user => {
+      //     firebase.database().ref('contributes/' + user.uid + '/').push({
+      //       Title: this.title,
+      //       Description: this.description,
+      //     }, Error => {
+      //       swal(Error.message);
+      //     });
+
+      //     const Toast = Swal.mixin({
+      //       toast: true,
+      //       position: 'center',
+      //       showConfirmButton: false,
+      //       timer: 3000
+      //     });
+
+      //     Toast.fire({
+      //       type: 'success',
+      //       title: 'You have successfully added a contribute'
+      //     })
+      //   this.title="";
+      //   this.description="";
+      //   this.pullDown();
+      // })
     }
   }
 
 
 
-  
-  galleryUpload(event:any){
+
+  galleryUpload(event: any) {
     this.d = 1;
 
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;

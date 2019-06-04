@@ -129,6 +129,7 @@ export class IrMethodsProvider {
 
   signUp(email, password) {
     var user = firebase.auth().currentUser;
+    console.log(user.uid)
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
         firebase
@@ -221,7 +222,8 @@ export class IrMethodsProvider {
                 lat: details[keys[x]].lat,
                 img: details[keys[x]].downloadurl,
                 category: details[keys[x]].category,
-                id: keys[x]
+                id: keys[x],
+                desc: details[keys[x]].desc
               }
               this.storeOrgNames(details[keys[x]].name);
               this.orgArray.push(orgObject)

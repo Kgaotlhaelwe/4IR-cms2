@@ -252,12 +252,22 @@ page-home {
     cursor: pointer;
     text-align: center;
     padding: 10px;
+    width: 40px;
+    height: 40px;
     font-family: arial, sans-serif;
     font-weight: bolder;
     line-height: 25px;
+    background: gold;
+    border-radius: 50%;
   }
   .arrow {
     text-align: center;
+  }
+  #upArrow{
+    
+    
+      margin-top: -20px;
+    
   }
   .close {
     position: absolute;
@@ -285,9 +295,11 @@ page-home {
     width: 150px;
     height: 25px;
     border: 2px solid rgba(0, 0, 0, 0.5);
-    background: #018790;
+    background: white;
     color: white;
+    border-bottom:goldenrod;
     border-radius: 100px;
+    padding-top: 0;
     position: absolute;
     left: 46%;
     /* z-index: 100000000000000000000000000000000000000000; */
@@ -296,6 +308,9 @@ page-home {
 
     animation: mymove 2s;
     animation-iteration-count: infinite;
+    ion-icon{
+      margin-top: 0;
+    }
   }
 
   @keyframes mymove {
@@ -354,7 +369,7 @@ page-home {
     color: white;
     // background: white;
     width: 100%;
-    // text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px black;
   }
   .overlay {
     transition: 699ms;
@@ -832,6 +847,20 @@ page-home {
     overflow-y: scroll;
     /* border: 2px solid red; */
   }
+  .uploads{
+    // margin: 0%;
+    // padding: 0%;
+    // width: 100%;
+    // max-width: 700px;
+    // margin: 0 auto;
+    margin-left:30%;
+margin-top:5%;
+}
+ion-grid{
+  width: 100%;
+  max-width: 750px;
+  color: white;
+}
   .searchBar,
   .results {
     position: absolute;
