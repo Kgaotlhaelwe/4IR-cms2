@@ -167,36 +167,48 @@ export class RegisterPage {
     }
   }
 
-  SignIn(email, password) {
+  SignIn(email: string, password: string) {
     console.log(email, password)
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Signing in...',
-      duration: 4000
-    });
-    loading.present();
-    
-    this.IRmethods.loginx(email, password).then((user: any) => {
-      console.log(user);
-      this.navCtrl.push(HomePage)
+    if(this.signUpEmail != undefined && this.signUppassword != undefined){
+    this.IRmethods.SignIn(email, password).then((user: any) => {
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Signing in...',
+        duration: 40000
+      });
+      loading.present();
+
     }).catch((error) => {
       const alert = this.alertCtrl.create({
+        cssClass: "myAlert",
+        // title: "No Password",
         subTitle: error.message,
         buttons: ['OK'],
+        // cssClass: 'myAlert',
       });
-      loading.dismiss()
+      // loading.dismiss()
+      alert.present();
     })
-
+  }else {
+    const alert = this.alertCtrl.create({
+      cssClass: "myAlert",
+      title: '',
+      subTitle: 'Please enter your email and password ',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
   }
 
 
+
   signUp(){
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 4000
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'bubbles',
+    //   content: 'Please wait...',
+    //   duration: 4000
+    // });
+    // loading.present();
     if(this.signUpEmail != undefined && this.signUppassword != undefined){
       this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
         console.log("sucess");
@@ -218,6 +230,8 @@ export class RegisterPage {
       alert.present();
     }
    }
+
+  
 
    forgotpassword(PlaceObject: object) {
     return new Promise((resolve, reject) => {
