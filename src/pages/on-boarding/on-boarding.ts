@@ -82,9 +82,16 @@ export class OnBoardingPage {
       this.alert("Enter Phone numbers  ")
 
     } else {
+      if(this.orgPhone > 99999999 && this.orgPhone < 1000000000){
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-25%";
+      }
+      else{
+        this.alert("Please check your phone numbers, something is wrong.")
+      }
+      console.log(this.orgPhone * 2);
+      
 
     }
 
