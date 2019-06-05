@@ -298,7 +298,7 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     // this.initMap() ;
-
+    this.getGallery();
 
     this.IRmethods.getOrgProfile().then((data: any) => {
 
@@ -622,10 +622,10 @@ export class HomePage implements OnInit {
       icon: this.icon,
       styles: this.mapStyles
     }
+    var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
     // adding user marker to the map 
-    this.marker = new google.maps.Marker({
+     var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
       icon: this.locIcon,
@@ -641,9 +641,22 @@ export class HomePage implements OnInit {
       this.markers();
     }, 12000)
 
+    var contentString = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+    
+    
+     '</div>'+
+    '</div>'; 
 
-    console.log("test");
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    }); 
 
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
 
   }
   markers() {
@@ -660,14 +673,33 @@ export class HomePage implements OnInit {
         styles: this.mapStyles
 
       });
+      
 
+      //
+console.log( this.orgArray[index].desc);
+
+let infowindow = new google.maps.InfoWindow({
+  content:
+    '<div style="width: 400px; transition: 300ms;"><b>' +
+    this.orgArray[index].orgName +
+    '</b><div style="display: flex; padding-top: 10px;">' +
+    '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+    this.orgArray[index].img +
+    ">" +
+    '<p style="padding-left: 10px;padding-right: 10px">' +
+    this.orgArray[index].desc +
+    "</p><br>" +
+    "<br></div>"
+});
       this.showMultipleMarker.addListener('click', () => {
-
-       console.log(this.orgArray[index]);
-
-        
         console.log(index);
-        this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
+        
+       
+        infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
+     //  this.goToProfile() ;
+        ///infowindow.open(marker.get('map'), marker);
+        console.log(index);
+      //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
       });
 
     }
@@ -1010,7 +1042,7 @@ export class HomePage implements OnInit {
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "0";
+    slider[0].style.bottom = "10px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }

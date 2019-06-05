@@ -22,6 +22,8 @@ export class OrganizationProfilePage {
   category ;
   orgObject = this.navParams.get('orgObject')
   constructor(public navCtrl: NavController, public navParams: NavParams, public IrMethodsProvider: IrMethodsProvider) {
+    this.desc =this.orgObject.desc ;
+    console.log(this.desc);
     
   }
 
@@ -30,7 +32,8 @@ export class OrganizationProfilePage {
 
    console.log(this.orgObject)
    // this.downloadurlLogo =this.orgObject.downloadurlLogo ;
-    this.desc =this.orgObject.desc ;
+  
+    
    // this.email =this.orgObject.email ;
   //  this.category =this.orgObject.category ;
 

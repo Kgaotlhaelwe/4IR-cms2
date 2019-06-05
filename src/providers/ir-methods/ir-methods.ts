@@ -190,31 +190,31 @@ export class IrMethodsProvider {
     })
   }
 
-  addOrganisation(email, lat, long, region, cell, category, Orgname, desc, service, address,wifi ,freeWifi,wifiRange, website){
+  addOrganisation(email, lat, long, region, cell, category, Orgname, desc, service, address, wifi, freeWifi, wifiRange, website) {
     var user = firebase.auth().currentUser;
-    return new Promise ((resolve , reject)=>{
+    return new Promise((resolve, reject) => {
       firebase
-      .database()
-      .ref("4IR_Hubs/" + user.uid)
-      .set({
-        name: Orgname,
-        email: email,
-        contact: cell,
-        category: category,
-        desc: desc,
-        long: long,
-        lat: lat,
-        wifi:wifi ,
-        freeWifi:freeWifi ,
-        website:website ,
-        wifiRange:wifiRange ,
-        region: region,
-        downloadurl: "assets/download.png",
-        downloadurlLogo: "assets/download.png",
-        service: [service],
-        address: address ,
-       
-      });
+        .database()
+        .ref("4IR_Hubs/" + user.uid)
+        .set({
+          name: Orgname,
+          email: email,
+          contact: cell,
+          category: category,
+          desc: desc,
+          long: long,
+          lat: lat,
+          wifi: wifi,
+          freeWifi: freeWifi,
+          website: website,
+          wifiRange: wifiRange,
+          region: region,
+          downloadurl: "assets/download.png",
+          downloadurlLogo: "assets/download.png",
+          service: [service],
+          address: address,
+
+        });
       resolve()
     })
   }
@@ -302,6 +302,8 @@ export class IrMethodsProvider {
     })
 
   }
+
+
   createPositionRadius(latitude, longitude) {
     var leftposition, rightposition, downposition, uposititon;
     return new Promise((accpt, rej) => {
@@ -436,15 +438,16 @@ export class IrMethodsProvider {
 
   }
 
-  
+
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+  
   getOrgProfile() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
       console.log(user.uid)
-      firebase.database().ref("4IR_Hubs/"+user.uid).on('value', (data: any) => {
+      firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
         accpt(details)
@@ -483,6 +486,11 @@ export class IrMethodsProvider {
     })
   }
 
+
+
+
+
+
   storeToDB1(name) {
     return new Promise((accpt, rejc) => {
       this.ngzone.run(() => {
@@ -492,7 +500,7 @@ export class IrMethodsProvider {
           console.log(url)
           var userID = firebase.auth().currentUser;
           var link = url;
-          firebase.database().ref("4IR_Hubs/"+userID.uid).update({
+          firebase.database().ref("4IR_Hubs/" + userID.uid).update({
             downloadurl: link,
           });
           accpt('success');
@@ -508,7 +516,7 @@ export class IrMethodsProvider {
     return new Promise((accpt, rejc) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("4IR_Hubs/"+user.uid).on("value", (data: any) => {
+        firebase.database().ref("4IR_Hubs/" + user.uid).on("value", (data: any) => {
           var profileDetails = data.val();
           if (profileDetails !== null) {
           }
@@ -522,15 +530,15 @@ export class IrMethodsProvider {
   }
 
 
-  update(downloadurl,downloadurlLogo) {
+  update(downloadurl, downloadurlLogo) {
     this.ProfileArr.length = 0;
     return new Promise((pass, fail) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("4IR_Hubs/"+user.uid).update({
+        firebase.database().ref("4IR_Hubs/" + user.uid).update({
           downloadurlLogo: downloadurlLogo,
           downloadurl: downloadurl,
-         
+
 
         });
       })
