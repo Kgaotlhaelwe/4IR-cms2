@@ -3,6 +3,7 @@ import { NavController, LoadingController, AlertController, ToastController } fr
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import {OrganizationProfilePage} from "../organization-profile/organization-profile"
 declare var firebase;
 
 
@@ -303,7 +304,7 @@ export class HomePage implements OnInit {
       this.name = data.name;
       this.category = data.category;
       this.cell = data.cell;
-      this.address = data.address;
+     // this.address = data.address;
       this.desc = data.desc;
       this.downloadurl = data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
@@ -607,7 +608,7 @@ export class HomePage implements OnInit {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
-      duration: 7500
+      duration: 11000
     });
     loading.present();
 
@@ -636,7 +637,7 @@ export class HomePage implements OnInit {
 
     setTimeout(() => {
       this.markers();
-    }, 8000)
+    }, 12000)
 
     var contentString = '<div id="content">'+
     '<div id="siteNotice">'+
@@ -681,6 +682,15 @@ export class HomePage implements OnInit {
         zoom: 8,
         styles: this.mapStyles
 
+      });
+
+      this.showMultipleMarker.addListener('click', () => {
+
+       console.log(this.orgArray[index]);
+
+        
+        console.log(index);
+        this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
       });
 
     }
