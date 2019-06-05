@@ -296,8 +296,8 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.initMap();
-
+    // this.initMap() ;
+    this.getGallery();
 
     this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
@@ -599,7 +599,7 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-    this.initMap()
+    this.initMap();
   }
   initMap() {
 
@@ -626,7 +626,7 @@ export class HomePage implements OnInit {
       map: this.map,
       zoom: 10,
       icon: this.locIcon,
-      title:'Your Location',
+      title: 'Your Location',
       position: this.map.getCenter(),
       styles: this.mapStyles
       //animation: google.maps.Animation.DROP,
@@ -675,6 +675,7 @@ export class HomePage implements OnInit {
       this.showMultipleMarker = new google.maps.Marker({
         map: this.map,
         icon: this.icon,
+        title: this.orgArray[index].orgName,
         position: { lat: parseFloat(this.orgArray[index].lat), lng: parseFloat(this.orgArray[index].long) },
         label: name,
         zoom: 8,
@@ -684,6 +685,309 @@ export class HomePage implements OnInit {
 
     }
   }
+
+
+  // initMap() {
+  //   console.log(this.orgArray);
+  //   console.log(this.lat)
+  //   console.log(this.lng)
+  //   if (this.orgArray.length != 0){
+  //   setTimeout(() => {
+  //     let myLatLng = {
+  //       lat: this.orgArray[0].lat,
+  //       lng: this.orgArray[0].long
+  //     };
+  //     let map = new google.maps.Map(document.getElementById("map"), {
+  //       zoom: 9,
+  //       center: myLatLng,
+  //       disableDefaultUI: true,
+  //       styles: [
+  //         {
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#8ec3b9"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1a3646"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.country",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#4b6878"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.land_parcel",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#64779e"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.province",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#4b6878"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "landscape.man_made",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#334e87"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "landscape.natural",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#283d6a"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#6f9ba5"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi.park",
+  //           elementType: "geometry.fill",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi.park",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#3C7680"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#304a7d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#98a5be"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#2c6675"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#255763"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#b0d5ce"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#98a5be"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit.line",
+  //           elementType: "geometry.fill",
+  //           stylers: [
+  //             {
+  //               color: "#283d6a"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit.station",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#3a4762"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "water",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#0e1626"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "water",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#4e6d70"
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     });
+  //     var indx = 0;
+
+  //     for (var x = 0; x < this.orgArray.length; x++) {
+  //       if (this.orgArray[x].Category =="Higher Education Institution") indx = 1;
+  //       else if (this.orgArray[x].Category == "Library") indx = 2;
+  //       else if (this.orgArray[x].Category == "Learning Center") indx = 3;
+  //       else if (this.orgArray[x].Category =="InterCafe") indx = 4;
+  //       else if (this.orgArray[x].Category == "Mall") indx = 5;
+  //       else if (this.orgArray[x].Category == "Coffee Shop") indx = 6;
+
+
+
+
+  //       console.log("inside");
+  //       let myLatLng = {
+  //         lat: this.orgArray[x].lat,
+  //         lng: this.orgArray[x].long
+  //       };
+  //       console.log(myLatLng);
+
+  //       let marker = new google.maps.Marker({
+  //         position: myLatLng,
+  //         icon: this.icon[indx],
+  //         size: { width: 5, height: 5 },
+  //         map: map,
+  //         title: this.orgArray[x].name
+  //       });
+
+  //       let infowindow = new google.maps.InfoWindow({
+  //         content:
+  //           '<div style="width: 400px; transition: 300ms;"><b>' +
+  //           this.orgArray[x].name +
+  //           '</b><div style="display: flex; padding-top: 10px;">' +
+  //           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+  //           this.orgArray[x].downloadurl +
+  //           ">" +
+  //           '<p style="padding-left: 10px;padding-right: 10px">' +
+  //           this.orgArray[x].desc +
+  //           "</p><br>" +
+  //           "<br></div>"
+  //       });
+
+  //       marker.addListener("click", function() {
+  //         infowindow.open(map, marker);
+  //         map.setZoom(13);
+  //         map.setCenter(marker.getPosition());
+  //       });
+  //     }
+  //   }, 3000);
+
+  //   console.log("at the end");
+  // }
+  // }
 
 
   dismissUploader() {
@@ -719,7 +1023,7 @@ export class HomePage implements OnInit {
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "0";
+    slider[0].style.bottom = "10px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }
@@ -868,40 +1172,6 @@ export class HomePage implements OnInit {
       //   this.description="";
       //   this.pullDown();
       // })
-    }
-  }
-
-
-
-
-  galleryUpload(event: any) {
-    this.d = 1;
-
-    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
-
-    if (this.d == 1) {
-      // opts[0].style.top = "10vh";
-      if (event.target.files && event.target.files[0]) {
-        let reader = new FileReader();
-
-        if (event.target.files[0].size > 1500000) {
-          let alert = this.alertCtrl.create({
-            cssClass: "myAlert",
-            title: "Photo too large",
-            subTitle: "Please choose a photo with 1.5MB or less.",
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-        else {
-          reader.onload = (event: any) => {
-            this.downloadurlLogo = event.target.result;
-          }
-          reader.readAsDataURL(event.target.files[0]);
-        }
-
-      }
-
     }
   }
 }

@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import {RegisterPage} from "../pages/register/register"
 import { LoginPage } from '../pages/login/login';
 import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
+import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 @Component({
   templateUrl: 'app.html'
 })

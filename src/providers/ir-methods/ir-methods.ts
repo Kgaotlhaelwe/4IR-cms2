@@ -127,22 +127,66 @@ export class IrMethodsProvider {
   }
 
 
-  signUp(email, password) {
-    var user = firebase.auth().currentUser;
-    console.log(user.uid)
-    return new Promise((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-        firebase
-          .database()
-          .ref("Users/" + "Cms_Users/" + user.uid)
-          .push({
-            email: email,
-          })
-        resolve()
-      }).catch((error) => {
-        reject(error)
-      })
+  // signUp(email, password) {
+  //   var user = firebase.auth().currentUser;
+  //   return new Promise((resolve, reject) => {
+  //     firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+  //       firebase
+  //     .database()
+  //     .ref("Users/"+"Cms_Users/"+user.uid)
+  //     .set({
+  //       email:email ,  
 
+  //     })
+  //  resolve()
+  //     }).catch((error) => {
+  //       reject(error)
+  //     })
+
+  //   })
+  // }
+
+  signUp(email, password) {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        let loading = this.loadingCtrl.create({
+          spinner: 'bubbles',
+          content: 'Please wait...',
+          duration: 4000000
+        });
+        loading.present();
+        return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
+          var user = firebase.auth().currentUser
+          console.log(user)
+          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({      
+            email: email,     
+          })
+          var user = firebase.auth().currentUser;
+          // user.sendEmailVerification().then(function () {
+          //   // Email sent.
+          // }).catch(function (error) {
+          //   // An error happened.
+          // });
+          resolve();
+          loading.dismiss();
+        }).catch((error) => {
+          loading.dismiss();
+          const alert = this.alertCtrl.create({
+            // cssClass: 'myAlert',
+            subTitle: error.message,
+            buttons: [
+              {
+                text: 'ok',
+                handler: data => {
+                  console.log('Cancel clicked');
+                }
+              }
+            ]
+          });
+          alert.present();
+          console.log(error);
+        })
+      })
     })
   }
 
@@ -398,6 +442,7 @@ export class IrMethodsProvider {
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+  
   getOrgProfile() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
