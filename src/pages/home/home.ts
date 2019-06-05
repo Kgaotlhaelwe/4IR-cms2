@@ -643,21 +643,9 @@ export class HomePage implements OnInit {
     '<div id="siteNotice">'+
     '</div>'+
     '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-    '<div id="bodyContent">'+
-    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    'sandstone rock formation in the southern part of the '+
-    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-    'south west of the nearest large town, Alice Springs; 450&#160;km '+
-    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-    'Aboriginal people of the area. It has many springs, waterholes, '+
-    'rock caves and ancient paintings. Uluru is listed as a World '+
-    'Heritage Site.</p>'+
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-    '(last visited June 22, 2009).</p>'+
-    '</div>'+
+    
+    
+     '</div>'+
     '</div>'; 
 
     var infowindow = new google.maps.InfoWindow({
@@ -683,14 +671,33 @@ export class HomePage implements OnInit {
         styles: this.mapStyles
 
       });
+      
 
+      //
+console.log( this.orgArray[index].desc);
+
+let infowindow = new google.maps.InfoWindow({
+  content:
+    '<div style="width: 400px; transition: 300ms;"><b>' +
+    this.orgArray[index].orgName +
+    '</b><div style="display: flex; padding-top: 10px;">' +
+    '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+    this.orgArray[index].img +
+    ">" +
+    '<p style="padding-left: 10px;padding-right: 10px">' +
+    this.orgArray[index].desc +
+    "</p><br>" +
+    "<br></div>"
+});
       this.showMultipleMarker.addListener('click', () => {
-
-       console.log(this.orgArray[index]);
-
-        
         console.log(index);
-        this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
+        
+       
+        infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
+     //  this.goToProfile() ;
+        ///infowindow.open(marker.get('map'), marker);
+        console.log(index);
+      //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
       });
 
     }

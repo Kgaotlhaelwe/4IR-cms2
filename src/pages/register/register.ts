@@ -169,7 +169,7 @@ export class RegisterPage {
 
   SignIn(email: string, password: string) {
     console.log(email, password)
-    // if(this.signUpEmail != undefined && this.signUppassword != undefined){
+     if(this.signUpEmail != "" && this.signUppassword != ""){
     this.IRmethods.SignIn(email, password).then((user: any) => {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
@@ -177,6 +177,8 @@ export class RegisterPage {
         duration: 40000
       });
       loading.present();
+
+      this.navCtrl.setRoot(HomePage)
 
     }).catch((error) => {
       const alert = this.alertCtrl.create({
@@ -189,15 +191,15 @@ export class RegisterPage {
       // loading.dismiss()
       alert.present();
     })
-  // }else {
-  //   const alert = this.alertCtrl.create({
-  //     cssClass: "myAlert",
-  //     title: '',
-  //     subTitle: 'Please enter your email and password ',
-  //     buttons: ['OK']
-  //   });
-  //   alert.present();
-  // }
+  }else {
+    const alert = this.alertCtrl.create({
+      cssClass: "myAlert",
+      title: '',
+      subTitle: 'Please enter your email and password ',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
   }
 
 
