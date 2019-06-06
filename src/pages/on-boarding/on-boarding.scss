@@ -17,18 +17,67 @@ page-on-boarding {
     width: 80px;
     height:160px;
   }
+  .the-options{
+    height: 20px;
+    font-size: 16px;
+    border: 2px solid red;
+  }
+  .decider{
+    position: absolute;
+    z-index: 999;
+    width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(228, 228, 228);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.712);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+    border-radius: 16px;
+    height: 100px;
+  }
+  .end, .start{
+    margin: 0 auto;
+    width: 50%;
+    // border: 2px solid red;
+  }
+  .the-dates{
+    display: flex;
+    flex-wrap: wrap;
+    
+input[type="date"]::-webkit-inner-spin-button {
+  /* Your CSS here */
+  display: none;
+}
+  }
+
+  .fixSize{
+    width:90%;
+    background: whitesmoke;
+  }
+  .fixSize1{
+    width:85%;
+    background: whitesmoke;
+  }
+  
   .theBody {
     width: 100vw;
     height: 100%;
     // display: flex;
-    .left {
-      width: 100%;
-      height: 100%;
-
-      background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
+    background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
       background-size: cover;
       // filter:  sepia(1);
       position: relative;
+
+    .left {
+      width: 100%;
+      height: 100%;
+      // background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
+      // background-size: cover;
+      // // filter:  sepia(1);
+      // position: relative;
       .box {
         display: flex;
         width: 60%;
@@ -202,6 +251,10 @@ page-on-boarding {
     //   margin: 0 auto;
    // background: whitesmoke;
   }
+  .dates-input{
+    width: 55%;
+    margin-top: 10px;
+  }
 
   .theButton {
     border-radius: 50px;
@@ -284,9 +337,11 @@ page-on-boarding {
   }
   #page1 {
     margin-left: 0%;
-    transition: 1s;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+  }
+  #page1, #page2, #page3, #page4, #page5{
+    transition: 1s;
   }
   #page3{
     
@@ -306,5 +361,14 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+input{
+  text-transform: capitalize;
+}
+
+#web{
+  
+  text-transform: lowercase;
 }
 }

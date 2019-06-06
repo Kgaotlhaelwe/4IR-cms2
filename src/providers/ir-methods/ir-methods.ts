@@ -195,7 +195,7 @@ export class IrMethodsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("4IR_Hubs/" + user.uid)
+        .ref("4IR_Hubs/"+user.uid)
         .set({
           name: Orgname,
           email: email,
@@ -216,6 +216,40 @@ export class IrMethodsProvider {
 
         });
       resolve()
+    })
+  }
+
+  addProgram(prograName, lat , long , city,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate, programCategory ,intro ,objectives, targetAudience , fullDescription , programmeServices , programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook ){
+    var user = firebase.auth().currentUser;
+
+    return new Promise((resolve , reject)=>{
+      firebase.database().ref("4IR_Hubs/"+user.uid).set({
+        prograName:prograName ,
+        lat:lat ,
+        long:long ,
+        city:city ,
+        openApplicationDate:openApplicationDate ,
+        closeApplicationDate:closeApplicationDate ,
+        programStartDate:programStartDate ,
+        programCloseDate:programCloseDate ,
+        programCategory:programCategory ,
+        intro:intro ,
+        objectives :objectives ,
+        targetAudience:targetAudience ,
+        fullDescription:fullDescription ,
+        programmeService:programmeServices ,
+        programBenefits:programBenefits ,
+        additionalBenefits:additionalBenefits ,
+        eligibleCreteria:eligibleCreteria ,
+        applicationLink:applicationLink ,
+        promPhone:promPhone ,
+        twitter:twitter ,
+        facebook:facebook ,
+
+
+
+
+      })
     })
   }
   checkVerification() {
