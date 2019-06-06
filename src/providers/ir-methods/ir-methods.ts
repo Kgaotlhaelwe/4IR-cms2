@@ -195,7 +195,7 @@ export class IrMethodsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("4IR_Hubs/"+user.uid)
+        .ref("Users/"+"Cms_Users/"+user.uid)
         .set({
           name: Orgname,
           email: email,
