@@ -1,8 +1,9 @@
-import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
-import { NavController,LoadingController,AlertController,ToastController } from 'ionic-angular';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import {OrganizationProfilePage} from "../organization-profile/organization-profile"
 declare var firebase;
 
 
@@ -11,7 +12,7 @@ declare var google;
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
   orgArray = new Array();
   profileArr = new Array();
@@ -33,8 +34,8 @@ export class HomePage implements OnInit{
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
-  icon ='assets/imgs/wifi2.svg'
-  locIcon='assets/imgs/loc-user.svg'
+  icon = 'assets/imgs/wifi2.svg'
+  locIcon = 'assets/imgs/loc-user.svg'
   mapStyles = [
     {
       "elementType": "geometry",
@@ -250,12 +251,12 @@ export class HomePage implements OnInit{
       ]
     }
   ]
- 
+
   d = 1;
   imageArr;
   uid;
   contact;
-  constructor(public navCtrl: NavController,public IRmethods: IrMethodsProvider,public loadingCtrl: LoadingController,public alertCtrl:AlertController,public toastCtrl:ToastController) {
+  constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
       console.log(this.orgArray);
@@ -277,7 +278,7 @@ export class HomePage implements OnInit{
     }, 5000);
 
 
-    this.IRmethods.getOrgProfile().then((data:any) => {
+    this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
       this.category = data.category;
       this.cell = data.cell;
@@ -295,15 +296,15 @@ export class HomePage implements OnInit{
 
   }
 
-  ionViewWillEnter(){
-    this.initMap() ;
+  ionViewWillEnter() {
+    // this.initMap() ;
+    this.getGallery();
 
-
-    this.IRmethods.getOrgProfile().then((data:any) => {
+    this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
       this.category = data.category;
       this.cell = data.cell;
-      this.address = data.address;
+     // this.address = data.address;
       this.desc = data.desc;
       this.downloadurl = data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
@@ -316,7 +317,7 @@ export class HomePage implements OnInit{
     })
   }
 
-  EditPrfile(){
+  EditPrfile() {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
@@ -325,7 +326,7 @@ export class HomePage implements OnInit{
     loading.present();
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
       console.log('added to db');
-      this.IRmethods.update( this.downloadurl,this.downloadurlLogo).then((data) => {
+      this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
         this.imageArr.push(data);
       });
       console.log(this.imageArr);
@@ -348,7 +349,7 @@ export class HomePage implements OnInit{
         });
         alert.present();
       })
-      // this.viewCtrl.dismiss()
+    // this.viewCtrl.dismiss()
   }
 
   getUid1() {
@@ -378,7 +379,7 @@ export class HomePage implements OnInit{
 
 
   }
-  UploadProfilePic(event:any){
+  UploadProfilePic(event: any) {
     this.d = 1;
 
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
@@ -409,7 +410,7 @@ export class HomePage implements OnInit{
     }
   }
 
-  UploadLogo(event:any){
+  UploadLogo(event: any) {
     this.d = 1;
 
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
@@ -482,28 +483,28 @@ export class HomePage implements OnInit{
 
   retrieveGal() {
     return new Promise((accpt, rej) => {
-      firebase.auth().onAuthStateChanged(function(user) {
+      firebase.auth().onAuthStateChanged(function (user) {
         let dbPath = "Gallery/" + user.uid;
         firebase
           .database()
           .ref(dbPath)
           .on("value", (data: any) => {
-            if (data.val() != undefined || data.val() != null){
-            let details = data.val();
-            let key = Object.keys(details);
+            if (data.val() != undefined || data.val() != null) {
+              let details = data.val();
+              let key = Object.keys(details);
 
-            let obj = {
-              detals: details,
-              keys: key
-            };
-            console.log(obj);
-            accpt(obj);
-          }
+              let obj = {
+                detals: details,
+                keys: key
+              };
+              console.log(obj);
+              accpt(obj);
+            }
           });
       });
     });
   }
-  
+
   storeOrgNames(names) {
     this.orgNames = names;
     console.log(this.orgNames);
@@ -511,7 +512,7 @@ export class HomePage implements OnInit{
   }
 
   signOut() {
- 
+
 
     this.IRmethods.logout().then(() => {
       this.navCtrl.push(RegisterPage, { out: 'logout' });
@@ -545,7 +546,7 @@ export class HomePage implements OnInit{
     //   ]
     // });
     // prompt.present();
-  
+
 
   }
   initializeItems() {
@@ -599,7 +600,7 @@ export class HomePage implements OnInit{
   Rehab = 0;
 
   ngOnInit() {
-   
+    this.initMap();
   }
   initMap() {
 
@@ -607,7 +608,7 @@ export class HomePage implements OnInit{
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
-      duration: 7500
+      duration: 11000
     });
     loading.present();
 
@@ -619,27 +620,41 @@ export class HomePage implements OnInit{
       icon: this.icon,
       styles: this.mapStyles
     }
+    var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
     // adding user marker to the map 
-    this.marker = new google.maps.Marker({
+     var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
       icon: this.locIcon,
+      title: 'Your Location',
       position: this.map.getCenter(),
       styles: this.mapStyles
       //animation: google.maps.Animation.DROP,
     });
 
-   
+
 
     setTimeout(() => {
       this.markers();
-    }, 8000)
+    }, 12000)
 
+    var contentString = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+    
+    
+     '</div>'+
+    '</div>'; 
 
-    console.log("test");
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    }); 
 
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
 
   }
   markers() {
@@ -648,16 +663,348 @@ export class HomePage implements OnInit{
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       this.showMultipleMarker = new google.maps.Marker({
         map: this.map,
-         icon: this.icon,
+        icon: this.icon,
+        title: this.orgArray[index].orgName,
         position: { lat: parseFloat(this.orgArray[index].lat), lng: parseFloat(this.orgArray[index].long) },
         label: name,
         zoom: 8,
         styles: this.mapStyles
 
       });
+      
+
+      //
+console.log( this.orgArray[index].desc);
+
+let infowindow = new google.maps.InfoWindow({
+  content:
+    '<div style="width: 400px; transition: 300ms;"><b>' +
+    this.orgArray[index].orgName +
+    '</b><div style="display: flex; padding-top: 10px;">' +
+    '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+    this.orgArray[index].img +
+    ">" +
+    '<p style="padding-left: 10px;padding-right: 10px">' +
+    this.orgArray[index].desc +
+    "</p><br>" +
+    "<br></div>"
+});
+      this.showMultipleMarker.addListener('click', () => {
+        console.log(index);
+        
+       
+        infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
+     //  this.goToProfile() ;
+        ///infowindow.open(marker.get('map'), marker);
+        console.log(index);
+      //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
+      });
 
     }
   }
+
+
+  // initMap() {
+  //   console.log(this.orgArray);
+  //   console.log(this.lat)
+  //   console.log(this.lng)
+  //   if (this.orgArray.length != 0){
+  //   setTimeout(() => {
+  //     let myLatLng = {
+  //       lat: this.orgArray[0].lat,
+  //       lng: this.orgArray[0].long
+  //     };
+  //     let map = new google.maps.Map(document.getElementById("map"), {
+  //       zoom: 9,
+  //       center: myLatLng,
+  //       disableDefaultUI: true,
+  //       styles: [
+  //         {
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#8ec3b9"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1a3646"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.country",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#4b6878"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.land_parcel",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#64779e"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "administrative.province",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#4b6878"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "landscape.man_made",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#334e87"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "landscape.natural",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#283d6a"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#6f9ba5"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi.park",
+  //           elementType: "geometry.fill",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "poi.park",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#3C7680"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#304a7d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#98a5be"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#2c6675"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "geometry.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#255763"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#b0d5ce"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "road.highway",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#023e58"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#98a5be"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit",
+  //           elementType: "labels.text.stroke",
+  //           stylers: [
+  //             {
+  //               color: "#1d2c4d"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit.line",
+  //           elementType: "geometry.fill",
+  //           stylers: [
+  //             {
+  //               color: "#283d6a"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "transit.station",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#3a4762"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "water",
+  //           elementType: "geometry",
+  //           stylers: [
+  //             {
+  //               color: "#0e1626"
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           featureType: "water",
+  //           elementType: "labels.text.fill",
+  //           stylers: [
+  //             {
+  //               color: "#4e6d70"
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     });
+  //     var indx = 0;
+
+  //     for (var x = 0; x < this.orgArray.length; x++) {
+  //       if (this.orgArray[x].Category =="Higher Education Institution") indx = 1;
+  //       else if (this.orgArray[x].Category == "Library") indx = 2;
+  //       else if (this.orgArray[x].Category == "Learning Center") indx = 3;
+  //       else if (this.orgArray[x].Category =="InterCafe") indx = 4;
+  //       else if (this.orgArray[x].Category == "Mall") indx = 5;
+  //       else if (this.orgArray[x].Category == "Coffee Shop") indx = 6;
+
+
+
+
+  //       console.log("inside");
+  //       let myLatLng = {
+  //         lat: this.orgArray[x].lat,
+  //         lng: this.orgArray[x].long
+  //       };
+  //       console.log(myLatLng);
+
+  //       let marker = new google.maps.Marker({
+  //         position: myLatLng,
+  //         icon: this.icon[indx],
+  //         size: { width: 5, height: 5 },
+  //         map: map,
+  //         title: this.orgArray[x].name
+  //       });
+
+  //       let infowindow = new google.maps.InfoWindow({
+  //         content:
+  //           '<div style="width: 400px; transition: 300ms;"><b>' +
+  //           this.orgArray[x].name +
+  //           '</b><div style="display: flex; padding-top: 10px;">' +
+  //           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+  //           this.orgArray[x].downloadurl +
+  //           ">" +
+  //           '<p style="padding-left: 10px;padding-right: 10px">' +
+  //           this.orgArray[x].desc +
+  //           "</p><br>" +
+  //           "<br></div>"
+  //       });
+
+  //       marker.addListener("click", function() {
+  //         infowindow.open(map, marker);
+  //         map.setZoom(13);
+  //         map.setCenter(marker.getPosition());
+  //       });
+  //     }
+  //   }, 3000);
+
+  //   console.log("at the end");
+  // }
+  // }
 
 
   dismissUploader() {
@@ -693,7 +1040,7 @@ export class HomePage implements OnInit{
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "0";
+    slider[0].style.bottom = "10px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }
@@ -738,7 +1085,7 @@ export class HomePage implements OnInit{
   }
 
 
- 
+
 
   showGal() {
     // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
@@ -808,40 +1155,40 @@ export class HomePage implements OnInit{
   title;
   price;
   description;
-  addContributes(){
+  addContributes() {
 
-    if(this.title  == null || this.title == "" || this.title == undefined){
+    if (this.title == null || this.title == "" || this.title == undefined) {
       this.title = " "
       this.pullDown();
     }
-    if(this.description == null || this.description == " " || this.description == "" || this.description == undefined ){
+    if (this.description == null || this.description == " " || this.description == "" || this.description == undefined) {
       // swal("Please state your organisational needs in the fields provided");
     }
-    else{
-  
-    // firebase.auth().onAuthStateChanged(user => {
-    //     firebase.database().ref('contributes/' + user.uid + '/').push({
-    //       Title: this.title,
-    //       Description: this.description,
-    //     }, Error => {
-    //       swal(Error.message);
-    //     });
-     
-    //     const Toast = Swal.mixin({
-    //       toast: true,
-    //       position: 'center',
-    //       showConfirmButton: false,
-    //       timer: 3000
-    //     });
-        
-    //     Toast.fire({
-    //       type: 'success',
-    //       title: 'You have successfully added a contribute'
-    //     })
-    //   this.title="";
-    //   this.description="";
-    //   this.pullDown();
-    // })
+    else {
+
+      // firebase.auth().onAuthStateChanged(user => {
+      //     firebase.database().ref('contributes/' + user.uid + '/').push({
+      //       Title: this.title,
+      //       Description: this.description,
+      //     }, Error => {
+      //       swal(Error.message);
+      //     });
+
+      //     const Toast = Swal.mixin({
+      //       toast: true,
+      //       position: 'center',
+      //       showConfirmButton: false,
+      //       timer: 3000
+      //     });
+
+      //     Toast.fire({
+      //       type: 'success',
+      //       title: 'You have successfully added a contribute'
+      //     })
+      //   this.title="";
+      //   this.description="";
+      //   this.pullDown();
+      // })
     }
   }
 }
