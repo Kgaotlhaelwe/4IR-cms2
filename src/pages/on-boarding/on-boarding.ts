@@ -774,7 +774,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 }
 
 RegistrationType(){
-if(this.program == "Program"){
+if(this.program == "Programme"){
   this.showRegistionProgs =true ;
   this.showRegistionOrgs =false ;
 }else {
