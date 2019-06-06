@@ -48,7 +48,7 @@ export class OnBoardingPage {
   facebook ;
   programService ;
 
-  heiServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
+  heiServices = [{ title: "Testing & Analytical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
 
   { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
@@ -441,8 +441,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Testing & Analystical',
-      value: 'Testing & Analystical',
+      label: 'Testing & Analytical',
+      value: 'Testing & Analytical',
       checked: true
     });
 
@@ -474,7 +474,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
         var temArray = []
         for (let index = 0; index < data.length; index++) {
 
-          if (data[index] == "Testing & Analystical") {
+          if (data[index] == "Testing & Analytical") {
             console.log(0);
             temArray.push(this.heiServices[0])
 
@@ -796,12 +796,15 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 }
 
 RegistrationType(){
+  var thePlaceholder = document.getElementById("placeholderDiv");
 if(this.program == "Programme"){
   this.showRegistionProgs =true ;
   this.showRegistionOrgs =false ;
+  thePlaceholder.style.display = "none"
 }else {
   this.showRegistionOrgs =true ;
   this.showRegistionProgs =false ;
+  thePlaceholder.style.display = "none"
 }
 
 
