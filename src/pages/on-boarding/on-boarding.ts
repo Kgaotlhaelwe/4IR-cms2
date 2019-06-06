@@ -121,6 +121,17 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
   programAdditionalBenefits ;
   EligibleCriteria ;
 
+
+  showApplicationLink :boolean =false ;
+  showPhoneHint:boolean =false ;
+
+  showProgramBenefits :boolean =false ;
+  showAdditionalBenefits :boolean =false ;
+  showEligibleCriteria:boolean = false 
+  
+  
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
 
@@ -869,10 +880,44 @@ console.log(this.facebook);
 console.log(this.twitter);
 console.log(this.promPhone);
 
+}
+promPhoneHint(){
+  console.log( "phone");
+}
+
+applicationLinkHint(){
+  console.log("applicationLinkHint");
+
+  this.showApplicationLink = true ;
+  
+}
+
+programeBenefits(){
+  this.showProgramBenefits =true ;
+}
+
+hideProgramBenefits(){
+  this.showProgramBenefits =false;
+}
 
 
+AdditionalBenefits(){
+this.showAdditionalBenefits =true ;
+}
 
-  }
+hideAdditionalBenefits(){
+  this.showAdditionalBenefits =false ;
+}
+EligibleCriteriaHint(){
+  console.log("hin5y5y5");
+  
+  this.showEligibleCriteria =true 
+}
+
+hideEligibleCriteria(){
+  this.showEligibleCriteria =false ;
+}
+
 }
 
 

@@ -319,12 +319,21 @@
   
   
                   <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
-                    [(ngModel)]="programBenefits"></textarea>
-                  <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
-                    [(ngModel)]="programAdditionalBenefits"></textarea>
-  
+                    [(ngModel)]="programBenefits"></textarea>  <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
+                 
+                    <div *ngIf="showProgramBenefits">program Benefits</div>
+                 
+                    <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
+                    [(ngModel)]="programAdditionalBenefits"></textarea> <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
+                 
+                    <div *ngIf="showAdditionalBenefits">AdditionalBenefits</div>
+
                   <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
-                    [(ngModel)]="EligibleCriteria"></textarea>
+                    [(ngModel)]="EligibleCriteria"></textarea> <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()'class="dot">?</span>
+
+                  <div *ngIf="showEligibleCriteria">EligibleCriteria</div>
+
+
                   <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
                   <button ion-button class="theButtonBack" (click)="backToPage6()">BACK</button>
   
@@ -337,11 +346,17 @@
                   <div class="description" padding>
   
   
-                    <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
+                    <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>  <span  (mouseenter) ="applicationLinkHint()"class="dot">?</span>
+
+                    <div *ngIf="showApplicationLink">please enter the application form web address</div>
   
-                    <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">
-                    <input type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
-                    <input type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
+                    <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">  <span   (mouseenter) ="promPhoneHint()"class="dot">?</span>
+
+                    
+                    <div *ngIf="showPhoneHint" > Your phone number should start with Zero </div>
+
+                    <input type="text" placeholder="twitter" [(ngModel)]="twitter"><span class="dot">?</span>
+                    <input type="text" placeholder="facebook" [(ngModel)]="facebook"> <span class="dot">?</span>
   
                     <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
                     <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
