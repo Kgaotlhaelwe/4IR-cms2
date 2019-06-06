@@ -248,7 +248,7 @@ export class IrMethodsProvider {
         twitter:twitter ,
         facebook:facebook ,
         email:email ,
-         downloadurl: "assets/download.png",
+        downloadurl: "assets/download.png",
         downloadurlLogo: "assets/download.png",
 
 
