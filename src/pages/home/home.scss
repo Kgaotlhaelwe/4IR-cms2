@@ -109,6 +109,7 @@ page-home {
       width: 150px !important;
     }
   }
+  
   #map {
     height: 100%;
     width: 100%;
@@ -158,12 +159,12 @@ page-home {
   .theBtn:active {
     cursor: pointer;
     padding: 10px;
-    background: #00cbda;
+    background: #ffee00;
     border-radius: 50px;
   }
   .drag {
     cursor: pointer;
-    background: #018790;
+    background: #ffee00;
   }
   .needs .inp {
     width: 90%;
@@ -189,6 +190,7 @@ page-home {
   }
   .GAlNAme {
     // background: red;
+    color:black;
     padding-left: 30px;
     padding-top: 21px;
   }
@@ -214,7 +216,7 @@ page-home {
     padding-top: 50px;
     z-index: 10;
     color: white;
-    background: rgb(7, 134, 143);
+    background: rgb(105, 126, 27);
     height: 100%;
     left: 1%;
     padding-left: 10px;
@@ -305,40 +307,68 @@ page-home {
     color: white;
   }
 
-  .theList {
+  .list {
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
     min-width: 400px;
-    padding-top: 10px;
-    //  border: 1px solid red;
+    // padding-top: 20px;
+    /* border: 2px solid red; */
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     position: relative;
-
+  
     z-index: 100000;
-    /* background: linear-gradient(#fff,rgba(255, 255, 255, 0)) */
+//  background: linear-gradient(#fff,rgba(255, 255, 255, 0)) 
   }
-  // .list::-webkit-scrollbar-track {
-  //   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-  //   background-color: transparent;
-  //   width: 2px;
-  // }
+  .list::-webkit-scrollbar-track {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    background-color: transparent;
+    width: 2px;
+  }
+  
+  .list::-webkit-scrollbar {
+    width: 2px;
+    background-color: transparent;
+  }
+  .gal img {
+    /* padding: 1px; */
+    /* background: white; */
+    width: 200px;
+  
+    margin: 4px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  }
 
-  // .list::-webkit-scrollbar {
-  //   width: 2px;
-  //   background-color: transparent;
-  // }
+  .loader {
+    width: 250px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    /* border: 2px solid red; */
+    margin-left: 50%;
+    margin-top: 25%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  .clicker i {
+    transition: 1.5s;
+    margin-top: -10px;
+    line-height: 40px;
+    /* border: 2px solid red; */
+  }
+  .list::-webkit-scrollbar-thumb {
+    background-color: #958f45;
+    border-radius: 50px;
 
-  // .list::-webkit-scrollbar-thumb {
-  //   background-color: rgb(12, 104, 121);
-  //   border-radius: 50px;
-  // }
-  .theList img {
+  }
+  
+  .list img {
     height: 150px;
-    width: 150px;
+    width: 100%;
     padding: 5px;
+    // border-radius: 40%;
     object-fit: cover;
     position: relative;
   }
@@ -349,11 +379,11 @@ page-home {
     width: 100%;
     bottom: -200px;
     height: 200px;
-    /* border: 2px solid green; */
+//  border: 2px solid green; 
     overflow-x: visible;
     z-index: 100000;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.623));
-    /* box-shadow: 0 -15px 25px rgba(13, 98, 138, 0.5) */
+    background: linear-gradient(rgba(104, 104, 39, 0.297), rgba(0, 0, 0, 0.489));
+  box-shadow: 0 -15px 25px rgba(104, 104, 39, 0.366) 
   }
   #map {
     transition: 300ms;
@@ -363,13 +393,9 @@ page-home {
     cursor: pointer;
     text-align: center;
     padding: 10px;
-    width: 100px;
-    height: 40px;
     font-family: arial, sans-serif;
     font-weight: bolder;
     line-height: 25px;
-    background: #04592a;
-    border-radius: 50px;
   }
   .arrow {
     text-align: center;
@@ -408,7 +434,7 @@ page-home {
     border: 2px solid rgba(0, 0, 0, 0.5);
     background: white;
     color: white;
-    border-bottom:goldenrod;
+    border-bottom:#ffee00;
     border-radius: 100px;
     padding-top: 0;
     position: absolute;
@@ -477,7 +503,7 @@ page-home {
     right: -100%;
     bottom:60%;
     // top: 10px;
-    color: white;
+    color: black;
     // background: white;
     width: 100%;
     text-shadow: 0 0 10px black;
@@ -552,7 +578,7 @@ page-home {
     width: 90%;
     padding: 10px;
     margin: 10px;
-    background: #018790;
+    background: #ffee00;
     border-radius: 50px;
     color: white;
     border: 2px solid white;
@@ -636,9 +662,9 @@ page-home {
     width: 300px;
     height: 98%;
     position: fixed;
-    background: #018790;
-    top: 10px;
-    right: -260px;
+    background: whitesmoke;
+    top: 9px;
+    left: 105%;
     overflow-y: scroll;
     text-align: center;
     border-radius: 5px;
@@ -653,9 +679,9 @@ page-home {
     width: 300px;
     height: 98%;
     position: fixed;
-    background: #018790;
+    background: whitesmoke;
     top: 10px;
-    right: -240px;
+    left: 105%;
     overflow-y: scroll;
     text-align: center;
     border-radius: 5px;
@@ -667,7 +693,7 @@ page-home {
     cursor: pointer;
     line-height: 20px;
     margin-top: 0;
-    text-align: left;
+    // text-align: left;
   }
   .images {
     transition: 300ms;
@@ -1086,6 +1112,7 @@ ion-grid{
   h3 {
     padding-left: 10px;
     padding-right: 10px;
+    color:black
   }
   .listDetails p {
     color: grey;
@@ -1123,7 +1150,7 @@ ion-grid{
     font-size: 26px;
     width: 40px;
     height: 40px;
-    background: #018790;
+    background: #ffee00;
     border-radius: 50px;
     text-align: center;
     line-height: 40px;
@@ -1139,7 +1166,7 @@ ion-grid{
     font-size: 26px;
     width: 50px;
     height: 50px;
-    background: #00bac7;
+    background: #ffee00;
     border-radius: 50px;
     text-align: center;
     line-height: 50px;

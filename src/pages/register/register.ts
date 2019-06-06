@@ -57,91 +57,14 @@ export class RegisterPage {
     modal.present();
   }
 
-  // forgotpassword(PlaceObject: object) {
-  //   return new Promise((resolve, reject) => {
-  //     if (this.email == null || this.email == undefined) {
-  //       const alert = this.alertCtrl.create({
-  //         cssClass: "myAlert",
-  //         title: 'Forgot your password?',
-  //         message: "We just need your registered email address to reset your password.",
-          
-  //         // cssClass: 'myAlert',
-  //         inputs: [
-  //           {
-  //             name: 'email',
-  //             placeholder: 'Your email address'
-  //           },
-  //         ],
-  //         buttons: [
-  //           {
-  //             text: 'Cancel',
-  //             handler: data => {
-  //               console.log('Cancel clicked');
-  //             }
-  //           },
-  //           {
-  //             text: 'Send',
-  //             handler: data => {
-  //               console.log('Saved clicked');
-
-  //               this.IRmethods.forgetPassword(data.email).then(()=>{
-  //                 console.log("forgot password works");
-  //                 const alert = this.alertCtrl.create({
-  //                   title: 'Confirmation',
-  //                   subTitle: "Please check your email to reset your password",
-  //                   buttons: ['OK']
-  //                 });
-  //                 alert.present();
-  //               })
-  //             }
-  //           }
-  //         ],
-  //       });
-  //       alert.present();
-  //     }
-  //     else if (this.email != null || this.email != undefined) {
-  //       firebase.auth().sendPasswordResetEmail(this.email).then(() => {
-  //         const alert = this.alertCtrl.create({
-  //           cssClass: "myAlert",
-  //           title: 'Password request Sent',
-  //           subTitle: "We've sent you and email with a reset link, go to your email to recover your account.",
-  //           buttons: ['OK'],
-
-  //         });
-  //         alert.present();
-  //         resolve()
-  //       }, Error => {
-  //         const alert = this.alertCtrl.create({
-  //           cssClass: "myAlert",
-  //           subTitle: Error.message,
-  //           buttons: ['OK'],
-  //           // cssClass: 'myAlert'
-  //         });
-  //         alert.present();
-  //         resolve()
-  //       });
-  //     }
-  //   }).catch((error) => {
-  //     const alert = this.alertCtrl.create({
-  //       cssClass: "myAlert",
-  //       subTitle: error.message,
-  //       buttons: [
-  //         {
-  //           text: 'ok',
-  //           handler: data => {
-  //             console.log('Cancel clicked');
-  //           }
-  //         }
-  //       ],
-  //     });
-  //     alert.present();
-  //   })
-  // }
+  forgotpassword(){
+    this.navCtrl.push(ForgotpasswordPage)
+  }
 
 
   selectCategory() {
-   console.log(this.category);
-   
+    console.log(this.category);
+
 
   }
 
@@ -169,61 +92,61 @@ export class RegisterPage {
 
   SignIn(email: string, password: string) {
     console.log(email, password)
-     if(this.signUpEmail != "" && this.signUppassword != ""){
-    this.IRmethods.SignIn(email, password).then((user: any) => {
-      let loading = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        content: 'Signing in...',
-        duration: 40000
-      });
-      loading.present();
+    if (this.signUpEmail != "" && this.signUppassword != "") {
+      this.IRmethods.SignIn(email, password).then((user: any) => {
+        let loading = this.loadingCtrl.create({
+          spinner: 'bubbles',
+          content: 'Signing in...',
+          duration: 4000
+        });
+        loading.present();
+        loading.dismiss()
+        this.navCtrl.setRoot(HomePage)
 
-      this.navCtrl.setRoot(HomePage)
+      }).catch((error) => {
+        const alert = this.alertCtrl.create({
+          cssClass: "myAlert",
+          // title: "No Password",
+          subTitle: error.message,
+          buttons: ['OK'],
+          // cssClass: 'myAlert',
+        });
 
-    }).catch((error) => {
+        alert.present();
+      })
+    } else {
       const alert = this.alertCtrl.create({
         cssClass: "myAlert",
-        // title: "No Password",
-        subTitle: error.message,
-        buttons: ['OK'],
-        // cssClass: 'myAlert',
+        title: '',
+        subTitle: 'Please enter your email and password ',
+        buttons: ['OK']
       });
-      // loading.dismiss()
       alert.present();
-    })
-  }else {
-    const alert = this.alertCtrl.create({
-      cssClass: "myAlert",
-      title: '',
-      subTitle: 'Please enter your email and password ',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+    }
   }
 
 
 
-  signUp(){
+  signUp() {
     // let loading = this.loadingCtrl.create({
     //   spinner: 'bubbles',
     //   content: 'Please wait...',
     //   duration: 4000
     // });
     // loading.present();
-    if(this.signUpEmail != undefined && this.signUppassword != undefined){
-      this. IRmethods.signUp(this.signUpEmail ,this.signUppassword).then(()=>{
+    if (this.signUpEmail != undefined && this.signUppassword != undefined) {
+      this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
         console.log("sucess");
-        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })     
-      }).catch((error)=>{
+        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
+      }).catch((error) => {
         const alert = this.alertCtrl.create({
           title: '',
-          subTitle: error.message ,
+          subTitle: error.message,
           buttons: ['OK']
         });
         alert.present();
       })
-    }else {
+    } else {
       const alert = this.alertCtrl.create({
         title: '',
         subTitle: 'Please enter your email and password ',
@@ -231,195 +154,10 @@ export class RegisterPage {
       });
       alert.present();
     }
-   }
-
-  
-
-   forgotpassword(PlaceObject: object) {
-    return new Promise((resolve, reject) => {
-      if (this.email == null || this.email == undefined) {
-        const alert = this.alertCtrl.create({
-          cssClass: "myAlert",
-          title: 'Forgot your password?',
-          message: "We just need your registered email address to reset your password.",
-
-          // cssClass: 'myAlert',
-          inputs: [
-            {
-              name: 'email',
-              placeholder: 'Your email address'
-            },
-          ],
-          buttons: [
-            {
-              text: 'Cancel',
-              handler: data => {
-                console.log('Cancel clicked');
-              }
-            },
-            {
-              text: 'Send',
-              handler: data => {
-                console.log('Saved clicked');
-
-                this.IRmethods.forgetPassword(data.email).then(() => {
-                  console.log("forgot password works");
-                  const alert = this.alertCtrl.create({
-                    title: 'Confirmation',
-                    subTitle: "Please check your email to reset your password",
-                    buttons: ['OK']
-                  });
-                  alert.present();
-                })
-              }
-            }
-          ],
-        });
-        alert.present();
-      }
-      else if (this.email != null || this.email != undefined) {
-        firebase.auth().sendPasswordResetEmail(this.email).then(() => {
-          const alert = this.alertCtrl.create({
-            cssClass: "myAlert",
-            title: 'Password request Sent',
-            subTitle: "We've sent you and email with a reset link, go to your email to recover your account.",
-            buttons: ['OK'],
-
-          });
-          alert.present();
-          resolve()
-        }, Error => {
-          const alert = this.alertCtrl.create({
-            cssClass: "myAlert",
-            subTitle: Error.message,
-            buttons: ['OK'],
-            // cssClass: 'myAlert'
-          });
-          alert.present();
-          resolve()
-        });
-      }
-    }).catch((error) => {
-      const alert = this.alertCtrl.create({
-        cssClass: "myAlert",
-        subTitle: error.message,
-        buttons: [
-          {
-            text: 'ok',
-            handler: data => {
-              console.log('Cancel clicked');
-            }
-          }
-        ],
-      });
-      alert.present();
-    })
   }
 
 
-  // selectCategory() {
-  //   console.log(this.category);
 
-
-  // }
-
-
-  // selectedServices(item) {
-  //   console.log(item);
-  //   this.serviceArray.push(item);
-  //   console.log(this.serviceArray);
-
-  // }
-
-  // getItems(ev: any) {
-  //   // Reset items back to all of the items
-
-  //   // set val to the value of the searchbar
-  //   const val = ev.target.value;
-
-  //   // if the value is an empty string don't filter the items
-  //   if (val && val.trim() != '') {
-  //     this.items = this.items.filter((item) => {
-  //       return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-  //     })
-  //   }
-  // }
-
-  // SignIn(email, password) {
-  //   console.log(email, password)
-  //   if (this.email == undefined || this.password == undefined,
-  //     this.email == null || this.password == null) {
-  //     const alert = this.alertCtrl.create({
-  //       title: '',
-  //       subTitle: 'Please enter your email and password ',
-  //       buttons: ['OK']
-  //     });
-  //     alert.present();
-  //   } else if (this.email == null || this.email == undefined) {
-  //     const alert = this.alertCtrl.create({
-  //       title: '',
-  //       subTitle: 'Please enter your email  ',
-  //       buttons: ['OK']
-  //     });
-  //     alert.present();
-  //   } else if (this.password == null || this.password == undefined) {
-  //     const alert = this.alertCtrl.create({
-  //       title: '',
-  //       subTitle: 'Please enter your  password ',
-  //       buttons: ['OK']
-  //     });
-  //     alert.present();
-  //   }
-
-  //   else {
-  //     this.IRmethods.loginx(email, password).then((user: any) => {
-  //       console.log(user);
-  //       let loading = this.loadingCtrl.create({
-  //         spinner: 'bubbles',
-  //         content: 'Signing in...',
-  //         duration: 4000
-  //       });
-  //       loading.present();
-  //       this.navCtrl.push(HomePage)
-  //     }).catch((error) => {
-  //       const alert = this.alertCtrl.create({
-  //         subTitle: error.message,
-  //         buttons: ['OK'],
-  //       });
-  //       alert.present();
-  //     })
-  //   }
-
-  // }
-
-
-  // signUp() {
-  //   console.log(this.signUpEmail)
-  //   if (this.signUpEmail != undefined || this.signUppassword != undefined) {
-  //     this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
-  //       console.log("sucess");
-  //       let loading = this.loadingCtrl.create({
-  //         spinner: 'bubbles',
-  //         content: 'Please wait...',
-  //         duration: 4000
-  //       });
-  //       loading.present();
-  //       this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
-  //     }).catch((error) => {
-  //       const alert = this.alertCtrl.create({
-  //         title: '',
-  //         subTitle: error.message,
-  //         buttons: ['OK']
-  //       });
-  //       alert.present();
-  //     })
-  //   } else {
-  //     const alert = this.alertCtrl.create({
-  //       title: '',
-  //       subTitle: 'Please enter your email and password ',
-  //       buttons: ['OK']
-  //     });
-  //     alert.present();
-  //   }
-  // }
+ 
+  
 }
