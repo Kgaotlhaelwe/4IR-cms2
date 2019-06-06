@@ -40,7 +40,7 @@
                 <input type="text" placeholder="Name" [(ngModel)]="orgName" required>
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
-                <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
+                <input type="url" id="web" placeholder="Website" [(ngModel)]="orgWebsite"><br>
                 <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
 
@@ -162,21 +162,20 @@
 
 
 
-
-                </div>
-
-
                 <div>
-
-                  {{orgName}}
-                  {{orgAdress}}
-                  {{orgPhone}}
-                  {{orgWebsite}}
-                  {{orgDescription}}
-                  {{offerWifi}}
-                  {{wifi}}
-                  {{chooseWifiRange}}
+                  <h3>{{orgName}}</h3>
+                  <p>{{orgAdress}}</p>
+                  <p>{{orgPhone}}</p>
+                  <p>{{orgWebsite}}</p>
+                  <p>{{orgDescription}}</p>
+                  <p>{{offerWifi}}</p>
+                  <p>{{wifi}}</p>
+                  <p>{{chooseWifiRange}}</p>
                 </div>
+
+                </div>
+
+
 
                 <div *ngFor="let a of catService ">
                   {{a.title}}
