@@ -174,7 +174,7 @@ export class RegisterPage {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
         content: 'Signing in...',
-        duration: 40000
+        duration: 10000
       });
       loading.present();
 
