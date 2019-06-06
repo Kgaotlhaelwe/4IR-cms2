@@ -219,7 +219,7 @@ export class IrMethodsProvider {
     })
   }
 
-  addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate, programCategory ,intro ,objectives, targetAudience , fullDescription , programmeServices,lat , long , city , programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook ){
+  addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate , programCategory , intro ,objectives, targetAudience , fullDescription, service,lat , long , city ,  address, programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook,email ){
     var user = firebase.auth().currentUser;
 
     return new Promise((resolve , reject)=>{
@@ -228,16 +228,18 @@ export class IrMethodsProvider {
         lat:lat ,
         long:long ,
         city:city ,
+        address :address ,
         openApplicationDate:openApplicationDate ,
         closeApplicationDate:closeApplicationDate ,
         programStartDate:programStartDate ,
         programCloseDate:programCloseDate ,
-        programCategory:programCategory ,
+      
         intro:intro ,
         objectives :objectives ,
         targetAudience:targetAudience ,
         fullDescription:fullDescription ,
-        programmeService:programmeServices ,
+        programCategory:programCategory ,
+        programmeService:service ,
         programBenefits:programBenefits ,
         additionalBenefits:additionalBenefits ,
         eligibleCreteria:eligibleCreteria ,
@@ -245,11 +247,16 @@ export class IrMethodsProvider {
         promPhone:promPhone ,
         twitter:twitter ,
         facebook:facebook ,
+        email:email ,
+         downloadurl: "assets/download.png",
+        downloadurlLogo: "assets/download.png",
 
 
 
 
       })
+
+      resolve()
     })
   }
   checkVerification() {

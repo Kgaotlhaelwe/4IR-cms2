@@ -3,7 +3,7 @@
 <div class="decider">
   <p>Register as...</p>
 
-  <select (change)="RegistrationType()" [(ngModel)]="program">
+  <select (change)="RegistrationType()" [(ngModel)]="program"  *ngIf="hideRegisterAs">
     <option>Programme</option>
     <option>Organisation</option>
   </select>
@@ -235,7 +235,26 @@
                     provident labore dolorum rem ab.</p>
                   <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
   
-                  <input type="text" placeholder="Programme Type" [(ngModel)]="orgAdress" (change)="setAddress()">
+                  <select class="select-css" (change)="selectProgramCategory()" [(ngModel)]="Programcategory"   *ngIf="showProgramcategory">
+
+                    <option value="Do you offer WiFi" disabled> Choose Programme </option>
+                    <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
+                      centre </option>
+                    <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
+                    </option>
+                    <option value="Data Science for impact and decision enablement program">Data Science for impact and
+                      decision enablement program</option>
+                    <option value="Experiential Training Programme">Experiential Training Programme</option>
+                    <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
+                    <option value="Other">Other</option>
+  
+                  </select>
+
+             
+                  <textarea  *ngIf="showOther" name="" id="orgDesc" placeholder=" " cols="4"   [(ngModel)]="other"></textarea>
+                  
+
+
                   <div class="the-dates">
   
                       <div class="start">
@@ -289,19 +308,7 @@
                 <div class="slideShow" id="page6">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
             
-                  <select class="select-css" (change)="showServices()" [(ngModel)]="Programcategory">
-
-                    <option value="Do you offer WiFi" disabled> Choose Programme </option>
-                    <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
-                      centre </option>
-                    <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
-                    </option>
-                    <option value="Data Science for impact and decision enablement program">Data Science for impact and
-                      decision enablement program</option>
-                    <option value="Experiential Training Programme">Experiential Training Programme</option>
-                    <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
-  
-                  </select>
+                
                   <textarea name="" id="orgDesc" placeholder="introduction" cols="4"
                     [(ngModel)]="ProgramIntroduction"></textarea>
   
@@ -325,7 +332,7 @@
                   <div  class="customSelect" (click)="services()">
                  
                   </div>
-                  <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()"><br>
+                  <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress" (change)="setAddress()"><br>
                 
   
   
@@ -357,15 +364,15 @@
                   <div class="description" padding>
   
   
-                    <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
-
-                    <input class="fixSize" type="email" placeholder="email" [(ngModel)]="email" required>
+                    <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink" required>  <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
+                    <div  *ngIf="showApplicationLink">Aplication link </div>
+                    <input class="fixSize" type="email" placeholder="email" [(ngModel)]="Programemail" required>
   
                     <input class="fixSize" type="tel" placeholder="Phone" [(ngModel)]="promPhone">
                     <input class="fixSize" type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
                     <input class="fixSize" type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
   
-                    <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
+                    <button ion-button class="theButton" (click)="moveToPage8()">Done</button>
                     <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
                   </div>
   
