@@ -46,8 +46,9 @@ export class OnBoardingPage {
   promPhone ;
   twitter ;
   facebook ;
+  programService ;
 
-  heiServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
+  heiServices = [{ title: "Testing & Analytical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
 
   { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
@@ -76,6 +77,16 @@ internetCafeServices = [{title:"Internet" , description:"s a place that offers c
 {title:" Printing" , description:'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.'}
 ,{title:"fax" , description:"an exact copy of a document made by electronic scanning and transmitted as data by telecommunications links."}
 
+]
+
+
+allServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment."} ,
+{ title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
+{ title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
+
+{title:"Skill Development" , description:" is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools."} ,
+{title: "EnterpreneurShip Programme" , description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses."} ,
+{title:"Training " , description:"Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role"}
 ]
 
 coffeeshopServices = [{title:"Internet" , description:"Offering internet to customers"}]
@@ -116,10 +127,21 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
   targetAudience ;
   programDescription ;
 
-  programService ;
+  programServicez ;
   programBenefits ;
   programAdditionalBenefits ;
   EligibleCriteria ;
+
+
+  showApplicationLink :boolean =false ;
+  showPhoneHint:boolean =false ;
+
+  showProgramBenefits :boolean =false ;
+  showAdditionalBenefits :boolean =false ;
+  showEligibleCriteria:boolean = false 
+  
+  
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
@@ -419,8 +441,8 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 
     alert.addInput({
       type: 'checkbox',
-      label: 'Testing & Analystical',
-      value: 'Testing & Analystical',
+      label: 'Testing & Analytical',
+      value: 'Testing & Analytical',
       checked: true
     });
 
@@ -452,7 +474,7 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
         var temArray = []
         for (let index = 0; index < data.length; index++) {
 
-          if (data[index] == "Testing & Analystical") {
+          if (data[index] == "Testing & Analytical") {
             console.log(0);
             temArray.push(this.heiServices[0])
 
@@ -774,12 +796,15 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
 }
 
 RegistrationType(){
+  var thePlaceholder = document.getElementById("placeholderDiv");
 if(this.program == "Programme"){
   this.showRegistionProgs =true ;
   this.showRegistionOrgs =false ;
+  thePlaceholder.style.display = "none"
 }else {
   this.showRegistionOrgs =true ;
   this.showRegistionProgs =false ;
+  thePlaceholder.style.display = "none"
 }
 
 
@@ -839,10 +864,14 @@ console.log(this.ProgramIntroduction );
 }
 
 moveToPage7(){
-  console.log(this.programService) ;
+ 
   console.log(this.programBenefits) ;
  console.log(this.programAdditionalBenefits ) ;
   console.log(this.EligibleCriteria) 
+  console.log(this.programServicez);
+  console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
+  
+  
 
   var toSlide = document.getElementById("page7");
     toSlide.style.marginLeft = "-25%";
@@ -869,10 +898,159 @@ console.log(this.facebook);
 console.log(this.twitter);
 console.log(this.promPhone);
 
+}
+
+services(){
+ 
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Choose your Services');
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Skill Development',
+      value: 'Skill Development'
+    });
+
+     
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Training',
+      value: 'Training'
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Enterpreneurship Programme ',
+      value: 'Enterpreneurship Programme '
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Testing & Analystical',
+      value: 'Testing & Analystical',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Rapid Prototyping and Manufacturing',
+      value: 'Rapid Prototyping and Manufacturing'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Consultation, Technology Audit and Feasibility Study',
+      value: 'Consultation, Technology Audit and Feasibility Study'
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Applied Development, Engineering and Design',
+      value: 'Applied Development, Engineering and Design'
+    });
 
 
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Internet',
+      value: 'Internet'
+    });
 
-  }
+
+    
+   
+
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: (data) => {
+       var  tempArray = []
+        console.log(data);
+        for (let index = 0; index < data.length; index++) {
+          if(data[index] == "Skill Development"){
+            console.log(4);
+            tempArray.push(this.allServices[4])
+            
+
+          }else if (data[index] == "Training"){
+            console.log(6);
+            tempArray.push(this.allServices[6])
+            
+            
+          }else if (data[index] == " Enterpreneurship Programme"){
+            console.log(5);
+            tempArray.push(this.allServices[5])
+          }else if (data[index] == "Testing & Analystical"){
+            console.log(0);
+            tempArray.push(this.allServices[0])
+
+          }else if(data[index] == "Rapid Prototyping and Manufacturing"){
+            console.log(1);
+            tempArray.push(this.allServices[1])
+
+          }else if (data[index] =="Consultation, Technology Audit and Feasibility Study"){
+            console.log(2);
+            tempArray.push(this.allServices[2])
+
+          }else if (data[index] == "'Applied Development, Engineering and Design"){
+            console.log(3);
+            tempArray.push(this.allServices[3])
+
+          }else if (data[index] ==  "Internet"){
+
+          }
+         
+        }
+
+        this.programServicez  =tempArray 
+
+        console.log(this.programServicez);
+        
+
+
+       
+      }
+
+    });
+    alert.present();
+
+
+}
+promPhoneHint(){
+  console.log( "phone");
+}
+
+applicationLinkHint(){
+  console.log("applicationLinkHint");
+
+  this.showApplicationLink = true ;
+  
+}
+
+programeBenefits(){
+  this.showProgramBenefits =true ;
+}
+
+hideProgramBenefits(){
+  this.showProgramBenefits =false;
+}
+
+
+AdditionalBenefits(){
+this.showAdditionalBenefits =true ;
+}
+
+hideAdditionalBenefits(){
+  this.showAdditionalBenefits =false ;
+}
+EligibleCriteriaHint(){
+  console.log("hin5y5y5");
+  
+  this.showEligibleCriteria =true 
+}
+
+hideEligibleCriteria(){
+  this.showEligibleCriteria =false ;
+}
+
 }
 
 
