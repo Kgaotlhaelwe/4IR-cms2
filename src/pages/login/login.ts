@@ -19,6 +19,7 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public IRmethods: IrMethodsProvider,public alertCtrl: AlertController,public loadingCtrl:LoadingController) {
+  
   }
 
   ionViewDidLoad() {
