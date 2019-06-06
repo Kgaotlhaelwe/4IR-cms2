@@ -227,7 +227,7 @@
                     provident labore dolorum rem ab.</p>
                   <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
   
-                  <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+                  <input type="text" placeholder="Programme Type" [(ngModel)]="orgAdress" (change)="setAddress()">
                   <div class="the-dates">
   
                       <div class="start">
@@ -280,8 +280,10 @@
                 </div>
                 <div class="slideShow" id="page6">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
+            
                   <select class="select-css" (change)="showServices()" [(ngModel)]="Programcategory">
-                    <option value="Do you offer WiFi" disabled> Choose category </option>
+
+                    <option value="Do you offer WiFi" disabled> Choose Programme </option>
                     <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
                       centre </option>
                     <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
@@ -311,11 +313,8 @@
                 <div class="slideShow" id="page7">
                   <p>Almost there, please provide a category for the organisation.</p>
   
-                  <select class="select-css" [(ngModel)]="programService">
-                    <option value="Do you offer WiFi" disabled> Target Audience </option>
-                    <option value="18 -25">18 -25</option>
-                    <option value="18-35">18-35 </option>
-                  </select><br>
+                
+                  <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()"><br>
   
   
                   <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
@@ -337,11 +336,11 @@
                   <div class="description" padding>
   
   
-                    <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
+                    <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
   
-                    <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">
-                    <input type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
-                    <input type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
+                    <input class="fixSize" type="tel" placeholder="Phone" [(ngModel)]="promPhone">
+                    <input class="fixSize" type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
+                    <input class="fixSize" type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
   
                     <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
                     <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
