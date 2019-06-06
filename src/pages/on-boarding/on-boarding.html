@@ -1,12 +1,25 @@
 <ion-content>
   <div class="theBody">
 <div class="decider">
-  Register As.. <br>
+  <p>Register as...</p>
 
   <select (change)="RegistrationType()" [(ngModel)]="program">
     <option>Programme</option>
     <option>Organisation</option>
   </select>
+</div>
+<div class="left" id="placeholderDiv">
+  <div class="box">
+      <div class="step1" padding>
+        <div class="logo-container">
+          <div id="logoBG"></div>
+        </div>
+        <br><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
+          perspiciatis qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore
+          incidunt!</p>
+      </div>
+  </div>
 </div>
     <div class="left" *ngIf="showRegistionOrgs">
       <div class="box">
@@ -159,10 +172,6 @@
               <div class="slideShow" id="page4">
                 <div class="description" padding>
 
-
-
-
-                <div>
                   <h3>{{orgName}}</h3>
                   <p>{{orgAdress}}</p>
                   <p>{{orgPhone}}</p>
@@ -171,7 +180,6 @@
                   <p>{{offerWifi}}</p>
                   <p>{{wifi}}</p>
                   <p>{{chooseWifiRange}}</p>
-                </div>
 
                 </div>
 
