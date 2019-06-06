@@ -1,5 +1,10 @@
 <ion-content>
-  <div class="theBody">
+
+  <select (change)="RegistrationType()" [(ngModel)]="program">
+    <option>Program</option>
+    <option>Organisation</option>
+  </select>
+  <div class="theBody" *ngIf="showRegistionOrgs">
     <div class="left">
       <div class="box">
         <div class="step1" padding>
@@ -13,15 +18,15 @@
         </div>
         <div class="step2">
           <div class="slide-custom">
-            
-              <div class="dots"> 
-                
-                <div >
-                    <progress id="file" max="100" value="{{progressBar}}">  </progress>
-                </div>
-                </div> 
 
-              
+            <div class="dots">
+
+              <div>
+                <progress id="file" max="100" value="{{progressBar}}"> </progress>
+              </div>
+            </div>
+
+
 
             <div class="theSlider">
 
@@ -35,12 +40,12 @@
                 <input type="text" placeholder="Website" [(ngModel)]="orgWebsite"><br>
                 <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
-              
-                  
+
+
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
-             
-             
-               
+
+
+
               </div>
               <div class="slideShow" id="page2">
                 <p>Does the organisation have WiFi</p>
@@ -50,22 +55,22 @@
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select><br>
-              <div *ngIf="ShowWifi">
-                <p>Is it free?</p>
-                <select class="select-css"  [(ngModel)]="wifi" (change)="checkWifipayment()">
-                  <option value="Is it free?" disabled>Is it free?</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select><br>
-                <select class="select-css" *ngIf="ShowChooseRange" [(ngModel)]="chooseWifiRange">
-                  <option value="Choose Range" disabled>Choose Range</option>
-                  <option value="200MB Free">200MB Free</option>
-                  <option value="1GB Free">1GB Free</option>
-                  <option value="2GB Free">2GB Free</option>
-                  <option value="Unlimited">Unlimited</option>
-                </select>
-              </div>
-                
+                <div *ngIf="ShowWifi">
+                  <p>Is it free?</p>
+                  <select class="select-css" [(ngModel)]="wifi" (change)="checkWifipayment()">
+                    <option value="Is it free?" disabled>Is it free?</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select><br>
+                  <select class="select-css" *ngIf="ShowChooseRange" [(ngModel)]="chooseWifiRange">
+                    <option value="Choose Range" disabled>Choose Range</option>
+                    <option value="200MB Free">200MB Free</option>
+                    <option value="1GB Free">1GB Free</option>
+                    <option value="2GB Free">2GB Free</option>
+                    <option value="Unlimited">Unlimited</option>
+                  </select>
+                </div>
+
                 <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
               </div>
@@ -83,8 +88,8 @@
 
 
                 <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
-                    <!-- {{catService.title}} -->
-                    
+                  <!-- {{catService.title}} -->
+
                   <!--                     
                       <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
                         <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
@@ -97,7 +102,7 @@
 
 
                 <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
-                    <!-- {{catService}} -->
+                  <!-- {{catService}} -->
                   <!-- <ion-item>
                       
                         <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
@@ -123,23 +128,23 @@
 
 
                 <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
-                   <!-- {{catService}} -->
+                  <!-- {{catService}} -->
                 </div>
 
-                  <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
+                <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
 
-                  </div>
+                </div>
 
-                  
-                  <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
 
-                    <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
+                <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
+
+                  <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
                       <ion-option value="Training" selected="true">Training</ion-option>
                       <ion-option value="Skill development">Skill development</ion-option>
                       <ion-option value="Research">Research</ion-option>
                       <ion-option value="Incubation">Incubation</ion-option>
                     </ion-select> -->
-                  </div>
+                </div>
 
 
 
@@ -151,8 +156,8 @@
               </div>
               <div class="slideShow" id="page4">
                 <div class="description" padding>
-                 
-                  
+
+
 
 
 
@@ -164,16 +169,16 @@
                   {{orgName}}
                   {{orgAdress}}
                   {{orgPhone}}
-                 {{orgWebsite}}
-                 {{orgDescription}}
-                 {{offerWifi}}
-                 {{wifi}}
-                 {{chooseWifiRange}}
-                   </div>
+                  {{orgWebsite}}
+                  {{orgDescription}}
+                  {{offerWifi}}
+                  {{wifi}}
+                  {{chooseWifiRange}}
+                </div>
 
-                <div  *ngFor="let a of catService ">
+                <div *ngFor="let a of catService ">
                   {{a.title}}
-                </div> <br>  <br>  <br>
+                </div> <br> <br> <br>
                 <!-- <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea> -->
                 <button ion-button class="theButton" (click)="saveToDB()">Done</button>
                 <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>
@@ -184,5 +189,144 @@
       </div>
     </div>
   </div>
+
+
+  <div class="theBody" *ngIf="showRegistionProgs">
+    <div class="left">
+      <div class="box">
+        <div class="step1" padding>
+          <div class="logo-container">
+            <div id="logoBG"></div>
+          </div>
+          <br><br>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
+            perspiciatis qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore
+            incidunt!</p>
+        </div>
+        <div class="step2">
+          <div class="slide-custom">
+
+            <div class="dots">
+
+              <div>
+                <progress id="file" max="100" value="{{progressBar}}"> </progress>
+              </div>
+            </div>
+
+
+
+            <div class="theSlider">
+
+              <div class="slideShow" id="page5">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
+                  animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
+                  provident labore dolorum rem ab.</p>
+                <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
+
+                <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+
+                <ion-item>
+                  <ion-label>Start Date</ion-label>
+                  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="openApplicationDate"></ion-datetime>
+                </ion-item> <br> <br>
+
+
+                <ion-item>
+                    <ion-label>Close Date</ion-label>
+                    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="closeApplicationDate"></ion-datetime>
+                  </ion-item>  <br> <br>
+
+
+                  <ion-item>
+                      <ion-label>Programme Start</ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programStartDate"></ion-datetime>
+                    </ion-item>
+
+
+                    <ion-item>
+                        <ion-label>Programme close</ion-label>
+                        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programCloseDate"></ion-datetime>
+                      </ion-item>
+               
+                    <br> <br>
+                  
+                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage5()">NEXT</button>
+
+
+
+              </div>
+              <div class="slideShow" id="page6">
+               
+                  <select class="select-css" (change)="showServices()" [(ngModel)]="Programcategory">
+                      <option value="Do you offer WiFi" disabled> Choose category </option>
+                      <option value="Biomanufacturing industry development centre">Biomanufacturing industry development centre </option>
+                      <option value="Biorefinery industry development Facility">Biorefinery industry development Facility</option>
+                      <option value="Data Science for impact and decision enablement program">Data Science for impact and decision enablement program</option>
+                      <option value="Experiential Training Programme">Experiential Training Programme</option>
+                      <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
+                     
+                    </select><br>
+                    <textarea name="" id="orgDesc" placeholder="introduction" cols="4"  [(ngModel)]="ProgramIntroduction"></textarea>
+
+                    <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
+                      <select class="select-css" [(ngModel)]="targetAudience" >
+                        <option value="Do you offer WiFi" disabled> Target Audience  </option>
+                        <option value="18 -25">18 -25</option>
+                        <option value="18-35">18-35 </option>
+                        </select><br>
+                      <textarea name="" id="orgDesc" placeholder="full description" cols="4" [(ngModel)]="programDescription" ></textarea>
+                <button ion-button class="theButton" (click)="moveToPage6()">NEXT</button>
+
+                <button ion-button class="theButtonBack" (click)="backToPage5()">BACK</button>
+              </div>
+
+              <div class="slideShow" id="page7">
+                <p>Almost there, please provide a category for the organisation.</p>
+               
+                  <select class="select-css" [(ngModel)]="programService">
+                    <option value="Do you offer WiFi" disabled> Target Audience  </option>
+                    <option value="18 -25">18 -25</option>
+                    <option value="18-35">18-35 </option>
+                    </select><br>
+
+                
+                    <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
+                    <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4" [(ngModel)]="programAdditionalBenefits"></textarea>
+
+                    <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4" [(ngModel)]="EligibleCriteria"></textarea>
+                    <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
+                    <button ion-button class="theButtonBack" (click)="backToPage6()">BACK</button>
+
+              
+               
+
+              </div>
+              <div class="slideShow" id="page8">
+                <div class="description" padding>
+
+
+                    <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
+                   
+                    <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">
+                    <input type="text" placeholder="twitter" [(ngModel)]="twitter"><br>\
+                    <input type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
+
+                    <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
+                    <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
+                </div>
+
+
+               
+
+              
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </ion-content>

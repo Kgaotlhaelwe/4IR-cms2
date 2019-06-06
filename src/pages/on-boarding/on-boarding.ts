@@ -42,6 +42,10 @@ export class OnBoardingPage {
   showMallServices: boolean = false;
   showCoffeeShopServices:boolean = false ;
   websiteValidation  ;
+  applicationLink ;
+  promPhone ;
+  twitter ;
+  facebook ;
 
   heiServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
@@ -94,6 +98,28 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
   progressBar = 25
 
   contactValidation;
+
+  program ;
+  showRegistionOrgs :boolean = false ;
+  showRegistionProgs :boolean =false  ;
+
+  // program variables 
+  promName ;
+  openApplicationDate;
+  closeApplicationDate ;
+  programStartDate ;
+  programCloseDate ;
+
+  Programcategory ;
+  ProgramIntroduction ;
+  objectives ;
+  targetAudience ;
+  programDescription ;
+
+  programService ;
+  programBenefits ;
+  programAdditionalBenefits ;
+  EligibleCriteria ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
   }
@@ -747,4 +773,104 @@ coffeeshopServices = [{title:"Internet" , description:"Offering internet to cust
         }
 }
 
+RegistrationType(){
+if(this.program == "Program"){
+  this.showRegistionProgs =true ;
+}else {
+  this.showRegistionOrgs =true ;
 }
+
+
+}
+
+moveToPage5(){
+// promName ;
+//openApplicationDate;
+//closeApplicationDate ;
+//programStartDate ;
+//programCloseDate
+console.log(this.promName);
+
+console.log(this.openApplicationDate);
+console.log(this.closeApplicationDate);
+console.log(this.programStartDate);
+console.log(this.programCloseDate);
+// if(this.promName == undefined  && this.openApplicationDate  == undefined &&this.closeApplicationDate == undefined && this.programStartDate ==undefined && this.programCloseDate ==undefined){
+//   this.alert("Please enter all details")
+// } else if (this.promName == undefined ){
+//   this.alert("Please enter Programme Name")
+
+// }else if (this.openApplicationDate  == undefined){
+//   this.alert("Please choose  open application date")
+// }else if (this.closeApplicationDate == undefined){
+//   this.alert("Please choose close application date")
+// }else if (this.programStartDate ==undefined){
+//   this.alert("Please choose programme start date")
+
+// }else if (this.programCloseDate ==undefined){
+//   this.alert("Please choose programme close date")
+// }else {
+  
+//   var toSlide = document.getElementById("page5");
+//   toSlide.style.marginLeft = "-25%";
+//}
+
+
+var toSlide = document.getElementById("page5");
+   toSlide.style.marginLeft = "-25%";
+
+
+
+}
+moveToPage6(){
+console.log( this.Programcategory);
+
+console.log(this.ProgramIntroduction );
+
+  console.log(this.objectives );
+  
+  console.log(this.targetAudience);
+  console.log(this.programDescription);
+
+  var toSlide = document.getElementById("page6");
+  toSlide.style.marginLeft = "-25%";
+}
+
+moveToPage7(){
+  console.log(this.programService) ;
+  console.log(this.programBenefits) ;
+ console.log(this.programAdditionalBenefits ) ;
+  console.log(this.EligibleCriteria) 
+
+  var toSlide = document.getElementById("page7");
+    toSlide.style.marginLeft = "-25%";
+}
+
+backToPage5(){
+  var toSlide = document.getElementById("page5");
+  toSlide.style.marginLeft = "0%";
+}
+
+
+backToPage6(){
+  console.log("clicked");
+  
+  var toSlide = document.getElementById("page5");
+    toSlide.style.marginLeft = "-25%";
+  }
+
+ 
+
+  moveToPage8(){
+console.log(this.applicationLink);
+console.log(this.facebook);
+console.log(this.twitter);
+console.log(this.promPhone);
+
+
+
+
+  }
+}
+
+
