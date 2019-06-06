@@ -4,6 +4,7 @@ import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import {OrganizationProfilePage} from "../organization-profile/organization-profile"
+import { OnBoardingPage } from '../on-boarding/on-boarding';
 declare var firebase;
 
 
@@ -279,6 +280,8 @@ export class HomePage implements OnInit {
     }, 5000);
 
 
+  
+
     this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
       this.category = data.category;
@@ -289,12 +292,15 @@ export class HomePage implements OnInit {
       this.downloadurlLogo = data.downloadurlLogo;
       this.email = data.email;
       this.contact = data.contact;
-      console.log(this.contact)
+      console.log(this.name)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
     })
 
+  }
+  addProgramme(){
+    this.navCtrl.push(OnBoardingPage)
   }
 
   ionViewWillEnter() {
