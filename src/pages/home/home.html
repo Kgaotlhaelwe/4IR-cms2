@@ -130,8 +130,10 @@
             </div>
              <div class="uploads">
               <div class="imagesUploaded">
-                  <div class="thePhoto"  *ngFor="let a of imagesArr">
-                    <img src={{a.GalUrl}} alt="">
+                  <p id="titler">programmes</p>
+                  <div class="thePhoto"  *ngFor="let x of promArray">
+                    <img src="{{x.img}}" alt="" class="images">
+                    <p>{{x.programCategory}}</p>
         
                   </div>
               </div>
@@ -146,8 +148,8 @@
                   <div class="adder">
                       <i class="material-icons">add</i></div>
                 </label><br>
-                <div class="array" *ngFor="let x of imagesArr">
-                  <img src="{{x.GalUrl}}" alt="" class="images">
+                <div class="array" *ngFor="let x of promArray">
+                
               </div>
               
               </div>

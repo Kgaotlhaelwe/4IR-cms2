@@ -14,6 +14,7 @@ export class IrMethodsProvider {
   orgNames = new Array();
   profileArr = new Array();
   ProfileArr = new Array();
+  promArray = new Array();
   url;
   downloadurLLogo
   constructor(private ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController, ) {
@@ -223,7 +224,7 @@ export class IrMethodsProvider {
     var user = firebase.auth().currentUser;
 
     return new Promise((resolve, reject) => {
-      firebase.database().ref("4IR_Hubs/" + user.uid).set({
+      firebase.database().ref("4IR_Hubs/" + user.uid).push({
         prograName: prograName,
         lat: lat,
         long: long,
@@ -491,11 +492,58 @@ export class IrMethodsProvider {
       firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
-        accpt(details)
-        console.log(details)
-      });
-
+        let keys = Object.keys(details)
+        for (var x = 0; x < keys.length; x++) {
+          
+        firebase.database().ref("4IR_Hubs/" + keys[x]).on('value', (data2: any) => {
+          let details2 = data.val();
+          console.log(keys[x])
+          let keys2 = Object.keys(details2)
+          console.log(keys2)
+          var orgObject = {
+            orgName:details[keys2[x]].prograName,
+            applicationLink: details[keys2[x]].applicationLink,
+             city: details[keys2[x]].city,
+             closeApplicationDate: details[keys2[x]].closeApplicationDate,
+             eligibleCreteria: details[keys2[x]].eligibleCreteria,
+             email: details[keys2[x]].email,
+             facebook: details[keys2[x]].facebook,
+             fullDescription: details[keys2[x]].fullDescription,
+             intro: details[keys2[x]].intro,
+             lat: details[keys2[x]].lat,
+             long:details[keys2[x]].long ,
+             id: keys2[x],
+             objectives:details[keys2[x]].objectives,
+             // wifi:wifi,
+             openApplicationDate:details[keys2[x]].openApplicationDate,
+             additionalBenefits: details[keys2[x]].additionalBenefits,
+             programBenefits:details[keys2[x]].programBenefits ,
+             programCategory:details[keys2[x]].programCategory ,
+             programCloseDate:details[keys2[x]].programCloseDate ,
+             programStartDate:details[keys2[x]].programStartDate ,
+             programType:details[keys2[x]].programType ,
+             programmeService:details[keys2[x]].programmeService ,
+             promPhone:details[keys2[x]].promPhone ,
+             targetAudience:details[keys2[x]].targetAudience ,
+             twitter:details[keys2[x]].twitter ,
+             img: details[keys2[x]].downloadurl,
+             address: details[keys2[x]].address ,
+             logo: details[keys2[x]].downloadurlLogo,
+            //  rating :  totRating
+           }
+          //  console.log(orgObject)
+           this.promArray.push(orgObject)
+           console.log(this.promArray)
+        
+          accpt( this.promArray)
+        })
+      
+      }
+    
     })
+ 
+  
+  })
   }
 
   getOrgProfile() {
