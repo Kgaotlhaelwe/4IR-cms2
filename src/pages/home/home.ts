@@ -29,6 +29,7 @@ export class HomePage implements OnInit {
   category;
   address;
   desc;
+  v = 0;
   downloadurl;
   downloadurlLogo;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
@@ -279,16 +280,16 @@ export class HomePage implements OnInit {
 
 
     this.IRmethods.getOrgProfile().then((data: any) => {
-      // this.name = data.name;
-      // this.category = data.category;
-      // this.cell = data.cell;
-      // this.address = data.address;
-      // this.desc = data.desc;
-      // this.downloadurl = data.downloadurl;
-      // this.downloadurlLogo = data.downloadurlLogo;
-      // this.email = data.email;
-      // this.contact = data.contact;
-      // console.log(this.contact)
+      this.name = data.name;
+      this.category = data.category;
+      this.cell = data.cell;
+      this.address = data.address;
+      this.desc = data.desc;
+      this.downloadurl = data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.email = data.email;
+      this.contact = data.contact;
+      console.log(this.contact)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
@@ -514,43 +515,41 @@ export class HomePage implements OnInit {
   }
 
   signOut() {
-
-
-    this.IRmethods.logout().then(() => {
-      this.navCtrl.push(RegisterPage, { out: 'logout' });
-    }, (error) => {
-      console.log(error.message);
-    })
-
-
-    // const prompt = this.alertCtrl.create({
-    //   title: 'Login',
-    //   message: "Enter a name for this new album you're so keen on adding",
-    //   inputs: [
-    //     {
-    //       name: 'title',
-    //       placeholder: 'Title'
-    //     },
-    //   ],
-    //   buttons: [
-    //     {
-    //       text: 'Cancel',
-    //       handler: data => {
-    //         console.log('Cancel clicked');
-    //       }
-    //     },
-    //     {
-    //       text: 'Save',
-    //       handler: data => {
-    //         console.log('Saved clicked');
-    //       }
-    //     }
-    //   ]
-    // });
-    // prompt.present();
-
+    const confirm = this.alertCtrl.create({
+      // cssClass: "myAlert",
+      title: 'Confirm',
+      message: 'Are you sure you want to sign out?',
+   
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.IRmethods.logout().then(() => {
+              this.navCtrl.push(RegisterPage, { out: 'logout' });
+            }, (error) => {
+              console.log(error.message);
+            })
+           
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
 
   }
+
+
+
+
+
+
+  
   initializeItems() {
     this.items = this.orgNames
   }
@@ -656,6 +655,8 @@ export class HomePage implements OnInit {
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
+      map.setZoom(13);
+      map.setCenter(marker.getPosition());
     });
 
   }
@@ -667,6 +668,7 @@ export class HomePage implements OnInit {
         map: this.map,
         icon: this.icon,
         title: this.orgArray[index].orgName,
+        size: { width: 5, height: 5 },
         position: { lat: parseFloat(this.orgArray[index].lat), lng: parseFloat(this.orgArray[index].long) },
         label: name,
         zoom: 8,
@@ -700,6 +702,7 @@ let infowindow = new google.maps.InfoWindow({
 });
       this.showMultipleMarker.addListener('click', () => {
         console.log(index);
+       
         
        
         infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
@@ -713,307 +716,7 @@ let infowindow = new google.maps.InfoWindow({
   }
 
 
-  // initMap() {
-  //   console.log(this.orgArray);
-  //   console.log(this.lat)
-  //   console.log(this.lng)
-  //   if (this.orgArray.length != 0){
-  //   setTimeout(() => {
-  //     let myLatLng = {
-  //       lat: this.orgArray[0].lat,
-  //       lng: this.orgArray[0].long
-  //     };
-  //     let map = new google.maps.Map(document.getElementById("map"), {
-  //       zoom: 9,-
-  //       center: myLatLng,
-  //       disableDefaultUI: true,
-  //       styles: [
-  //         {
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#1d2c4d"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#8ec3b9"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           elementType: "labels.text.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#1a3646"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "administrative.country",
-  //           elementType: "geometry.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#4b6878"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "administrative.land_parcel",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#64779e"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "administrative.province",
-  //           elementType: "geometry.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#4b6878"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "landscape.man_made",
-  //           elementType: "geometry.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#334e87"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "landscape.natural",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#023e58"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "poi",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#283d6a"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "poi",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#6f9ba5"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "poi",
-  //           elementType: "labels.text.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#1d2c4d"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "poi.park",
-  //           elementType: "geometry.fill",
-  //           stylers: [
-  //             {
-  //               color: "#023e58"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "poi.park",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#3C7680"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#304a7d"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#98a5be"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road",
-  //           elementType: "labels.text.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#1d2c4d"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road.highway",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#2c6675"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road.highway",
-  //           elementType: "geometry.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#255763"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road.highway",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#b0d5ce"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "road.highway",
-  //           elementType: "labels.text.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#023e58"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "transit",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#98a5be"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "transit",
-  //           elementType: "labels.text.stroke",
-  //           stylers: [
-  //             {
-  //               color: "#1d2c4d"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "transit.line",
-  //           elementType: "geometry.fill",
-  //           stylers: [
-  //             {
-  //               color: "#283d6a"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "transit.station",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#3a4762"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "water",
-  //           elementType: "geometry",
-  //           stylers: [
-  //             {
-  //               color: "#0e1626"
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           featureType: "water",
-  //           elementType: "labels.text.fill",
-  //           stylers: [
-  //             {
-  //               color: "#4e6d70"
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     });
-  //     var indx = 0;
-
-  //     for (var x = 0; x < this.orgArray.length; x++) {
-  //       if (this.orgArray[x].Category =="Higher Education Institution") indx = 1;
-  //       else if (this.orgArray[x].Category == "Library") indx = 2;
-  //       else if (this.orgArray[x].Category == "Learning Center") indx = 3;
-  //       else if (this.orgArray[x].Category =="InterCafe") indx = 4;
-  //       else if (this.orgArray[x].Category == "Mall") indx = 5;
-  //       else if (this.orgArray[x].Category == "Coffee Shop") indx = 6;
-
-
-
-
-  //       console.log("inside");
-  //       let myLatLng = {
-  //         lat: this.orgArray[x].lat,
-  //         lng: this.orgArray[x].long
-  //       };
-  //       console.log(myLatLng);
-
-  //       let marker = new google.maps.Marker({
-  //         position: myLatLng,
-  //         icon: this.icon[indx],
-  //         size: { width: 5, height: 5 },
-  //         map: map,
-  //         title: this.orgArray[x].name
-  //       });
-
-  //       let infowindow = new google.maps.InfoWindow({
-  //         content:
-  //           '<div style="width: 400px; transition: 300ms;"><b>' +
-  //           this.orgArray[x].name +
-  //           '</b><div style="display: flex; padding-top: 10px;">' +
-  //           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-  //           this.orgArray[x].downloadurl +
-  //           ">" +
-  //           '<p style="padding-left: 10px;padding-right: 10px">' +
-  //           this.orgArray[x].desc +
-  //           "</p><br>" +
-  //           "<br></div>"
-  //       });
-
-  //       marker.addListener("click", function() {
-  //         infowindow.open(map, marker);
-  //         map.setZoom(13);
-  //         map.setCenter(marker.getPosition());
-  //       });
-  //     }
-  //   }, 3000);
-
-  //   console.log("at the end");
-  // }
-  // }
+  
 
 
   dismissUploader() {
@@ -1097,43 +800,42 @@ let infowindow = new google.maps.InfoWindow({
 
 
   showGal() {
-    // var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
+    var y = document.getElementsByClassName("gallery") as HTMLCollectionOf<HTMLElement>;
     var x = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
     if (this.v == 0) {
-      // y[0].style.right = "10px";
-
+      y[0].style.right = "10px";
+      
       setTimeout(() => {
         x[0].style.display = "block";
       }, 300);
       this.v = 1;
     } else {
       // x[0].style.display = "none"
-      // y[0].style.right = "-260px";
+      y[0].style.right = "-260px";
 
       setTimeout(() => {
         x[0].style.display = "none";
       }, 300);
       this.v = 0;
     }
-
   }
-  pullDown() {
-    var needer = document.getElementsByClassName("needs") as HTMLCollectionOf<HTMLElement>;
-
-    if (this.tribute == 0) {
+  pullDown(){
+    var needer = document.getElementsByClassName("needs") as HTMLCollectionOf <HTMLElement>;
+    
+    if(this.tribute == 0){
       needer[0].style.transform = "translate(-50%, 0%)";
       this.tribute = 1;
       document.getElementById("orger").style.transform = "rotateZ(180DEG)"
     }
-    else {
+    else{
       needer[0].style.transform = "translate(-50%, -85%)";
-
+      
       document.getElementById("orger").style.transform = "rotateZ(0DEG)"
       this.tribute = 0
     }
   }
 
-  v;
+  
   closeProfile() {
     // alert("clicked")
 
