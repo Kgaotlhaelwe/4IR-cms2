@@ -13,7 +13,7 @@ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any =  RegisterPage  ; 
+  rootPage :any =  OnBoardingPage  ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public IRmethods: IrMethodsProvider) {
     platform.ready().then(() => {

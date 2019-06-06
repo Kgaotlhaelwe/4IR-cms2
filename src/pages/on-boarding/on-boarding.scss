@@ -20,15 +20,15 @@ page-on-boarding {
   .the-options{
     height: 20px;
     font-size: 16px;
-    border: 2px solid red;
+    // border: 2px solid red;
   }
   .decider{
     position: absolute;
     z-index: 999;
-    width: 750px;
+    width: 700px;
     left: 50%;
     top: 180px;
-    transform: translateX(-30%);
+    transform: translateX(-32%);
     background: rgb(228, 228, 228);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.712);
     padding-left: 0px;
@@ -81,10 +81,14 @@ page-on-boarding {
     margin: 0 auto;
     width: 50%;
     // border: 2px solid red;
+    padding: 0;
   }
   .the-dates{
     display: flex;
     flex-wrap: wrap;
+    width: 85%;
+    margin: 0 auto;
+    // border: 2px solid green;
     
 input[type="date"]::-webkit-inner-spin-button {
   /* Your CSS here */
@@ -153,7 +157,7 @@ input[type="date"]::-webkit-inner-spin-button {
   }
   .step2 {
     width: 75%;
-    background: red;
+    // background: red;
     position: relative;
     
     border-top-right-radius: 15px;
@@ -290,11 +294,6 @@ input[type="date"]::-webkit-inner-spin-button {
     //   margin: 0 auto;
    // background: whitesmoke;
   }
-  .dates-input{
-    width: 55%;
-    margin-top: 10px;
-    text-transform: lowercase;
-  }
 
   .theButton {
     border-radius: 50px;
@@ -387,6 +386,35 @@ input[type="date"]::-webkit-inner-spin-button {
   #page1, #page2, #page3, #page4, #page5{
     transition: 1s;
   }
+  #page5{
+    padding-top: 100px;
+}
+#page7{
+  padding-top: 0;
+  p{
+    margin-top: 0px;
+  }
+}
+.input-field{
+  position: relative;
+}
+.dot{
+  // float: right;
+  position: absolute;
+  right: 0;
+  margin-top: -20px
+}
+.info{
+  background: rgba(0, 0, 0, 0.446);
+  padding: 5px;
+  color: white;
+  width: 200px;
+  float: right;
+  position: absolute;
+  right: 5px;
+  bottom: 20px;
+  border-radius: 5px;
+}
   #page3{
     
     border-top-right-radius: 15px;
@@ -409,6 +437,7 @@ input[type="number"] {
 
 input{
   text-transform: capitalize;
+  font-size: 16px;
 }
 
 #web{
@@ -423,4 +452,14 @@ input{
   border-radius: 50%;
   display: inline-block;
 }
+.dates-input{
+  width: 0%;
+  margin-top: 10px;
+  text-transform: lowercase;
+}
+}
+
+.alert-checkbox-button, .alert-checkbox-group, .button-inner, .alert-checkbox, .alert-checkbox-label {
+  background: #04592a;
+  color: white !important;
 }
