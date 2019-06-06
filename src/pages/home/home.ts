@@ -279,16 +279,16 @@ export class HomePage implements OnInit {
 
 
     this.IRmethods.getOrgProfile().then((data: any) => {
-      this.name = data.name;
-      this.category = data.category;
-      this.cell = data.cell;
-      this.address = data.address;
-      this.desc = data.desc;
-      this.downloadurl = data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      this.email = data.email;
-      this.contact = data.contact;
-      console.log(this.contact)
+      // this.name = data.name;
+      // this.category = data.category;
+      // this.cell = data.cell;
+      // this.address = data.address;
+      // this.desc = data.desc;
+      // this.downloadurl = data.downloadurl;
+      // this.downloadurlLogo = data.downloadurlLogo;
+      // this.email = data.email;
+      // this.contact = data.contact;
+      // console.log(this.contact)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
@@ -301,16 +301,18 @@ export class HomePage implements OnInit {
     this.getGallery();
 
     this.IRmethods.getOrgProfile().then((data: any) => {
-      this.name = data.name;
-      this.category = data.category;
-      this.cell = data.cell;
-     // this.address = data.address;
-      this.desc = data.desc;
-      this.downloadurl = data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      this.email = data.email;
-      this.contact = data.contact;
-      console.log(this.contact)
+
+      console.log(data)
+    //   this.name = data.name;
+    //   this.category = data.category;
+    //   this.cell = data.cell;
+    //  // this.address = data.address;
+    //   this.desc = data.desc;
+    //   this.downloadurl = data.downloadurl;
+    //   this.downloadurlLogo = data.downloadurlLogo;
+    //   this.email = data.email;
+    //   this.contact = data.contact;
+    //   console.log(this.contact)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
