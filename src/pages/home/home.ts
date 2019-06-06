@@ -677,6 +677,10 @@ export class HomePage implements OnInit {
 
       //
 console.log( this.orgArray[index].desc);
+console.log(this.orgArray[index].lat);
+console.log(this.orgArray[index].long);
+
+
 
 let infowindow = new google.maps.InfoWindow({
   content:
@@ -685,11 +689,14 @@ let infowindow = new google.maps.InfoWindow({
     '</b><div style="display: flex; padding-top: 10px;">' +
     '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
     this.orgArray[index].img +
-    ">" +
-    '<p style="padding-left: 10px;padding-right: 10px">' +
+    ">"+
+    '<div style="padding-left: 10px;padding-right: 10px">' +
     this.orgArray[index].desc +
-    "</p><br>" +
-    "<br></div>"
+    "</div><br>" +
+
+
+   
+    "</div>"
 });
       this.showMultipleMarker.addListener('click', () => {
         console.log(index);
@@ -717,7 +724,7 @@ let infowindow = new google.maps.InfoWindow({
   //       lng: this.orgArray[0].long
   //     };
   //     let map = new google.maps.Map(document.getElementById("map"), {
-  //       zoom: 9,
+  //       zoom: 9,-
   //       center: myLatLng,
   //       disableDefaultUI: true,
   //       styles: [

@@ -219,7 +219,7 @@ export class IrMethodsProvider {
     })
   }
 
-  addProgram(prograName, lat , long , city,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate, programCategory ,intro ,objectives, targetAudience , fullDescription , programmeServices , programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook ){
+  addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate, programCategory ,intro ,objectives, targetAudience , fullDescription , programmeServices,lat , long , city , programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook ){
     var user = firebase.auth().currentUser;
 
     return new Promise((resolve , reject)=>{
