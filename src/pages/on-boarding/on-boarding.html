@@ -1,4 +1,5 @@
 <ion-content>
+  <div class="theBody">
 <div class="decider">
   I am a... <br>
 
@@ -7,8 +8,7 @@
     <option>Organisation</option>
   </select>
 </div>
-  <div class="theBody" *ngIf="showRegistionOrgs">
-    <div class="left">
+    <div class="left" *ngIf="showRegistionOrgs">
       <div class="box">
         <div class="step1" padding>
           <div class="logo-container">
@@ -190,173 +190,178 @@
         </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="theBody" *ngIf="showRegistionProgs">
-    <div class="left">
-      <div class="box">
-        <div class="step1" padding>
-          <div class="logo-container">
-            <div id="logoBG"></div>
-          </div>
-          <br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
-            perspiciatis qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore
-            incidunt!</p>
-        </div>
-        <div class="step2">
-          <div class="slide-custom">
 
-            <div class="dots">
 
-              <div>
-                <progress id="file" max="100" value="{{progressBar}}"> </progress>
-              </div>
+
+
+
+    <div class="left" *ngIf="showRegistionProgs">
+        <div class="box">
+          <div class="step1" padding>
+            <div class="logo-container">
+              <div id="logoBG"></div>
             </div>
-
-
-
-            <div class="theSlider">
-
-              <div class="slideShow" id="page5">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
-                  animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
-                  provident labore dolorum rem ab.</p>
-                <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
-
-                <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-                <div class="the-dates">
-
-                    <div class="start">
-                        Start Date <br>
-                        <input type="date" class="dates-input">
-                      </div>
-                      <div class="end">
-                        End Date <br>
-                      <input type="date" class="dates-input">
-                      </div>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
+              perspiciatis qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore
+              incidunt!</p>
+          </div>
+          <div class="step2">
+            <div class="slide-custom">
+  
+              <div class="dots">
+  
+                <div>
+                  <progress id="file" max="100" value="{{progressBar}}"> </progress>
+                </div>
+              </div>
+  
+  
+  
+              <div class="theSlider">
+  
+                <div class="slideShow" id="page5">
+                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
+                    animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
+                    provident labore dolorum rem ab.</p>
+                  <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
+  
+                  <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+                  <div class="the-dates">
+  
                       <div class="start">
-                        Start Date <br>
+                          Start Date <br>
+                          <input type="date" class="dates-input">
+                        </div>
+                        <div class="end">
+                          End Date <br>
                         <input type="date" class="dates-input">
-                      </div>
-                      <div class="end">
-                        End Date <br>
-                      <input type="date" class="dates-input">
-                      </div>
-                </div>
-
-                <!-- <ion-item>
-                  <ion-label>Start Date</ion-label>
-                  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="openApplicationDate"></ion-datetime>
-                </ion-item> <br> <br>
-
-
-                <ion-item>
-                    <ion-label>Close Date</ion-label>
-                    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="closeApplicationDate"></ion-datetime>
-                  </ion-item>  <br> <br>
-
-
+                        </div>
+                        <div class="start">
+                          Start Date <br>
+                          <input type="date" class="dates-input">
+                        </div>
+                        <div class="end">
+                          End Date <br>
+                        <input type="date" class="dates-input">
+                        </div>
+                  </div>
+  
+                  <!-- <ion-item>
+                    <ion-label>Start Date</ion-label>
+                    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="openApplicationDate"></ion-datetime>
+                  </ion-item> <br> <br>
+  
+  
                   <ion-item>
-                      <ion-label>Programme Start</ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programStartDate"></ion-datetime>
-                    </ion-item>
-
-
+                      <ion-label>Close Date</ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="closeApplicationDate"></ion-datetime>
+                    </ion-item>  <br> <br>
+  
+  
                     <ion-item>
-                        <ion-label>Programme close</ion-label>
-                        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programCloseDate"></ion-datetime>
+                        <ion-label>Programme Start</ion-label>
+                        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programStartDate"></ion-datetime>
                       </ion-item>
-               
-                    <br> <br> -->
-
-                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage5()">NEXT</button>
-
-
-
-              </div>
-              <div class="slideShow" id="page6">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
-                <select class="select-css" (change)="showServices()" [(ngModel)]="Programcategory">
-                  <option value="Do you offer WiFi" disabled> Choose category </option>
-                  <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
-                    centre </option>
-                  <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
-                  </option>
-                  <option value="Data Science for impact and decision enablement program">Data Science for impact and
-                    decision enablement program</option>
-                  <option value="Experiential Training Programme">Experiential Training Programme</option>
-                  <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
-
-                </select>
-                <textarea name="" id="orgDesc" placeholder="introduction" cols="4"
-                  [(ngModel)]="ProgramIntroduction"></textarea>
-
-                <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
-                <select class="select-css" [(ngModel)]="targetAudience">
-                  <option value="Do you offer WiFi" disabled> Target Audience </option>
-                  <option value="18 -25">18 -25</option>
-                  <option value="18-35">18-35 </option>
-                </select><br>
-                <textarea name="" id="orgDesc" placeholder="full description" cols="4"
-                  [(ngModel)]="programDescription"></textarea>
-                <button ion-button class="theButton" (click)="moveToPage6()">NEXT</button>
-
-                <button ion-button class="theButtonBack" (click)="backToPage5()">BACK</button>
-              </div>
-
-              <div class="slideShow" id="page7">
-                <p>Almost there, please provide a category for the organisation.</p>
-
-                <select class="select-css" [(ngModel)]="programService">
-                  <option value="Do you offer WiFi" disabled> Target Audience </option>
-                  <option value="18 -25">18 -25</option>
-                  <option value="18-35">18-35 </option>
-                </select><br>
-
-
-                <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
-                  [(ngModel)]="programBenefits"></textarea>
-                <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
-                  [(ngModel)]="programAdditionalBenefits"></textarea>
-
-                <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
-                  [(ngModel)]="EligibleCriteria"></textarea>
-                <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
-                <button ion-button class="theButtonBack" (click)="backToPage6()">BACK</button>
-
-
-
-
-              </div>
-              <div class="slideShow" id="page8">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore minus animi, veritatis dolore eveniet accusamus reprehenderit repellat ab fuga pariatur nesciunt magnam dolorum quasi eos laudantium placeat dolores soluta quas.</p>
-                <div class="description" padding>
-
-
-                  <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
-
-                  <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">
-                  <input type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
-                  <input type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
-
-                  <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
-                  <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
+  
+  
+                      <ion-item>
+                          <ion-label>Programme close</ion-label>
+                          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="programCloseDate"></ion-datetime>
+                        </ion-item>
+                 
+                      <br> <br> -->
+  
+                  <button ion-button id="movetopage2" class="theButton" (click)="moveToPage5()">NEXT</button>
+  
+  
+  
                 </div>
-
-
-
-
-
-
+                <div class="slideShow" id="page6">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
+                  <select class="select-css" (change)="showServices()" [(ngModel)]="Programcategory">
+                    <option value="Do you offer WiFi" disabled> Choose category </option>
+                    <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
+                      centre </option>
+                    <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
+                    </option>
+                    <option value="Data Science for impact and decision enablement program">Data Science for impact and
+                      decision enablement program</option>
+                    <option value="Experiential Training Programme">Experiential Training Programme</option>
+                    <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
+  
+                  </select>
+                  <textarea name="" id="orgDesc" placeholder="introduction" cols="4"
+                    [(ngModel)]="ProgramIntroduction"></textarea>
+  
+                  <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
+                  <select class="select-css" [(ngModel)]="targetAudience">
+                    <option value="Do you offer WiFi" disabled> Target Audience </option>
+                    <option value="18 -25">18 -25</option>
+                    <option value="18-35">18-35 </option>
+                  </select><br>
+                  <textarea name="" id="orgDesc" placeholder="full description" cols="4"
+                    [(ngModel)]="programDescription"></textarea>
+                  <button ion-button class="theButton" (click)="moveToPage6()">NEXT</button>
+  
+                  <button ion-button class="theButtonBack" (click)="backToPage5()">BACK</button>
+                </div>
+  
+                <div class="slideShow" id="page7">
+                  <p>Almost there, please provide a category for the organisation.</p>
+  
+                  <select class="select-css" [(ngModel)]="programService">
+                    <option value="Do you offer WiFi" disabled> Target Audience </option>
+                    <option value="18 -25">18 -25</option>
+                    <option value="18-35">18-35 </option>
+                  </select><br>
+  
+  
+                  <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
+                    [(ngModel)]="programBenefits"></textarea>
+                  <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
+                    [(ngModel)]="programAdditionalBenefits"></textarea>
+  
+                  <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
+                    [(ngModel)]="EligibleCriteria"></textarea>
+                  <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
+                  <button ion-button class="theButtonBack" (click)="backToPage6()">BACK</button>
+  
+  
+  
+  
+                </div>
+                <div class="slideShow" id="page8">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore minus animi, veritatis dolore eveniet accusamus reprehenderit repellat ab fuga pariatur nesciunt magnam dolorum quasi eos laudantium placeat dolores soluta quas.</p>
+                  <div class="description" padding>
+  
+  
+                    <input type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
+  
+                    <input type="tel" placeholder="Phone" [(ngModel)]="promPhone">
+                    <input type="text" placeholder="twitter" [(ngModel)]="twitter"><br>
+                    <input type="text" placeholder="facebook" [(ngModel)]="facebook"><br>
+  
+                    <button ion-button class="theButton" (click)="moveToPage8()">NEXT</button>
+                    <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
+                  </div>
+  
+  
+  
+  
+  
+  
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
+
+
 
 
 </ion-content>
