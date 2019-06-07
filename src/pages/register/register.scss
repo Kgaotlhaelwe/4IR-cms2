@@ -59,7 +59,7 @@
 .input-green{
   background: rgb(177, 177, 177);
   border: 0px solid transparent;
-  height: 45px;
+  height: 40px;
 }
 .input, .inputColor{
   height: 100px;
@@ -148,6 +148,10 @@ p {
 .column1 p {
   color    : white;
   font-size: 1.2em;
+  // padding-top: 0;
+  // h2{
+  //   margin-top: -200px !important;
+  // }
   //position : relative;
   //bottom   : 20px;
 }
@@ -269,6 +273,15 @@ button{
     top: 0;
     margin: 10px auto;
     position: initial;
+}
+.column1{
+  padding-top: 0;
+  h2{
+    margin-top: 0;
+  }
+  .thepassword{
+    display: none;
+  }
 }
 }
 
