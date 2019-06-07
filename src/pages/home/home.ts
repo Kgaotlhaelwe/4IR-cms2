@@ -3,7 +3,9 @@ import { NavController, LoadingController, AlertController, ToastController } fr
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
-import {OrganizationProfilePage} from "../organization-profile/organization-profile"
+import { OrganizationProfilePage } from "../organization-profile/organization-profile"
+import { OnBoardingPage } from '../on-boarding/on-boarding';
+import Swal from 'sweetalert2';
 declare var firebase;
 
 
@@ -16,6 +18,7 @@ export class HomePage implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
   orgArray = new Array();
   profileArr = new Array();
+  promArray = new Array();
   lat = -26.2620;
   map;
   lng = 27.9503;
@@ -32,6 +35,7 @@ export class HomePage implements OnInit {
   v = 0;
   downloadurl;
   downloadurlLogo;
+  programCategory;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
@@ -277,7 +281,16 @@ export class HomePage implements OnInit {
       })
 
     }, 5000);
+    
+    Swal.fire({
+      imageUrl: "../../assets/imgs/4IR logo.png",
+      imageHeight: 300,
+      imageAlt: 'A tall image',
+      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
+    })
 
+
+  
 
     this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.name;
@@ -289,35 +302,39 @@ export class HomePage implements OnInit {
       this.downloadurlLogo = data.downloadurlLogo;
       this.email = data.email;
       this.contact = data.contact;
-      console.log(this.contact)
+      console.log(this.name)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
     })
 
   }
+  addProgramme() {
+    this.navCtrl.push(OnBoardingPage, { pushid: '1' })
+  }
 
   ionViewWillEnter() {
+
+  var   tempArray = []
     // this.initMap() ;
     this.getGallery();
 
-    this.IRmethods.getOrgProfile().then((data: any) => {
 
-      console.log(data)
-    //   this.name = data.name;
-    //   this.category = data.category;
-    //   this.cell = data.cell;
-    //  // this.address = data.address;
-    //   this.desc = data.desc;
-    //   this.downloadurl = data.downloadurl;
-    //   this.downloadurlLogo = data.downloadurlLogo;
-    //   this.email = data.email;
-    //   this.contact = data.contact;
-    //   console.log(this.contact)
+    this.IRmethods.getProgramme().then((data:any) => {
+      this.promArray.push(data)
+      console.log(this.promArray)
 
-      console.log(data)
-      // console.log(this.downloadurlLogo)
-    })
+      for (let index = 0; index < data.length; index++) {
+          tempArray.push(data[index])
+        
+      }
+ 
+      console.log(tempArray);
+
+      this.promArray =tempArray ;
+      
+    
+  })
   }
 
   EditPrfile() {
@@ -519,7 +536,7 @@ export class HomePage implements OnInit {
       // cssClass: "myAlert",
       title: 'Confirm',
       message: 'Are you sure you want to sign out?',
-   
+
       buttons: [
         {
           text: 'Yes',
@@ -529,7 +546,7 @@ export class HomePage implements OnInit {
             }, (error) => {
               console.log(error.message);
             })
-           
+
           }
         },
         {
@@ -549,7 +566,7 @@ export class HomePage implements OnInit {
 
 
 
-  
+
   initializeItems() {
     this.items = this.orgNames
   }
@@ -624,7 +641,7 @@ export class HomePage implements OnInit {
     var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
     // adding user marker to the map 
-     var marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
       icon: this.locIcon,
@@ -640,20 +657,20 @@ export class HomePage implements OnInit {
       this.markers();
     }, 12000)
 
-    var contentString = '<div id="content">'+
-    '<div id="siteNotice">'+
-    '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-    
-    
-     '</div>'+
-    '</div>'; 
+    var contentString = '<div id="content">' +
+      '<div id="siteNotice">' +
+      '</div>' +
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+
+
+      '</div>' +
+      '</div>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
-    }); 
+    });
 
-    marker.addListener('click', function() {
+    marker.addListener('click', function () {
       infowindow.open(map, marker);
       map.setZoom(13);
       map.setCenter(marker.getPosition());
@@ -675,48 +692,48 @@ export class HomePage implements OnInit {
         styles: this.mapStyles
 
       });
-      
+
 
       //
-console.log( this.orgArray[index].desc);
-console.log(this.orgArray[index].lat);
-console.log(this.orgArray[index].long);
+      console.log(this.orgArray[index].desc);
+      console.log(this.orgArray[index].lat);
+      console.log(this.orgArray[index].long);
 
 
 
-let infowindow = new google.maps.InfoWindow({
-  content:
-    '<div style="width: 400px; transition: 300ms;"><b>' +
-    this.orgArray[index].orgName +
-    '</b><div style="display: flex; padding-top: 10px;">' +
-    '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-    this.orgArray[index].img +
-    ">"+
-    '<div style="padding-left: 10px;padding-right: 10px">' +
-    this.orgArray[index].desc +
-    "</div><br>" +
+      let infowindow = new google.maps.InfoWindow({
+        content:
+          '<div style="width: 400px; transition: 300ms;"><b>' +
+          this.orgArray[index].orgName +
+          '</b><div style="display: flex; padding-top: 10px;">' +
+          '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+          this.orgArray[index].img +
+          ">" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.orgArray[index].desc +
+          "</div><br>" +
 
 
-   
-    "</div>"
-});
+
+          "</div>"
+      });
       this.showMultipleMarker.addListener('click', () => {
         console.log(index);
-       
-        
-       
+
+
+
         infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
-     //  this.goToProfile() ;
+        //  this.goToProfile() ;
         ///infowindow.open(marker.get('map'), marker);
         console.log(index);
-      //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
+        //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
       });
 
     }
   }
 
 
-  
+
 
 
   dismissUploader() {
@@ -804,7 +821,7 @@ let infowindow = new google.maps.InfoWindow({
     var x = document.getElementsByClassName("adder") as HTMLCollectionOf<HTMLElement>;
     if (this.v == 0) {
       y[0].style.right = "10px";
-      
+
       setTimeout(() => {
         x[0].style.display = "block";
       }, 300);
@@ -819,23 +836,23 @@ let infowindow = new google.maps.InfoWindow({
       this.v = 0;
     }
   }
-  pullDown(){
-    var needer = document.getElementsByClassName("needs") as HTMLCollectionOf <HTMLElement>;
-    
-    if(this.tribute == 0){
+  pullDown() {
+    var needer = document.getElementsByClassName("needs") as HTMLCollectionOf<HTMLElement>;
+
+    if (this.tribute == 0) {
       needer[0].style.transform = "translate(-50%, 0%)";
       this.tribute = 1;
       document.getElementById("orger").style.transform = "rotateZ(180DEG)"
     }
-    else{
+    else {
       needer[0].style.transform = "translate(-50%, -85%)";
-      
+
       document.getElementById("orger").style.transform = "rotateZ(0DEG)"
       this.tribute = 0
     }
   }
 
-  
+
   closeProfile() {
     // alert("clicked")
 
