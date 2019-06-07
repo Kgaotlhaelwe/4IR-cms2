@@ -89,53 +89,51 @@ export class RegisterPage {
       })
     }
   }
-
   SignIn(email: string, password: string) {
     console.log(email, password)
-    if (this.signUpEmail != "" && this.signUppassword != "") {
-      this.IRmethods.SignIn(email, password).then((user: any) => {
-        let loading = this.loadingCtrl.create({
-          spinner: 'bubbles',
-          content: 'Signing in...',
-          duration: 4000
-        });
-        loading.present();
-        loading.dismiss()
-        this.navCtrl.setRoot(HomePage)
-
-      }).catch((error) => {
-        const alert = this.alertCtrl.create({
-          cssClass: "myAlert",
-          // title: "No Password",
-          subTitle: error.message,
-          buttons: ['OK'],
-          // cssClass: 'myAlert',
-        });
-
-        alert.present();
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Signing in...',
+      duration: 40000
+    });
+    loading.present();
+    this. IRmethods.SignIn(email, password).then((user: any) => {
+      // console.log(user);
+      this .IRmethods.checkVerification().then((data: any) => {
+        if (data == 0) {
+          const alert = this.alertCtrl.create({
+            cssClass: "myAlert",
+            // title: "No Password",
+            subTitle: "We have sent you a verification mail, Please activate your account with the link in the mail",
+            buttons: ['OK'],
+          });
+          loading.dismiss()
+          alert.present();
+        }
+        else if (data == 1) {
+          loading.dismiss()
+          this.navCtrl.setRoot(HomePage);
+        }
       })
-    } else {
+    }).catch((error) => {
       const alert = this.alertCtrl.create({
         cssClass: "myAlert",
-        title: '',
-        subTitle: 'Please enter your email and password ',
-        buttons: ['OK']
+        // title: "No Password",
+        subTitle: error.message,
+        buttons: ['OK'],
+        // cssClass: 'myAlert',
       });
+      loading.dismiss()
       alert.present();
-    }
+    })
   }
 
 
 
   signUp() {
-    // let loading = this.loadingCtrl.create({
-    //   spinner: 'bubbles',
-    //   content: 'Please wait...',
-    //   duration: 4000
-    // });
-    // loading.present();
+  
     if (this.signUpEmail != undefined && this.signUppassword != undefined) {
-      this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
+      this.IRmethods.Signup(this.signUpEmail, this.signUppassword).then(() => {
         console.log("sucess");
         this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
       }).catch((error) => {

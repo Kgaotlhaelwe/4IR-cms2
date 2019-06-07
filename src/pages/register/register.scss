@@ -223,12 +223,14 @@ button {
 #Theicon {
   color   : #04592a;
   text-align: center;
+  font-size: 2rem;
 
 }
 
 #Theicon2 {
   position: absolute;
   color   : white;
+  font-size: 2rem;
 }
 
 .Labels {
@@ -236,6 +238,7 @@ button {
   top      : 20px;
   color    : #04592a;
   left     : 30%;
+  // border: 2px solid red;
 }
 
 #greenButton{
@@ -282,6 +285,9 @@ button{
   .thepassword{
     display: none;
   }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 }
 }
-

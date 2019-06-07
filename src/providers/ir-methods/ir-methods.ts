@@ -147,33 +147,41 @@ export class IrMethodsProvider {
   //   })
   // }
 
-  signUp(email, password) {
+  Signup(email, password) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
           spinner: 'bubbles',
-          content: 'Please wait...',
+          content: 'Signing up...',
           duration: 4000000
         });
         loading.present();
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
+<<<<<<< HEAD
+          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({
+         
+            email: email,
+         //   downloadurl: "../../assets/imgs/Defaults/default.jfif",
+           
+=======
           console.log(user)
           firebase.database().ref("Users/" + "Cms_Users/" + user.uid).set({
             email: email,
+>>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
           })
           var user = firebase.auth().currentUser;
-          // user.sendEmailVerification().then(function () {
-          //   // Email sent.
-          // }).catch(function (error) {
-          //   // An error happened.
-          // });
+          user.sendEmailVerification().then(function () {
+            // Email sent.
+          }).catch(function (error) {
+            // An error happened.
+          });
           resolve();
           loading.dismiss();
         }).catch((error) => {
           loading.dismiss();
           const alert = this.alertCtrl.create({
-            // cssClass: 'myAlert',
+            cssClass: 'myAlert',
             subTitle: error.message,
             buttons: [
               {
