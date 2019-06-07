@@ -22,11 +22,13 @@ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
     OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
+    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,6 +39,7 @@ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
     OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
+    
   ],
   providers: [
     StatusBar,
