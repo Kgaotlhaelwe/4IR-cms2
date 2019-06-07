@@ -261,6 +261,8 @@ export class HomePage implements OnInit {
   imageArr;
   uid;
   contact;
+  objective ;
+  benefit 
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -293,15 +295,18 @@ export class HomePage implements OnInit {
   
 
     this.IRmethods.getOrgProfile().then((data: any) => {
-      this.name = data.name;
-      this.category = data.category;
-      this.cell = data.cell;
+      this.name = data.prograName;
+      this.category = data.programCategory;
+      this.cell = data.promPhone;
       this.address = data.address;
-      this.desc = data.desc;
+      this.desc = data.intro;
       this.downloadurl = data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
-      this.email = data.email;
-      this.contact = data.contact;
+      this.objective =data.objectives 
+      this.benefit =data.programBenefits ;
+    
+      // this.email = data.email;
+      // this.contact = data.contact;
       console.log(this.name)
 
       console.log(data)
@@ -320,21 +325,21 @@ export class HomePage implements OnInit {
     this.getGallery();
 
 
-    this.IRmethods.getProgramme().then((data:any) => {
-      this.promArray.push(data)
-      console.log(this.promArray)
+  //   this.IRmethods.getProgramme().then((data:any) => {
+  //     this.promArray.push(data)
+  //     console.log(this.promArray)
 
-      for (let index = 0; index < data.length; index++) {
-          tempArray.push(data[index])
+  //     for (let index = 0; index < data.length; index++) {
+  //         tempArray.push(data[index])
         
-      }
+  //     }
  
-      console.log(tempArray);
+  //     console.log(tempArray);
 
-      this.promArray =tempArray ;
+  //     this.promArray =tempArray ;
       
     
-  })
+  // })
   }
 
   EditPrfile() {

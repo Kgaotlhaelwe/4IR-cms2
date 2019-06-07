@@ -14,9 +14,9 @@ export class IrMethodsProvider {
   orgNames = new Array();
   profileArr = new Array();
   ProfileArr = new Array();
-  promArray = new Array();
   url;
-  downloadurLLogo
+  downloadurLLogo ;
+  promArray 
   constructor(private ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController, ) {
 
     console.log('Hello 4IrMethodsProvider Provider');
@@ -147,41 +147,33 @@ export class IrMethodsProvider {
   //   })
   // }
 
-  Signup(email, password) {
+  signUp(email, password) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
           spinner: 'bubbles',
-          content: 'Signing up...',
+          content: 'Please wait...',
           duration: 4000000
         });
         loading.present();
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
-<<<<<<< HEAD
-          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({
-         
-            email: email,
-         //   downloadurl: "../../assets/imgs/Defaults/default.jfif",
-           
-=======
           console.log(user)
-          firebase.database().ref("Users/" + "Cms_Users/" + user.uid).set({
-            email: email,
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
+          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({      
+            email: email,     
           })
           var user = firebase.auth().currentUser;
-          user.sendEmailVerification().then(function () {
-            // Email sent.
-          }).catch(function (error) {
-            // An error happened.
-          });
+          // user.sendEmailVerification().then(function () {
+          //   // Email sent.
+          // }).catch(function (error) {
+          //   // An error happened.
+          // });
           resolve();
           loading.dismiss();
         }).catch((error) => {
           loading.dismiss();
           const alert = this.alertCtrl.create({
-            cssClass: 'myAlert',
+            // cssClass: 'myAlert',
             subTitle: error.message,
             buttons: [
               {
@@ -204,7 +196,7 @@ export class IrMethodsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("Users/" + "Cms_Users/" + user.uid)
+        .ref("4IR_Hubs/"+user.uid)
         .set({
           name: Orgname,
           email: email,
@@ -228,35 +220,35 @@ export class IrMethodsProvider {
     })
   }
 
-  addProgram(prograName, openApplicationDate, closeApplicationDate, programStartDate, programCloseDate, programCategory, intro, objectives, targetAudience, fullDescription, service, lat, long, city, address, programBenefits, additionalBenefits, eligibleCreteria, applicationLink, promPhone, twitter, facebook, email) {
+  addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate , programCategory , intro ,objectives, targetAudience , fullDescription, service,lat , long , city ,  address, programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook,email ){
     var user = firebase.auth().currentUser;
 
-    return new Promise((resolve, reject) => {
-      firebase.database().ref("4IR_Hubs/" + user.uid).push({
-        prograName: prograName,
-        lat: lat,
-        long: long,
-        city: city,
-        address: address,
-        openApplicationDate: openApplicationDate,
-        closeApplicationDate: closeApplicationDate,
-        programStartDate: programStartDate,
-        programCloseDate: programCloseDate,
-
-        intro: intro,
-        objectives: objectives,
-        targetAudience: targetAudience,
-        fullDescription: fullDescription,
-        programCategory: programCategory,
-        programmeService: service,
-        programBenefits: programBenefits,
-        additionalBenefits: additionalBenefits,
-        eligibleCreteria: eligibleCreteria,
-        applicationLink: applicationLink,
-        promPhone: promPhone,
-        twitter: twitter,
-        facebook: facebook,
-        email: email,
+    return new Promise((resolve , reject)=>{
+      firebase.database().ref("4IR_Hubs/"+user.uid).set({
+        prograName:prograName ,
+        lat:lat ,
+        long:long ,
+        city:city ,
+        address :address ,
+        openApplicationDate:openApplicationDate ,
+        closeApplicationDate:closeApplicationDate ,
+        programStartDate:programStartDate ,
+        programCloseDate:programCloseDate ,
+      
+        intro:intro ,
+        objectives :objectives ,
+        targetAudience:targetAudience ,
+        fullDescription:fullDescription ,
+        programCategory:programCategory ,
+        programmeService:service ,
+        programBenefits:programBenefits ,
+        additionalBenefits:additionalBenefits ,
+        eligibleCreteria:eligibleCreteria ,
+        applicationLink:applicationLink ,
+        promPhone:promPhone ,
+        twitter:twitter ,
+        facebook:facebook ,
+        email:email ,
         downloadurl: "assets/download.png",
         downloadurlLogo: "assets/download.png",
 
@@ -308,19 +300,40 @@ export class IrMethodsProvider {
             let keys = Object.keys(details);
             for (var x = 0; x < keys.length; x++) {
               let orgObject = {
-                orgName: details[keys[x]].name,
-                email: details[keys[x]].email,
-                region: details[keys[x]].region,
-                cell: details[keys[x]].contact,
-                long: details[keys[x]].long,
-                lat: details[keys[x]].lat,
-                img: details[keys[x]].downloadurl,
-                category: details[keys[x]].category,
-                id: keys[x],
-                desc: details[keys[x]].desc
+                orgName:details[keys[x]].prograName,
+
+                applicationLink: details[keys[x]].applicationLink,
+               city: details[keys[x]].city,
+               closeApplicationDate: details[keys[x]].closeApplicationDate,
+               eligibleCreteria: details[keys[x]].eligibleCreteria,
+               email: details[keys[x]].email,
+               facebook: details[keys[x]].facebook,
+               fullDescription: details[keys[x]].fullDescription,
+               intro: details[keys[x]].intro,
+               lat: details[keys[x]].lat,
+               long:details[keys[x]].long ,
+               id: keys[x],
+               objectives:details[keys[x]].objectives,
+            
+               openApplicationDate:details[keys[x]].openApplicationDate,
+               additionalBenefits: details[keys[x]].additionalBenefits,
+               programBenefits:details[keys[x]].programBenefits ,
+               programCategory:details[keys[x]].programCategory ,
+               programCloseDate:details[keys[x]].programCloseDate ,
+               programStartDate:details[keys[x]].programStartDate ,
+               programType:details[keys[x]].programType ,
+               programmeService:details[keys[x]].programmeService ,
+               promPhone:details[keys[x]].promPhone ,
+               targetAudience:details[keys[x]].targetAudience ,
+               twitter:details[keys[x]].twitter ,
+               img: details[keys[x]].downloadurl,
+               address: details[keys[x]].address ,
+               logo: details[keys[x]].downloadurlLogo,
+            
               }
               this.storeOrgNames(details[keys[x]].name);
               this.orgArray.push(orgObject)
+              console.log(this.orgArray)
             }
             resolve(this.orgArray)
           }
@@ -492,73 +505,12 @@ export class IrMethodsProvider {
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
-
-  getProgramme() {
-    return new Promise((accpt, rej) => {
-      let user = firebase.auth().currentUser;
-      console.log(user.uid)
-      firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
-        let details = data.val();
-        console.log(details)
-        let keys = Object.keys(details)
-        for (var x = 0; x < keys.length; x++) {
-          
-        firebase.database().ref("4IR_Hubs/" + keys[x]).on('value', (data2: any) => {
-          let details2 = data.val();
-          console.log(keys[x])
-          let keys2 = Object.keys(details2)
-          console.log(keys2)
-          var orgObject = {
-            orgName:details[keys2[x]].prograName,
-            applicationLink: details[keys2[x]].applicationLink,
-             city: details[keys2[x]].city,
-             closeApplicationDate: details[keys2[x]].closeApplicationDate,
-             eligibleCreteria: details[keys2[x]].eligibleCreteria,
-             email: details[keys2[x]].email,
-             facebook: details[keys2[x]].facebook,
-             fullDescription: details[keys2[x]].fullDescription,
-             intro: details[keys2[x]].intro,
-             lat: details[keys2[x]].lat,
-             long:details[keys2[x]].long ,
-             id: keys2[x],
-             objectives:details[keys2[x]].objectives,
-             // wifi:wifi,
-             openApplicationDate:details[keys2[x]].openApplicationDate,
-             additionalBenefits: details[keys2[x]].additionalBenefits,
-             programBenefits:details[keys2[x]].programBenefits ,
-             programCategory:details[keys2[x]].programCategory ,
-             programCloseDate:details[keys2[x]].programCloseDate ,
-             programStartDate:details[keys2[x]].programStartDate ,
-             programType:details[keys2[x]].programType ,
-             programmeService:details[keys2[x]].programmeService ,
-             promPhone:details[keys2[x]].promPhone ,
-             targetAudience:details[keys2[x]].targetAudience ,
-             twitter:details[keys2[x]].twitter ,
-             img: details[keys2[x]].downloadurl,
-             address: details[keys2[x]].address ,
-             logo: details[keys2[x]].downloadurlLogo,
-            //  rating :  totRating
-           }
-          //  console.log(orgObject)
-           this.promArray.push(orgObject)
-           console.log(this.promArray)
-        
-          accpt( this.promArray)
-        })
-      
-      }
-    
-    })
- 
   
-  })
-  }
-
   getOrgProfile() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
       console.log(user.uid)
-      firebase.database().ref("Users/" + "Cms_Users/" + user.uid).on('value', (data: any) => {
+      firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
         accpt(details)
@@ -600,7 +552,66 @@ export class IrMethodsProvider {
 
 
 
+  // getProgramme() {
+  //   return new Promise((accpt, rej) => {
+  //     let user = firebase.auth().currentUser;
+  //     console.log(user.uid)
+  //     firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
+  //       let details = data.val();
+  //       console.log(details)
+  //       let keys = Object.keys(details)
+  //       for (var x = 0; x < keys.length; x++) {
+          
+  //       firebase.database().ref("4IR_Hubs/" + keys[x]).on('value', (data2: any) => {
+  //         let details2 = data.val();
+  //         console.log(keys[x])
+  //         let keys2 = Object.keys(details2)
+  //         console.log(keys2)
+  //         var orgObject = {
+  //           orgName:details[keys2[x]].prograName,
+  //           applicationLink: details[keys2[x]].applicationLink,
+  //            city: details[keys2[x]].city,
+  //            closeApplicationDate: details[keys2[x]].closeApplicationDate,
+  //            eligibleCreteria: details[keys2[x]].eligibleCreteria,
+  //            email: details[keys2[x]].email,
+  //            facebook: details[keys2[x]].facebook,
+  //            fullDescription: details[keys2[x]].fullDescription,
+  //            intro: details[keys2[x]].intro,
+  //            lat: details[keys2[x]].lat,
+  //            long:details[keys2[x]].long ,
+  //            id: keys2[x],
+  //            objectives:details[keys2[x]].objectives,
+  //            // wifi:wifi,
+  //            openApplicationDate:details[keys2[x]].openApplicationDate,
+  //            additionalBenefits: details[keys2[x]].additionalBenefits,
+  //            programBenefits:details[keys2[x]].programBenefits ,
+  //            programCategory:details[keys2[x]].programCategory ,
+  //            programCloseDate:details[keys2[x]].programCloseDate ,
+  //            programStartDate:details[keys2[x]].programStartDate ,
+  //            programType:details[keys2[x]].programType ,
+  //            programmeService:details[keys2[x]].programmeService ,
+  //            promPhone:details[keys2[x]].promPhone ,
+  //            targetAudience:details[keys2[x]].targetAudience ,
+  //            twitter:details[keys2[x]].twitter ,
+  //            img: details[keys2[x]].downloadurl,
+  //            address: details[keys2[x]].address ,
+  //            logo: details[keys2[x]].downloadurlLogo,
+  //           //  rating :  totRating
+  //          }
 
+  //          this.promArray.push(orgObject)
+  //          console.log(this.promArray)
+        
+  //         accpt( this.promArray)
+  //       })
+      
+  //     }
+    
+  //   })
+ 
+  
+  // })
+  // }
 
   storeToDB1(name) {
     return new Promise((accpt, rejc) => {
