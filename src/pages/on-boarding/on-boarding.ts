@@ -1,5 +1,6 @@
+
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from "../../pages/home/home";
 import { LoginPage } from '../login/login';
@@ -43,6 +44,7 @@ export class OnBoardingPage {
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
   showCoffeeShopServices: boolean = false;
+  showWebsiteHintInfo: boolean = false
   websiteValidation;
   applicationLink;
   promPhone;
@@ -123,7 +125,7 @@ export class OnBoardingPage {
   programStartDate;
   programCloseDate;
   programType;
-  other ;
+  other;
 
   Programcategory;
   ProgramIntroduction;
@@ -144,6 +146,8 @@ export class OnBoardingPage {
   showProgramBenefits: boolean = false;
   showAdditionalBenefits: boolean = false;
   showEligibleCriteria: boolean = false;
+  showProgramIntroduction: boolean = false;
+  showObjective: boolean = false;
 
 
   hideRegisterAs: boolean = true;
@@ -152,10 +156,15 @@ export class OnBoardingPage {
   trackopenProgram;
   trackcloseProgram;
 
-  showOther :boolean =false ;
-  showProgramcategory :boolean = true ;
+  programContactValidation;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider) {
+  showOther: boolean = false;
+  showProgramcategory: boolean = true;
+
+  pushid = this.navParams.get('pushid')
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController) {
+    console.log(this.pushid);
   }
 
   ionViewDidLoad() {
@@ -164,6 +173,10 @@ export class OnBoardingPage {
     console.log(this.heiServices[0].title);
 
     this.is_urlValidation("www.youtube.com");
+    if (this.pushid == "1") {
+      this.RegistrationType()
+    }
+
 
 
   }
@@ -279,8 +292,17 @@ export class OnBoardingPage {
     console.log(this.catService);
     console.log(this.email);
 
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'successfully an organization...',
+      duration: 4000
+    });
+    loading.present();
+
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
-      console.log("added successfully");
+      console.log("added ");
+
+
       this.navCtrl.push(HomePage);
 
     })
@@ -379,30 +401,33 @@ export class OnBoardingPage {
 
 
   setAddress(event) {
-    this.getcoo(this.orgAdress).then((data: any) => {
-      this.orgAddressObject = data;
-      this.checkAddress = 0
+    if (this.orgAdress != undefined) {
+      this.getcoo(this.orgAdress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
 
-      console.log(this.orgAddressObject);
-    }, Error => {
-      this.checkAddress = 1;
+        console.log(this.orgAddressObject);
+      }, Error => {
+        this.checkAddress = 1;
 
-      console.log(this.checkAddress);
+        console.log(this.checkAddress);
 
-      // const alert = this.alertCtrl.create({
+        // const alert = this.alertCtrl.create({
 
-      //   subTitle: 'The address you have entered is invalid, please enter a valid address',
-      //   buttons: [
-      //     {
-      //       text: 'OK',
-      //       handler: data => {
-      //         this.orgAdress = ""
-      //       }
-      //     },
-      //   ]
-      // })
-      // alert.present();
-    })
+        //   subTitle: 'The address you have entered is invalid, please enter a valid address',
+        //   buttons: [
+        //     {
+        //       text: 'OK',
+        //       handler: data => {
+        //         this.orgAdress = ""
+        //       }
+        //     },
+        //   ]
+        // })
+        // alert.present();
+      })
+    }
+
   }
 
 
@@ -789,28 +814,77 @@ export class OnBoardingPage {
   }
 
 
+  programPhoneNumber(phone) {
+
+
+    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+
+    if (phone.match(phoneno)) {
+
+      this.programContactValidation = 0;
+
+
+    }
+    else {
+      this.programContactValidation = 1;
+
+      console.log("wrong");
+
+    }
+
+
+
+
+  }
+  websiteV;
   is_urlValidation(str) {
     var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     if (regexp.test(str)) {
       this.websiteValidation = 0
+      this.websiteV = 0
       // return true;
-      console.log("correct");
+      console.log("correct website");
 
     }
     else {
+      this.websiteV = 1;
       this.websiteValidation = 1
-      console.log("wrong");
+      console.log("wrong website");
       //return false;
     }
   }
 
   RegistrationType() {
+
+
+    if (this.program == undefined) {
+
+      if (this.pushid == "1") {
+        this.showRegistionProgs = true;
+        this.showRegistionOrgs = false;
+        this.hideRegisterAs = false
+        thePlaceholder.style.display = "none"
+
+      } else {
+        this.showRegistionProgs = true;
+        this.showRegistionOrgs = false;
+        this.hideRegisterAs = false
+        thePlaceholder.style.display = "none"
+
+      }
+    }
+
+
+
     var thePlaceholder = document.getElementById("placeholderDiv");
     if (this.program == "Programme") {
       this.showRegistionProgs = true;
       this.showRegistionOrgs = false;
       this.hideRegisterAs = false
       thePlaceholder.style.display = "none"
+
+
     } else {
       this.showRegistionOrgs = true;
       this.showRegistionProgs = false;
@@ -821,10 +895,10 @@ export class OnBoardingPage {
 
   }
 
-  moveToPage5() {
-    
- 
-  
+  moveToPage2progs() {
+
+
+
     let currentTime = new Date();
     let currentDate = moment(currentTime).format('YYYY-MM-DD')
 
@@ -837,8 +911,8 @@ export class OnBoardingPage {
     console.log(currentDate);
     console.log(openApplication);
 
-    if(this.Programcategory  == "Other"){
-      this.Programcategory =this.other
+    if (this.Programcategory == "Other") {
+      this.Programcategory = this.other
     }
 
 
@@ -880,7 +954,7 @@ export class OnBoardingPage {
 
     console.log(this.Programcategory);
 
-    if (this.promName == undefined && this.openApplicationDate == undefined && this.closeApplicationDate == undefined && this.programStartDate == undefined && this.programCloseDate == undefined && this.Programcategory ==undefined) {
+    if (this.promName == undefined && this.openApplicationDate == undefined && this.closeApplicationDate == undefined && this.programStartDate == undefined && this.programCloseDate == undefined && this.Programcategory == undefined) {
       this.alert("Please enter all details")
     } else if (this.promName == undefined) {
       this.alert("Please enter Programme Name")
@@ -900,82 +974,84 @@ export class OnBoardingPage {
       this.alert("Please the current day or future for open programme  ")
     } else if (this.trackcloseProgram == 1) {
       this.alert("Your closing date has passed , please select the correct date for program application ")
-    } 
+    }
     else if (this.programCloseDate == undefined) {
       this.alert("Please choose programme close date")
-    } else if (this.Programcategory ==undefined){
+    } else if (this.Programcategory == undefined) {
       this.alert("Please choose Programme category ")
     }
     else {
 
-      var toSlide = document.getElementById("page5");
+      var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
-
       this.progressBar = this.progressBar + 25
     }
 
 
 
 
-
   }
-  moveToPage6() {
-   
-    if(this.Programcategory ==undefined &&  this.ProgramIntroduction == undefined  && this.targetAudience == undefined && this.objectives ==undefined && this.programDescription ==undefined){
+  moveToPage3progs() {
+
+    if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
-    }else if (this.Programcategory ==undefined){
-      this.alert("Please choose programme category")
-    }else if (this.ProgramIntroduction == undefined){
+    } else if (this.ProgramIntroduction == undefined) {
       this.alert("Please enter introduction  ")
-    }else if ( this.targetAudience == undefined ){
+    } else if (this.targetAudience == undefined) {
       this.alert("Please choose target audience")
-    }else if (this.objectives ==undefined){
+    } else if (this.objectives == undefined) {
       this.alert("Please enter the objectives")
-    }else if (this.programDescription ==undefined){
+    } else if (this.programDescription == undefined) {
       this.alert("Please enter  program description ")
 
-    }else {
-      var toSlide = document.getElementById("page6");
-      toSlide.style.marginLeft = "-25%";
+    } else {
+
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-50%";
       this.progressBar = this.progressBar + 25;
     }
-  
-  
+
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-50%"
   }
 
-  moveToPage7() {
+  moveToPage4progs() {
 
     console.log(this.programBenefits);
     console.log(this.programAdditionalBenefits);
     console.log(this.EligibleCriteria)
     console.log(this.programServicez);
 
-    if(this.programBenefits == undefined && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
+    if (this.programBenefits == undefined && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
       this.alert("Please enter all details ")
 
-    }else if (this.programBenefits == undefined){
+    } else if (this.programBenefits == undefined) {
       this.alert("Please enter program benefits")
-    } else if (this.EligibleCriteria == undefined){
+    } else if (this.EligibleCriteria == undefined) {
       this.alert("Please enter eligible criteria")
-    }else if ( this.orgAdress == undefined){
+
+    }
+
+
+    else if (this.orgAdress == undefined) {
       this.alert("please enter address")
 
-    }else if (  this.checkAddress == 1){
+    } else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
 
     }
-    
-    
-    else{
-      
-    var toSlide = document.getElementById("page7");
-    toSlide.style.marginLeft = "-25%";
-    this.progressBar = this.progressBar + 25;
 
+
+    else {
+
+
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-75%";
+      this.progressBar = this.progressBar + 25;
     }
 
 
-    console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
+
 
 
 
@@ -990,51 +1066,79 @@ export class OnBoardingPage {
   backToPage6() {
     console.log("clicked");
 
-    var toSlide = document.getElementById("page5");
+    var toSlide = document.getElementById("page6");
     toSlide.style.marginLeft = "-25%";
   }
+  emailtrack;
+
+  emailAddressValidation(email) {
+    let atpos = email.indexOf("@");
+    let dotpos = email.lastIndexOf(".")
+
+    if (atpos < 1 || (dotpos - atpos < 2)) {
+      this.emailtrack = 1
+      console.log("wrong email");
+
+    } else {
+      this.emailtrack = 0
+      console.log("correct email");
+
+    }
+  }
+
+  uploadInfoDone() {
+    this.is_urlValidation(this.applicationLink)
+
+    if (this.promPhone != undefined) {
+      this.programPhoneNumber(this.promPhone);
+    }
+
+    if (this.Programemail != undefined) {
+      this.emailAddressValidation(this.Programemail)
+    }
+
+    if (this.twitter == undefined) {
+      this.twitter = " "
+    }
+
+    if (this.facebook == undefined) {
+      this.facebook = " "
+    }
+
+
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
+    });
+    loader.present();
+
+    if (this.promPhone == undefined && this.Programemail == undefined && this.applicationLink == undefined) {
+      this.alert("Please enter all the details")
+
+    } else if (this.Programemail == undefined) {
+      this.alert("Please enter your email")
+    } else if (this.applicationLink == undefined) {
+      this.alert("Please enter the application address")
+    } else if (this.websiteV == 1) {
+      console.log("wrong website ewfewfwerwew");
+
+      this.alert("The web address you have entered is invalid, please enter a valid web address  ")
+    } else if (this.programContactValidation == 1) {
+      this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+    } else if (this.emailtrack = 1) {
+      this.alert("The email address you have entered is invalid, please enter a valid email address  ")
+    } else {
+
+      this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
+        console.log("successfully");
+        this.navCtrl.push(HomePage)
+      })
+
+    }
 
 
 
-  moveToPage8() {
 
-    console.log(this.promName);
-    console.log(this.openApplicationDate);
-    console.log(this.closeApplicationDate);
-    console.log(this.programStartDate);
-    console.log(this.programCloseDate);
-
-
-    console.log(this.Programcategory);
-
-    console.log(this.ProgramIntroduction);
-
-    console.log(this.objectives);
-
-    console.log(this.targetAudience);
-    console.log(this.programDescription);
-
-
-    console.log(this.programBenefits);
-    console.log(this.programAdditionalBenefits);
-    console.log(this.EligibleCriteria)
-    console.log(this.programServicez);
-
-
-    console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
-
-
-    console.log(this.applicationLink);
-    console.log(this.facebook);
-    console.log(this.twitter);
-    console.log(this.promPhone);
-    console.log(this.programServicez);
-
-
-    this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory ,  this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
-      console.log("successfully");
-
-    })
 
   }
 
@@ -1089,6 +1193,13 @@ export class OnBoardingPage {
       type: 'checkbox',
       label: 'Internet',
       value: 'Internet'
+    });
+
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Printing',
+      value: 'Printing'
     });
 
 
@@ -1159,13 +1270,15 @@ export class OnBoardingPage {
   }
 
 
-  selectProgramCategory(){
+  selectProgramCategory() {
     console.log("clockkefefervfesfe");
-    if(this.Programcategory == 'Other'){
+    if (this.Programcategory == 'Other') {
       console.log("tttttt");
-      
-      this.showOther = true  ;
-      this.showProgramcategory = false ;
+
+      this.showOther = true;
+      // this.showProgramcategory = false;
+    } else {
+      this.showOther = false;
     }
   }
 
@@ -1175,7 +1288,7 @@ export class OnBoardingPage {
     this.showApplicationLink = true;
   }
   hideapplicationLinkHint() {
-
+    this.showApplicationLink = false;
   }
   programeBenefits() {
     this.showProgramBenefits = true;
@@ -1201,6 +1314,31 @@ export class OnBoardingPage {
 
   hideEligibleCriteria() {
     this.showEligibleCriteria = false;
+  }
+
+  ProgramIntroductionHint() {
+    this.showProgramIntroduction = true;
+  }
+
+  hideProgramIntroductionHint() {
+    console.log("l");
+
+    this.showProgramIntroduction = false
+  }
+
+  ProgramObjectiveHint() {
+    this.showObjective = true;
+  }
+
+  hideObjectiveHint() {
+    this.showObjective = false
+  }
+  websiteHintInfo() {
+    this.showWebsiteHintInfo = true;
+  }
+
+  hidewebsiteHintInfo() {
+    this.showWebsiteHintInfo = false;
   }
 
 }

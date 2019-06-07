@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.489) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
+  background-image:linear-gradient(to bottom, rgb(239, 239, 239) ,rgba(193, 193, 193, 0.592)),url('../../assets/imgs/parl.jpg');
   // background: url("../../assets/imgs/parl.jpg");
   // background-color:rgba(252, 246, 246, 0.523);
   background-size: cover;
@@ -59,7 +59,7 @@
 .input-green{
   background: rgb(177, 177, 177);
   border: 0px solid transparent;
-  height: 45px;
+  height: 40px;
 }
 .input, .inputColor{
   height: 100px;
@@ -71,7 +71,7 @@
   // padding-bottom: 10px;
   // padding-left: 10px;
   // padding-right: 10px;
-  height: 55%; /* Should be removed. Only for demonstration */
+  height: 40%; /* Should be removed. Only for demonstration */
   width: 100%;  
   justify-content: center;
   align-items    : center;
@@ -79,7 +79,7 @@
   // flex-direction : column;
   // //margin-top:16%;
   // position: relative;
-  border-radius: 10px
+  // border-radius: 10px
 }
 .column1 {
   // float  : left;
@@ -87,12 +87,12 @@
   // padding-bottom: 10px;
   // padding-left: 10px;
   // padding-right: 10px;
-  height: 55%; /* Should be removed. Only for demonstration */
+  height: 40%; /* Should be removed. Only for demonstration */
   width: 100%;  
   justify-content: center;
   align-items    : center;
   display        : flex;
-  border-radius: 10px
+  // border-radius: 10px
   // flex-direction : column;
   // //margin-top:16%;
   // position: relative;
@@ -148,6 +148,10 @@ p {
 .column1 p {
   color    : white;
   font-size: 1.2em;
+  // padding-top: 0;
+  // h2{
+  //   margin-top: -200px !important;
+  // }
   //position : relative;
   //bottom   : 20px;
 }
@@ -159,7 +163,7 @@ input {
   height          : 50px;
   border-radius   : 50px;
   background-color: rgba(255, 255, 255, 0);
-  font-size       : 2em;
+  font-size       : 100%;
   padding-left    : 20px;
   color           : white;
 }
@@ -219,12 +223,14 @@ button {
 #Theicon {
   color   : #04592a;
   text-align: center;
+  font-size: 2rem;
 
 }
 
 #Theicon2 {
   position: absolute;
   color   : white;
+  font-size: 2rem;
 }
 
 .Labels {
@@ -232,6 +238,7 @@ button {
   top      : 20px;
   color    : #04592a;
   left     : 30%;
+  // border: 2px solid red;
 }
 
 #greenButton{
@@ -270,5 +277,13 @@ button{
     margin: 10px auto;
     position: initial;
 }
+.column1{
+  padding-top: 0;
+  h2{
+    margin-top: 0;
+  }
+  .thepassword{
+    display: none;
+  }
 }
-
+}

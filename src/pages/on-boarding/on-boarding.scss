@@ -1,258 +1,304 @@
 page-on-boarding {
   #what {
     // background: green;
-    padding: 0;
+    padding      : 0;
   }
+
   #logo {
-    width: 80px;
+    width      : 80px;
     //   height: 250px;
-    object-fit: cover;
+    object-fit : cover;
   }
-  
-  #logoBG{
-    background: url("../../assets/imgs/4IR logo.png");
-    background-size: contain;
+
+  #logoBG {
+    background       : url("../../assets/imgs/4IR logo.png");
+    background-size  : contain;
     background-repeat: no-repeat;
-    margin: 0 auto;
-    width: 80px;
-    height:160px;
+    margin           : 0 auto;
+    width            : 80px;
+    height           : 160px;
   }
-  .the-options{
-    height: 20px;
+
+  .the-options {
+    height   : 20px;
     font-size: 16px;
     // border: 2px solid red;
   }
-  .decider{
-    position: absolute;
-    z-index: 999;
-    width: 700px;
-    left: 50%;
-    top: 180px;
-    transform: translateX(-32%);
-    background: rgb(228, 228, 228);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.712);
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
+
+  .decider {
+    position      : absolute;
+    z-index       : 999;
+    width         : 40%;
+    left          : 50%;
+    top           : 180px;
+    transform     : translateX(-32%);
+    background    : rgb(228, 228, 228);
+    box-shadow    : 0 0 10px rgba(0, 0, 0, 0.712);
+    padding-left  : 0px;
+    padding-right : 0px;
+    padding-top   : 0px;
     padding-bottom: 0px;
-    text-align: center;
-    border-radius: 26px;
+    text-align    : center;
+    border-radius : 26px;
+
     // height: 100px;
-    select{
-      margin: 0;
-      z-index: 999;
-      background: transparent;
-      width: 100%;
-    display: block;
-    font-size: 16px;
-    font-family: sans-serif;
-    font-weight: 700;
-    color: #444;
-    line-height: 1.3;
-    padding: 0.6em 1.4em 0.5em 0.8em;
-    width: 100%;
-    // max-width: 100%;
-    box-sizing: border-box;
-    margin: 0px auto;
-    border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-    border-radius: 50px;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: rgba(255, 255, 255, 0);
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
-      linear-gradient(to bottom, #ffffff 0%, #e5e5e500 100%);
-    background-repeat: no-repeat, repeat;
-    background-position: right 0.7em top 50%, 0 0;
-    background-size: 0.65em auto, 100%;
+    select {
+      margin            : 0;
+      z-index           : 999;
+      background        : transparent;
+      width             : 100%;
+      display           : block;
+      font-size         : 16px;
+      font-family       : sans-serif;
+      font-weight       : 700;
+      color             : #444;
+      line-height       : 1.3;
+      padding           : 0.6em 1.4em 0.5em 0.8em;
+      width             : 100%;
+      // max-width      : 100%;
+      box-sizing        : border-box;
+      margin            : 0px auto;
+      border            : 1px solid #aaa;
+      box-shadow        : 0 1px 0 1px rgba(0, 0, 0, 0.04);
+      border-radius     : 50px;
+      -moz-appearance   : none;
+      -webkit-appearance: none;
+      appearance        : none;
+      background-color  : rgba(255, 255, 255, 0);
+      background-image  : url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+        linear-gradient(to bottom, #ffffff 0%, #e5e5e500 100%);
+      background-repeat  : no-repeat, repeat;
+      background-position: right 0.7em top 50%, 0 0;
+      background-size    : 0.65em auto, 100%;
     }
-    P{
-      position: absolute;
-      top: 3px;
-      left:50%;
+
+    P {
+      position : absolute;
+      top      : 3px;
+      left     : 50%;
       transform: translateX(-50%);
-      width: 90px;
-      z-index: -1;
+      width    : 90px;
+      z-index  : -1;
       // border: 2px solid red;
     }
   }
-  .end, .start{
-    margin: 0 auto;
-    width: 50%;
-    // border: 2px solid red;
-    padding: 0;
-  }
-  .the-dates{
+  .services{
     display: flex;
-    flex-wrap: wrap;
-    width: 85%;
-    margin: 0 auto;
-    // border: 2px solid green;
-    
-input[type="date"]::-webkit-inner-spin-button {
-  /* Your CSS here */
-  display: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    p{
+      border: 2px solid red;
+      padding:0;
+      width: 100%;
+    }
+  }
+.showSelected{
+  min-height: 50px;
 }
+  .end,
+  .start {
+    margin   : 0 auto;
+    width    : 50%;
+    // border: 2px solid red;
+    padding  : 0;
   }
 
-  .fixSize{
-    width:90%;
+  .the-dates {
+    display  : flex;
+    flex-wrap: wrap;
+    width    : 85%;
+    margin   : 0 auto;
+    // border: 2px solid green;
+
+    input[type="date"]::-webkit-inner-spin-button {
+      /* Your CSS here */
+      display: none;
+    }
+  }
+
+  .fixSize {
+    width     : 90%;
+    background: whitesmoke;
+    text-transform: lowercase;
+  }
+
+  .fixSize1 {
+    width     : 85%;
     background: whitesmoke;
   }
-  .fixSize1{
-    width:85%;
-    background: whitesmoke;
-  }
-  
+
   .theBody {
-    width: 100vw;
-    height: 100%;
-    // display: flex;
-    background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
-      background-size: cover;
-      // filter:  sepia(1);
-      position: relative;
+    width           : 100vw;
+    height          : 100%;
+    // display      : flex;
+    background-image: linear-gradient(to bottom, rgba(239, 239, 239, 0.612), rgba(193, 193, 193, 0.877)), url('../../assets/imgs/parl.jpg');
+    background-size : cover;
+    // filter       :  sepia(1);
+    position        : relative;
 
     .left {
-      width: 100%;
+      width : 100%;
       height: 100%;
+
       // background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
-      // background-size: cover;
-      // // filter:  sepia(1);
-      // position: relative;
+      // background-size : cover;
+      // // filter       :  sepia(1);
+      // position        : relative;
       .box {
-        display: flex;
-        width: 60%;
-        height: 80%;
-        background: white;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0 15px rgb(0, 0, 0);
+        display      : flex;
+        width        : 60%;
+        height       : 80%;
+        background   : white;
+        position     : absolute;
+        left         : 50%;
+        top          : 50%;
+        transform    : translate(-50%, -50%);
+        box-shadow   : 0 0 15px rgb(0, 0, 0);
         border-radius: 10px;
       }
     }
   }
+
   .logo-container {
     text-align: center;
   }
+
   .step1 {
-    width: 25%;
-    background: whitesmoke;
-    position: relative;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top-left-radius: 15px;
+    width                    : 25%;
+    background               : whitesmoke;
+    position                 : relative;
+    text-align               : center;
+    display                  : flex;
+    flex-direction           : column;
+    justify-content          : center;
+    border-top-left-radius   : 15px;
     border-bottom-left-radius: 15px;
-    border-right: 1px solid rgba(0, 0, 0, 0.103);
+    border-right             : 1px solid rgba(0, 0, 0, 0.103);
   }
+
   p {
     // border: 2px solid red;
-    width: 100%;
-    color: rgb(42, 42, 42);
+    width    : 100%;
+    color    : rgb(42, 42, 42);
   }
+
   .step2 {
-    width: 75%;
+    width        : 75%;
     // background: red;
-    position: relative;
-    
-    border-top-right-radius: 15px;
+    position     : relative;
+
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
   }
-// #file{
-//   color:green
-// }
+
+  // #file{
+  //   color:green
+  // }
   .theInput {
-    color: black;
+    color : black;
     border: 1px solid black;
     margin: 10px auto;
-    width: 100%;
+    width : 100%;
   }
+
   //   .inputs {
-  //     width: 90%;
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 50%;
-  //     transform: translate(-50%, -50%);
+  //     width     : 90%;
+  //     position  : absolute;
+  //     top       : 50%;
+  //     left      : 50%;
+  //     transform : translate(-50%, -50%);
   //     text-align: center;
   //   }
   .slide-custom {
-    width: 100%;
-    height: 100%;
+    width        : 100%;
+    height       : 100%;
     // background: grey;
-    overflow: hidden;
-    .dots{
-      width: 30%;
-      height: 14px;
-      position: absolute;
-      z-index: 999;
+    overflow     : hidden;
+
+    .dots {
+      width        : 30%;
+      height       : 14px;
+      position     : absolute;
+      z-index      : 999;
       border-radius: 20px;
-      border: 2px solid white;
-      left: 50%;
-      padding: 0;
-      bottom: 0;
-      transform: translate(-50%,-5px);
-      #theDot{
-        width: 25%;
-        height: 10px;
+      border       : 2px solid white;
+      left         : 50%;
+      padding      : 0;
+      bottom       : 0;
+      transform    : translate(-50%, -5px);
+
+      #theDot {
+        width        : 25%;
+        height       : 10px;
         border-radius: 20px;
-        background: white;
-        transition: 1s;
+        background   : white;
+        transition   : 1s;
       }
     }
   }
+
   .theSlider {
-    width: 400%;
-    height: 100%;
-    display: flex;
+    width         : 400%;
+    height        : 100%;
+    display       : flex;
     flex-direction: row;
   }
+
   .slideShow {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    position: relative;
-    border-top-right-radius: 15px;
+    overflow-y                : scroll;
+    overflow-x                : hidden;
+    width                     : 100%;
+    height                    : 100%;
+    text-align                : center;
+    position                  : relative;
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
+
     p {
-      padding: 30px;
+      padding  : 30px;
       font-size: 1em;
     }
+
     input {
       border: 1px solid rgba(0, 0, 0, 0.315);
     }
+
     //   border: 2px solid red;
     //   border: 2px solid white
   }
+
   .slideShow:nth-child(1) {
-    width: 25%;
+    width     : 25%;
     background: white;
   }
+
   .slideShow:nth-child(2) {
-    width: 25%;
+    width     : 25%;
     background: white;
   }
+
   .slideShow:nth-child(3) {
-    width: 25%;
+    width     : 25%;
     background: white;
   }
+
   .slideShow:nth-child(4) {
-    width: 25%;
+    width     : 25%;
     background: white;
   }
+
   #nxt {
-    width: 70%;
-    margin: 30px auto;
+    width        : 70%;
+    margin       : 30px auto;
     border-radius: 50px;
   }
+
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: grey;
-    opacity: 1; /* Firefox */
+    color  : grey;
+    opacity: 1;
+    /* Firefox */
   }
 
   :-ms-input-placeholder {
@@ -266,200 +312,410 @@ input[type="date"]::-webkit-inner-spin-button {
   }
 
   #orgDesc {
-    resize: none;
-    width: 85%;
-    height: 100px;
-    margin-top: 20px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    background: whitesmoke;
+    resize       : none;
+    width        : 85%;
+    height       : 100px;
+    margin-top   : 20px;
+    margin-left  : 50%;
+    transform    : translateX(-50%);
+    background   : whitesmoke;
     border-radius: 20px;
-    padding: 10px;
+    padding      : 10px;
   }
+
   #orgDesc1 {
-    resize: none;
-    width: 85%;
-    height: 150px;
-    margin-top: 20px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    background: whitesmoke;
+    resize       : none;
+    width        : 85%;
+    height       : 150px;
+    margin-top   : 20px;
+    margin-left  : 50%;
+    transform    : translateX(-50%);
+    background   : whitesmoke;
     border-radius: 20px;
-    padding: 10px;
+    padding      : 10px;
   }
+
   input {
-    margin-top: 20px;
-    width: 85%;
-    color:black
-    //   margin: 0 auto;
-   // background: whitesmoke;
+    margin-top        : 20px;
+    // width          : 85%;
+    color             : black //   margin: 0 auto;
+      // background   : whitesmoke;
   }
 
   .theButton {
     border-radius: 50px;
-    position: absolute;
-    right: 10%;
-    bottom: 40px;
-    width: 30%;
+    // position     : absolute;
+    // right        : 10%;
+    // bottom       : 40px;
+    margin-top: 30px;
+    margin-right: 20px;
+    width        : 30%;
+    float: right;
   }
+
   .theButtonBack {
     border-radius: 50px;
-    position: absolute;
-    left: 10%;
-    bottom: 40px;
-    width: 30%;
+    // position     : absolute;
+    // left         : 10%;
+    margin-left: -240px;
+    margin-top: 30px;
+    // bottom       : 40px;
+    width        : 30%;
   }
-  select, .customSelect {
-    width: 85%;
-    margin: 20px auto;
-    height: 50px;
-    line-height: 50px;
+
+  select,
+  .customSelect {
+    width        : 85%;
+    margin       : 20px auto;
+    height       : 50px;
+    line-height  : 50px;
     border-radius: 50px;
-    background: whitesmoke;
-    border: 1px solid rgba(0, 0, 0, 0.144);
-    padding-left: 10px;
+    background   : whitesmoke;
+    border       : 1px solid rgba(0, 0, 0, 0.144);
+    padding-left : 10px;
   }
+
   #page2 {
-    padding-top: 50px;
-    border-top-right-radius: 15px;
+    padding-top               : 50px;
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
   }
+
   #page4 {
-    padding-top: 5px;
-    border-top-right-radius: 15px;
+    padding-top               : 5px;
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
-    p{
+
+    p {
       margin-top: 0;
-      padding: 0 !important;
+      padding   : 0 !important;
     }
   }
 
   .select-css {
-    display: block;
-    font-size: 16px;
-    font-family: sans-serif;
-    font-weight: 700;
-    color: #444;
-    line-height: 1.3;
-    padding: 0.6em 1.4em 0.5em 0.8em;
-    width: 85%;
-    // max-width: 100%;
-    box-sizing: border-box;
-    margin: 20px auto;
-    border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-    border-radius: 50px;
-    -moz-appearance: none;
+    display           : block;
+    font-size         : 16px;
+    font-family       : sans-serif;
+    font-weight       : 700;
+    color             : #444;
+    line-height       : 1.3;
+    padding           : 0.6em 1.4em 0.5em 0.8em;
+    width             : 85%;
+    // max-width      : 100%;
+    box-sizing        : border-box;
+    margin            : 20px auto;
+    border            : 1px solid #aaa;
+    box-shadow        : 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    border-radius     : 50px;
+    -moz-appearance   : none;
     -webkit-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+    appearance        : none;
+    background-color  : #fff;
+    background-image  : url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
       linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-    background-repeat: no-repeat, repeat;
+    background-repeat  : no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
-    background-size: 0.65em auto, 100%;
+    background-size    : 0.65em auto, 100%;
   }
+
   .select-css::-ms-expand {
     display: none;
   }
+
   .select-css:hover {
     border-color: #888;
   }
+
   .select-css:focus {
     border-color: #aaa;
-    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-    box-shadow: 0 0 0 3px -moz-mac-focusring;
-    color: #222;
-    outline: none;
+    box-shadow  : 0 0 1px 3px rgba(59, 153, 252, 0.7);
+    box-shadow  : 0 0 0 3px -moz-mac-focusring;
+    color       : #222;
+    outline     : none;
   }
+
   .select-css option {
     font-weight: normal;
   }
+
   .description {
     font-weight: 400;
   }
+
   #page1 {
-    margin-left: 0%;
-    border-top-right-radius: 15px;
+    margin-left               : 0%;
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
   }
-  #page1, #page2, #page3, #page4, #page5{
+
+  #page1,
+  #page2,
+  #page3,
+  #page4,
+  #page5 {
     transition: 1s;
   }
-  #page5{
+
+  #page5 {
     padding-top: 100px;
-}
-#page7{
-  padding-top: 0;
-  p{
-    margin-top: 0px;
   }
-}
-.input-field{
-  position: relative;
-}
-.dot{
-  // float: right;
-  position: absolute;
-  right: 0;
-  margin-top: -20px
-}
-.info{
-  background: rgba(0, 0, 0, 0.446);
-  padding: 5px;
-  color: white;
-  width: 200px;
-  float: right;
-  position: absolute;
-  right: 5px;
-  bottom: 20px;
-  border-radius: 5px;
-}
-  #page3{
-    
-    border-top-right-radius: 15px;
+
+  #page7 {
+    padding-top: 0;
+
+    p {
+      margin-top: 0px;
+    }
+  }
+
+  .input-field {
+    position     : relative;
+    // border    : 2px solid red;
+    // max-height: 10px;
+    // background: ;
+    // padding   : 10px;
+
+    // .info {
+    //   position: absolute;
+    // }
+  }
+
+  .dot {
+    // float  : right;
+    position  : absolute;
+    right     : 0;
+    // top    : 0;
+    margin-top: -20px
+  }
+
+  .info {
+    background      : rgba(0, 0, 0, 0.446);
+    padding         : 5px;
+    color           : white;
+    width           : 50%;
+    max-width       : 500px;
+    float           : right;
+    position        : absolute;
+    right           : 5px;
+    z-index         : 100000000000000000000000000000000;
+    transform       : translateY(-80px);
+    // bottom       : 20px;
+    border-radius   : 5px;
+  }
+
+  #page3 {
+
+    border-top-right-radius   : 15px;
     border-bottom-right-radius: 15px;
   }
 
-  #showContent{
-    display: grid ;
+  #showContent {
+    display              : grid;
     grid-template-columns: repeat(2 1fr)
   }
+
   /* Hide HTML5 Up and Down arrows. */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin            : 0;
+  }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 
-input{
-  text-transform: capitalize;
-  font-size: 16px;
-}
+  input {
+    text-transform: capitalize;
+    font-size     : 16px;
+  }
 
-#web{
+  #web {
+
+    text-transform: lowercase;
+  }
+
+  .dot {
+    height          : 25px;
+    width           : 25px;
+    background-color: #bbb;
+    border-radius   : 50%;
+    display         : inline-block;
+    position        : absolute;
+  }
+
+  .dates-input {
+    width         : 50%;
+    margin-top    : 10px;
+    text-transform: lowercase;
+  }
+
+  @media screen and (max-width:1583px) {
+    .theButton {
+      border-radius: 50px;
+      // position     : absolute;
+      // right        : 10%;
+      // bottom       : 40px;
+      margin-top: 30px;
+      margin-right: 20px;
+      width        : 30%;
+      float: right;
+    }
   
-  text-transform: lowercase;
+    .theButtonBack {
+      border-radius: 50px;
+      // position     : absolute;
+      // left         : 10%;
+      margin-left: 0;
+      margin-top: 30px;
+      // bottom       : 40px;
+      width        : 30%;
+    }
+    .slideShow {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      // padding-top: 60px;
+    }
+
+    .end,
+    .start {
+      margin  : 0 auto;
+      width   : 95%;
+      border  : 2px solid red;
+      padding : 0;
+      position: relative;
+    }
+
+    .dates-input {
+      width         : 100%;
+      margin-top    : 10px;
+      margin-left   : 0;
+      text-transform: lowercase;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+      .dates-input {
+        width         : 50px;
+        margin-top    : 10px;
+        text-transform: lowercase;
+      }
+
+      .step1 {
+        display: none;
+      }
+
+      .step2 {
+        width        : 100%;
+        // background: red;
+        position     : relative;
+
+        border-top-right-radius   : 15px;
+        border-bottom-right-radius: 15px;
+      }
+
+      .theBody {
+        width           : 100vw;
+        height          : 100%;
+        // display      : flex;
+        background-image: linear-gradient(to bottom, rgba(239, 239, 239, 0.612), rgba(193, 193, 193, 0.877)), url('../../assets/imgs/parl.jpg');
+        background-size : cover;
+        // filter       :  sepia(1);
+        position        : relative;
+
+        .left {
+          width : 100%;
+          height: 100%;
+
+          // background-image:linear-gradient(to bottom, rgba(239, 239, 239, 0.612) ,rgba(193, 193, 193, 0.877)),url('../../assets/imgs/parl.jpg');
+          // background-size : cover;
+          // // filter       :  sepia(1);
+          // position        : relative;
+          .box {
+            display      : flex;
+            width        : 100%;
+            height       : 100%;
+            background   : white;
+            position     : absolute;
+            left         : 50%;
+            top          : 50%;
+            // transform : translate(-50%, -50%);
+            box-shadow   : 0 0 15px rgb(0, 0, 0);
+            border-radius: 0px;
+          }
+        }
+      }
+
+      .decider {
+        position      : absolute;
+        z-index       : 999;
+        width         : 90%;
+        left          : 0%;
+        top           : 180px;
+        transform     : translateX(5%);
+        background    : rgb(228, 228, 228);
+        box-shadow    : 0 0 10px rgba(0, 0, 0, 0.712);
+        padding-left  : 0px;
+        padding-right : 0px;
+        padding-top   : 0px;
+        padding-bottom: 0px;
+        text-align    : center;
+        border-radius : 26px;
+
+        // height: 100px;
+        select {
+          margin            : 0;
+          z-index           : 999;
+          background        : transparent;
+          width             : 100%;
+          display           : block;
+          font-size         : 16px;
+          font-family       : sans-serif;
+          font-weight       : 700;
+          color             : #444;
+          line-height       : 1.3;
+          padding           : 0.6em 1.4em 0.5em 0.8em;
+          width             : 100%;
+          // max-width      : 100%;
+          box-sizing        : border-box;
+          margin            : 0px auto;
+          border            : 1px solid #aaa;
+          box-shadow        : 0 1px 0 1px rgba(0, 0, 0, 0.04);
+          border-radius     : 50px;
+          -moz-appearance   : none;
+          -webkit-appearance: none;
+          appearance        : none;
+          background-color  : rgba(255, 255, 255, 0);
+          background-image  : url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+            linear-gradient(to bottom, #ffffff 0%, #e5e5e500 100%);
+          background-repeat  : no-repeat, repeat;
+          background-position: right 0.7em top 50%, 0 0;
+          background-size    : 0.65em auto, 100%;
+        }
+
+        P {
+          position : absolute;
+          top      : 3px;
+          left     : 50%;
+          transform: translateX(-50%);
+          width    : 90px;
+          z-index  : -1;
+          // border: 2px solid red;
+        }
+      }
+    }
+  }
+
+  input[type="email"]{
+    text-transform: lowercase;
+  }
 }
 
-.dot {
-  height: 25px;
-  width: 25px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-.dates-input{
-  width: 0%;
-  margin-top: 10px;
-  text-transform: lowercase;
-}
-}
-
-.alert-checkbox-button, .alert-checkbox-group, .button-inner, .alert-checkbox, .alert-checkbox-label {
+.alert-checkbox-button,
+.alert-checkbox-group,
+.button-inner,
+.alert-checkbox,
+.alert-checkbox-label {
   background: #04592a;
-  color: white !important;
+  color     : white !important;
 }
