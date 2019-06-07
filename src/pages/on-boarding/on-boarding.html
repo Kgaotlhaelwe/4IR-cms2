@@ -310,8 +310,20 @@
                 
                   <textarea name="" id="orgDesc" placeholder="introduction" cols="4"
                     [(ngModel)]="ProgramIntroduction"></textarea>
+
+                    <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()' class="dot">?</span>
+
+
+                    <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief explanation or summary of the Program.
+
+                    </div>
   
                   <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
+
+
+                  <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
+
+                  <div *ngIf='showObjective' class="info">All planning and strategic activities of the program</div>
                   <select class="select-css" [(ngModel)]="targetAudience">
                     <option value="Do you offer WiFi" disabled> Target Audience </option>
                     <option value="18 -25">18 -25</option>
@@ -328,8 +340,12 @@
                   <p>Almost there, please provide a category for the organisation.</p>
   
                
-                  <div  class="customSelect" (click)="services()">
-                 
+                  <div  class="customSelect" (click)="services()" >
+                    Services
+                  </div>
+
+                  <div *ngFor="let a of programServicez">
+                      {{a.title}}
                   </div>
                   <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress" (change)="setAddress()"><br>
                 
@@ -339,20 +355,20 @@
                   <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
                     [(ngModel)]="programBenefits"></textarea>  <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
                  
-                    <div *ngIf="showProgramBenefits">program Benefits</div>
+                    <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
                   </div>
                  <div class="imput-field">
                    
                     <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
                     [(ngModel)]="programAdditionalBenefits"></textarea> <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
                  
-                    <div *ngIf="showAdditionalBenefits" class="info">AdditionalBenefits</div>
+                    <div *ngIf="showAdditionalBenefits" class="info">Extra things apart from the ones already present</div>
                  </div>
                  <div class="input-field"></div>
                   <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
                     [(ngModel)]="EligibleCriteria"></textarea> <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()'class="dot">?</span>
 
-                  <div *ngIf="showEligibleCriteria">EligibleCriteria</div>
+                  <div *ngIf="showEligibleCriteria"  class="info">Who can apply for this program e.g. South African Citizen and must be the age of 18-35 years </div>
 
 
                   <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
@@ -368,7 +384,7 @@
   
   
                     <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink" required>  <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
-                    <div  *ngIf="showApplicationLink">Aplication link </div>
+                    <div  *ngIf="showApplicationLink">Please type links that will directly you to the Application form </div>
                     <input class="fixSize" type="email" placeholder="email" [(ngModel)]="Programemail" required>
   
                     <input class="fixSize" type="tel" placeholder="Phone" [(ngModel)]="promPhone">

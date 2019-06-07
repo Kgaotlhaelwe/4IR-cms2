@@ -144,6 +144,8 @@ export class OnBoardingPage {
   showProgramBenefits: boolean = false;
   showAdditionalBenefits: boolean = false;
   showEligibleCriteria: boolean = false;
+  showProgramIntroduction: boolean = false;
+  showObjective: boolean = false;
 
 
   hideRegisterAs: boolean = true;
@@ -167,8 +169,10 @@ export class OnBoardingPage {
     console.log(this.heiServices[0].title);
 
     this.is_urlValidation("www.youtube.com");
+    if (this.pushid == "1") {
+      this.RegistrationType()
+    }
 
-    this.RegistrationType()
 
 
   }
@@ -393,30 +397,33 @@ export class OnBoardingPage {
 
 
   setAddress(event) {
-    this.getcoo(this.orgAdress).then((data: any) => {
-      this.orgAddressObject = data;
-      this.checkAddress = 0
+    if (this.orgAdress != undefined) {
+      this.getcoo(this.orgAdress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
 
-      console.log(this.orgAddressObject);
-    }, Error => {
-      this.checkAddress = 1;
+        console.log(this.orgAddressObject);
+      }, Error => {
+        this.checkAddress = 1;
 
-      console.log(this.checkAddress);
+        console.log(this.checkAddress);
 
-      // const alert = this.alertCtrl.create({
+        // const alert = this.alertCtrl.create({
 
-      //   subTitle: 'The address you have entered is invalid, please enter a valid address',
-      //   buttons: [
-      //     {
-      //       text: 'OK',
-      //       handler: data => {
-      //         this.orgAdress = ""
-      //       }
-      //     },
-      //   ]
-      // })
-      // alert.present();
-    })
+        //   subTitle: 'The address you have entered is invalid, please enter a valid address',
+        //   buttons: [
+        //     {
+        //       text: 'OK',
+        //       handler: data => {
+        //         this.orgAdress = ""
+        //       }
+        //     },
+        //   ]
+        // })
+        // alert.present();
+      })
+    }
+
   }
 
 
@@ -960,8 +967,6 @@ export class OnBoardingPage {
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
-    } else if (this.Programcategory == undefined) {
-      this.alert("Please choose programme category")
     } else if (this.ProgramIntroduction == undefined) {
       this.alert("Please enter introduction  ")
     } else if (this.targetAudience == undefined) {
@@ -994,7 +999,11 @@ export class OnBoardingPage {
       this.alert("Please enter program benefits")
     } else if (this.EligibleCriteria == undefined) {
       this.alert("Please enter eligible criteria")
-    } else if (this.orgAdress == undefined) {
+
+    }
+
+
+    else if (this.orgAdress == undefined) {
       this.alert("please enter address")
 
     } else if (this.checkAddress == 1) {
@@ -1010,6 +1019,7 @@ export class OnBoardingPage {
       this.progressBar = this.progressBar + 25;
 
     }
+
 
 
     console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
@@ -1072,6 +1082,8 @@ export class OnBoardingPage {
       duration: 4000
     });
     loading.present();
+
+
 
 
     this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
@@ -1248,6 +1260,24 @@ export class OnBoardingPage {
 
   hideEligibleCriteria() {
     this.showEligibleCriteria = false;
+  }
+
+  ProgramIntroductionHint() {
+    this.showProgramIntroduction = true;
+  }
+
+  hideProgramIntroductionHint() {
+    console.log("l");
+
+    this.showProgramIntroduction = false
+  }
+
+  ProgramObjectiveHint() {
+    this.showObjective = true;
+  }
+
+  hideObjectiveHint() {
+    this.showObjective = false
   }
 
 }
