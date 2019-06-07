@@ -1,3 +1,4 @@
+
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
@@ -43,6 +44,7 @@ export class OnBoardingPage {
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
   showCoffeeShopServices: boolean = false;
+  showWebsiteHintInfo: boolean = false
   websiteValidation;
   applicationLink;
   promPhone;
@@ -153,6 +155,8 @@ export class OnBoardingPage {
   trackcloseApplication;
   trackopenProgram;
   trackcloseProgram;
+
+  programContactValidation;
 
   showOther: boolean = false;
   showProgramcategory: boolean = true;
@@ -810,17 +814,43 @@ export class OnBoardingPage {
   }
 
 
+  programPhoneNumber(phone) {
+
+
+    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+
+    if (phone.match(phoneno)) {
+
+      this.programContactValidation = 0;
+
+
+    }
+    else {
+      this.programContactValidation = 1;
+
+      console.log("wrong");
+
+    }
+
+
+
+
+  }
+  websiteV;
   is_urlValidation(str) {
     var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     if (regexp.test(str)) {
       this.websiteValidation = 0
+      this.websiteV = 0
       // return true;
-      console.log("correct");
+      console.log("correct website");
 
     }
     else {
+      this.websiteV = 1;
       this.websiteValidation = 1
-      console.log("wrong");
+      console.log("wrong website");
       //return false;
     }
   }
@@ -865,7 +895,7 @@ export class OnBoardingPage {
 
   }
 
-  moveToPage5() {
+  moveToPage2progs() {
 
 
 
@@ -952,18 +982,16 @@ export class OnBoardingPage {
     }
     else {
 
-      var toSlide = document.getElementById("page5");
+      var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
-
       this.progressBar = this.progressBar + 25
     }
 
 
 
 
-
   }
-  moveToPage6() {
+  moveToPage3progs() {
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
@@ -977,15 +1005,17 @@ export class OnBoardingPage {
       this.alert("Please enter  program description ")
 
     } else {
-      var toSlide = document.getElementById("page6");
-      toSlide.style.marginLeft = "-25%";
+
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-50%";
       this.progressBar = this.progressBar + 25;
     }
 
-
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-50%"
   }
 
-  moveToPage7() {
+  moveToPage4progs() {
 
     console.log(this.programBenefits);
     console.log(this.programAdditionalBenefits);
@@ -1014,15 +1044,14 @@ export class OnBoardingPage {
 
     else {
 
-      var toSlide = document.getElementById("page7");
-      toSlide.style.marginLeft = "-25%";
-      this.progressBar = this.progressBar + 25;
 
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-75%";
+      this.progressBar = this.progressBar + 25;
     }
 
 
 
-    console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
 
 
 
@@ -1037,63 +1066,83 @@ export class OnBoardingPage {
   backToPage6() {
     console.log("clicked");
 
-    var toSlide = document.getElementById("page5");
+    var toSlide = document.getElementById("page6");
     toSlide.style.marginLeft = "-25%";
   }
+  emailtrack;
+
+  emailAddressValidation(email) {
+    let atpos = email.indexOf("@");
+    let dotpos = email.lastIndexOf(".")
+
+    if (atpos < 1 || (dotpos - atpos < 2)) {
+      this.emailtrack
+      
+      
+      
+      = 1
+      console.log("wrong email");
+
+    } else {
+      this.emailtrack = 0
+      console.log("correct email");
+
+    }
+  }
+
+  uploadInfoDone() {
+    this.is_urlValidation(this.applicationLink)
+
+    if (this.promPhone != undefined) {
+      this.programPhoneNumber(this.promPhone);
+    }
+
+    if (this.Programemail != undefined) {
+      this.emailAddressValidation(this.Programemail)
+    }
+
+    if (this.twitter == undefined) {
+      this.twitter = " "
+    }
+
+    if (this.facebook == undefined) {
+      this.facebook = " "
+    }
 
 
-
-  moveToPage8() {
-
-    console.log(this.promName);
-    console.log(this.openApplicationDate);
-    console.log(this.closeApplicationDate);
-    console.log(this.programStartDate);
-    console.log(this.programCloseDate);
-
-
-    console.log(this.Programcategory);
-
-    console.log(this.ProgramIntroduction);
-
-    console.log(this.objectives);
-
-    console.log(this.targetAudience);
-    console.log(this.programDescription);
-
-
-    console.log(this.programBenefits);
-    console.log(this.programAdditionalBenefits);
-    console.log(this.EligibleCriteria)
-    console.log(this.programServicez);
-
-
-    console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
-
-
-    console.log(this.applicationLink);
-    console.log(this.facebook);
-    console.log(this.twitter);
-    console.log(this.promPhone);
-    console.log(this.programServicez);
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'successfully added a programme...',
-      duration: 4000
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
     });
-    loading.present();
+    loader.present();
+
+    if (this.promPhone == undefined && this.Programemail == undefined && this.applicationLink == undefined) {
+      this.alert("Please enter all the details")
+
+    } else if (this.Programemail == undefined) {
+      this.alert("Please enter your email")
+    } else if (this.applicationLink == undefined) {
+      this.alert("Please enter the application address")
+    } else if (this.websiteV == 1) {
+      console.log("wrong website ewfewfwerwew");
+
+      this.alert("The web address you have entered is invalid, please enter a valid web address  ")
+    } else if (this.programContactValidation == 1) {
+      this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+    } else if (this.emailtrack == 1) {
+      this.alert("The email address you have entered is invalid, please enter a valid email address  ")
+    } else {
+
+      this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
+        console.log("successfully");
+        this.navCtrl.push(HomePage)
+      })
+
+    }
 
 
 
 
-    this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
-      console.log("successfully");
-
-
-
-
-
-    })
 
   }
 
@@ -1148,6 +1197,13 @@ export class OnBoardingPage {
       type: 'checkbox',
       label: 'Internet',
       value: 'Internet'
+    });
+
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Printing',
+      value: 'Printing'
     });
 
 
@@ -1224,7 +1280,9 @@ export class OnBoardingPage {
       console.log("tttttt");
 
       this.showOther = true;
-      this.showProgramcategory = false;
+      // this.showProgramcategory = false;
+    } else {
+      this.showOther = false;
     }
   }
 
@@ -1234,7 +1292,7 @@ export class OnBoardingPage {
     this.showApplicationLink = true;
   }
   hideapplicationLinkHint() {
-
+    this.showApplicationLink = false;
   }
   programeBenefits() {
     this.showProgramBenefits = true;
@@ -1278,6 +1336,13 @@ export class OnBoardingPage {
 
   hideObjectiveHint() {
     this.showObjective = false
+  }
+  websiteHintInfo() {
+    this.showWebsiteHintInfo = true;
+  }
+
+  hidewebsiteHintInfo() {
+    this.showWebsiteHintInfo = false;
   }
 
 }

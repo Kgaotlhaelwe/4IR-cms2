@@ -104,14 +104,14 @@
 //   clear          : both;
 //   justify-content: center;
 // }
-.row{
-  // position: absolute;
-  // width: 100%;
-  // height: 100%;
-  // justify-content: center;
-  // align-items: center;    
-  // display: flex;
-}
+// .row{
+//   // position: absolute;
+//   // width: 100%;
+//   // height: 100%;
+//   // justify-content: center;
+//   // align-items: center;    
+//   // display: flex;
+// }
 .Account {
   text-align: left;
 }
@@ -223,12 +223,14 @@ button {
 #Theicon {
   color   : #04592a;
   text-align: center;
+  font-size: 2rem;
 
 }
 
 #Theicon2 {
   position: absolute;
   color   : white;
+  font-size: 2rem;
 }
 
 .Labels {
@@ -236,6 +238,7 @@ button {
   top      : 20px;
   color    : #04592a;
   left     : 30%;
+  // border: 2px solid red;
 }
 
 #greenButton{
@@ -284,4 +287,3 @@ button{
   }
 }
 }
-
