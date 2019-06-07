@@ -158,8 +158,8 @@ export class IrMethodsProvider {
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
           console.log(user)
-          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({      
-            email: email,     
+          firebase.database().ref("Users/" + "Cms_Users/" + user.uid).set({
+            email: email,
           })
           var user = firebase.auth().currentUser;
           // user.sendEmailVerification().then(function () {
@@ -195,7 +195,7 @@ export class IrMethodsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("4IR_Hubs/"+user.uid)
+        .ref("Users/" + "Cms_Users/" + user.uid)
         .set({
           name: Orgname,
           email: email,
@@ -219,36 +219,36 @@ export class IrMethodsProvider {
     })
   }
 
-  addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate , programCategory , intro ,objectives, targetAudience , fullDescription, service,lat , long , city ,  address, programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook,email ){
+  addProgram(prograName, openApplicationDate, closeApplicationDate, programStartDate, programCloseDate, programCategory, intro, objectives, targetAudience, fullDescription, service, lat, long, city, address, programBenefits, additionalBenefits, eligibleCreteria, applicationLink, promPhone, twitter, facebook, email) {
     var user = firebase.auth().currentUser;
 
-    return new Promise((resolve , reject)=>{
-      firebase.database().ref("4IR_Hubs/"+user.uid).set({
-        prograName:prograName ,
-        lat:lat ,
-        long:long ,
-        city:city ,
-        address :address ,
-        openApplicationDate:openApplicationDate ,
-        closeApplicationDate:closeApplicationDate ,
-        programStartDate:programStartDate ,
-        programCloseDate:programCloseDate ,
-      
-        intro:intro ,
-        objectives :objectives ,
-        targetAudience:targetAudience ,
-        fullDescription:fullDescription ,
-        programCategory:programCategory ,
-        programmeService:service ,
-        programBenefits:programBenefits ,
-        additionalBenefits:additionalBenefits ,
-        eligibleCreteria:eligibleCreteria ,
-        applicationLink:applicationLink ,
-        promPhone:promPhone ,
-        twitter:twitter ,
-        facebook:facebook ,
-        email:email ,
-         downloadurl: "assets/download.png",
+    return new Promise((resolve, reject) => {
+      firebase.database().ref("4IR_Hubs/" + user.uid).set({
+        prograName: prograName,
+        lat: lat,
+        long: long,
+        city: city,
+        address: address,
+        openApplicationDate: openApplicationDate,
+        closeApplicationDate: closeApplicationDate,
+        programStartDate: programStartDate,
+        programCloseDate: programCloseDate,
+
+        intro: intro,
+        objectives: objectives,
+        targetAudience: targetAudience,
+        fullDescription: fullDescription,
+        programCategory: programCategory,
+        programmeService: service,
+        programBenefits: programBenefits,
+        additionalBenefits: additionalBenefits,
+        eligibleCreteria: eligibleCreteria,
+        applicationLink: applicationLink,
+        promPhone: promPhone,
+        twitter: twitter,
+        facebook: facebook,
+        email: email,
+        downloadurl: "assets/download.png",
         downloadurlLogo: "assets/download.png",
 
 
@@ -483,12 +483,26 @@ export class IrMethodsProvider {
   loginx(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
-  
-  getOrgProfile() {
+
+  getProgramme() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
       console.log(user.uid)
       firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
+        let details = data.val();
+        console.log(details)
+        accpt(details)
+        console.log(details)
+      });
+
+    })
+  }
+
+  getOrgProfile() {
+    return new Promise((accpt, rej) => {
+      let user = firebase.auth().currentUser;
+      console.log(user.uid)
+      firebase.database().ref("Users/" + "Cms_Users/" + user.uid).on('value', (data: any) => {
         let details = data.val();
         console.log(details)
         accpt(details)

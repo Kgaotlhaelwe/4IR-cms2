@@ -70,7 +70,7 @@
                 <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1" [value]="city1"></textarea>
                 <br>
               </div>
-              <button id="submitter" (click)="edit()">submit</button>
+              <button id="submitter" (click)="addProgramme()">submit</button>
             </div>
           </div>
       
@@ -78,11 +78,15 @@
           <div class="cont">
             <ion-fab bottom right>
       
-              <label ion-fab for="galInput">
+              <!-- <label ion-fab for="galInput">
       
                 <ion-icon name="images">
                 </ion-icon>
-              </label>
+              </label> -->
+
+              <button ion-fab mini (click)="addProgramme()">
+                <ion-icon name="list"></ion-icon>
+              </button>
             </ion-fab>
             <!-- <button (click)="EditPrfile()">update profile</button> -->
             <div class="dismisser" id="profDismisser" (click)="closeProfile()">

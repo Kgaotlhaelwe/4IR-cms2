@@ -1,6 +1,6 @@
 <ion-content>
   <div class="theBody">
-<div class="decider">
+<div class="decider" *ngIf="hideRegisterAs">
   <p>Register as...</p>
 
   <select (change)="RegistrationType()" [(ngModel)]="program" >
@@ -54,8 +54,7 @@
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="url" id="web" placeholder="Website" [(ngModel)]="orgWebsite"><br>
-                <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
-                  [(ngModel)]="orgDescription"></textarea> <br>
+                <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea> <br>
 
 
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
@@ -335,17 +334,21 @@
                   <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress" (change)="setAddress()"><br>
                 
   
-  
+                  <div class="input-field">
+                    
                   <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
                     [(ngModel)]="programBenefits"></textarea>  <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
                  
                     <div *ngIf="showProgramBenefits">program Benefits</div>
-                 
+                  </div>
+                 <div class="imput-field">
+                   
                     <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
                     [(ngModel)]="programAdditionalBenefits"></textarea> <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
                  
-                    <div *ngIf="showAdditionalBenefits">AdditionalBenefits</div>
-
+                    <div *ngIf="showAdditionalBenefits" class="info">AdditionalBenefits</div>
+                 </div>
+                 <div class="input-field"></div>
                   <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
                     [(ngModel)]="EligibleCriteria"></textarea> <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()'class="dot">?</span>
 
