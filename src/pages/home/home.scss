@@ -764,7 +764,7 @@ page-home {
 
   .cont {
     transition: 700ms;
-    width: 1000px;
+    width: 95%;
     height: 80%;
     /* border: 2px solid red; */
     position: relative;
@@ -903,7 +903,7 @@ page-home {
   }
   .coverPhoto {
     width: 100%;
-    height: 300px;
+    height: 40%;
     position: relative;
     background: white;
     /* border: 2px solid; */
@@ -918,7 +918,7 @@ page-home {
   }
 
   .about {
-    width: 250px;
+    width: 25%;
     background: #e4e8e6;
     position: absolute;
     left: 50px;
@@ -928,7 +928,7 @@ page-home {
     border: 0.5px solid rgba(128, 128, 128, 0.178);
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 500px;
+    height: 100%;
     p{
       width: 100%;
       text-align: left;
@@ -1022,13 +1022,13 @@ page-home {
     border: 2px solid red;
     margin-left:30%;
 margin-top:5%;
-height: 350px;
+height: 50%;
 overflow-y: scroll;
 display: flex;
 }
 .imagesUploaded{
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
   // border: 2px solid red;
   display: flex;
   flex-wrap: wrap;
@@ -1250,8 +1250,36 @@ ion-grid{
       /* opacity: 1; */
     }
   }
-  // @media screen and (max-width: 1600px) {
-  // }
+  @media screen and (max-width: 600px) {
+    .about {
+      width: 100%;
+      background: #e4e8e6;
+      position: relative;
+      left: 0px;
+      top: 100%;
+      color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+      border: 0.5px solid rgba(128, 128, 128, 0.178);
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100%;
+    }
+    .uploads{
+      // margin: 0%;
+      // padding: 0%;
+      // width: 100%;
+      // max-width: 700px;
+      // margin: 0 auto;
+      position: relative;
+      top: 37%;
+      border: 2px solid red;
+      margin-left:0%;
+  margin-top:5%;
+  height: 50%;
+  overflow-y: scroll;
+  display: flex;
+  }
+  }
   // @media screen and (max-width: 1058px) {
   //   .addBranch {
   //     width: 100%;
