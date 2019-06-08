@@ -5,7 +5,6 @@ import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { OrganizationProfilePage } from "../organization-profile/organization-profile"
 import { OnBoardingPage } from '../on-boarding/on-boarding';
-import Swal from 'sweetalert2';
 declare var firebase;
 
 
@@ -281,13 +280,6 @@ export class HomePage implements OnInit {
       })
 
     }, 5000);
-    
-    Swal.fire({
-      imageUrl: "../../assets/imgs/4IR logo.png",
-      imageHeight: 300,
-      imageAlt: 'A tall image',
-      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
-    })
 
 
   
@@ -777,7 +769,7 @@ export class HomePage implements OnInit {
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "10px";
+    slider[0].style.bottom = "60px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }

@@ -1,145 +1,164 @@
-
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-  <body>
-      <div class="start">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-          <div class="absolutely">
-              <div class="arrow">
-                <div class="clicker" (click)="decideState()">
-                  <i class="material-icons" id="myArrow"></i>
-                </div>
-                <div class="list">
-                  <div class="gal" id="push" *ngFor="let a of orgArray">
-                      <span class="tooltiptext">{{a.intro}}</span>
-                    <img src="{{a.img}}" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-        <!-- <ion-fab id="search">
-            <button ion-fab mini>
-              <ion-icon name="search"></ion-icon>
-            </button>
-          </ion-fab> -->
-        <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
-        </ion-searchbar>
-        <div class="results">
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-            {{ item}}
-          </ion-item>
+<body>
+  <div class="start">
+
+    <div class="absolutely">
+      <div class="arrow">
+        <div class="clicker" (click)="decideState()">
+          <i class="material-icons" id="myArrow"></i>
         </div>
-      
-      
-      
-        <div class="tab">
-          <div class="WebName">
-            <img src="../../assets/imgs/4IR logo.png" alt=""> 4ir Resources Hub
-      
-          </div>
-          <div class="action">
-            <div>
-      
-              <p id="my2001" (click)="goToProfile()">
-                <b id="Orgo">ORGANISATION PROFILE</b>
-              </p>
-            </div>
-          </div>
+        <b>
+          organisations
+        </b>
+        <!-- <div class="list">
+        <div class="gal" id="push">
+          
+          <img src="{{a.img}}" alt="">
         </div>
-        <div class="profOverlay">
-          <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
-          <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
-          <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload" (change)="getImages($event)">
-          <div class="overlay">
-            <div class="addBranch">
-              <div class="dismisser" (click)="closeDIV()">
-                <i style="color: black" id="DismisIcon" class="material-icons">close</i>
-              </div>
-              <label for="coverUploader">
-                <img src="{{url1}}" alt="" class="coverToUpload">
-              </label>
-              <h3>Edit branch details</h3>
-              <div class="editForm">
-                <input type="text" placeholder="Branch Name" [value]="name1" [(ngModel)]="name1">
-                <br>
-                <input type="email" placeholder="Email" [value]="email1" [(ngModel)]="email1">
-                <br>
-                <input type="text" placeholder="Tel" [value]="tel1" [(ngModel)]="tel1">
-                <br>
-                <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1" [value]="city1"></textarea>
-                <br>
-              </div>
-              <button id="submitter" (click)="addProgramme()">submit</button>
+      </div> -->
+
+        <!-- <div class="theOrganisations">
+          <div id="toHover">
+            <div class="tooltiptext">
+              {{a.intro}}
             </div>
+            <img src="{{a.img}}" alt="">
           </div>
-      
-      
-          <div class="cont">
-            <ion-fab bottom right>
-      
-              <!-- <label ion-fab for="galInput">
+        </div> -->
+
+        <ion-slides slidesPerView="4">
+          <ion-slide *ngFor="let a of orgArray">
+
+              <div class="tooltiptext">
+                  {{a.intro}}
+                </div>
+              <img src="{{a.img}}" alt="">
+          </ion-slide> 
+        </ion-slides>
+      </div>
+    </div>
+    <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
+    </ion-searchbar>
+    <div class="results">
+      <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+        {{ item}}
+      </ion-item>
+    </div>
+
+
+
+    <div class="tab">
+      <div class="WebName">
+        <img src="../../assets/imgs/4IR logo.png" alt=""> 4ir Resources Hub
+
+      </div>
+      <div class="action">
+        <div>
+
+          <p id="my2001" (click)="goToProfile()">
+            <b id="Orgo">ORGANISATION PROFILE</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="profOverlay">
+      <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
+      <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
+        (change)="getImages($event)">
+      <div class="overlay">
+        <div class="addBranch">
+          <div class="dismisser" (click)="closeDIV()">
+            <i style="color: black" id="DismisIcon" class="material-icons">close</i>
+          </div>
+          <label for="coverUploader">
+            <img src="{{url1}}" alt="" class="coverToUpload">
+          </label>
+          <h3>Edit branch details</h3>
+          <div class="editForm">
+            <input type="text" placeholder="Branch Name" [value]="name1" [(ngModel)]="name1">
+            <br>
+            <input type="email" placeholder="Email" [value]="email1" [(ngModel)]="email1">
+            <br>
+            <input type="text" placeholder="Tel" [value]="tel1" [(ngModel)]="tel1">
+            <br>
+            <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1"
+              [value]="city1"></textarea>
+            <br>
+          </div>
+          <button id="submitter" (click)="addProgramme()">submit</button>
+        </div>
+      </div>
+
+
+      <div class="cont">
+        <ion-fab bottom right>
+
+          <!-- <label ion-fab for="galInput">
       
                 <ion-icon name="images">
                 </ion-icon>
               </label> -->
 
-              <button ion-fab mini (click)="addProgramme()">
-                <ion-icon name="list"></ion-icon>
-              </button>
-            </ion-fab>
-            <!-- <button (click)="EditPrfile()">update profile</button> -->
-            <div class="dismisser" id="profDismisser" (click)="closeProfile()">
-              <ion-icon name="close"></ion-icon>
-            </div>
-            <div class="coverPhoto">
-              <ion-fab bottom right>
-      
-                <label class="imageSaver" ion-fab mini (click)="EditPrfile()">
-      
-                  <!-- <ion-icon name="images">
+          <button ion-fab mini (click)="addProgramme()">
+            <ion-icon name="list"></ion-icon>
+          </button>
+        </ion-fab>
+        <!-- <button (click)="EditPrfile()">update profile</button> -->
+        <div class="dismisser" id="profDismisser" (click)="closeProfile()">
+          <ion-icon name="close"></ion-icon>
+        </div>
+        <div class="coverPhoto">
+          <ion-fab bottom right>
+
+            <label class="imageSaver" ion-fab mini (click)="EditPrfile()">
+
+              <!-- <ion-icon name="images">
                       </ion-icon> -->
-                  <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
-                </label>
-              </ion-fab>
-              <div id="signOut" (click)="signOut()">
-                <p>Sign Out</p>
-              </div>
-              <div class="about">
-                <label for="logoUploader">
-                  <img src="{{downloadurlLogo}}" alt="" class="logo">
-                </label>
-                <h6>About</h6>
-                <p class="font" id="breaker">{{intro}}</p>
-                <h6>Address</h6>
-                <p class="font" id="breaker">{{address}}</p>
-                <h6>Contact Details</h6>
-                <p class="font" id="breaker">{{promPhone}}
-                  <br>
-                </p>
-                <!-- <h4 class="keepFixed">Programmes</h4> -->
-              </div>
-      
-              <h2 id="orgName">{{name}}</h2>
-              <!-- <p class="paragraph">Internet Cafe</p> -->
-              <label for="coverUploader">
-                <img src="{{downloadurl}}" id="coverIMG" alt="">
-              </label>
-      
-      
+              <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+            </label>
+          </ion-fab>
+          <div id="signOut" (click)="signOut()">
+            <p>Sign Out</p>
+          </div>
+          <div class="about">
+            <label for="logoUploader">
+              <img src="{{downloadurlLogo}}" alt="" class="logo">
+            </label>
+            <h6>About</h6>
+            <p class="font" id="breaker">{{intro}}</p>
+            <h6>Address</h6>
+            <p class="font" id="breaker">{{address}}</p>
+            <h6>Contact Details</h6>
+            <p class="font" id="breaker">{{promPhone}}
+              <br>
+            </p>
+            <!-- <h4 class="keepFixed">Programmes</h4> -->
+          </div>
+
+          <h2 id="orgName">{{name}}</h2>
+          <!-- <p class="paragraph">Internet Cafe</p> -->
+          <label for="coverUploader">
+            <img src="{{downloadurl}}" id="coverIMG" alt="">
+          </label>
+
+
+        </div>
+        <div class="uploads">
+          <div class="imagesUploaded">
+            <!-- <p id="titler">programmes</p> -->
+            <div class="thePhoto" *ngFor="let x of promArray">
+              <img src="{{x.img}}" alt="" class="images">
+              <p>{{x.programCategory}}</p>
+
             </div>
-             <div class="uploads">
-              <div class="imagesUploaded">
-                  <!-- <p id="titler">programmes</p> -->
-                  <div class="thePhoto"  *ngFor="let x of promArray">
-                    <img src="{{x.img}}" alt="" class="images">
-                    <p>{{x.programCategory}}</p>
-        
-                  </div>
-              </div>
-            </div> 
-      
-<!--       
+          </div>
+        </div>
+
+        <!--       
             <div class="gallery">
                 <h3 class="GAlNAme" (click)="showGal()">
                   <i id="GalIcon" class="material-icons">view_list</i>
@@ -153,19 +172,14 @@
               </div>
               
               </div> -->
-      
-          </div>
-        </div>
-       
-        <div class="content" #map id="map">
-            <div class="loader">
-              Loading Map...
-            </div>
-          </div>
-      
-      
-      
-      
-      
+
       </div>
-  </body>
+    </div>
+
+    <div class="content" #map id="map">
+      <div class="loader">
+        Loading Map...
+      </div>
+    </div>
+  </div>
+</body>

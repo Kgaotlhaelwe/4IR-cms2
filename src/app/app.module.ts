@@ -13,7 +13,7 @@ import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
-
+import { TestsPage } from '../pages/tests/tests';
 @NgModule({
   declarations: [
     MyApp,
@@ -22,6 +22,7 @@ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
     OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
+    TestsPage,
     
   ],
   imports: [
@@ -39,6 +40,7 @@ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
     OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
+    TestsPage
     
   ],
   providers: [
