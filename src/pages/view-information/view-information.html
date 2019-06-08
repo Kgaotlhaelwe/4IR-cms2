@@ -1,0 +1,47 @@
+
+
+
+<ion-content>
+  <div class="cont">
+    <div class="coverPhoto">
+       <div id="signOut" (click)="signOut()">
+        <p>Back</p>
+    </div>
+    <div class="about">
+      <label for="logoUploader">
+        <img src="{{logo}}" alt="" class="logo">
+      </label>
+      <h6>About</h6>
+      <p class="font" id="breaker">{{intro}}</p>
+      <h6>Address</h6>
+      <p class="font" id="breaker">{{address}}</p>
+      <h6>Contact Details</h6>
+      <p class="font" id="breaker">{{promPhone}}
+        <br>
+      </p>
+    </div>
+    <h2 id="orgName">{{orgName}}</h2>
+
+    <label for="coverUploader">
+      <img src="{{img}}" id="coverIMG" alt="">
+    </label>
+  </div>
+  <div class="uploads">
+    <div class="imagesUploaded">
+      <p>Objective</p>
+      <p class="font1">{{objectives}}</p>
+
+      <p>Programme Benefits</p>
+      <p class="font1">{{programBenefits}}</p>
+
+      <p>Criteria</p>
+      <p class="font1">{{eligibleCreteria}}</p>
+
+      <!-- </div> -->
+    </div>
+  </div>
+
+
+
+  </div>
+</ion-content>
