@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { OrganizationProfilePage } from "../organization-profile/organization-profile"
 import { OnBoardingPage } from '../on-boarding/on-boarding';
+import { ViewInformationPage } from '../view-information/view-information';
 declare var firebase;
 
 
@@ -260,6 +261,15 @@ export class HomePage implements OnInit {
   imageArr;
   uid;
   contact;
+  objective;
+  benefit;
+  objectives;
+  programBenefits;
+  eligibleCreteria;
+  name1;
+  contact1;
+  desc1;
+  address1
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -281,9 +291,24 @@ export class HomePage implements OnInit {
 
     }, 5000);
 
+    this.IRmethods.getproInfor().then((data: any) => {
+      this.name1 = data.name;
+      this.desc1 = data.desc;
+      this.address1 = data.address;
+      this.contact1 = data.contact;
+      this.name1 = data.name;
+      console.log(this.name1)
+    })
 
-  
 
+
+
+  }
+  addProgramme() {
+    this.navCtrl.push(OnBoardingPage, { pushid: '1' })
+  }
+
+  ionViewWillEnter() {
     this.IRmethods.getOrgProfile().then((data: any) => {
       this.name = data.prograName;
       this.category = data.programCategory;
@@ -292,25 +317,20 @@ export class HomePage implements OnInit {
       this.desc = data.intro;
       this.downloadurl = data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
-      // this.email = data.email;
-      // this.contact = data.contact;
+      this.objectives = data.objectives
+      this.programBenefits = data.programBenefits
+      this.eligibleCreteria = data.eligibleCreteria
+
       console.log(this.name)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
     })
 
-  }
-  addProgramme() {
-    this.navCtrl.push(OnBoardingPage, { pushid: '1' })
-  }
-
-  ionViewWillEnter() {
-
-  var   tempArray = []
+    var tempArray = []
     // this.initMap() ;
     this.getGallery();
-    
+
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
       console.log(this.orgArray);
@@ -323,21 +343,21 @@ export class HomePage implements OnInit {
     })
 
 
-  //   this.IRmethods.getProgramme().then((data:any) => {
-  //     this.promArray.push(data)
-  //     console.log(this.promArray)
+    //   this.IRmethods.getProgramme().then((data:any) => {
+    //     this.promArray.push(data)
+    //     console.log(this.promArray)
 
-  //     for (let index = 0; index < data.length; index++) {
-  //         tempArray.push(data[index])
-        
-  //     }
- 
-  //     console.log(tempArray);
+    //     for (let index = 0; index < data.length; index++) {
+    //         tempArray.push(data[index])
 
-  //     this.promArray =tempArray ;
-      
-    
-  // })
+    //     }
+
+    //     console.log(tempArray);
+
+    //     this.promArray =tempArray ;
+
+
+    // })
   }
 
   EditPrfile() {
@@ -350,9 +370,10 @@ export class HomePage implements OnInit {
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
       console.log('added to db');
       this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
-        this.imageArr.push(data);
+        console.log(data)
+        // this.imageArr.push(data);
       });
-      console.log(this.imageArr);
+      // console.log(this.imageArr);
       loading.dismiss();
       // this.viewCtrl.dismiss();
       const toast = this.toastCtrl.create({
@@ -360,7 +381,7 @@ export class HomePage implements OnInit {
         duration: 3000
       });
       toast.present();
-      this.navCtrl.pop();
+      // this.navCtrl.pop();
 
     },
       Error => {
@@ -574,6 +595,20 @@ export class HomePage implements OnInit {
     this.items = this.orgNames
   }
 
+  filterItems(val) {
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        console.log(val);
+
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    else if (val == "" || val == null) {
+      this.items = [];
+    }
+  }
+
+
   getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
@@ -698,16 +733,16 @@ export class HomePage implements OnInit {
 
 
       //
-      console.log(this.orgArray[index].desc);
-      console.log(this.orgArray[index].lat);
-      console.log(this.orgArray[index].long);
+      // console.log(this.orgArray[index].desc);
+      // console.log(this.orgArray[index].lat);
+      // console.log(this.orgArray[index].long);
 
 
 
       let infowindow = new google.maps.InfoWindow({
         content:
           '<div style="width: 400px; transition: 300ms;"><b>' +
-          this.orgArray[index].orgName +
+          this.orgArray[index].programCategory +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
           this.orgArray[index].img +
@@ -720,11 +755,11 @@ export class HomePage implements OnInit {
 
           "</div>"
       });
-        showMultipleMarker.addListener('click', () => {
+      showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
         console.log(index);
-        infowindow.open(showMultipleMarker.get(this.map),showMultipleMarker);
+        infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
         console.log(index);
 
       });
@@ -890,33 +925,23 @@ export class HomePage implements OnInit {
       this.pullDown();
     }
     if (this.description == null || this.description == " " || this.description == "" || this.description == undefined) {
-      // swal("Please state your organisational needs in the fields provided");
+
     }
     else {
 
-      // firebase.auth().onAuthStateChanged(user => {
-      //     firebase.database().ref('contributes/' + user.uid + '/').push({
-      //       Title: this.title,
-      //       Description: this.description,
-      //     }, Error => {
-      //       swal(Error.message);
-      //     });
 
-      //     const Toast = Swal.mixin({
-      //       toast: true,
-      //       position: 'center',
-      //       showConfirmButton: false,
-      //       timer: 3000
-      //     });
-
-      //     Toast.fire({
-      //       type: 'success',
-      //       title: 'You have successfully added a contribute'
-      //     })
-      //   this.title="";
-      //   this.description="";
-      //   this.pullDown();
-      // })
     }
+  }
+
+  viewInfor(item) {
+    for (let index = 0; index < this.orgArray.length; index++) {
+      if (item == this.orgArray[index].programCategory) {
+        console.log(this.orgArray[index]);
+        this.navCtrl.push(ViewInformationPage, { ObjectInfo: this.orgArray[index] })
+
+      }
+
+    }
+
   }
 }

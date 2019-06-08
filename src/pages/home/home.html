@@ -1,7 +1,6 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
   <div class="start">
 
@@ -64,11 +63,41 @@
         </div>
       </div>
     </div>
+    <!-- <ion-fab id="search">
+              <button ion-fab mini>
+                <ion-icon name="search"></ion-icon>
+              </button>
+            </ion-fab> -->
+    <ion-searchbar class="searchBar" [(ngModel)]="searchItem" placeholder="Search by category" (ionInput)="getItems($event)">
+    </ion-searchbar>
+    <div class="results">
+      <ion-item *ngFor="let item of items" (click)="viewInfor(item)">
+        {{ item}}
+      </ion-item>
+    </div>
+
+
+
+    <div class="tab">
+      <div class="WebName">
+        <img src="../../assets/imgs/4IR logo.png" alt=""> 4ir Resources Hub
+
+      </div>
+      <div class="action">
+        <div>
+
+          <p id="my2001" (click)="goToProfile()">
+            <b id="Orgo">ORGANISATION PROFILE</b>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
     <div class="profOverlay">
       <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
       <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
-      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload"
-        (change)="getImages($event)">
+      <input type="file" accept="image/jpg, image/jpeg" id="galInput" [(ngModel)]="galleryupload" (change)="getImages($event)">
       <div class="overlay">
         <div class="addBranch">
           <div class="dismisser" (click)="closeDIV()">
@@ -85,8 +114,7 @@
             <br>
             <input type="text" placeholder="Tel" [value]="tel1" [(ngModel)]="tel1">
             <br>
-            <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1"
-              [value]="city1"></textarea>
+            <textarea name="" id="" cols="30" rows="4" placeholder="Address" [(ngModel)]="city1" [value]="city1"></textarea>
             <br>
           </div>
           <button id="submitter" (click)="addProgramme()">submit</button>
@@ -95,13 +123,31 @@
 
 
       <div class="cont">
+
+
+
+        <div class="gallery">
+          <h3 class="GAlNAme" (click)="showGal()">
+            <i id="GalIcon" class="material-icons">view_list</i>
+            Organizations</h3>
+
+            <p>Name:</p>
+          <p class="fonttext">{{name1}}</p>
+          <p>Desc:</p>
+          <p class="fonttext">{{desc1}}</p>
+          <p>Contract:</p>
+          <p class="fonttext">{{contact1}}</p>
+          <p>Address:
+          </p>
+          <p class="fonttext">{{address1}}</p>
+        </div>
         <ion-fab bottom right>
 
           <!-- <label ion-fab for="galInput">
-      
-                <ion-icon name="images">
-                </ion-icon>
-              </label> -->
+        
+                  <ion-icon name="images">
+                  </ion-icon>
+                </label> -->
 
           <button ion-fab mini (click)="addProgramme()">
             <ion-icon name="list"></ion-icon>
@@ -117,7 +163,7 @@
             <label class="imageSaver" ion-fab mini (click)="EditPrfile()">
 
               <!-- <ion-icon name="images">
-                      </ion-icon> -->
+                        </ion-icon> -->
               <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
             </label>
           </ion-fab>
@@ -129,18 +175,16 @@
               <img src="{{downloadurlLogo}}" alt="" class="logo">
             </label>
             <h6>About</h6>
-            <p class="font" id="breaker">{{intro}}</p>
+            <p class="font" id="breaker">{{desc}}</p>
             <h6>Address</h6>
             <p class="font" id="breaker">{{address}}</p>
             <h6>Contact Details</h6>
-            <p class="font" id="breaker">{{promPhone}}
+            <p class="font" id="breaker">{{cell}}
               <br>
             </p>
-            <!-- <h4 class="keepFixed">Programmes</h4> -->
           </div>
 
           <h2 id="orgName">{{name}}</h2>
-          <!-- <p class="paragraph">Internet Cafe</p> -->
           <label for="coverUploader">
             <img src="{{downloadurl}}" id="coverIMG" alt="">
           </label>
@@ -149,30 +193,15 @@
         </div>
         <div class="uploads">
           <div class="imagesUploaded">
-            <!-- <p id="titler">programmes</p> -->
-            <div class="thePhoto" *ngFor="let x of promArray">
-              <img src="{{x.img}}" alt="" class="images">
-              <p>{{x.programCategory}}</p>
+            <p>Objective</p>
+            <p class="font1">{{objectives}}</p>
 
-            </div>
-          </div>
+            <p>Programme Benefits</p>
+            <p class="font1">{{programBenefits}}</p>
+
+            <p>Criteria</p>
+            <p class="font1">{{eligibleCreteria}}</p>
         </div>
-
-        <!--       
-            <div class="gallery">
-                <h3 class="GAlNAme" (click)="showGal()">
-                  <i id="GalIcon" class="material-icons">view_list</i>
-                  Gallery</h3>
-                <label for="galInput">
-                  <div class="adder">
-                      <i class="material-icons">add</i></div>
-                </label><br>
-                <div class="array" *ngFor="let x of promArray">
-                
-              </div>
-              
-              </div> -->
-
       </div>
     </div>
 
@@ -181,5 +210,10 @@
         Loading Map...
       </div>
     </div>
+
+
+
+
+
   </div>
 </body>

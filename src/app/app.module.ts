@@ -14,6 +14,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { TestsPage } from '../pages/tests/tests';
+import { ViewInformationPage } from '../pages/view-information/view-information';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -23,6 +25,7 @@ import { TestsPage } from '../pages/tests/tests';
     OnBoardingPage,
     ForgotpasswordPage,
     TestsPage,
+    ViewInformationPage
     
   ],
   imports: [
@@ -40,7 +43,8 @@ import { TestsPage } from '../pages/tests/tests';
     OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
-    TestsPage
+    TestsPage,
+    ViewInformationPage
     
   ],
   providers: [

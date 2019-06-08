@@ -1,4 +1,3 @@
-
 <ion-content>
   <div class="theBody">
     <div class="decider" *ngIf="hideRegisterAs">
@@ -251,6 +250,8 @@
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium animi iusto,
                   eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit provident labore
                   dolorum rem ab.</p>
+
+                  
                 <input type="text" placeholder="programme Name" [(ngModel)]="promName" required> <br>
                   <label>Choose programme Category</label>
                 <select class="select-css" (change)="selectProgramCategory()" [(ngModel)]="Programcategory" *ngIf="showProgramcategory">
@@ -262,6 +263,16 @@
                   <option value="Data Science for impact and decision enablement program">Data Science for impact and decision enablement program</option>
                   <option value="Experiential Training Programme">Experiential Training Programme</option>
                   <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
+                  <option value="ICT-enabled Agriculture">ICT-enabled Agriculture</option>
+                  <option value="Nanomaterials Industrial Development Programme ">Nanomaterials Industrial Development Programme </option>
+                  <option value="Science and Technology Youth Journalists Programme ">Science and Technology Youth Journalists Programme</option>
+                  <option value="Water Technologies Demonstration Programme  ">Water Technologies Demonstration Programme </option>
+                
+                  <option value="Youth Technology Innovation Programme  ">Youth Technology Innovation Programme  </option>
+                  <option value="mlab">mlab </option>
+                  <option value="Photonics Phototyping Facility">Photonics Phototyping Facility</option>
+                  
+                  <option value="The Technology StationsProgramme">The Technology Stations Programme (TSP</option>
                   <option value="Other">Other</option>
 
                 </select>
@@ -369,11 +380,11 @@
                 <div class="showSelected">
                   Selected Services
                 <div class="services">
-                  <p *ngFor="let a of programServicez">{{a.title}}</p>
+                  <p *ngFor="let a of serviceArrayTemp">{{a}}</p>
                   
                 </div>
                 </div>
-                <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress" (change)="setAddress()">
+                <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <br>
                 <div class="input-field">
                   <textarea name="" id="orgDesc" placeholder="Programme Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
@@ -405,7 +416,13 @@
                     </div>
                   </div>
                   <input class="fixSize" type="email"  placeholder="Email" [(ngModel)]="Programemail" required>
-                  <input class="fixSize" type="tel"       placeholder="Phone" [(ngModel)]="promPhone">
+
+                  <input type="tel"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  class="fixSize" type="tel"       placeholder="Phone" [(ngModel)]="promPhone"  >
+
+                  <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
+                    <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
+                    </div>
+                 
                   <input class="fixSize" type="text"   placeholder="Twitter" [(ngModel)]="twitter">
                   <br>
                   <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
