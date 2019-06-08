@@ -1022,7 +1022,7 @@ page-home {
     // margin: 0 auto;
     // border: 2px solid red;
     margin-left:30%;
-margin-top:5%;
+margin-top:20px;
 height: 350px;
 overflow-y: scroll;
 display: flex;
@@ -1031,15 +1031,21 @@ display: flex;
   width: 100%;
   height: 100%;
   // border: 2px solid red;
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   overflow-y: scroll;
   position: relative;
+  color: black;
+  p{
+    color:black !important;
+    width: 100%;
+    text-align: left;
+  }
   #titler{
-    position: absolute;
-    color: black;
-    top: -15px;
-    left: 0px;
+    // position: absolute;
+    // color: black;
+    // top: -15px;
+    // left: 0px;
     // transform: translateX(50%);
     // border: 2px solid grey;
     width: 120px;
