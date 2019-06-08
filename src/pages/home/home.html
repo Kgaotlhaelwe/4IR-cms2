@@ -19,10 +19,10 @@
       </div>
     </div>
     <!-- <ion-fab id="search">
-            <button ion-fab mini>
-              <ion-icon name="search"></ion-icon>
-            </button>
-          </ion-fab> -->
+              <button ion-fab mini>
+                <ion-icon name="search"></ion-icon>
+              </button>
+            </ion-fab> -->
     <ion-searchbar class="searchBar" [(ngModel)]="searchItem" placeholder="Search by category" (ionInput)="getItems($event)">
     </ion-searchbar>
     <div class="results">
@@ -47,6 +47,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="profOverlay">
       <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
       <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
@@ -76,13 +78,31 @@
 
 
       <div class="cont">
+
+
+
+        <div class="gallery">
+          <h3 class="GAlNAme" (click)="showGal()">
+            <i id="GalIcon" class="material-icons">view_list</i>
+            Organizations</h3>
+
+            <p>Name:</p>
+          <p class="fonttext">{{name1}}</p>
+          <p>Desc:</p>
+          <p class="fonttext">{{desc1}}</p>
+          <p>Contract:</p>
+          <p class="fonttext">{{contact1}}</p>
+          <p>Address:
+          </p>
+          <p class="fonttext">{{address1}}</p>
+        </div>
         <ion-fab bottom right>
 
           <!-- <label ion-fab for="galInput">
-      
-                <ion-icon name="images">
-                </ion-icon>
-              </label> -->
+        
+                  <ion-icon name="images">
+                  </ion-icon>
+                </label> -->
 
           <button ion-fab mini (click)="addProgramme()">
             <ion-icon name="list"></ion-icon>
@@ -98,7 +118,7 @@
             <label class="imageSaver" ion-fab mini (click)="EditPrfile()">
 
               <!-- <ion-icon name="images">
-                      </ion-icon> -->
+                        </ion-icon> -->
               <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
             </label>
           </ion-fab>
@@ -117,11 +137,9 @@
             <p class="font" id="breaker">{{cell}}
               <br>
             </p>
-            <!-- <h4 class="keepFixed">Programmes</h4> -->
           </div>
 
           <h2 id="orgName">{{name}}</h2>
-          <!-- <p class="paragraph">Internet Cafe</p> -->
           <label for="coverUploader">
             <img src="{{downloadurl}}" id="coverIMG" alt="">
           </label>
@@ -138,23 +156,16 @@
 
             <p>Criteria</p>
             <p class="font1">{{eligibleCreteria}}</p>
-
-
-
-          <!-- </div> -->
+          </div>
         </div>
       </div>
-
-  
-
     </div>
-  </div>
 
-  <div class="content" #map id="map">
-    <div class="loader">
-      Loading Map...
+    <div class="content" #map id="map">
+      <div class="loader">
+        Loading Map...
+      </div>
     </div>
-  </div>
 
 
 

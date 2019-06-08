@@ -308,7 +308,7 @@ page-home {
     color: white;
   }
 .font1{
-  color:rgb(96, 91, 91);
+  color:black;
   font-size: 90%
 }
   .list {
@@ -730,7 +730,10 @@ page-home {
     animation-iteration-count: linear;
     /* display: none; */
   }
-
+.fonttext{
+  color:black;
+  
+}
   @keyframes faderI2n {
     0% {
       /* opacity: 0 */

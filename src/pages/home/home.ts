@@ -267,7 +267,10 @@ export class HomePage implements OnInit {
   objectives;
   programBenefits;
   eligibleCreteria;
-
+  name1;
+  contact1;
+  desc1;
+  address1
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -296,8 +299,13 @@ export class HomePage implements OnInit {
       text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
     })
 
-    this.IRmethods.getproInfor().then((data) => {
-      console.log(data)
+    this.IRmethods.getproInfor().then((data: any) => {
+      this.name1 = data.name;
+      this.desc1 = data.desc;
+      this.address1 = data.address;
+      this.contact1 = data.contact;
+      this.name1 = data.name;
+      console.log(this.name1)
     })
 
 
