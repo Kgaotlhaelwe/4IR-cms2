@@ -261,6 +261,8 @@ export class HomePage implements OnInit {
   imageArr;
   uid;
   contact;
+  objective ;
+  benefit 
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
