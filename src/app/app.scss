@@ -90,7 +90,7 @@
       margin: 0 auto;
       text-transform: uppercase;
     }
-    .alert-message {
+    .alert-message, #alert-msg-0 {
       color: rgb(255, 255, 255); // text color for confirm alerts
     }
     .alert-wrapper, .alert-checkbox-group, .button-inner {

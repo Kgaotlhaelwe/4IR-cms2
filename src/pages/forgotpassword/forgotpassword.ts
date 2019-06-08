@@ -109,4 +109,7 @@ export class ForgotpasswordPage {
   // }
 
 
+  goBack(){
+    this.navCtrl.pop();
+  }
 }

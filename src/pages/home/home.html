@@ -12,7 +12,7 @@
                 </div>
                 <div class="list">
                   <div class="gal" id="push" *ngFor="let a of orgArray">
-                      <span class="tooltiptext">{{a.desc}}</span>
+                      <span class="tooltiptext">{{a.intro}}</span>
                     <img src="{{a.img}}" alt="">
                   </div>
                 </div>
@@ -110,15 +110,14 @@
                   <img src="{{downloadurlLogo}}" alt="" class="logo">
                 </label>
                 <h6>About</h6>
-                <p class="font" id="breaker">{{desc}}</p>
+                <p class="font" id="breaker">{{intro}}</p>
                 <h6>Address</h6>
                 <p class="font" id="breaker">{{address}}</p>
                 <h6>Contact Details</h6>
-                <p class="font" id="breaker">{{contact}}
+                <p class="font" id="breaker">{{promPhone}}
                   <br>
                 </p>
                 <!-- <h4 class="keepFixed">Programmes</h4> -->
-            
               </div>
       
               <h2 id="orgName">{{name}}</h2>
@@ -131,12 +130,8 @@
             </div>
              <div class="uploads">
               <div class="imagesUploaded">
-                  <!-- <p>programmes</p> -->
-                  <p id="titler">Objectives</p>
-                  <p>{{objective}}</p>
-                  <p id="titler">Benefits</p>
-                  <p>{{benefit}}</p>
-                  <!-- <div class="thePhoto"  *ngFor="let x of promArray">
+                  <!-- <p id="titler">programmes</p> -->
+                  <div class="thePhoto"  *ngFor="let x of promArray">
                     <img src="{{x.img}}" alt="" class="images">
                     <p>{{x.programCategory}}</p>
 
@@ -146,7 +141,7 @@
               </div>
             </div> 
       
-      
+<!--       
             <div class="gallery">
                 <h3 class="GAlNAme" (click)="showGal()">
                   <i id="GalIcon" class="material-icons">view_list</i>
@@ -159,7 +154,7 @@
                 
               </div>
               
-              </div>
+              </div> -->
       
           </div>
         </div>

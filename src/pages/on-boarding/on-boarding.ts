@@ -1,4 +1,3 @@
-
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
@@ -1381,5 +1380,3 @@ export class OnBoardingPage {
   }
 
 }
-
-
