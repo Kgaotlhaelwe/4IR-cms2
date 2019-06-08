@@ -270,7 +270,7 @@ export class HomePage implements OnInit {
         console.log(names);
         this.storeOrgNames(names)
         // this.loading.dismiss()
-      }, 2500);
+      }, 3000);
     })
 
     setTimeout(() => {
@@ -318,6 +318,17 @@ export class HomePage implements OnInit {
   var   tempArray = []
     // this.initMap() ;
     this.getGallery();
+    
+    this.IRmethods.getAllOrganizations().then((data: any) => {
+      this.orgArray = data;
+      console.log(this.orgArray);
+      setTimeout(() => {
+        var names = this.IRmethods.getOrgNames()
+        console.log(names);
+        this.storeOrgNames(names)
+        // this.loading.dismiss()
+      }, 3000);
+    })
 
 
   //   this.IRmethods.getProgramme().then((data:any) => {
@@ -681,7 +692,7 @@ export class HomePage implements OnInit {
     console.log(this.orgArray);
     for (let index = 0; index < this.orgArray.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
-      this.showMultipleMarker = new google.maps.Marker({
+      let showMultipleMarker = new google.maps.Marker({
         map: this.map,
         icon: this.icon,
         title: this.orgArray[index].orgName,
@@ -710,23 +721,20 @@ export class HomePage implements OnInit {
           this.orgArray[index].img +
           ">" +
           '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.orgArray[index].desc +
+          this.orgArray[index].intro +
           "</div><br>" +
 
 
 
           "</div>"
       });
-      this.showMultipleMarker.addListener('click', () => {
+        showMultipleMarker.addListener('click', () => {
+        this.map.setZoom(14);
+        this.map.setCenter(showMultipleMarker.getPosition());
+        console.log(index);
+        infowindow.open(showMultipleMarker.get(this.map),showMultipleMarker);
         console.log(index);
 
-
-
-        infowindow.open(this.showMultipleMarker.get(this.map), this.showMultipleMarker);
-        //  this.goToProfile() ;
-        ///infowindow.open(marker.get('map'), marker);
-        console.log(index);
-        //  this.navCtrl.push(OrganizationProfilePage, { orgObject: this.orgArray[index] });
       });
 
     }
