@@ -757,7 +757,7 @@
                   <div class="input-field">
                     <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink" required>
                     <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
-                    <div *ngIf="showApplicationLink" class="info">Please type links that will directly users to the application form
+                    <div *ngIf="showApplicationLink" class="info">Please type links that will direct users to the application form
                     </div>
                   </div>
                   <input class="fixSize" type="email"  placeholder="Email" [(ngModel)]="Programemail" required>
@@ -766,8 +766,8 @@
                   <br>
                   <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
                   <br>
-                  <button ion-button class="theButton" (click)="uploadInfoDone()">Done</button>
-                  <button ion-button class="theButtonBack"(click)="backToPage3()">BACK</button>
+                  <button ion-button id="pg4btnDone" class="theButton" (click)="uploadInfoDone()">Done</button>
+                  <button ion-button id="pg4btnBack" class="theButtonBack"(click)="backToPage3()">BACK</button>
                 </div>
               </div>
             </div>

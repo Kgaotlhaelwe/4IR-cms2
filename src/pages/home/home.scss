@@ -1019,7 +1019,7 @@ page-home {
     // width: 100%;
     // max-width: 700px;
     // margin: 0 auto;
-    border: 2px solid red;
+    // border: 2px solid red;
     margin-left:30%;
 margin-top:5%;
 height: 350px;
@@ -1550,3 +1550,6 @@ ion-grid{
 // .swal2-container{
 //   background: transparent !important;
 // }
+.alert-message, #alert-msg-0 {
+  color: rgb(255, 255, 255); // text color for confirm alerts
+}
