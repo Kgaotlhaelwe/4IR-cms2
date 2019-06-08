@@ -54,17 +54,8 @@
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="url" id="web" placeholder="Website" [(ngModel)]="orgWebsite"><br>
-<<<<<<< HEAD
-
-                
-                <span (mouseenter)="websiteHintInfo()" (mouseleave)="hidewebsiteHintInfo()" class="dot">?</span>
-
-                  <div *ngIf="showWebsiteHintInfo"  class="info">your website address should start with www  for eg :www.google.com </div>
-                <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea> <br>
-=======
                 <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
@@ -766,7 +757,7 @@
                   <div class="input-field">
                     <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink" required>
                     <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
-                    <div *ngIf="showApplicationLink" class="info">Please type links that will directly users to the application form
+                    <div *ngIf="showApplicationLink" class="info">Please type links that will direct users to the application form
                     </div>
                   </div>
                   <input class="fixSize" type="email"  placeholder="Email" [(ngModel)]="Programemail" required>
@@ -775,8 +766,8 @@
                   <br>
                   <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
                   <br>
-                  <button ion-button class="theButton" (click)="uploadInfoDone()">Done</button>
-                  <button ion-button class="theButtonBack"(click)="backToPage3()">BACK</button>
+                  <button ion-button id="pg4btnDone" class="theButton" (click)="uploadInfoDone()">Done</button>
+                  <button ion-button id="pg4btnBack" class="theButtonBack"(click)="backToPage3()">BACK</button>
                 </div>
               </div>
             </div>

@@ -22,7 +22,7 @@ export class MyApp {
           this.rootPage =HomePage
         }
         else {
-          this.rootPage = RegisterPage
+          this.rootPage = OnBoardingPage
         }
       })
       // Okay, so the platform is ready and our plugins are available.
