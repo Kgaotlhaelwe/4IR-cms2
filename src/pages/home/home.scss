@@ -396,19 +396,16 @@ page-home {
     transition: 2s;
     cursor: pointer;
     text-align: center;
-    padding: 10px;
     font-family: arial, sans-serif;
     font-weight: bolder;
-    line-height: 25px;
+    width: 20%;
+
   }
   .arrow {
     text-align: center;
   }
   #upArrow{
-    
-    
-      margin-top: -20px;
-    
+  margin-top: -20px;
   }
   .close {
     position: absolute;
