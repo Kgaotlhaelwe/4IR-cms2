@@ -331,7 +331,7 @@ export class IrMethodsProvider {
                logo: details[keys[x]].downloadurlLogo,
             
               }
-              this.storeOrgNames(details[keys[x]].name);
+              this.storeOrgNames(details[keys[x]].prograName, details[keys[x]].programCategory);
               this.orgArray.push(orgObject)
               console.log(this.orgArray)
             }
@@ -343,9 +343,9 @@ export class IrMethodsProvider {
   }
 
 
-  storeOrgNames(name) {
+  storeOrgNames(name,cat) {
     this.orgNames.push(name);
-    console.log(this.orgNames);
+    this.orgNames.push(cat);
 
   }
 

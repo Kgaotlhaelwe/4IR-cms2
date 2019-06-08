@@ -23,10 +23,10 @@
               <ion-icon name="search"></ion-icon>
             </button>
           </ion-fab> -->
-        <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
-        </ion-searchbar>
+          <ion-searchbar class="searchBar" [(ngModel)]="searchItem" placeholder="Search by name" (ionInput)="getItems($event)">
+          </ion-searchbar>
         <div class="results">
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+          <ion-item *ngFor="let item of items" >
             {{ item}}
           </ion-item>
         </div>

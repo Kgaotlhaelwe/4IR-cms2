@@ -582,6 +582,20 @@ export class HomePage implements OnInit {
     this.items = this.orgNames
   }
 
+  filterItems(val) {
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        console.log(val);
+
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    else if (val == "" || val == null) {
+      this.items = [];
+    }
+  }
+
+
   getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
@@ -715,7 +729,7 @@ export class HomePage implements OnInit {
       let infowindow = new google.maps.InfoWindow({
         content:
           '<div style="width: 400px; transition: 300ms;"><b>' +
-          this.orgArray[index].orgName +
+          this.orgArray[index].programCategory +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
           this.orgArray[index].img +
