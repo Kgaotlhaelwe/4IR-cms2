@@ -24,10 +24,10 @@ page-home {
     height: 30%;
     padding: 1%
   }
-  .theSlides{
+  .theSlides {
     width: 540px;
     height: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -38,26 +38,18 @@ page-home {
     background: white;
     text-align: center;
   }
-  .theSlide{
+  .theSlide {
     width: 150px;
     height: 150px;
     // border: 2px solid green;
     // margin: 0 auto;
     margin: 10px;
     position: relative;
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-  }
-  .theSlide:hover .tooltiptext {
-    visibility: visible;
-    position: absolute;
-    top: -10px;
-    overflow: auto;
-    z-index: 10000;
-   
   }
   .tooltiptext {
     transition: 700ms;
@@ -68,7 +60,8 @@ page-home {
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-    margin-top:10%;
+    left: 0;
+    margin-top: 10px;
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
@@ -77,41 +70,43 @@ page-home {
     top: -100%;
     overflow: hidden;
   }
-  .gal1{
-      /* position: relative; */
-      display: block;
-      // border: 2px solid red;
-      position: relative;
-      width: 160px !important;
-      /* border-bottom: 1px dotted black; */
-      .tooltiptext {
-        transition: 700ms;
-        visibility: hidden;
-        // /* width: 100%; */
-        background-color: rgba(0, 0, 0, 0.575);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-    
-        /* Position the tooltip */
-        position: absolute;
-        z-index: 1;
-        top: -100%;
-        overflow: auto;
-      }
-      :hover .tooltiptext {
-        visibility: visible;
-        position: absolute;
-        top: -10px;
-        overflow: auto;
-        z-index: 10000;
-      }
-    img{
+  .gal1 {
+    /* position: relative; */
+    display: block;
+    // border: 2px solid red;
+    position: relative;
+    width: 160px !important;
+    /* border-bottom: 1px dotted black; */
+    .tooltiptext {
+      transition: 700ms;
+      visibility: hidden;
+      // /* width: 100%; */
+      background-color: rgba(0, 0, 0, 0.575);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      width: 170px;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: -100%;
+      overflow-x: hidden;
+    }
+    :hover .tooltiptext {
+      visibility: visible;
+      position: absolute;
+      top: -10px;
+      overflow: auto;
+      z-index: 10000;
+      width: 120px;
+    }
+    img {
       width: 150px !important;
     }
   }
-  
+
   #map {
     height: 100%;
     width: 100%;
@@ -192,7 +187,7 @@ page-home {
   }
   .GAlNAme {
     // background: red;
-    color:black;
+    color: black;
     padding-left: 30px;
     padding-top: 21px;
   }
@@ -226,8 +221,8 @@ page-home {
     overflow-y: scroll;
     /* width: 100%; */
   }
-  .font{
-    font-size:2em
+  .font {
+    font-size: 2em;
   }
   #myIcon {
     z-index: 100000000000000000000000000000000000000000000000000000;
@@ -291,7 +286,7 @@ page-home {
     /* border: 2px solid green */
   }
   .action > div {
-    // background:  orange; 
+    // background:  orange;
     line-height: 100px;
     font-weight: bolder;
     font-family: arial, sans-serif, impact;
@@ -309,7 +304,7 @@ page-home {
      
   }
 .font1{
-  color:rgb(96, 91, 91);
+  color:black;
   font-size: 90%
 }
   .list {
@@ -319,19 +314,19 @@ page-home {
     // padding-top: 20px;
     /* border: 2px solid red; */
     display: flex;
-    overflow-x: scroll;
+    overflow-x: visible;
     overflow-y: hidden;
-    position: relative;
-  
+    // position: relative;
+
     z-index: 100000;
-//  background: linear-gradient(#fff,rgba(255, 255, 255, 0)) 
+    //  background: linear-gradient(#fff,rgba(255, 255, 255, 0))
   }
   .list::-webkit-scrollbar-track {
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
     background-color: transparent;
     width: 2px;
   }
-  
+
   .list::-webkit-scrollbar {
     width: 2px;
     background-color: transparent;
@@ -340,7 +335,7 @@ page-home {
     /* padding: 1px; */
     /* background: white; */
     width: 200px;
-  
+
     margin: 4px;
     border-radius: 5px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
@@ -366,9 +361,8 @@ page-home {
   .list::-webkit-scrollbar-thumb {
     background-color: #958f45;
     border-radius: 50px;
-
   }
-  
+
   .list img {
     height: 150px;
     width: 100%;
@@ -384,11 +378,18 @@ page-home {
     width: 100%;
     bottom: -200px;
     height: 200px;
-//  border: 2px solid green; 
+    //  border: 2px solid green;
     overflow-x: visible;
     z-index: 100000;
-    background: linear-gradient(rgba(104, 104, 39, 0.297), rgba(0, 0, 0, 0.489));
-  box-shadow: 0 -15px 25px rgba(104, 104, 39, 0.366) 
+    background: #333;
+    box-shadow: 0 -15px 25px rgba(104, 104, 39, 0.366);
+    b {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-transform: capitalize;
+    }
   }
   #map {
     transition: 300ms;
@@ -439,7 +440,7 @@ page-home {
     border: 2px solid rgba(0, 0, 0, 0.5);
     background: white;
     color: white;
-    border-bottom:#ffee00;
+    border-bottom: #ffee00;
     border-radius: 100px;
     padding-top: 0;
     position: absolute;
@@ -450,7 +451,7 @@ page-home {
 
     animation: mymove 2s;
     animation-iteration-count: infinite;
-    ion-icon{
+    ion-icon {
       margin-top: 0;
     }
   }
@@ -506,7 +507,7 @@ page-home {
     position: absolute;
     padding-left: 30px;
     right: -100%;
-    bottom:60%;
+    bottom: 60%;
     // top: 10px;
     color: black;
     // background: white;
@@ -730,7 +731,10 @@ page-home {
     animation-iteration-count: linear;
     /* display: none; */
   }
-
+.fonttext{
+  color:black;
+  
+}
   @keyframes faderI2n {
     0% {
       /* opacity: 0 */
@@ -895,10 +899,10 @@ page-home {
     font-weight: normal;
     transform: translateX(-50%);
   }
-  .imageSaver{
+  .imageSaver {
     background: whitesmoke;
     color: white;
-    text-shadow: 0 0 10px black
+    text-shadow: 0 0 10px black;
   }
   .coverPhoto {
     width: 100%;
@@ -935,8 +939,8 @@ page-home {
     }
   }
 
-  h6{
-    padding-left:6%;
+  h6 {
+    padding-left: 6%;
   }
   
   p {
@@ -944,11 +948,10 @@ page-home {
     padding-right: 10px;
     padding-top: 0px;
     padding-bottom: 0px;
-  
   }
-  .font{
-    color:black;
-    font-size: 20%
+  .font {
+    color: black;
+    font-size: 20%;
   }
   .about p {
     color: grey;
@@ -963,8 +966,8 @@ page-home {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .logo:hover{
-    filter: brightness(0.8)
+  .logo:hover {
+    filter: brightness(0.8);
   }
   .WebName{
     position: absolute;
@@ -974,16 +977,16 @@ page-home {
     left: 0%;
     // transform: translateX(-50%);
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     // width: 20%;
-    p{
+    p {
       color: black;
-      border: 2px solid
+      border: 2px solid;
     }
-    img{
+    img {
       width: 40px;
       height: 40px;
-      margin-top:-10px;
+      margin-top: -10px;
       object-fit: contain;
       // border: 2px solid red;
     }
@@ -999,24 +1002,24 @@ page-home {
     overflow-y: scroll;
     /* border: 2px solid red; */
   }
-  .thePhoto{
+  .thePhoto {
     width: 25%;
     height: 130px;
     // border: 2px solid red;
     padding: 10px;
     position: relative;
-    p{
-    width: 100%;
-    text-align: center;
-    color: black;
+    p {
+      width: 100%;
+      text-align: center;
+      color: black;
     }
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-  .uploads{
+  .uploads {
     // margin: 0%;
     // padding: 0%;
     // width: 100%;
@@ -1164,10 +1167,53 @@ transform: translate(-50% ,-50%);
   h3 {
     padding-left: 10px;
     padding-right: 10px;
-    color:black
+    color: black;
   }
   .listDetails p {
     color: grey;
+  }
+  div.theOrganisations {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
+
+  div.theOrganisations div {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    width: 180px;
+    position: relative;
+  }
+  div.theOrganisations div img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+  }
+
+  div.theOrganisations div:hover {
+    background-color: #777;
+    .tooltiptext {
+      visibility: visible;
+      position: absolute;
+      top: 0px;
+      overflow: auto;
+      z-index: 10000;
+      // width: 150px;
+      height: 170px;
+      // overflow-y: scroll;
+      // overflow-x: visible;
+      // word-wrap: break-word !important;
+      // word-break: keep-all;
+      // white-space: wrap;
+      text-align: left;
+      word-wrap: break-word;
+      white-space: pre;
+      padding: 5px;
+    }
   }
 
   #branchHead {
@@ -1187,13 +1233,13 @@ transform: translate(-50% ,-50%);
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #018790;
+    background: #04592a;
     border-radius: 10px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(24, 62, 107);
+    background: #037737;
   }
   .FAB {
     transition: 300ms;
@@ -1246,7 +1292,7 @@ transform: translate(-50% ,-50%);
     /* border-bottom: 1px dotted black; */
   }
 
-  .gal .tooltiptext {
+  .theOrganisations div .tooltiptext {
     transition: 700ms;
     visibility: hidden;
     // /* width: 100%; */
@@ -1261,14 +1307,9 @@ transform: translate(-50% ,-50%);
     z-index: 1;
     top: -100%;
     overflow: auto;
-  }
-
-  .gal:hover .tooltiptext {
-    visibility: visible;
-    position: absolute;
-    top: -10px;
-    overflow: auto;
-    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
   }
   .smallDetails {
     display: none;
@@ -1287,7 +1328,7 @@ transform: translate(-50% ,-50%);
     // margin-top: 10px;
     // margin-left: 10px;
   }
-  .button-inner{
+  .button-inner {
     background-color: transparent;
   }
   // .searchbar-input-container{

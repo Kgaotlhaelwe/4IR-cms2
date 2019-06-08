@@ -9,6 +9,8 @@ import {RegisterPage} from "../pages/register/register"
 import { LoginPage } from '../pages/login/login';
 import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
+import { TestsPage } from '../pages/tests/tests';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,10 +21,10 @@ export class MyApp {
     platform.ready().then(() => {
       IRmethods.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = OnBoardingPage
         }
         else {
-          this.rootPage = RegisterPage
+          this.rootPage = HomePage
         }
        })
       // Okay, so the platform is ready and our plugins are available.

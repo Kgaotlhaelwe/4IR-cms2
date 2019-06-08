@@ -5,7 +5,6 @@ import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { OrganizationProfilePage } from "../organization-profile/organization-profile"
 import { OnBoardingPage } from '../on-boarding/on-boarding';
-import Swal from 'sweetalert2';
 import { ViewInformationPage } from '../view-information/view-information';
 declare var firebase;
 
@@ -267,7 +266,10 @@ export class HomePage implements OnInit {
   objectives;
   programBenefits;
   eligibleCreteria;
-
+  name1;
+  contact1;
+  desc1;
+  address1
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -289,15 +291,13 @@ export class HomePage implements OnInit {
 
     }, 5000);
 
-    Swal.fire({
-      imageUrl: "../../assets/imgs/4IR logo.png",
-      imageHeight: 300,
-      imageAlt: 'A tall image',
-      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
-    })
-
-    this.IRmethods.getproInfor().then((data) => {
-      console.log(data)
+    this.IRmethods.getproInfor().then((data: any) => {
+      this.name1 = data.name;
+      this.desc1 = data.desc;
+      this.address1 = data.address;
+      this.contact1 = data.contact;
+      this.name1 = data.name;
+      console.log(this.name1)
     })
 
 
@@ -804,7 +804,7 @@ export class HomePage implements OnInit {
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "10px";
+    slider[0].style.bottom = "60px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }

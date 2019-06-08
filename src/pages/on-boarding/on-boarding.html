@@ -84,7 +84,11 @@
                     <option value="No">No</option>
                   </select>
                   <br>
-                  <select class="select-css" *ngIf="ShowChooseRange" [(ngModel)]="chooseWifiRange">
+                  
+                 <div *ngIf="ShowChooseRange">
+                   
+                    <p>What is your pricing?</p>
+                  <select class="select-css" [(ngModel)]="chooseWifiRange">
                     <option value="Choose Range" disabled>Choose Range</option>
                     <option value="200MB Free">200MB Free</option>
                     <option value="1GB Free">1GB Free</option>
@@ -92,6 +96,7 @@
                     <option value="Unlimited">Unlimited</option>
                   </select>
                 </div>
+                 </div>
 
                 <button ion-button class="theButton" (click)="moveToPage3()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
