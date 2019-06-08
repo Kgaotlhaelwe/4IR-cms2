@@ -1,6 +1,7 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
   <div class="start">
 
@@ -25,7 +26,7 @@
     <ion-searchbar class="searchBar" [(ngModel)]="searchItem" placeholder="Search by category" (ionInput)="getItems($event)">
     </ion-searchbar>
     <div class="results">
-      <ion-item *ngFor="let item of items" (click)="viewInfor(item)">
+      <ion-item id="itemsearch" *ngFor="let item of items" (click)="viewInfor(item)">
         {{ item}}
       </ion-item>
     </div>
@@ -34,7 +35,7 @@
 
     <div class="tab">
       <div class="WebName">
-        <img src="../../assets/imgs/4IR logo.png" alt=""> 4ir Resources Hub
+        <img id="logopng" src="../../assets/imgs/4IR logo.png" alt=""><h6 id="logoicon">4ir Resources Hub</h6> 
 
       </div>
       <div class="action">
