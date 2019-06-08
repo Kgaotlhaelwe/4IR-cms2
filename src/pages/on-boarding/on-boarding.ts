@@ -1,4 +1,3 @@
-
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
@@ -156,11 +155,8 @@ export class OnBoardingPage {
   trackopenProgram;
   trackcloseProgram;
 
-<<<<<<< HEAD
   programContactValidation;
 
-=======
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
   showOther: boolean = false;
   showProgramcategory: boolean = true;
 
@@ -898,11 +894,7 @@ export class OnBoardingPage {
 
   }
 
-<<<<<<< HEAD
   moveToPage2progs() {
-=======
-  moveToPage5() {
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
 
@@ -998,11 +990,7 @@ export class OnBoardingPage {
 
 
   }
-<<<<<<< HEAD
   moveToPage3progs() {
-=======
-  moveToPage6() {
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
@@ -1016,7 +1004,6 @@ export class OnBoardingPage {
       this.alert("Please enter  program description ")
 
     } else {
-<<<<<<< HEAD
 
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-50%";
@@ -1025,14 +1012,6 @@ export class OnBoardingPage {
 
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-50%"
-=======
-      var toSlide = document.getElementById("page6");
-      toSlide.style.marginLeft = "-25%";
-      this.progressBar = this.progressBar + 25;
-    }
-
-
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
   }
 
   moveToPage4progs() {
@@ -1060,16 +1039,6 @@ export class OnBoardingPage {
       this.alert("The address you have entered is invalid, please enter a valid address ")
 
     }
-<<<<<<< HEAD
-=======
-
-
-    else {
-
-      var toSlide = document.getElementById("page7");
-      toSlide.style.marginLeft = "-25%";
-      this.progressBar = this.progressBar + 25;
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
     else {
@@ -1082,10 +1051,6 @@ export class OnBoardingPage {
 
 
 
-<<<<<<< HEAD
-=======
-    console.log(this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city);
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
 
@@ -1110,7 +1075,11 @@ export class OnBoardingPage {
     let dotpos = email.lastIndexOf(".")
 
     if (atpos < 1 || (dotpos - atpos < 2)) {
-      this.emailtrack = 1
+      this.emailtrack
+      
+      
+      
+      = 1
       console.log("wrong email");
 
     } else {
@@ -1159,7 +1128,7 @@ export class OnBoardingPage {
       this.alert("The web address you have entered is invalid, please enter a valid web address  ")
     } else if (this.programContactValidation == 1) {
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    } else if (this.emailtrack = 1) {
+    } else if (this.emailtrack == 1) {
       this.alert("The email address you have entered is invalid, please enter a valid email address  ")
     } else {
 
@@ -1170,35 +1139,9 @@ export class OnBoardingPage {
 
     }
 
-<<<<<<< HEAD
 
 
 
-=======
-    console.log(this.applicationLink);
-    console.log(this.facebook);
-    console.log(this.twitter);
-    console.log(this.promPhone);
-    console.log(this.programServicez);
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'successfully added a programme...',
-      duration: 4000
-    });
-    loading.present();
-
-
-
-
-    this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
-      console.log("successfully");
-
-
-
-
-
-    })
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
   }
 
@@ -1336,13 +1279,9 @@ export class OnBoardingPage {
       console.log("tttttt");
 
       this.showOther = true;
-<<<<<<< HEAD
       // this.showProgramcategory = false;
     } else {
       this.showOther = false;
-=======
-      this.showProgramcategory = false;
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
     }
   }
 
@@ -1397,7 +1336,6 @@ export class OnBoardingPage {
   hideObjectiveHint() {
     this.showObjective = false
   }
-<<<<<<< HEAD
   websiteHintInfo() {
     this.showWebsiteHintInfo = true;
   }
@@ -1405,9 +1343,5 @@ export class OnBoardingPage {
   hidewebsiteHintInfo() {
     this.showWebsiteHintInfo = false;
   }
-=======
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 }
-
-

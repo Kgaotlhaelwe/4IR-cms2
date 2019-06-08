@@ -158,17 +158,9 @@ export class IrMethodsProvider {
         loading.present();
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
-<<<<<<< HEAD
-          firebase.database().ref("Users/"+"Cms_Users/"+user.uid).set({
-         
-            email: email,
-         //   downloadurl: "../../assets/imgs/Defaults/default.jfif",
-           
-=======
           console.log(user)
           firebase.database().ref("Users/" + "Cms_Users/" + user.uid).set({
             email: email,
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
           })
           var user = firebase.auth().currentUser;
           user.sendEmailVerification().then(function () {

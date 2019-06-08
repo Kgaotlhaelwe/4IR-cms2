@@ -99,22 +99,22 @@ export class RegisterPage {
     loading.present();
     this. IRmethods.SignIn(email, password).then((user: any) => {
       // console.log(user);
-      this .IRmethods.checkVerification().then((data: any) => {
-        if (data == 0) {
-          const alert = this.alertCtrl.create({
-            cssClass: "myAlert",
-            // title: "No Password",
-            subTitle: "We have sent you a verification mail, Please activate your account with the link in the mail",
-            buttons: ['OK'],
-          });
-          loading.dismiss()
-          alert.present();
-        }
-        else if (data == 1) {
-          loading.dismiss()
-          this.navCtrl.setRoot(HomePage);
-        }
-      })
+      // this .IRmethods.checkVerification().then((data: any) => {
+      //   if (data == 0) {
+      //     const alert = this.alertCtrl.create({
+      //       cssClass: "myAlert",
+      //       // title: "No Password",
+      //       subTitle: "We have sent you a verification mail, Please activate your account with the link in the mail",
+      //       buttons: ['OK'],
+      //     });
+      //     loading.dismiss()
+      //     alert.present();
+      //   }
+      //   else if (data == 1) {
+      //     loading.dismiss()
+      //     this.navCtrl.setRoot(HomePage);
+      //   }
+      // })
     }).catch((error) => {
       const alert = this.alertCtrl.create({
         cssClass: "myAlert",

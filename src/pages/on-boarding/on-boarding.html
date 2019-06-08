@@ -54,17 +54,8 @@
                 <input type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
                 <input type="tel" placeholder="Phone" [(ngModel)]="orgPhone">
                 <input type="url" id="web" placeholder="Website" [(ngModel)]="orgWebsite"><br>
-<<<<<<< HEAD
-
-                
-                <span (mouseenter)="websiteHintInfo()" (mouseleave)="hidewebsiteHintInfo()" class="dot">?</span>
-
-                  <div *ngIf="showWebsiteHintInfo"  class="info">your website address should start with www  for eg :www.google.com </div>
-                <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea> <br>
-=======
                 <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea> <br>
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
@@ -195,7 +186,6 @@
               <div>
                 <progress id="file" max="100" value="{{progressBar}}"> </progress>
               </div>
-<<<<<<< HEAD
   
   
   
@@ -222,13 +212,9 @@
                     <option value="Other">Other</option>
   
                   </select>
-=======
-            </div>
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
 
-<<<<<<< HEAD
                   <div class="the-dates">
   
                       <div class="start">
@@ -270,113 +256,11 @@
                     
   
                   <textarea name="" id="orgDesc" placeholder="Objectives" cols="4" [(ngModel)]="objectives"></textarea>
-=======
-            <div class="theSlider">
-
-              <div class="slideShow" id="page5">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
-                  animi iusto, eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit
-                  provident labore dolorum rem ab.</p>
-                <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
-
-                <select class="select-css" (change)="selectProgramCategory()" [(ngModel)]="Programcategory"
-                  *ngIf="showProgramcategory">
-
-                  <option value="Do you offer WiFi" disabled> Choose Programme </option>
-                  <option value="Biomanufacturing industry development centre">Biomanufacturing industry development
-                    centre </option>
-                  <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
-                  </option>
-                  <option value="Data Science for impact and decision enablement program">Data Science for impact and
-                    decision enablement program</option>
-                  <option value="Experiential Training Programme">Experiential Training Programme</option>
-                  <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
-                  <option value="Other">Other</option>
-
-                </select>
-
-
-                <textarea *ngIf="showOther" name="" id="orgDesc" placeholder=" " cols="4"
-                  [(ngModel)]="other"></textarea>
-
-
-
-                <div class="the-dates">
-
-                  <div class="start">
-                    Start Date <br>
-                    <input type="date" class="dates-input" [(ngModel)]="openApplicationDate">
-                  </div>
-                  <div class="end">
-                    End Date <br>
-                    <input type="date" class="dates-input" [(ngModel)]="closeApplicationDate">
-                  </div>
-                  <div class="start">
-                    Start Date <br>
-                    <input type="date" class="dates-input" [(ngModel)]="programStartDate">
-                  </div>
-                  <div class="end">
-                    End Date <br>
-                    <input type="date" class="dates-input" [(ngModel)]="programCloseDate">
-                  </div>
-                </div>
-
-                <!-- <ion-item>
-                    <ion-label>Start Date</ion-label>
-                    <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-                  </ion-item> <br> <br>
-  
-  
-                  <ion-item>
-                      <ion-label>Close Date</ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-                    </ion-item>  <br> <br>
-  
-  
-                    <ion-item>
-                        <ion-label>Programme Start</ion-label>
-                        <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-                      </ion-item>
-  
-  
-                      <ion-item>
-                          <ion-label>Programme close</ion-label>
-                          <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-                        </ion-item>
-                 
-                      <br> <br> -->
-
-                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage5()">NEXT</button>
-
-
-
-              </div>
-              <div class="slideShow" id="page6">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
-
-
-                <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="introduction" cols="4"
-                    [(ngModel)]="ProgramIntroduction"></textarea>
-
-                  <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()'
-                    class="dot">?</span>
-
-
-                  <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief
-                    explanation or summary of the Program.
-
-                  </div>
-                </div>
-                <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
 
                   <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
 
                   <div *ngIf='showObjective' class="info">All planning and strategic activities of the program</div>
-<<<<<<< HEAD
                   <select class="select-css" [(ngModel)]="targetAudience">
                     <option value="Do you offer WiFi" disabled> Target Audience </option>
                     <option value="18 -25">18 -25</option>
@@ -422,45 +306,6 @@
                     [(ngModel)]="EligibleCriteria"></textarea> <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()'class="dot">?</span>
 
                   <div *ngIf="showEligibleCriteria"  class="info">Who can apply for this program e.g. South African Citizen and must be the age of 18-35 years </div>
-=======
-                </div>
-                <select class="select-css" [(ngModel)]="targetAudience">
-                  <option value="Do you offer WiFi" disabled> Target Audience </option>
-                  <option value="18 -25">18 -25</option>
-                  <option value="18-35">18-35 </option>
-                </select><br>
-                <textarea name="" id="orgDesc" placeholder="full description" cols="4"
-                  [(ngModel)]="programDescription"></textarea>
-                <button ion-button class="theButton" (click)="moveToPage6()">NEXT</button>
-
-                <button ion-button class="theButtonBack" (click)="backToPage5()">BACK</button>
-              </div>
-
-              <div class="slideShow" id="page7">
-                <p>Almost there, please provide a category for the organisation.</p>
-
-
-                <div class="customSelect" (click)="services()">
-                  Services
-                </div>
-
-                <div *ngFor="let a of programServicez">
-                  {{a.title}}
-                </div>
-                <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress"
-                  (change)="setAddress()"><br>
-
-
-                <div class="input-field">
-
-                  <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4"
-                    [(ngModel)]="programBenefits"></textarea> <span (mouseenter)="programeBenefits()"
-                    (mouseleave)='hideProgramBenefits()' class="dot">?</span>
-
-                  <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
-                </div>
-                <div class="imput-field">
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
 
                   <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
                     [(ngModel)]="programAdditionalBenefits"></textarea> <span (mouseenter)="AdditionalBenefits()"
@@ -469,7 +314,6 @@
                   <div *ngIf="showAdditionalBenefits" class="info">Extra things apart from the ones already present
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="slideShow" id="page8">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore minus animi, veritatis dolore eveniet accusamus reprehenderit repellat ab fuga pariatur nesciunt magnam dolorum quasi eos laudantium placeat dolores soluta quas.</p>
                   <div class="description" padding>
@@ -490,37 +334,6 @@
   
                     <button ion-button class="theButton" (click)="moveToPage8()">Done</button>
                     <button ion-button class="theButtonBack" (click)="backToPage7()">BACK</button>
-=======
-                <div class="input-field"></div>
-                <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
-                  [(ngModel)]="EligibleCriteria"></textarea> <span (mouseenter)="EligibleCriteriaHint()"
-                  (mouseleave)='hideEligibleCriteria()' class="dot">?</span>
-
-                <div *ngIf="showEligibleCriteria" class="info">Who can apply for this program e.g. South African Citizen
-                  and must be the age of 18-35 years </div>
-
-
-                <button ion-button class="theButton" (click)="moveToPage7()">NEXT</button>
-                <button ion-button class="theButtonBack" (click)="backToPage6()">BACK</button>
-
-
-
-
-              </div>
-              <div class="slideShow" id="page8">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore minus animi, veritatis dolore eveniet
-                  accusamus reprehenderit repellat ab fuga pariatur nesciunt magnam dolorum quasi eos laudantium placeat
-                  dolores soluta quas.</p>
-                <div class="description" padding>
-                  <div class="input-field">
-
-
-                    <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink"
-                      required> <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()'
-                      class="dot">?</span>
-                    <div *ngIf="showApplicationLink"  class="info">Please type links that will directly users to the application form
-                    </div>
->>>>>>> d94355b38426e4ae4c45c5c20199117bf0d02844
                   </div>
                   <input class="fixSize" type="email" placeholder="email" [(ngModel)]="Programemail" required>
 
@@ -873,7 +686,7 @@
 
 
                 <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="introduction" cols="4" [(ngModel)]="ProgramIntroduction"></textarea>
+                  <textarea name="" id="orgDesc" placeholder="Introduction" cols="4" [(ngModel)]="ProgramIntroduction"></textarea>
 
                   <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()' class="dot">?</span>
 
@@ -883,7 +696,7 @@
                   </div>
                 </div>
                 <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="objectives" cols="4" [(ngModel)]="objectives"></textarea>
+                  <textarea name="" id="orgDesc" placeholder="Objectives" cols="4" [(ngModel)]="objectives"></textarea>
 
 
                   <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
@@ -892,11 +705,11 @@
                 </div>
                 <select class="select-css" [(ngModel)]="targetAudience">
                   <option value="Do you offer WiFi" disabled> Target Audience </option>
-                  <option value="18 -25">18 -25</option>
-                  <option value="18-35">18-35 </option>
+                  <option value="18 -25">18 - 25</option>
+                  <option value="18-35">18 - 35 </option>
                 </select>
                 <br>
-                <textarea name="" id="orgDesc" placeholder="full description" cols="4" [(ngModel)]="programDescription"></textarea>
+                <textarea name="" id="orgDesc" placeholder="Full description" cols="4" [(ngModel)]="programDescription"></textarea>
                 <button ion-button class="theButton" (click)="moveToPage3progs()">NEXT</button>
 
                 <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
@@ -919,7 +732,7 @@
                 <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="this.orgAdress" (change)="setAddress()">
                 <br>
                 <div class="input-field">
-                  <textarea name="" id="orgDesc" placeholder="programe Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
+                  <textarea name="" id="orgDesc" placeholder="Programme Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
                   <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
                   <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
                 </div>
@@ -942,16 +755,16 @@
                   quas.</p>
                 <div class="description" padding>
                   <div class="input-field">
-                    <input class="fixSize" type="text" placeholder="application link" [(ngModel)]="applicationLink" required>
+                    <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink" required>
                     <span (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
                     <div *ngIf="showApplicationLink" class="info">Please type links that will directly users to the application form
                     </div>
                   </div>
-                  <input class="fixSize" type="email" placeholder="email" [(ngModel)]="Programemail" required>
-                  <input class="fixSize" type="tel" placeholder="Phone" [(ngModel)]="promPhone">
-                  <input class="fixSize" type="text" placeholder="twitter" [(ngModel)]="twitter">
+                  <input class="fixSize" type="email"  placeholder="Email" [(ngModel)]="Programemail" required>
+                  <input class="fixSize" type="tel"       placeholder="Phone" [(ngModel)]="promPhone">
+                  <input class="fixSize" type="text"   placeholder="Twitter" [(ngModel)]="twitter">
                   <br>
-                  <input class="fixSize" type="text" placeholder="facebook" [(ngModel)]="facebook">
+                  <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
                   <br>
                   <button ion-button class="theButton" (click)="uploadInfoDone()">Done</button>
                   <button ion-button class="theButtonBack"(click)="backToPage3()">BACK</button>
