@@ -804,7 +804,7 @@ export class HomePage implements OnInit {
     // arrow[0].style.transform = "translateX(-60%)";
     // arrow.style.transform = "rotateZ(180deg)";
     // arrow[0].style.transform = "translateX(-50%)";
-    slider[0].style.bottom = "60px";
+    slider[0].style.bottom = "10px";
     blurMap.style.filter = "blur(3px)";
     this.state = 1;
   }

@@ -93,10 +93,10 @@ page-on-boarding {
       border        : 1px solid rgba(0, 0, 0, 0.205);
       border-radius: 5px;
       margin: 5px;
-      // padding       : ;
+      padding       : 5px !important ;
       width         : 100%;
       font-size: 10px !important;
-      // height     : 0;
+      // height     : 100px;
       // line-height: 0;
     }
   }
@@ -120,11 +120,13 @@ page-on-boarding {
     flex-wrap: wrap;
     width    : 85%;
     margin   : 0 auto;
-    // border: 2px solid green;
 
     input[type="date"]::-webkit-inner-spin-button {
       /* Your CSS here */
       display: none;
+    }
+    input[type="date"]{
+      width: 90% !important;
     }
   }
 
@@ -278,7 +280,6 @@ page-on-boarding {
     //   border: 2px solid red;
     //   border: 2px solid white
   }
-
   .slideShow:nth-child(1) {
     width     : 25%;
     background: white;
@@ -562,8 +563,8 @@ page-on-boarding {
   }
 
   .dates-input {
-    width         : 50%;
-    margin-top    : 10px;
+    width         : 50% !important;
+    margin-top    : 10px !important;
     text-transform: lowercase;
   }
 
@@ -751,13 +752,13 @@ page-on-boarding {
     bottom  : 20px;
     right   : 20px;
   }
+  
+.inputText, input{
+  border: 1PX solid rgba(0, 0, 0, 0.486) !important;
+  height: 50px;
+  padding: 10px;
+  width: 80%;
+  border-radius: 50px;
+  background: whitesmoke;
 }
-
-.alert-checkbox-button,
-.alert-checkbox-group,
-.button-inner,
-.alert-checkbox,
-.alert-checkbox-label {
-  background: #04592a;
-  color     : white !important;
 }

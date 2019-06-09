@@ -29,15 +29,26 @@
           </div>
         </div> -->
 
-        <ion-slides slidesPerView="4">
-          <ion-slide *ngFor="let a of orgArray">
+        <!-- <ion-slides slidesPerView="4">
+          <ion-slide>
 
               <div class="tooltiptext">
                   {{a.intro}}
                 </div>
               <img src="{{a.img}}" alt="">
           </ion-slide> 
-        </ion-slides>
+        </ion-slides> -->
+        
+  <div class="show-other-orgs">
+      <ion-slides slidesPerView="8.125">
+         <!-- -->
+        <ion-slide *ngFor="let a of orgArray">
+            <span class="tooltiptext">{{a.intro}}</span>
+          <img src="{{a.img}}" alt="">
+        </ion-slide>
+      </ion-slides>
+    </div>
+
       </div>
     </div>
     <ion-searchbar class="searchBar" placeholder="Search by city or name" (ionInput)="getItems($event)">
