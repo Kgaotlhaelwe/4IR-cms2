@@ -15,18 +15,18 @@ import { TestsPage } from '../pages/tests/tests';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any  ; 
+  rootPage : RegisterPage ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public IRmethods: IrMethodsProvider) {
     platform.ready().then(() => {
-      IRmethods.checkstate().then((data: any) => {
-        if (data == 1) {
-          this.rootPage = HomePage
-        }
-        else {
-          this.rootPage = HomePage
-        }
-       })
+      // IRmethods.checkstate().then((data: any) => {
+      //   if (data == 1) {
+      //     this.rootPage = RegisterPage
+      //   }
+      //   else {
+      //     this.rootPage = RegisterPage
+      //   }
+      //  })
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

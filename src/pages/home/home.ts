@@ -367,7 +367,6 @@ export class HomePage implements OnInit {
 
     // })
 
-   this.initMap() ;
   }
 
   EditPrfile() {
@@ -463,6 +462,8 @@ export class HomePage implements OnInit {
 
     }
   }
+
+  ng
 
   UploadLogo(event: any) {
     this.d = 1;
@@ -666,7 +667,7 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-   // this.initMap();
+   this.initMap();
   }
 
   initMap() {
