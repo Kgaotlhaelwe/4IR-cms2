@@ -310,6 +310,12 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.IRmethods.getOrgProfile().then((data: any) => {
+      console.log(data);
+
+      if(data == null){
+
+      }else {
+         
       this.name = data.prograName;
       this.category = data.programCategory;
       this.cell = data.promPhone;
@@ -320,6 +326,8 @@ export class HomePage implements OnInit {
       this.objectives = data.objectives
       this.programBenefits = data.programBenefits
       this.eligibleCreteria = data.eligibleCreteria
+      }
+     
 
       console.log(this.name)
 
@@ -328,7 +336,7 @@ export class HomePage implements OnInit {
     })
 
     var tempArray = []
-    // this.initMap() ;
+  
     this.getGallery();
 
     this.IRmethods.getAllOrganizations().then((data: any) => {
@@ -358,6 +366,8 @@ export class HomePage implements OnInit {
 
 
     // })
+
+   this.initMap() ;
   }
 
   EditPrfile() {
@@ -656,15 +666,16 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-    this.initMap();
+   // this.initMap();
   }
+
   initMap() {
 
 
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
-      duration: 11000
+      duration: 15000
     });
     loading.present();
 
@@ -692,8 +703,10 @@ export class HomePage implements OnInit {
 
 
     setTimeout(() => {
+      console.log("show markers");
+      
       this.markers();
-    }, 12000)
+    }, 16000)
 
     var contentString = '<div id="content">' +
       '<div id="siteNotice">' +
