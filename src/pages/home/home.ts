@@ -36,6 +36,7 @@ export class HomePage implements OnInit {
   downloadurl;
   downloadurlLogo;
   programCategory;
+  userLocation :String;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
@@ -290,6 +291,11 @@ export class HomePage implements OnInit {
       })
 
     }, 5000);
+
+
+
+
+  
 
     this.IRmethods.getproInfor().then((data: any) => {
       this.name1 = data.name;
@@ -670,8 +676,15 @@ export class HomePage implements OnInit {
   }
 
   initMap() {
-
-
+   
+    setTimeout(() => {
+      this.IRmethods.getLocation(this.lat , this.lng).then((data:any)=>{
+        console.log(data);
+        this.userLocation = data ;
+        console.log(this.userLocation);
+        })
+      
+    }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
@@ -700,21 +713,23 @@ export class HomePage implements OnInit {
       //animation: google.maps.Animation.DROP,
     });
 
+console.log();
 
 
     setTimeout(() => {
       console.log("show markers");
       
       this.markers();
+      console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
     }, 16000)
+console.log( this.userLocation);
+setTimeout(() => {
+  var contentString = '<div id="content">' +
+     
 
-    var contentString = '<div id="content">' +
-      '<div id="siteNotice">' +
+
       '</div>' +
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-
-
-      '</div>' +
+      this.userLocation
       '</div>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -726,6 +741,9 @@ export class HomePage implements OnInit {
       map.setZoom(13);
       map.setCenter(marker.getPosition());
     });
+  
+}, 4000);
+    
 
   }
   markers() {

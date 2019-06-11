@@ -302,12 +302,12 @@ export class OnBoardingPage {
     console.log(this.catService);
     console.log(this.email);
 
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'successfully an organization...',
-      duration: 4000
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'bubbles',
+    //   content: 'successfully an organization...',
+    //   duration: 4000
+    // });
+    // loading.present();
 
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       console.log("added ");

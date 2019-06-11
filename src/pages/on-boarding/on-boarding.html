@@ -179,8 +179,14 @@
                     </ion-select> -->
                 </div>
 
-
-
+                <div *ngFor="let a of catService">
+                      {{a.title}}
+                </div>
+                
+                
+                <div>
+                  
+                </div>
 
                 <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
                 <button ion-button class="theButton" (click)="moveToPage4()">NEXT</button>
