@@ -6,6 +6,7 @@ import { LoginPage } from '../login/login';
 import * as moment from 'moment';
 declare var google;
 declare var firebase;
+import Swal from 'sweetalert2';
 /**
 /**
  * Generated class for the OnBoardingPage page.
@@ -301,17 +302,23 @@ export class OnBoardingPage {
     console.log(this.catService);
     console.log(this.email);
 
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'successfully an organization...',
-      duration: 4000
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'bubbles',
+    //   content: 'successfully an organization...',
+    //   duration: 4000
+    // });
+    // loading.present();
 
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       console.log("added ");
 
 
+      Swal.fire({
+        imageUrl: "../../assets/imgs/4IR logo.png",
+        imageHeight: 300,
+        imageAlt: 'A tall image',
+        text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
+      })
       this.navCtrl.push(HomePage);
 
     })
@@ -1148,8 +1155,17 @@ export class OnBoardingPage {
 
       this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
         console.log("successfully");
-        this.navCtrl.push(HomePage)
+        this.navCtrl.push(HomePage);
+        
+    
+    Swal.fire({
+      imageUrl: "../../assets/imgs/4IR logo.png",
+      imageHeight: 300,
+      imageAlt: 'A tall image',
+      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
+    })
       })
+      
 
     }
 

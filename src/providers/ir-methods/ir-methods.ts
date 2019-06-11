@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, UrlSerializer, registerModeConfigs } from "ionic-angular";
 declare var firebase;
+declare var google;
 /*
   Generated class for the 4IrMethodsProvider provider.
   See https://angular.io/guide/dependency-injection for more info on providers
@@ -196,7 +197,7 @@ export class IrMethodsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("4IR_Hubs/"+user.uid)
+        .ref("Users/"+"Cms_Users/"+user.uid)
         .set({
           name: Orgname,
           email: email,
@@ -222,7 +223,6 @@ export class IrMethodsProvider {
 
   addProgram(prograName,openApplicationDate , closeApplicationDate , programStartDate  , programCloseDate , programCategory , intro ,objectives, targetAudience , fullDescription, service,lat , long , city ,  address, programBenefits ,additionalBenefits, eligibleCreteria, applicationLink , promPhone , twitter, facebook,email ){
     var user = firebase.auth().currentUser;
-
     return new Promise((resolve , reject)=>{
       firebase.database().ref("4IR_Hubs/"+user.uid).set({
         prograName:prograName ,
@@ -301,7 +301,6 @@ export class IrMethodsProvider {
             for (var x = 0; x < keys.length; x++) {
               let orgObject = {
                 orgName:details[keys[x]].prograName,
-
                 applicationLink: details[keys[x]].applicationLink,
                city: details[keys[x]].city,
                closeApplicationDate: details[keys[x]].closeApplicationDate,
@@ -331,9 +330,9 @@ export class IrMethodsProvider {
                logo: details[keys[x]].downloadurlLogo,
             
               }
-              this.storeOrgNames(details[keys[x]].name);
+              this.storeOrgNames(details[keys[x]].programCategory);
               this.orgArray.push(orgObject)
-              console.log(this.orgArray)
+              console.log(details[keys[x]].programCategory)
             }
             resolve(this.orgArray)
           }
@@ -343,9 +342,8 @@ export class IrMethodsProvider {
   }
 
 
-  storeOrgNames(name) {
-    this.orgNames.push(name);
-    console.log(this.orgNames);
+  storeOrgNames(cat) {
+    this.orgNames.push(cat);
 
   }
 
@@ -521,6 +519,21 @@ export class IrMethodsProvider {
   }
 
 
+  getproInfor() {
+    return new Promise((accpt, rej) => {
+      let user = firebase.auth().currentUser;
+      console.log(user.uid)
+      firebase.database().ref("Users/"+"Cms_Users/"+user.uid).on('value', (data: any) => {
+        let details = data.val();
+        console.log(details)
+        accpt(details)
+        console.log(details)
+      });
+
+    })
+  }
+
+
 
 
   forgetPassword(email) {
@@ -668,5 +681,22 @@ export class IrMethodsProvider {
   }
 
 
+ getLocation(lat, lng) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        var geocoder = new google.maps.Geocoder;
+        var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+        geocoder.geocode({ 'location': latlng }, function (results, status) {
+          var address = results[0].address_components[3].short_name;
+          console.log(address);
+          console.log(results[0]);
+          resolve(address)
+        }, 4000);
+
+      })
+
+
+    })
+  }
 
 }

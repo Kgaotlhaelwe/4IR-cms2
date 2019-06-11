@@ -12,13 +12,13 @@
       <div class="column" style="background-color:#f4f4f4; border: 1px solid rgba(0, 0, 0, 0.2)">
         <h2 style="color:#0a5e30e0">Sign In</h2>
         <label for="" class="Labels">
-            <ion-icon name="mail" id="Theicon"></ion-icon>
+            <ion-icon name="mail" id="Theicon"  ></ion-icon>
         </label>
-        <input  class="inputColor" #email type="text" placeholder="Email" ngModel required>
+        <input  class="input-green" #email type="text" placeholder="Email" ngModel required>
         <label for="" class="Labels">
-            <ion-icon name="lock" id="Theicon"></ion-icon>
+            <ion-icon name="lock" id="Theicon"  ></ion-icon>
         </label>
-        <input  class="inputColor" #password type="password" placeholder="Password" ngModel required>
+        <input  class="input-green" #password type="password" placeholder="Password" ngModel required>
         <button (click)="SignIn(email.value, password.value)">Login</button>
         <p class="thepassword" (click)="forgotpassword()"> Forgot your password?</p>
       </div>

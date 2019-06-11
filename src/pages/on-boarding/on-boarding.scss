@@ -91,9 +91,12 @@ page-on-boarding {
 
     p {
       border        : 1px solid rgba(0, 0, 0, 0.205);
-      padding       : 0;
+      border-radius: 5px;
+      margin: 5px;
+      padding       : 5px !important ;
       width         : 100%;
-      // height     : 0;
+      font-size: 10px !important;
+      // height     : 100px;
       // line-height: 0;
     }
   }
@@ -117,11 +120,13 @@ page-on-boarding {
     flex-wrap: wrap;
     width    : 85%;
     margin   : 0 auto;
-    // border: 2px solid green;
 
     input[type="date"]::-webkit-inner-spin-button {
       /* Your CSS here */
       display: none;
+    }
+    input[type="date"]{
+      width: 90% !important;
     }
   }
 
@@ -275,7 +280,6 @@ page-on-boarding {
     //   border: 2px solid red;
     //   border: 2px solid white
   }
-
   .slideShow:nth-child(1) {
     width     : 25%;
     background: white;
@@ -322,7 +326,7 @@ page-on-boarding {
   #orgDesc {
     resize       : none;
     width        : 80%;
-    height       : 100px;
+    height       : 80px;
     margin-top   : 20px;
     margin-left  : 50%;
     transform    : translateX(-50%);
@@ -374,7 +378,7 @@ page-on-boarding {
   select,
   .customSelect {
     width        : 80%;
-    margin       : 20px auto;
+    margin       : -20px auto 10px auto;
     height       : 50px;
     line-height  : 50px;
     border-radius: 50px;
@@ -383,24 +387,10 @@ page-on-boarding {
     padding-left : 10px;
   }
   .customSelect:active {
-    width        : 80%;
-    margin       : 20px auto;
-    height       : 50px;
-    line-height  : 50px;
-    border-radius: 50px;
     background   : rgb(179, 179, 179);
-    border       : 1px solid rgba(0, 0, 0, 0.144);
-    padding-left : 10px;
   }
   .customSelect:hover {
-    width        : 80%;
-    margin       : 20px auto;
-    height       : 50px;
-    line-height  : 50px;
-    border-radius: 50px;
     background   : rgb(199, 199, 199);
-    border       : 1px solid rgba(0, 0, 0, 0.144);
-    padding-left : 10px;
   }
   #page2 {
     padding-top               : 50px;
@@ -573,8 +563,8 @@ page-on-boarding {
   }
 
   .dates-input {
-    width         : 50%;
-    margin-top    : 10px;
+    width         : 50% !important;
+    margin-top    : 10px !important;
     text-transform: lowercase;
   }
 
@@ -613,8 +603,8 @@ page-on-boarding {
     }
 
     .slideShow {
-      overflow-y    : scroll;
-      overflow-x    : hidden;
+      // overflow-y    : scroll;
+      overflow    : hidden;
       // padding-top: 60px;
     }
 
@@ -762,13 +752,13 @@ page-on-boarding {
     bottom  : 20px;
     right   : 20px;
   }
+  
+.inputText, input{
+  border: 1PX solid rgba(0, 0, 0, 0.486) !important;
+  height: 50px;
+  padding: 10px;
+  width: 80%;
+  border-radius: 50px;
+  background: whitesmoke;
 }
-
-.alert-checkbox-button,
-.alert-checkbox-group,
-.button-inner,
-.alert-checkbox,
-.alert-checkbox-label {
-  background: #04592a;
-  color     : white !important;
 }

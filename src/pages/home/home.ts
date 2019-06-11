@@ -5,7 +5,7 @@ import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { OrganizationProfilePage } from "../organization-profile/organization-profile"
 import { OnBoardingPage } from '../on-boarding/on-boarding';
-import Swal from 'sweetalert2';
+import { ViewInformationPage } from '../view-information/view-information';
 declare var firebase;
 
 
@@ -36,6 +36,7 @@ export class HomePage implements OnInit {
   downloadurl;
   downloadurlLogo;
   programCategory;
+  userLocation :String;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
@@ -261,8 +262,15 @@ export class HomePage implements OnInit {
   imageArr;
   uid;
   contact;
-  objective ;
-  benefit 
+  objective;
+  benefit;
+  objectives;
+  programBenefits;
+  eligibleCreteria;
+  name1;
+  contact1;
+  desc1;
+  address1
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -283,32 +291,23 @@ export class HomePage implements OnInit {
       })
 
     }, 5000);
-    
-    Swal.fire({
-      imageUrl: "../../assets/imgs/4IR logo.png",
-      imageHeight: 300,
-      imageAlt: 'A tall image',
-      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
-    })
+
+
 
 
   
 
-    this.IRmethods.getOrgProfile().then((data: any) => {
-      this.name = data.prograName;
-      this.category = data.programCategory;
-      this.cell = data.promPhone;
-      this.address = data.address;
-      this.desc = data.intro;
-      this.downloadurl = data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      // this.email = data.email;
-      // this.contact = data.contact;
-      console.log(this.name)
-
-      console.log(data)
-      // console.log(this.downloadurlLogo)
+    this.IRmethods.getproInfor().then((data: any) => {
+      this.name1 = data.name;
+      this.desc1 = data.desc;
+      this.address1 = data.address;
+      this.contact1 = data.contact;
+      this.name1 = data.name;
+      console.log(this.name1)
     })
+
+
+
 
   }
   addProgramme() {
@@ -316,11 +315,36 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.IRmethods.getOrgProfile().then((data: any) => {
+      console.log(data);
 
-  var   tempArray = []
-    // this.initMap() ;
+      if(data == null){
+
+      }else {
+         
+      this.name = data.prograName;
+      this.category = data.programCategory;
+      this.cell = data.promPhone;
+      this.address = data.address;
+      this.desc = data.intro;
+      this.downloadurl = data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.objectives = data.objectives
+      this.programBenefits = data.programBenefits
+      this.eligibleCreteria = data.eligibleCreteria
+      }
+     
+
+      console.log(this.name)
+
+      console.log(data)
+      // console.log(this.downloadurlLogo)
+    })
+
+    var tempArray = []
+  
     this.getGallery();
-    
+
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
       console.log(this.orgArray);
@@ -333,21 +357,23 @@ export class HomePage implements OnInit {
     })
 
 
-  //   this.IRmethods.getProgramme().then((data:any) => {
-  //     this.promArray.push(data)
-  //     console.log(this.promArray)
+    //   this.IRmethods.getProgramme().then((data:any) => {
+    //     this.promArray.push(data)
+    //     console.log(this.promArray)
 
-  //     for (let index = 0; index < data.length; index++) {
-  //         tempArray.push(data[index])
-        
-  //     }
- 
-  //     console.log(tempArray);
+    //     for (let index = 0; index < data.length; index++) {
+    //         tempArray.push(data[index])
 
-  //     this.promArray =tempArray ;
-      
-    
-  // })
+    //     }
+
+    //     console.log(tempArray);
+
+    //     this.promArray =tempArray ;
+
+
+    // })
+
+   this.initMap() ;
   }
 
   EditPrfile() {
@@ -360,9 +386,10 @@ export class HomePage implements OnInit {
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
       console.log('added to db');
       this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
-        this.imageArr.push(data);
+        console.log(data)
+        // this.imageArr.push(data);
       });
-      console.log(this.imageArr);
+      // console.log(this.imageArr);
       loading.dismiss();
       // this.viewCtrl.dismiss();
       const toast = this.toastCtrl.create({
@@ -370,7 +397,7 @@ export class HomePage implements OnInit {
         duration: 3000
       });
       toast.present();
-      this.navCtrl.pop();
+      // this.navCtrl.pop();
 
     },
       Error => {
@@ -584,6 +611,20 @@ export class HomePage implements OnInit {
     this.items = this.orgNames
   }
 
+  filterItems(val) {
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        console.log(val);
+
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    else if (val == "" || val == null) {
+      this.items = [];
+    }
+  }
+
+
   getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
@@ -631,15 +672,23 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-    this.initMap();
+   // this.initMap();
   }
+
   initMap() {
-
-
+   
+    setTimeout(() => {
+      this.IRmethods.getLocation(this.lat , this.lng).then((data:any)=>{
+        console.log(data);
+        this.userLocation = data ;
+        console.log(this.userLocation);
+        })
+      
+    }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
-      duration: 11000
+      duration: 15000
     });
     loading.present();
 
@@ -664,19 +713,23 @@ export class HomePage implements OnInit {
       //animation: google.maps.Animation.DROP,
     });
 
+console.log();
 
 
     setTimeout(() => {
+      console.log("show markers");
+      
       this.markers();
-    }, 12000)
+      console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
+    }, 16000)
+console.log( this.userLocation);
+setTimeout(() => {
+  var contentString = '<div id="content">' +
+     
 
-    var contentString = '<div id="content">' +
-      '<div id="siteNotice">' +
+
       '</div>' +
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-
-
-      '</div>' +
+      this.userLocation
       '</div>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -688,6 +741,9 @@ export class HomePage implements OnInit {
       map.setZoom(13);
       map.setCenter(marker.getPosition());
     });
+  
+}, 4000);
+    
 
   }
   markers() {
@@ -708,16 +764,16 @@ export class HomePage implements OnInit {
 
 
       //
-      console.log(this.orgArray[index].desc);
-      console.log(this.orgArray[index].lat);
-      console.log(this.orgArray[index].long);
+      // console.log(this.orgArray[index].desc);
+      // console.log(this.orgArray[index].lat);
+      // console.log(this.orgArray[index].long);
 
 
 
       let infowindow = new google.maps.InfoWindow({
         content:
           '<div style="width: 400px; transition: 300ms;"><b>' +
-          this.orgArray[index].orgName +
+          this.orgArray[index].programCategory +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
           this.orgArray[index].img +
@@ -730,11 +786,11 @@ export class HomePage implements OnInit {
 
           "</div>"
       });
-        showMultipleMarker.addListener('click', () => {
+      showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
         console.log(index);
-        infowindow.open(showMultipleMarker.get(this.map),showMultipleMarker);
+        infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
         console.log(index);
 
       });
@@ -900,33 +956,23 @@ export class HomePage implements OnInit {
       this.pullDown();
     }
     if (this.description == null || this.description == " " || this.description == "" || this.description == undefined) {
-      // swal("Please state your organisational needs in the fields provided");
+
     }
     else {
 
-      // firebase.auth().onAuthStateChanged(user => {
-      //     firebase.database().ref('contributes/' + user.uid + '/').push({
-      //       Title: this.title,
-      //       Description: this.description,
-      //     }, Error => {
-      //       swal(Error.message);
-      //     });
 
-      //     const Toast = Swal.mixin({
-      //       toast: true,
-      //       position: 'center',
-      //       showConfirmButton: false,
-      //       timer: 3000
-      //     });
-
-      //     Toast.fire({
-      //       type: 'success',
-      //       title: 'You have successfully added a contribute'
-      //     })
-      //   this.title="";
-      //   this.description="";
-      //   this.pullDown();
-      // })
     }
+  }
+
+  viewInfor(item) {
+    for (let index = 0; index < this.orgArray.length; index++) {
+      if (item == this.orgArray[index].programCategory) {
+        console.log(this.orgArray[index]);
+        this.navCtrl.push(ViewInformationPage, { ObjectInfo: this.orgArray[index] })
+
+      }
+
+    }
+
   }
 }
