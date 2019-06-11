@@ -60,7 +60,7 @@
                 <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
                 <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
                   (change)="setAddress()">
-                <input type="tel" class="inputText" placeholder="Phone" [(ngModel)]="orgPhone">
+                <input type="tel" class="inputText" placeholder="Phone"onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  [(ngModel)]="orgPhone">
                 <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
                 <br>
                 <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
