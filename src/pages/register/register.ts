@@ -221,7 +221,7 @@ export class RegisterPage {
       content: 'Please wait...',
       duration: 4000
     });
-    loading.present();
+    // loading.present();
     if (this.signUpEmail != undefined && this.signUppassword != undefined) {
       this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
         console.log("sucess");
@@ -243,9 +243,4 @@ export class RegisterPage {
       alert.present();
     }
   }
-
-
-
-
-
 }

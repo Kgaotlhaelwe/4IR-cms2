@@ -279,7 +279,7 @@ export class HomePage implements OnInit {
         var names = this.IRmethods.getOrgNames()
         console.log(names);
         this.storeOrgNames(names)
-        // this.loading.dismiss()
+        
       }, 3000);
     })
 
@@ -342,7 +342,7 @@ export class HomePage implements OnInit {
       console.log(data)
       // console.log(this.downloadurlLogo)
     })
-
+    
     var tempArray = []
   
     this.getGallery();
@@ -377,6 +377,17 @@ export class HomePage implements OnInit {
 
   }
 
+  ionViewDidLoad(){
+    
+    
+  setTimeout(() => {
+
+    if(this.name == undefined){
+      this.navCtrl.setRoot(OnBoardingPage);
+      // alert("Not visited the landing page");
+    }
+  }, 5000);
+  }
   EditPrfile() {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',

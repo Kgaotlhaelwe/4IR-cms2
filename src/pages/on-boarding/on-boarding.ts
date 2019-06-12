@@ -193,7 +193,7 @@ export class OnBoardingPage {
   moveToPage2() {
 
     this.phonenumberValidatin();
-
+    var progBar = document.getElementById("theDot");
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Please complete all details ")
@@ -217,7 +217,8 @@ export class OnBoardingPage {
 
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
-      this.progressBar = this.progressBar + 25
+      // this.progressBar = this.progressBar + 25
+      progBar.style.width = "50%";
 
     }
 
@@ -229,6 +230,7 @@ export class OnBoardingPage {
   moveToPage3() {
 
 
+    var progBar = document.getElementById("theDot");
 
 
     if (this.offerWifi == "No") {
@@ -244,7 +246,8 @@ export class OnBoardingPage {
       if (this.wifi != undefined && this.chooseWifiRange != undefined) {
         var toSlide = document.getElementById("page1");
         toSlide.style.marginLeft = "-50%";
-        this.progressBar = this.progressBar + 25
+        this.progressBar = this.progressBar + 25;
+        progBar.style.width = "75%";
       } else {
         this.alert("Please complete all details")
       }
@@ -263,13 +266,15 @@ export class OnBoardingPage {
 
   moveToPage4() {
 
+    var progBar = document.getElementById("theDot");
     if (this.category != undefined && this.catService.length != 0) {
       console.log(this.catService);
 
 
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-75%";
-      this.progressBar = this.progressBar + 25
+      this.progressBar = this.progressBar + 25;
+      progBar.style.width = "100%";
     } else {
       this.alert("Complete all the Details ")
     }
@@ -277,16 +282,22 @@ export class OnBoardingPage {
   }
 
   backToPage3() {
+    var progressBar = document.getElementById("theDot");
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-50%";
+    progressBar.style.width = "75%"
   }
   backToPage2() {
+    var progressBar = document.getElementById("theDot");
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-25%";
+    progressBar.style.width ="50%"
   }
   backToPage1() {
+    var progressBar = document.getElementById("theDot");
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "0%";
+    progressBar.style.width ="25%"
   }
   saveToDB() {
     console.log(this.orgName);
@@ -924,6 +935,10 @@ export class OnBoardingPage {
     let openProgram = moment(this.programStartDate).format('YYYY-MM-DD');
     let closeProgram = moment(this.programCloseDate).format('YYYY-MM-DD');
 
+
+    var progressBar = document.getElementById("theDot");
+
+
     console.log(currentDate);
     console.log(openApplication);
 
@@ -1001,6 +1016,7 @@ export class OnBoardingPage {
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
       this.progressBar = this.progressBar + 25
+      progressBar.style.width = "50%";
     }
 
 
@@ -1008,6 +1024,7 @@ export class OnBoardingPage {
 
   }
   moveToPage3progs() {
+    var progressBar = document.getElementById("theDot");
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
@@ -1025,14 +1042,15 @@ export class OnBoardingPage {
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-50%";
       this.progressBar = this.progressBar + 25;
+      progressBar.style.width = "75%";
+    // var toSlide = document.getElementById("page1");
+    // toSlide.style.marginLeft = "-50%"
     }
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%"
   }
 
   moveToPage4progs() {
-
+    var  progressBar = document.getElementById("theDot")
     console.log(this.programBenefits);
     console.log(this.programAdditionalBenefits);
     console.log(this.EligibleCriteria)
@@ -1064,6 +1082,7 @@ export class OnBoardingPage {
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-75%";
       this.progressBar = this.progressBar + 25;
+      progressBar.style.width = "100%";
     }
 
 

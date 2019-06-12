@@ -1,10 +1,8 @@
 <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
   <div class="start">
-
     <div class="absolutely">
       <div class="arrow">
         <div class="clicker" (click)="decideState()">
@@ -36,19 +34,15 @@
 
 
 
-    <div class="tab">
-      <div class="WebName">
-        <img src="../../assets/imgs/4IR logo.png" alt=""> 4ir Resources Hub
-
+    <div class="tab" style="display: flex;align-content: center; align-items: center;">
+      <div class="WebName" style="display: flex; flex-direction: row; align-content: center; align-items: center; justify-content: center;">
+        <img src="../../assets/imgs/4IR logo.png" alt=""> 4IR Resources Hub
       </div>
-      <div class="action">
-        <div>
-
+      <!-- <div class="action">
           <p id="my2001" (click)="goToProfile()">
             <b id="Orgo">ORGANISATION PROFILE</b>
           </p>
-        </div>
-      </div>
+      </div> -->
     </div>
     <!-- <ion-fab id="search">
               <button ion-fab mini>
@@ -110,15 +104,15 @@
 
 
         <div class="gallery">
-          <h3 class="GAlNAme" (click)="showGal()">
-            <i id="GalIcon" class="material-icons">view_list</i>
-            Organizations</h3>
+          <!-- (click)="showGal()" -->
+          <h6 class="GAlNAme">
+            <!-- <i id="GalIcon" class="material-icons">view_list</i> -->
+            Organization</h6>
 
-            <p class="sizeFont">Name:</p>
-          <p class="fonttext">{{name1}}</p>
-          <p class="sizeFont">Desciption:</p>
+          <h3 class="fonttext">{{name1}}</h3>
+          <p class="sizeFont">Description:</p>
           <p class="fonttext">{{desc1}}</p>
-          <p class="sizeFont">Contract:</p>
+          <p class="sizeFont">Contact:</p>
           <p class="fonttext">{{contact1}}</p>
           <p class="sizeFont">Address:
           </p>
@@ -176,13 +170,13 @@
         </div>
         <div class="uploads">
           <div class="imagesUploaded">
-            <p class="sizefont">Objective</p>
+            <b class="sizefont">Objective</b>
             <p class="font1">{{objectives}}</p>
 
-            <p class="sizefont">Programme Benefits</p>
+            <b class="sizefont">Programme Benefits</b>
             <p class="font1">{{programBenefits}}</p>
 
-            <p class="sizefont">Criteria</p>
+            <b class="sizefont">Criteria</b>
             <p class="font1">{{eligibleCreteria}}</p>
         </div>
       </div>

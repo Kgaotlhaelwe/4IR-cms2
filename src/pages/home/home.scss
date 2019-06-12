@@ -207,7 +207,7 @@ page-home {
   .GAlNAme {
     // background: red;
     color        : black;
-    padding-left : 30px;
+    padding-left : 10px;
     padding-top  : 21px;
   }
 
@@ -307,7 +307,7 @@ page-home {
     // float     : right;
     position     : absolute;
     right        : 0;
-    top          : -10px;
+    top          : 0px;
     // display   : flex;
     width        : 350px;
     /* border    : 2px solid green */
@@ -445,6 +445,10 @@ page-home {
 
   .arrow {
     text-align: center;
+    b{
+    font-size : 20px;
+    margin-top: -20px;
+    }
   }
 
   #upArrow {
@@ -747,6 +751,9 @@ page-home {
     z-index                  : 100000;
     animation                : appear 700ms;
     animation-iteration-count: initial;
+    h6{
+      font-weight: bold
+    }
   }
 
   .gallerySmall {
@@ -1034,6 +1041,9 @@ page-home {
       width     : 100%;
       text-align: left;
     }
+    h6{
+      font-weight: bold
+    }
   }
 
   h6 {
@@ -1041,7 +1051,7 @@ page-home {
    
   }
   .sizefont{
-    font-weight: bolder;
+    font-weight: bold;
     color:black
   }
 
@@ -1078,11 +1088,10 @@ page-home {
   }
 
   .WebName {
-    position      : absolute;
     top           : 20px;
     font-size     : 20px;
     font-weight   : 800;
-    left          : 0%;
+    left          : 20px;
     // transform  : translateX(-50%);
     display       : flex;
     flex-direction: row;
@@ -1155,12 +1164,13 @@ page-home {
     // border   : 2px solid red;
     // display  : flex;
     // flex-wrap: wrap;
+    padding-top: 20px;
     overflow-y  : scroll;
     position    : relative;
     color       : black;
 
     p {
-      color     : black !important;
+      color     : black;
       width     : 100%;
       text-align: left;
     }
@@ -1185,7 +1195,7 @@ page-home {
   }
 
   .searchBar,
-  .results {
+  {
     position     : absolute;
     z-index      : 10000000000000000000000000000000000000000000000;
     width        : 30%;
@@ -1198,7 +1208,7 @@ page-home {
   .results {
     position : absolute;
     z-index  : 10000000000000000000000000000000000000000000000;
-    top      : 20%;
+    top      : 300px;
     left     : 50%;
     transform: translate(-50%, -50%);
     padding  : 0px;
@@ -1348,6 +1358,7 @@ page-home {
       text-align    : left;
       word-wrap     : break-word;
       white-space   : pre;
+      font-size: 3px;
       padding       : 5px;
     }
   }
@@ -1477,8 +1488,9 @@ page-home {
     background-color: transparent;
   }
 .sizeFont{
-  color:black;
+  color:black !important;
   font-size: 1em;
+  font-weight: bold;
   
 }
   // .searchbar-input-container{
@@ -1612,6 +1624,9 @@ page-home {
         width     : 100%;
         text-align: left;
       }
+      h6{
+        font-weight: bold
+      }
     }
 
     .uploads {
@@ -1692,13 +1707,10 @@ page-home {
     }
 
     .WebName {
-      position      : absolute;
       top           : 20px;
       font-size     : 20px;
       font-weight   : 800;
-      left          : 0%;
       // transform  : translateX(-50%);
-      display       : none;
       flex-direction: row;
       width         : 20%;
 
@@ -1749,6 +1761,7 @@ page-home {
     // background-color: #555;
     color           : #fff;
     text-align      : left;
+    font-size: 14px;
     border-radius   : 6px;
     padding         : 5px;
     position        : absolute;
