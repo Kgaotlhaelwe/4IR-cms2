@@ -1,6 +1,8 @@
 <ion-content>
   <div class="theBody">
+      
     <div class="decider" *ngIf="hideRegisterAs">
+        <!-- <p class="intro">Kindly register as a programme or organization</p> -->
       <p>Register as...</p>
 
       <select (change)="RegistrationType()" [(ngModel)]="program">
@@ -17,9 +19,7 @@
           <br>
           <br>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
-            perspiciatis
-            qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore incidunt!
+            Kindly fill in the following details and please dont leave out anything.
           </p>
         </div>
       </div>
@@ -33,9 +33,7 @@
           <br>
           <br>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
-            perspiciatis
-            qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore incidunt!
+            Kindly fill in the following details and please dont leave out anything.
           </p>
         </div>
         <div class="step2">
@@ -53,10 +51,7 @@
             <div class="theSlider">
 
               <div class="slideShow" id="page1">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
-                  animi iusto,
-                  eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit provident labore
-                  dolorum rem ab.</p>
+                <p>Kindly fill in your communication details and please dont leave out anything.</p>
                 <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
                 <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
                   (change)="setAddress()">
@@ -239,9 +234,7 @@
           </div>
           <br>
           <br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat perferendis deserunt explicabo fuga eos
-            perspiciatis
-            qui ipsam quo, porro minima labore autem sit in eaque, nesciunt, hic blanditiis tempore incidunt!
+          <p>Welcome to the 4IR Resource Hub Content Managment System.
           </p>
         </div>
         <div class="step2">
@@ -259,11 +252,7 @@
             <div class="theSlider">
 
               <div class="slideShow" id="page1">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga alias expedita sapiente laudantium
-                  animi iusto,
-                  eos sunt dolor libero maxime nam necessitatibus distinctio voluptatibus reprehenderit provident labore
-                  dolorum rem ab.</p>
-
+                <p>Kindly fill in the following details and please dont leave out anything.</p>
 
                 <input type="text" placeholder="programme Name" [(ngModel)]="promName" required> <br>
                 <label>Choose programme Category</label>
@@ -357,17 +346,15 @@
 
 
               </div>
+
               <div class="slideShow" id="page2">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.</p>
-
-
+                <p>Getting there, please provide your Introduction,Objectives and a Full Discription of your programme.</p>
                 <div class="imput-field">
                   <textarea name="" id="orgDesc" placeholder="Introduction" cols="4"
                     [(ngModel)]="ProgramIntroduction"></textarea>
 
                   <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()'
                     class="dot">?</span>
-
 
                   <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief
                     explanation or summary of the Program.
@@ -396,9 +383,7 @@
               </div>
 
               <div class="slideShow" id="page3">
-                <p>Almost there, please provide a category for the organisation.</p>
-
-
+                <p>Almost there, please provide a category for the Programme.</p>
                 <div class="customSelect" (click)="services()">
                   Services
                 </div>
@@ -436,11 +421,9 @@
                 <button ion-button class="theButtonBack" (click)="backToPage2()">BACK</button>
               </div>
               <div class="slideShow" id="page4">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore minus animi, veritatis dolore eveniet
-                  accusamus
-                  reprehenderit repellat ab fuga pariatur nesciunt magnam dolorum quasi eos laudantium placeat dolores
-                  soluta
-                  quas.</p>
+                <br>
+                <p>We are done after provide your social media details.</p>
+
                 <div class="description" padding>
                   <div class="input-field">
                     <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink"
@@ -461,8 +444,7 @@
                   <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
                   </div> -->
                   </div>
-                  <input type="tel" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" class="fixSize" type="tel"
-                    placeholder="Phone (No space in between)" [(ngModel)]="promPhone">
+                 
 
                   <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
                   <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between

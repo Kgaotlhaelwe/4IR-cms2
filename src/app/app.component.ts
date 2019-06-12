@@ -15,16 +15,16 @@ import { TestsPage } from '../pages/tests/tests';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any  ; 
+  rootPage :any ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public IRmethods: IrMethodsProvider) {
     platform.ready().then(() => {
       IRmethods.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = OnBoardingPage
         }
         else {
-          this.rootPage = HomePage
+          this.rootPage = OnBoardingPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
