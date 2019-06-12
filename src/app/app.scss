@@ -84,7 +84,7 @@
   }
   .myAlert {
   
-    // color: #ffffff;
+    color: #ffffff;
     button {
         color: rgb(0, 0, 0);
       margin: 0 auto;
@@ -94,8 +94,7 @@
     //   color: rgb(0, 0, 0); // text color for confirm alerts
     // }
     .alert-wrapper, .alert-checkbox-group, .button-inner {
-      //background-color: #04592a;
-      border-radius: 10px;
+      background-color: #04592a;
       // color: #ffffff;
       animation: 0.7s bounceIn;
     }

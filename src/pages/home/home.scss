@@ -325,7 +325,7 @@ page-home {
     cursor: pointer;
 
     margin         : 0;
-    height         : 14px;
+    height         : 1px;
     // padding-left: 3px;
     font-weight    : bolder;
     font-family    : arial, sans-serif, impact;
@@ -1507,16 +1507,7 @@ page-home {
     box-shadow   : 0 0 10px transparent !important;
   }
 
-  // .swal2-container{
-  //   background: transparent !important;
-  // }
-//   .alert-message,
-//   #alert-msg-0 {
-//     color: rgb(0, 0, 0) !important; // text color for confirm alerts
-//   }
-//   .alert-message, #alert-msg-0 {
-//     color: black !important;
-// }
+
   
 
   @media screen and (max-width: 1024px) {
@@ -1561,33 +1552,18 @@ page-home {
       animation                : prof 700ms;
       animation-iteration-count: linear;
     }
-  }
-  @media screen and (max-width: 320px) {
-    .cont {
-      transition               : 700ms;
-      width                    : 90%;
-      height                   : 80%;
-      position                 : relative;
-      left                     : 50%;
-      top                      : 48%;
-      transform                : translate(-50%, -50%);
-      background               : whitesmoke;
-      filter                   : blur();
-      z-index                  : 10000;
-      animation                : prof 700ms;
-      animation-iteration-count: linear;
-    }
     .searchBar,
     .results {
       position     : absolute;
       z-index      : 10000000000000000000000000000000000000000000000;
       width        : 100%;
-      top          : 15%;
+      top          : 7%;
       left         : 50%;
       transform    : translate(-50%, -50%);
       border-radius: 50px;
     }
   }
+
 
   @media screen and (max-width: 700px) {
     .cont {
@@ -1654,7 +1630,7 @@ page-home {
       position     : absolute;
       z-index      : 10000000000000000000000000000000000000000000000;
       width        : 100%;
-      top          : 10%;
+      top          : 9%;
       left         : 50%;
       transform    : translate(-50%, -50%);
       border-radius: 50px;
@@ -1703,7 +1679,8 @@ page-home {
       color      : black;
       font-weight: bolder;
       position   : absolute;
-      left       : 40%;
+      left       : 45%;
+      top: -15px
     }
 
     .WebName {
