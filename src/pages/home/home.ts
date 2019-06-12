@@ -315,6 +315,8 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    // this.goToProfile();
+    // this.decideState();
     this.IRmethods.getOrgProfile().then((data: any) => {
       console.log(data);
 
@@ -573,7 +575,7 @@ export class HomePage implements OnInit {
 
   signOut() {
     const confirm = this.alertCtrl.create({
-      // cssClass: "myAlert",
+      cssClass: "myAlert",
       title: 'Confirm',
       message: 'Are you sure you want to sign out?',
 

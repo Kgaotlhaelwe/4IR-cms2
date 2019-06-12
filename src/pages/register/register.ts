@@ -91,15 +91,15 @@ export class RegisterPage {
   }
 
   SignIn(email: string, password: string) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Signing in...',
+      duration: 4000
+    });
+    loading.present();
     console.log(email, password)
     if (this.signUpEmail != "" && this.signUppassword != "") {
       this.IRmethods.SignIn(email, password).then((user: any) => {
-        let loading = this.loadingCtrl.create({
-          spinner: 'bubbles',
-          content: 'Signing in...',
-          duration: 4000
-        });
-        loading.present();
         loading.dismiss()
         this.navCtrl.setRoot(HomePage)
 
