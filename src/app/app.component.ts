@@ -15,7 +15,7 @@ import { TestsPage } from '../pages/tests/tests';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any  ; 
+  rootPage :any ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public IRmethods: IrMethodsProvider) {
     platform.ready().then(() => {

@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, UrlSerializer, registerModeConfigs } from "ionic-angular";
 declare var firebase;
+declare var google;
 /*
   Generated class for the 4IrMethodsProvider provider.
   See https://angular.io/guide/dependency-injection for more info on providers
@@ -680,5 +681,22 @@ export class IrMethodsProvider {
   }
 
 
+ getLocation(lat, lng) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        var geocoder = new google.maps.Geocoder;
+        var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+        geocoder.geocode({ 'location': latlng }, function (results, status) {
+          var address = results[0].address_components[3].short_name;
+          console.log(address);
+          console.log(results[0]);
+          resolve(address)
+        }, 4000);
+
+      })
+
+
+    })
+  }
 
 }

@@ -36,6 +36,7 @@ export class HomePage implements OnInit {
   downloadurl;
   downloadurlLogo;
   programCategory;
+  userLocation :String;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
@@ -278,7 +279,7 @@ export class HomePage implements OnInit {
         var names = this.IRmethods.getOrgNames()
         console.log(names);
         this.storeOrgNames(names)
-        // this.loading.dismiss()
+        
       }, 3000);
     })
 
@@ -290,6 +291,11 @@ export class HomePage implements OnInit {
       })
 
     }, 5000);
+
+
+
+
+  
 
     this.IRmethods.getproInfor().then((data: any) => {
       this.name1 = data.name;
@@ -309,7 +315,15 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    // this.goToProfile();
+    // this.decideState();
     this.IRmethods.getOrgProfile().then((data: any) => {
+      console.log(data);
+
+      if(data == null){
+
+      }else {
+         
       this.name = data.prograName;
       this.category = data.programCategory;
       this.cell = data.promPhone;
@@ -320,15 +334,17 @@ export class HomePage implements OnInit {
       this.objectives = data.objectives
       this.programBenefits = data.programBenefits
       this.eligibleCreteria = data.eligibleCreteria
+      }
+     
 
       console.log(this.name)
 
       console.log(data)
       // console.log(this.downloadurlLogo)
     })
-
+    
     var tempArray = []
-    // this.initMap() ;
+  
     this.getGallery();
 
     this.IRmethods.getAllOrganizations().then((data: any) => {
@@ -358,8 +374,20 @@ export class HomePage implements OnInit {
 
 
     // })
+
   }
 
+  ionViewDidLoad(){
+    
+    
+  setTimeout(() => {
+
+    if(this.name == undefined){
+      this.navCtrl.setRoot(OnBoardingPage);
+      // alert("Not visited the landing page");
+    }
+  }, 5000);
+  }
   EditPrfile() {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -453,6 +481,8 @@ export class HomePage implements OnInit {
 
     }
   }
+
+  ng
 
   UploadLogo(event: any) {
     this.d = 1;
@@ -557,7 +587,7 @@ export class HomePage implements OnInit {
 
   signOut() {
     const confirm = this.alertCtrl.create({
-      // cssClass: "myAlert",
+      cssClass: "myAlert",
       title: 'Confirm',
       message: 'Are you sure you want to sign out?',
 
@@ -656,15 +686,23 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-    this.initMap();
+   this.initMap();
   }
+
   initMap() {
-
-
+   
+    setTimeout(() => {
+      this.IRmethods.getLocation(this.lat , this.lng).then((data:any)=>{
+        console.log(data);
+        this.userLocation = data ;
+        console.log(this.userLocation);
+        })
+      
+    }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
-      duration: 11000
+      duration: 15000
     });
     loading.present();
 
@@ -689,19 +727,23 @@ export class HomePage implements OnInit {
       //animation: google.maps.Animation.DROP,
     });
 
+console.log();
 
 
     setTimeout(() => {
+      console.log("show markers");
+      
       this.markers();
-    }, 12000)
+      console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
+    }, 16000)
+console.log( this.userLocation);
+setTimeout(() => {
+  var contentString = '<div id="content">' +
+     
 
-    var contentString = '<div id="content">' +
-      '<div id="siteNotice">' +
+
       '</div>' +
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-
-
-      '</div>' +
+      this.userLocation
       '</div>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -713,6 +755,9 @@ export class HomePage implements OnInit {
       map.setZoom(13);
       map.setCenter(marker.getPosition());
     });
+  
+}, 4000);
+    
 
   }
   markers() {

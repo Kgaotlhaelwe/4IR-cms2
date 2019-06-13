@@ -64,6 +64,7 @@ page-home {
     text-align      : center;
     border-radius   : 6px;
     padding         : 5px 0;
+    padding-left:15px;
     left            : 0;
     margin-top      : 10px;
     /* Position the tooltip */
@@ -87,7 +88,7 @@ page-home {
       transition      : 700ms;
       visibility      : hidden;
       // /* width     : 100%; */
-      background-color: rgba(0, 0, 0, 0.575);
+      background-color: rgba(0, 0, 0, 0.071);
       color           : #fff;
       text-align      : center;
       border-radius   : 6px;
@@ -162,7 +163,7 @@ page-home {
   .theBtn:hover {
     cursor       : pointer;
     padding      : 10px;
-    background   : green;
+    // background   : green;
     border-radius: 50px;
   }
 
@@ -206,7 +207,7 @@ page-home {
   .GAlNAme {
     // background: red;
     color        : black;
-    padding-left : 30px;
+    padding-left : 10px;
     padding-top  : 21px;
   }
 
@@ -266,7 +267,7 @@ page-home {
     /* border    : 2px solid black; */
     z-index      : 100000000;
     background   : linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-    background   : rgba(245, 245, 245, 0.722);
+    background   : rgba(245, 245, 245, 0.501);
     color        : black;
     /* box-shadow: 0 15px 25px rgba(13, 98, 138, 0.5); */
   }
@@ -306,7 +307,7 @@ page-home {
     // float     : right;
     position     : absolute;
     right        : 0;
-    top          : -10px;
+    top          : 0px;
     // display   : flex;
     width        : 350px;
     /* border    : 2px solid green */
@@ -324,7 +325,7 @@ page-home {
     cursor: pointer;
 
     margin         : 0;
-    height         : 14px;
+    height         : 1px;
     // padding-left: 3px;
     font-weight    : bolder;
     font-family    : arial, sans-serif, impact;
@@ -333,7 +334,7 @@ page-home {
   }
 
   .font1 {
-    color    : black;
+    color    : grey;
     font-size: 90%
   }
 
@@ -416,8 +417,8 @@ page-home {
     //  border : 2px solid green;
     overflow-x : visible;
     z-index    : 100000;
-    background : #333;
-    box-shadow : 0 -15px 25px rgba(104, 104, 39, 0.366);
+    background : rgba(131, 108, 50, 0.412);
+    box-shadow : 0 -15px 25px rgba(85, 85, 17, 0.366);
 
     b {
       position      : absolute;
@@ -444,6 +445,10 @@ page-home {
 
   .arrow {
     text-align: center;
+    b{
+    font-size : 20px;
+    margin-top: -20px;
+    }
   }
 
   #upArrow {
@@ -746,6 +751,9 @@ page-home {
     z-index                  : 100000;
     animation                : appear 700ms;
     animation-iteration-count: initial;
+    h6{
+      font-weight: bold
+    }
   }
 
   .gallerySmall {
@@ -807,7 +815,7 @@ page-home {
   }
 
   .fonttext {
-    color: black;
+    color: grey;
 
   }
 
@@ -1033,11 +1041,20 @@ page-home {
       width     : 100%;
       text-align: left;
     }
+    h6{
+      font-weight: bold
+    }
   }
 
   h6 {
     padding-left: 6%;
+   
   }
+  .sizefont{
+    font-weight: bold;
+    color:black
+  }
+
 
   p {
     padding-left  : 10px;
@@ -1058,8 +1075,8 @@ page-home {
 
   .logo {
     width                : 100%;
-    height               : 90%;
-    // object-fit        : contain;
+    height               : 50%;
+    object-fit        : cover;
     background-position  : center;
     background-attachment: fixed;
     background-size      : cover;
@@ -1070,11 +1087,10 @@ page-home {
     filter: brightness(0.8);
   }
   .WebName {
-    position      : absolute;
     top           : 20px;
     font-size     : 20px;
     font-weight   : 800;
-    left          : 0%;
+    left          : 20px;
     // transform  : translateX(-50%);
     display       : flex;
     flex-direction: row;
@@ -1147,12 +1163,13 @@ page-home {
     // border   : 2px solid red;
     // display  : flex;
     // flex-wrap: wrap;
+    padding-top: 20px;
     overflow-y  : scroll;
     position    : relative;
     color       : black;
 
     p {
-      color     : black !important;
+      color     : black;
       width     : 100%;
       text-align: left;
     }
@@ -1177,11 +1194,11 @@ page-home {
   }
 
   .searchBar,
-  .results {
+  {
     position     : absolute;
     z-index      : 10000000000000000000000000000000000000000000000;
     width        : 30%;
-    top          : 3%;
+    top          : 6%;
     left         : 50%;
     transform    : translate(-50%, -50%);
     border-radius: 50px;
@@ -1190,7 +1207,7 @@ page-home {
   .results {
     position : absolute;
     z-index  : 10000000000000000000000000000000000000000000000;
-    top      : 20%;
+    top      : 300px;
     left     : 50%;
     transform: translate(-50%, -50%);
     padding  : 0px;
@@ -1259,7 +1276,8 @@ page-home {
     color      : black;
     font-weight: bolder;
     position   : absolute;
-    left       : 30%;
+    left       : 40%;
+    top       : 1%;
   }
 
   .org {
@@ -1339,6 +1357,7 @@ page-home {
       text-align    : left;
       word-wrap     : break-word;
       white-space   : pre;
+      font-size: 3px;
       padding       : 5px;
     }
   }
@@ -1467,7 +1486,12 @@ page-home {
   .button-inner {
     background-color: transparent;
   }
-
+.sizeFont{
+  color:black !important;
+  font-size: 1em;
+  font-weight: bold;
+  
+}
   // .searchbar-input-container{
   //   background      : white;
   //   padding         : 0px;
@@ -1477,18 +1501,13 @@ page-home {
   .searchbar-input {
     border       : 1px solid rgba(0, 0, 0, 0.249);
     box-shadow   : 0 0 10px black;
-    border-radius: 50px;
+    border-radius: 100px;
     width        : 100%;
     box-shadow   : 0 0 10px transparent !important;
   }
 
-  // .swal2-container{
-  //   background: transparent !important;
-  // }
-  .alert-message,
-  #alert-msg-0 {
-    color: rgb(255, 255, 255); // text color for confirm alerts
-  }
+
+  
 
   @media screen and (max-width: 1024px) {
     .cont {
@@ -1504,6 +1523,16 @@ page-home {
       z-index                  : 10000;
       animation                : prof 700ms;
       animation-iteration-count: linear;
+    }
+    .searchBar,
+    .results {
+      position     : absolute;
+      z-index      : 10000000000000000000000000000000000000000000000;
+      width        : 100%;
+      top          : 5.5%;
+      left         : 50%;
+      transform    : translate(-50%, -50%);
+      border-radius: 50px;
     }
   }
 
@@ -1522,7 +1551,18 @@ page-home {
       animation                : prof 700ms;
       animation-iteration-count: linear;
     }
+    .searchBar,
+    .results {
+      position     : absolute;
+      z-index      : 10000000000000000000000000000000000000000000000;
+      width        : 100%;
+      top          : 7%;
+      left         : 50%;
+      transform    : translate(-50%, -50%);
+      border-radius: 50px;
+    }
   }
+
 
   @media screen and (max-width: 700px) {
     .cont {
@@ -1559,6 +1599,9 @@ page-home {
         width     : 100%;
         text-align: left;
       }
+      h6{
+        font-weight: bold
+      }
     }
 
     .uploads {
@@ -1586,7 +1629,7 @@ page-home {
       position     : absolute;
       z-index      : 10000000000000000000000000000000000000000000000;
       width        : 100%;
-      top          : 10%;
+      top          : 9%;
       left         : 50%;
       transform    : translate(-50%, -50%);
       border-radius: 50px;
@@ -1635,17 +1678,15 @@ page-home {
       color      : black;
       font-weight: bolder;
       position   : absolute;
-      left       : 40%;
+      left       : 45%;
+      top: -15px
     }
 
     .WebName {
-      position      : absolute;
       top           : 20px;
       font-size     : 20px;
       font-weight   : 800;
-      left          : 0%;
       // transform  : translateX(-50%);
-      display       : flex;
       flex-direction: row;
       width         : 20%;
 
@@ -1676,13 +1717,14 @@ page-home {
 
   ion-slide {
     position: relative;
-    border  : 1px solid rgba(255, 255, 255, 0.05);
-    background: #333;
+    // border  : 1px solid rgba(255, 255, 255, 0.05);
+    // background: #333;
     padding : 10px;
     height: 250px;
 
     img {
-      border: 2px solid green;
+      // border: 2px solid green;
+      border-radius: 4px;
       width : 100% !important;
       height: 150px !important;
       object-fit: cover !important;
@@ -1692,11 +1734,12 @@ page-home {
   ion-slide .tooltiptext {
     visibility      : hidden;
     width           : 100%;
-    background-color: #555;
+    // background-color: #555;
     color           : #fff;
     text-align      : left;
+    font-size: 14px;
     border-radius   : 6px;
-    padding         : 5px 0;
+    padding         : 5px;
     position        : absolute;
     bottom          : 0;
     z-index         : 1;
@@ -1716,11 +1759,25 @@ page-home {
     top         : 100%;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    // border-color: #555 transparent transparent transparent;
   }
 
   ion-slide:hover .tooltiptext {
     visibility: visible;
     opacity   : 1;
   }
+
+  .searchbar-md .searchbar-input {
+    padding: 6px 55px;
+    border-radius: 100px; 
+    background-position: left 8px center;
+    height: auto;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 3rem;
+    color: #141414;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 }
