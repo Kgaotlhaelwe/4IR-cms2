@@ -40,14 +40,24 @@ export class HomePage implements OnInit {
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
-  icon = 'assets/imgs/wifi2.svg'
+  icon = 'assets/imgs/loaction3.png'
   locIcon = 'assets/imgs/loc-user.svg'
+
+
   mapStyles = [
     {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#ebe3cd"
+          "color": "#f5f5f5"
+        }
+      ]
+    },
+    {
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
         }
       ]
     },
@@ -55,7 +65,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#523735"
+          "color": "#616161"
         }
       ]
     },
@@ -63,25 +73,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.stroke",
       "stylers": [
         {
-          "color": "#f5f1e6"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative",
-      "elementType": "geometry.stroke",
-      "stylers": [
-        {
-          "color": "#c9b2a6"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative.land_parcel",
-      "elementType": "geometry.stroke",
-      "stylers": [
-        {
-          "color": "#dcd2be"
+          "color": "#f5f5f5"
         }
       ]
     },
@@ -90,16 +82,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#ae9e90"
-        }
-      ]
-    },
-    {
-      "featureType": "landscape.natural",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#dfd2ae"
+          "color": "#bdbdbd"
         }
       ]
     },
@@ -108,7 +91,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#dfd2ae"
+          "color": "#eeeeee"
         }
       ]
     },
@@ -117,16 +100,16 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#93817c"
+          "color": "#757575"
         }
       ]
     },
     {
       "featureType": "poi.park",
-      "elementType": "geometry.fill",
+      "elementType": "geometry",
       "stylers": [
         {
-          "color": "#a5b076"
+          "color": "#e5e5e5"
         }
       ]
     },
@@ -135,7 +118,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#447530"
+          "color": "#9e9e9e"
         }
       ]
     },
@@ -144,16 +127,16 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#f5f1e6"
+          "color": "#ffffff"
         }
       ]
     },
     {
       "featureType": "road.arterial",
-      "elementType": "geometry",
+      "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#fdfcf8"
+          "color": "#757575"
         }
       ]
     },
@@ -162,34 +145,16 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#f8c967"
+          "color": "#dadada"
         }
       ]
     },
     {
       "featureType": "road.highway",
-      "elementType": "geometry.stroke",
+      "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#e9bc62"
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway.controlled_access",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#e98d58"
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway.controlled_access",
-      "elementType": "geometry.stroke",
-      "stylers": [
-        {
-          "color": "#db8555"
+          "color": "#616161"
         }
       ]
     },
@@ -198,7 +163,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#806b63"
+          "color": "#9e9e9e"
         }
       ]
     },
@@ -207,25 +172,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#dfd2ae"
-        }
-      ]
-    },
-    {
-      "featureType": "transit.line",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#8f7d77"
-        }
-      ]
-    },
-    {
-      "featureType": "transit.line",
-      "elementType": "labels.text.stroke",
-      "stylers": [
-        {
-          "color": "#ebe3cd"
+          "color": "#e5e5e5"
         }
       ]
     },
@@ -234,16 +181,16 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#dfd2ae"
+          "color": "#eeeeee"
         }
       ]
     },
     {
       "featureType": "water",
-      "elementType": "geometry.fill",
+      "elementType": "geometry",
       "stylers": [
         {
-          "color": "#b9d3c2"
+          "color": "#c9c9c9"
         }
       ]
     },
@@ -252,12 +199,11 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#92998d"
+          "color": "#9e9e9e"
         }
       ]
     }
   ]
-
   d = 1;
   imageArr;
   uid;
@@ -274,10 +220,10 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
-      console.log(this.orgArray);
+      // console.log(this.orgArray);
       setTimeout(() => {
         var names = this.IRmethods.getOrgNames()
-        console.log(names);
+        // console.log(names);
         this.storeOrgNames(names)
         // this.loading.dismiss()
       }, 3000);
@@ -285,17 +231,13 @@ export class HomePage implements OnInit {
 
     setTimeout(() => {
       this.IRmethods.getCurrentLocation(this.lat, this.lng).then((radius: any) => {
-        console.log(this.lat);
-        console.log(this.lng);
-        console.log(radius);
+        // console.log(this.lat);
+        // console.log(this.lng);
+        // console.log(radius);
       })
 
     }, 5000);
 
-
-
-
-  
 
     this.IRmethods.getproInfor().then((data: any) => {
       this.name1 = data.name;
@@ -303,7 +245,7 @@ export class HomePage implements OnInit {
       this.address1 = data.address;
       this.contact1 = data.contact;
       this.name1 = data.name;
-      console.log(this.name1)
+      // console.log(this.name1)
     })
 
 
@@ -318,7 +260,7 @@ export class HomePage implements OnInit {
     // this.goToProfile();
     // this.decideState();
     this.IRmethods.getOrgProfile().then((data: any) => {
-      console.log(data);
+      // console.log(data);
 
       if(data == null){
 
@@ -337,9 +279,9 @@ export class HomePage implements OnInit {
       }
      
 
-      console.log(this.name)
+      // console.log(this.name)
 
-      console.log(data)
+      // console.log(data)
       // console.log(this.downloadurlLogo)
     })
 
@@ -349,10 +291,10 @@ export class HomePage implements OnInit {
 
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
-      console.log(this.orgArray);
+      // console.log(this.orgArray);
       setTimeout(() => {
         var names = this.IRmethods.getOrgNames()
-        console.log(names);
+        // console.log(names);
         this.storeOrgNames(names)
         // this.loading.dismiss()
       }, 3000);
@@ -385,9 +327,9 @@ export class HomePage implements OnInit {
     });
     loading.present();
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
-      console.log('added to db');
+      // console.log('added to db');
       this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
-        console.log(data)
+        // console.log(data)
         // this.imageArr.push(data);
       });
       // console.log(this.imageArr);
@@ -416,7 +358,7 @@ export class HomePage implements OnInit {
   getUid1() {
     this.IRmethods.getUserID().then(data => {
       this.uid = data
-      console.log(this.uid);
+      // console.log(this.uid);
     })
   }
   retreivePics1() {
@@ -509,9 +451,9 @@ export class HomePage implements OnInit {
       let reader = new FileReader();
       (reader.onload = (event: any) => {
         this.urlGallery1 = event.target.result;
-        console.log(this.urlGallery1);
+        // console.log(this.urlGallery1);
         var user = firebase.auth().currentUser.uid;
-        console.log(user);
+        // console.log(user);
         firebase
           .database()
           .ref("Gallery/" + user + "/")
@@ -530,17 +472,17 @@ export class HomePage implements OnInit {
   }
 
   getGallery() {
-    console.log("getting gallery");
+    // console.log("getting gallery");
     this.retrieveGal().then((data: any) => {
       this.imagesArr.length = 0;
       var keys = data.keys;
       var temp = data.detals;
-      console.log(keys);
-      console.log(temp);
+      // console.log(keys);
+      // console.log(temp);
       for (var x = 0; x < keys.length; x++) {
         this.imagesArr.push(temp[keys[x]]);
       }
-      console.log(this.imagesArr);
+      // console.log(this.imagesArr);
     });
   }
 
@@ -560,7 +502,7 @@ export class HomePage implements OnInit {
                 detals: details,
                 keys: key
               };
-              console.log(obj);
+              // console.log(obj);
               accpt(obj);
             }
           });
@@ -570,7 +512,7 @@ export class HomePage implements OnInit {
 
   storeOrgNames(names) {
     this.orgNames = names;
-    console.log(this.orgNames);
+    // console.log(this.orgNames);
 
   }
 
@@ -587,7 +529,7 @@ export class HomePage implements OnInit {
             this.IRmethods.logout().then(() => {
               this.navCtrl.push(RegisterPage, { out: 'logout' });
             }, (error) => {
-              console.log(error.message);
+              // console.log(error.message);
             })
 
           }
@@ -595,7 +537,7 @@ export class HomePage implements OnInit {
         {
           text: 'No',
           handler: () => {
-            console.log('Cancel clicked');
+            // console.log('Cancel clicked');
           }
         }
       ]
@@ -617,7 +559,7 @@ export class HomePage implements OnInit {
   filterItems(val) {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        console.log(val);
+        // console.log(val);
 
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
@@ -638,7 +580,7 @@ export class HomePage implements OnInit {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        console.log(val);
+        // console.log(val);
 
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
@@ -646,7 +588,7 @@ export class HomePage implements OnInit {
     else if (val == "" || val == null) {
       this.items = [];
     }
-    console.log(this.items);
+    // console.log(this.items);
   }
 
   tribute = 0;
@@ -682,9 +624,9 @@ export class HomePage implements OnInit {
    
     setTimeout(() => {
       this.IRmethods.getLocation(this.lat , this.lng).then((data:any)=>{
-        console.log(data);
+        // console.log(data);
         this.userLocation = data ;
-        console.log(this.userLocation);
+        // console.log(this.userLocation);
         })
       
     }, 1000);
@@ -693,12 +635,12 @@ export class HomePage implements OnInit {
       content: 'Please wait...',
       duration: 15000
     });
-    loading.present();
+    // loading.present();
 
-    console.log(this.lng)
+    // console.log(this.lng)
     const options = {
       center: { lat: this.lat, lng: this.lng },
-      zoom: 8,
+      zoom: 10,
       disableDefaultUI: true,
       icon: this.icon,
       styles: this.mapStyles
@@ -716,16 +658,16 @@ export class HomePage implements OnInit {
       //animation: google.maps.Animation.DROP,
     });
 
-console.log();
+// console.log();
 
 
     setTimeout(() => {
-      console.log("show markers");
+      // console.log("show markers");
       
       this.markers();
-      console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
+      // console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
     }, 16000)
-console.log( this.userLocation);
+// console.log( this.userLocation);
 setTimeout(() => {
   var contentString = '<div id="content">' +
      
@@ -750,7 +692,7 @@ setTimeout(() => {
 
   }
   markers() {
-    console.log(this.orgArray);
+    // console.log(this.orgArray);
     for (let index = 0; index < this.orgArray.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       let showMultipleMarker = new google.maps.Marker({
@@ -760,7 +702,7 @@ setTimeout(() => {
         size: { width: 5, height: 5 },
         position: { lat: parseFloat(this.orgArray[index].lat), lng: parseFloat(this.orgArray[index].long) },
         label: name,
-        zoom: 8,
+        zoom: 15,
         styles: this.mapStyles
 
       });
@@ -792,9 +734,9 @@ setTimeout(() => {
       showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
-        console.log(index);
+        // console.log(index);
         infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
-        console.log(index);
+        // console.log(index);
 
       });
 
@@ -826,7 +768,7 @@ setTimeout(() => {
       this.hideSlide();
     }
 
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   showSlide() {
@@ -970,7 +912,7 @@ setTimeout(() => {
   viewInfor(item) {
     for (let index = 0; index < this.orgArray.length; index++) {
       if (item == this.orgArray[index].programCategory) {
-        console.log(this.orgArray[index]);
+        // console.log(this.orgArray[index]);
         this.navCtrl.push(ViewInformationPage, { ObjectInfo: this.orgArray[index] })
 
       }
@@ -978,4 +920,7 @@ setTimeout(() => {
     }
 
   }
+
+
+  
 }

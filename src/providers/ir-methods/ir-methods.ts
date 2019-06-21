@@ -252,9 +252,6 @@ export class IrMethodsProvider {
         downloadurl: "assets/download.png",
         downloadurlLogo: "assets/download.png",
 
-
-
-
       })
 
       resolve()
@@ -263,7 +260,7 @@ export class IrMethodsProvider {
   checkVerification() {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user) => {
-        console.log(user);
+        // console.log(user);
         if (user.emailVerified == false) {
           this.logout();
           resolve(0)
@@ -332,7 +329,7 @@ export class IrMethodsProvider {
               }
               this.storeOrgNames(details[keys[x]].programCategory);
               this.orgArray.push(orgObject)
-              console.log(details[keys[x]].programCategory)
+              // console.log(details[keys[x]].programCategory)
             }
             resolve(this.orgArray)
           }
@@ -356,7 +353,7 @@ export class IrMethodsProvider {
 
     return new Promise((accpt, rej) => {
 
-      console.log("provider outside getCurPos");
+      // console.log("provider outside getCurPos");
       this.createPositionRadius(lat, lng).then((data: any) => {
         accpt(data);
       })
@@ -507,12 +504,12 @@ export class IrMethodsProvider {
   getOrgProfile() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
-      console.log(user.uid)
+      // console.log(user.uid)
       firebase.database().ref("4IR_Hubs/" + user.uid).on('value', (data: any) => {
         let details = data.val();
-        console.log(details)
+        // console.log(details)
         accpt(details)
-        console.log(details)
+        // console.log(details)
       });
 
     })
@@ -522,12 +519,12 @@ export class IrMethodsProvider {
   getproInfor() {
     return new Promise((accpt, rej) => {
       let user = firebase.auth().currentUser;
-      console.log(user.uid)
+      // console.log(user.uid)
       firebase.database().ref("Users/"+"Cms_Users/"+user.uid).on('value', (data: any) => {
         let details = data.val();
-        console.log(details)
+        // console.log(details)
         accpt(details)
-        console.log(details)
+        // console.log(details)
       });
 
     })
@@ -554,7 +551,7 @@ export class IrMethodsProvider {
       this.ngzone.run(() => {
         firebase.storage().ref(name).putString(pic, 'data_url').then(() => {
           accpt(name);
-          console.log(name);
+          // console.log(name);
         }, Error => {
           rejc(Error.message)
         })
@@ -632,7 +629,7 @@ export class IrMethodsProvider {
         this.ProfileArr.length = 0;
         var storageRef = firebase.storage().ref(name);
         storageRef.getDownloadURL().then(url => {
-          console.log(url)
+          // console.log(url)
           var userID = firebase.auth().currentUser;
           var link = url;
           firebase.database().ref("4IR_Hubs/" + userID.uid).update({
@@ -641,7 +638,7 @@ export class IrMethodsProvider {
           accpt('success');
         }, Error => {
           rejc(Error.message);
-          console.log(Error.message);
+          // console.log(Error.message);
         });
       })
     })
@@ -655,7 +652,7 @@ export class IrMethodsProvider {
           var profileDetails = data.val();
           if (profileDetails !== null) {
           }
-          console.log(profileDetails);
+          // console.log(profileDetails);
           accpt(user.uid);
         }, Error => {
           rejc(Error.message)
@@ -688,8 +685,8 @@ export class IrMethodsProvider {
         var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
         geocoder.geocode({ 'location': latlng }, function (results, status) {
           var address = results[0].address_components[3].short_name;
-          console.log(address);
-          console.log(results[0]);
+          // console.log(address);
+          // console.log(results[0]);
           resolve(address)
         }, 4000);
 

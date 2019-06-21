@@ -10,19 +10,30 @@
         <div class="clicker" (click)="decideState()">
           <i class="material-icons" id="myArrow"></i>
         </div>
-        <b>
+        <b >
           organisations
         </b>
-        
-  <div class="show-other-orgs">
-      <ion-slides slidesPerView="8.125">
-     
-        <ion-slide *ngFor="let a of orgArray">
-            <span class="tooltiptext">{{a.intro}}</span>
-          <img src="{{a.img}}" alt="">
-        </ion-slide>
-      </ion-slides>
-    </div>
+
+        <div class="show-other-orgs">
+          <ion-slides slidesPerView="5.125">
+            <ion-slide class="card-background-page" *ngFor="let i of orgArray">
+              <div class="row" id="rowSlide">
+                <div class="column1" id="toGrow">
+                  <div class="row">
+                    <div class="column-left-2">
+                      <img class="org-img-2" src="{{i.img}}" />
+                    </div>
+                    <div class="column-right-2">
+                      <p class="org-name-2">{{ i.programCategory }}</p>
+                      Opening Date:<p>{{i.programStartDate}}</p>
+                      Closing Date:<p>{{i.programCloseDate}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </div>
 
       </div>
     </div>
@@ -114,7 +125,7 @@
             <i id="GalIcon" class="material-icons">view_list</i>
             Organizations</h3>
 
-            <p class="sizeFont">Name:</p>
+          <p class="sizeFont">Name:</p>
           <p class="fonttext">{{name1}}</p>
           <p class="sizeFont">Desciption:</p>
           <p class="fonttext">{{desc1}}</p>
@@ -184,15 +195,15 @@
 
             <p class="sizefont">Criteria</p>
             <p class="font1">{{eligibleCreteria}}</p>
+          </div>
         </div>
       </div>
     </div>
- </div>
 
 
 
 
-  <div class="content" #map id="map">
+    <div class="content" #map id="map">
     </div>
 
   </div>

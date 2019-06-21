@@ -3,9 +3,10 @@ import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
 import { ModalController } from 'ionic-angular';
-declare var google;
+
 import { IonicPage, NavController, NavParams, AlertController ,LoadingController} from 'ionic-angular';
 declare var firebase;
+declare var google;
 /**
  * Generated class for the ForgotpasswordPage page.
  *
