@@ -8,6 +8,9 @@ page-register{
     justify-content: center;
     align-items: center
     }
+    #Theicon2{
+      color: white;
+    }
 
 .everything{
   //position: absolute;
@@ -34,17 +37,25 @@ page-register{
 }
 .inputColor {
   color: #04592a;
-  background: rgb(177, 177, 177);
+  background: rgb(156, 156, 156);
   height: 45px !important;
   border: 0px solid transparent;
 }
 .input-green{
-  background: rgb(177, 177, 177);
-  border: 0px solid transparent;
-  height: 40px;
+  background: rgba(116, 116, 116, 0.472);
+  border: 0px solid rgb(128, 128, 128);
+  height: 50px !important;
+  width: 80%;
+  margin-top: 10px;
+  border-radius: 50px;
+  .text-input{
+    // background: red;
+    height: 100%;
+    margin: auto 10px;
+  }
 }
 .input, .inputColor{
-  height: 100px;
+  // height: 100px;
 }
 /* Create two equal columns that floats next to each other */
 .column {
@@ -107,7 +118,6 @@ input {
   width           : 80%;
   min-width       : 300px;
   margin          : 9px;
-  height          : 50px;
   border-radius   : 50px;
   background-color: rgba(255, 255, 255, 0);
   font-size       : 100%;
@@ -168,20 +178,20 @@ button {
   font-size: 2rem;
 }
 #Theicon {
-  position: absolute;
-  color   : #04592a;
-  font-size: 2rem;
-  left: 100%;
+  // position: absolute;
+  // color   : #04592a;
+  // font-size: 2rem;
+  // left: 100%;
 }
 #Theicon2 {
-  position: absolute;
-  color   : white;
-  font-size: 2rem;
-  left: 100%;
+  // position: absolute;
+  // color   : white;
+  // font-size: 2rem;
+  // left: 100%;
 }
 .Labels {
   position : relative;
-  top      : 20px;
+  top      : 10.5%;
   color    : #04592a;
   left     : 30%;
   // border: 2px solid red;
@@ -216,7 +226,7 @@ button{
          }
          .column {
           padding: 10px;
-          height: 50%; /* Should be removed. Only for demonstration */
+          height: 60%; /* Should be removed. Only for demonstration */
           width: 100%;   
           justify-content: center;
           align-items: center;    
@@ -224,11 +234,12 @@ button{
           flex-direction: column;
            margin-left: 0%;
            position: relative;
-           top: 10%
+           top: 10%;
+           min-width: 320px;
         }  
         .column1 {
           padding: 10px;
-          height: 50%; /* Should be removed. Only for demonstration */
+          height: 60%; /* Should be removed. Only for demonstration */
           width: 100%;   
           justify-content: center;
           align-items: center;    
@@ -236,7 +247,8 @@ button{
           flex-direction: column;
           margin-right: 0%;
           position: relative;
-          top: 10%
+          top: 10%;
+          min-width: 320px;
         } 
    .theRocket {
     height: 20%;
@@ -254,19 +266,26 @@ button{
     // position: absolute;
     color   : white;
     font-size: 2rem;
-    // top: -0.5em;
+    // top: 0;
     // left: 1em;
   }
+.Labels {
+  position : relative;
+  top      : 9%;
+  color    : #04592a;
+  left     : 30%;
+  // border: 2px solid red;
+}
 }
 
 }
-@media only screen and (max-width: 320px){
-  #Theicon2 {
-    // position: absolute;
-    color   : white;
-    font-size: 2rem;
-    top: -0.5em;
-    left: 1em;
+@media only screen and (max-width: 415px){
+  .Labels {
+    position : relative;
+    top      : 10% !important;
+    color    : #04592a;
+    left     : 30%;
+    // border: 2px solid red;
   }
 }
 }
