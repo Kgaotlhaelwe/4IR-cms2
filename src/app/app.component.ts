@@ -21,10 +21,10 @@ export class MyApp {
     platform.ready().then(() => {
       IRmethods.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = TestsPage
         }
         else {
-          this.rootPage = RegisterPage
+          this.rootPage = TestsPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
