@@ -8,7 +8,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegisterPage} from '../pages/register/register' ;
 import {LoginPage} from "../pages/login/login" ;
-import { OrganizationProfilePage} from "../pages/organization-profile/organization-profile"
 import { IrMethodsProvider } from '../providers/ir-methods/ir-methods';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { OnBoardingPage } from '../pages/on-boarding/on-boarding';
@@ -21,7 +20,6 @@ import { ViewInformationPage } from '../pages/view-information/view-information'
     MyApp,
     HomePage,RegisterPage,
     LoginPage,
-    OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
     TestsPage,
@@ -40,7 +38,6 @@ import { ViewInformationPage } from '../pages/view-information/view-information'
     HomePage,
     RegisterPage,
     LoginPage,
-    OrganizationProfilePage,
     OnBoardingPage,
     ForgotpasswordPage,
     TestsPage,

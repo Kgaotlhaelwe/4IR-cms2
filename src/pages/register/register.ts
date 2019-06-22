@@ -5,6 +5,9 @@ import { HomePage } from '../home/home';
 import { OnBoardingPage } from '../on-boarding/on-boarding';
 import { ModalController } from 'ionic-angular';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
+
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 declare var google;
 declare var firebase;
 /**
@@ -33,7 +36,7 @@ export class RegisterPage {
   description;
   items = new Array();
   serviceArray = new Array();
-
+  alertMessage;
   service;
   signUpEmail;
   signUppassword;
@@ -178,29 +181,61 @@ export class RegisterPage {
 
   SignIn(email: string, password: string) {
     console.log(email, password)
-    let loading = this.loadingCtrl.create({
-      cssClass: "myAlert",
-      spinner: 'bubbles',
-      content: 'Signing in...',
-      duration: 4000
-    });
-    loading.present();
-    if (this.signUpEmail != "" && this.signUppassword != "") {
+    this.alertMessage = "Verifying details...";
+    let b = window.innerHeight;
+
+    Swal.fire({
+      title: "Loading",
+      html: this.alertMessage,
+      // timer: 4000,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    }).then(result => {});
+    this.alertMessage = "Signing in...";
+    if (this.email != "" && this.email != "") {
       this.IRmethods.SignIn(email, password).then((user: any) => {
-   
-        loading.dismiss()
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        Toast.fire({
+          type: "success",
+          title: "Signed in successfully"
+        });
         this.navCtrl.setRoot(HomePage)
 
       }).catch((error) => {
-        const alert = this.alertCtrl.create({
-          cssClass: "myAlert",
-          // title: "No Password",
-          subTitle: error.message,
-          buttons: ['OK'],
-          // cssClass: 'myAlert',
-        });
+             if (
+               error.message ==
+               "There is no user record corresponding to this identifier. The user may have been deleted."
+             ) {
+               this.alertMessage =
+                 "We do not have a record of this email address, please check your email address or sign up and get started...";
+               Swal.hideLoading();
+             } else if (
+               error.message ==
+               "The password is invalid or the user does not have a password."
+             ) {
+               this.alertMessage =
+                 "Please ensure that your password is correct.";
+               Swal.hideLoading();
+             } else if (
+               error.message == "The email address is badly formatted."
+             ) {
+               this.alertMessage =
+                 "Please check if your email address is correct, something's not right.";
+               Swal.hideLoading();
+             } else {
+               this.alertMessage = error.message;
+             }
 
-        alert.present();
+             swal(this.alertMessage);
+             Swal.close();
+
       })
     } else {
       const alert = this.alertCtrl.create({
@@ -216,23 +251,58 @@ export class RegisterPage {
 
 
   signUp() {
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 4000
-    });
-    // loading.present();
+    this.alertMessage = "Verifying details...";
+    let b = window.innerHeight;
+
+    Swal.fire({
+      title: "Loading",
+      html: this.alertMessage,
+      // timer: 4000,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    }).then(result => {});
+    this.alertMessage = "Signing up...";
     if (this.signUpEmail != undefined && this.signUppassword != undefined) {
       this.IRmethods.signUp(this.signUpEmail, this.signUppassword).then(() => {
-        console.log("sucess");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000
+        });
+        Toast.fire({
+          type: "success",
+          title: "Please continue to finish signing up"
+        });
         this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
       }).catch((error) => {
-        const alert = this.alertCtrl.create({
-          title: '',
-          subTitle: error.message,
-          buttons: ['OK']
-        });
-        alert.present();
+        if (
+          error.message ==
+          "There is no user record corresponding to this identifier. The user may have been deleted."
+        ) {
+          this.alertMessage =
+            "We do not have a record of this email address, please check your email address or sign up and get started...";
+          Swal.hideLoading();
+        } else if (
+          error.message ==
+          "The password is invalid or the user does not have a password."
+        ) {
+          this.alertMessage =
+            "Please ensure that your password is correct.";
+          Swal.hideLoading();
+        } else if (
+          error.message == "The email address is badly formatted."
+        ) {
+          this.alertMessage =
+            "Please check if your email address is correct, something's not right.";
+          Swal.hideLoading();
+        } else {
+          this.alertMessage = error.message;
+        }
+        swal(this.alertMessage);
+        Swal.close();
+
       })
     } else {
       const alert = this.alertCtrl.create({

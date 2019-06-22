@@ -3,9 +3,12 @@ import { NavController, LoadingController, AlertController, ToastController } fr
 import { IrMethodsProvider } from '../../providers/ir-methods/ir-methods';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
-import { OrganizationProfilePage } from "../organization-profile/organization-profile"
 import { OnBoardingPage } from '../on-boarding/on-boarding';
 import { ViewInformationPage } from '../view-information/view-information';
+import swal from "sweetalert";
+import Swal from "sweetalert2";
+
+
 declare var firebase;
 
 
@@ -36,12 +39,12 @@ export class HomePage implements OnInit {
   downloadurl;
   downloadurlLogo;
   programCategory;
-  userLocation :String;
+  userLocation: String;
   urlGallery1 = "../../assets/imgs/default image/default image for uploads.jpg";
   email
   galleryupload: string;
-  icon = 'assets/imgs/loaction3.png'
-  locIcon = 'assets/imgs/loc-user.svg'
+  icon = 'assets/imgs/pin.png'
+  locIcon = 'assets/imgs/here.png'
 
 
   mapStyles = [
@@ -65,7 +68,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#616161"
+          "color": "#04592a"
         }
       ]
     },
@@ -216,40 +219,17 @@ export class HomePage implements OnInit {
   name1;
   contact1;
   desc1;
-  address1
+  address1;
+  alertMessage;
   constructor(public navCtrl: NavController, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
-      // console.log(this.orgArray);
-      setTimeout(() => {
-        var names = this.IRmethods.getOrgNames()
-        // console.log(names);
-        this.storeOrgNames(names)
-        
-      }, 3000);
+      var names = this.IRmethods.getOrgNames()
+      this.storeOrgNames(names)
     })
 
-    setTimeout(() => {
-      this.IRmethods.getCurrentLocation(this.lat, this.lng).then((radius: any) => {
-        // console.log(this.lat);
-        // console.log(this.lng);
-        // console.log(radius);
-      })
-
-    }, 5000);
-
-
-    this.IRmethods.getproInfor().then((data: any) => {
-      this.name1 = data.name;
-      this.desc1 = data.desc;
-      this.address1 = data.address;
-      this.contact1 = data.contact;
-      this.name1 = data.name;
-      // console.log(this.name1)
+    this.IRmethods.getCurrentLocation(this.lat, this.lng).then((radius: any) => {
     })
-
-
-
 
   }
   addProgramme() {
@@ -257,105 +237,71 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    // this.goToProfile();
-    // this.decideState();
     this.IRmethods.getOrgProfile().then((data: any) => {
-      // console.log(data);
+      if (data == null) {
 
-      if(data == null){
-
-      }else {
-         
-      this.name = data.prograName;
-      this.category = data.programCategory;
-      this.cell = data.promPhone;
-      this.address = data.address;
-      this.desc = data.intro;
-      this.downloadurl = data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      this.objectives = data.objectives
-      this.programBenefits = data.programBenefits
-      this.eligibleCreteria = data.eligibleCreteria
+      } else {
+        this.name = data.prograName;
+        this.category = data.programCategory;
+        this.cell = data.promPhone;
+        this.address = data.address;
+        this.desc = data.intro;
+        this.downloadurl = data.downloadurl;
+        this.downloadurlLogo = data.downloadurlLogo;
+        this.objectives = data.objectives
+        this.programBenefits = data.programBenefits
+        this.eligibleCreteria = data.eligibleCreteria
       }
-     
-
-      // console.log(this.name)
-
-      // console.log(data)
-      // console.log(this.downloadurlLogo)
     })
-    
+
     var tempArray = []
-  
+
     this.getGallery();
 
-    this.IRmethods.getAllOrganizations().then((data: any) => {
-      this.orgArray = data;
-      // console.log(this.orgArray);
-      setTimeout(() => {
-        var names = this.IRmethods.getOrgNames()
-        // console.log(names);
-        this.storeOrgNames(names)
-        // this.loading.dismiss()
-      }, 3000);
-    })
 
 
-    //   this.IRmethods.getProgramme().then((data:any) => {
-    //     this.promArray.push(data)
-    //     console.log(this.promArray)
-
-    //     for (let index = 0; index < data.length; index++) {
-    //         tempArray.push(data[index])
-
-    //     }
-
-    //     console.log(tempArray);
-
-    //     this.promArray =tempArray ;
-
-
-    // })
 
   }
 
-  ionViewDidLoad(){
-    
-    
-  setTimeout(() => {
+  ionViewDidLoad() {
 
-    if(this.name == undefined){
-      this.navCtrl.setRoot(OnBoardingPage);
-      // alert("Not visited the landing page");
-    }
-  }, 5000);
+
+    setTimeout(() => {
+
+      if (this.name == undefined) {
+        this.navCtrl.setRoot(OnBoardingPage);
+        // alert("Not visited the landing page");
+      }
+    }, 5000);
   }
-  EditPrfile() {
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 4000000
-    });
-    loading.present();
+  UpdateCover() {
+    this.alertMessage = "Please Wait...";
+    let b = window.innerHeight;
+
+    Swal.fire({
+      title: "Loading",
+      html: this.alertMessage,
+      // timer: 4000,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    }).then(result => { });
     this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
-      // console.log('added to db');
       this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
-        // console.log(data)
-        // this.imageArr.push(data);
       });
-      // console.log(this.imageArr);
-      loading.dismiss();
-      // this.viewCtrl.dismiss();
-      const toast = this.toastCtrl.create({
-        message: 'Profile successfully updated!',
-        duration: 3000
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000
       });
-      toast.present();
-      // this.navCtrl.pop();
 
+      Toast.fire({
+        type: "success",
+        title: "Cover Photo Successfully added"
+      });
     },
       Error => {
-        loading.dismiss();
         const alert = this.alertCtrl.create({
           cssClass: "myAlert",
           subTitle: Error.message,
@@ -363,7 +309,44 @@ export class HomePage implements OnInit {
         });
         alert.present();
       })
-    // this.viewCtrl.dismiss()
+  }
+  UpdateLogo() {
+    this.alertMessage = "Please Wait...";
+    let b = window.innerHeight;
+
+    Swal.fire({
+      title: "Loading",
+      html: this.alertMessage,
+      // timer: 4000,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    }).then(result => { });
+    this.IRmethods.uploadProfilePic(this.downloadurl, this.name).then(data => {
+      this.IRmethods.update(this.downloadurl, this.downloadurlLogo).then((data) => {
+      });
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Logo Successfully added"
+      });
+
+    },
+      Error => {
+        const alert = this.alertCtrl.create({
+          cssClass: "myAlert",
+          subTitle: Error.message,
+          buttons: ['OK']
+        });
+        alert.present();
+      })
   }
 
   getUid1() {
@@ -528,33 +511,21 @@ export class HomePage implements OnInit {
   }
 
   signOut() {
-    const confirm = this.alertCtrl.create({
-      cssClass: "myAlert",
-      title: 'Confirm',
-      message: 'Are you sure you want to sign out?',
+    swal({
+      text: "Click OK to sign out.",
+      icon: "warning",
+      // buttons: true,
+      dangerMode: true
+    }).then(leave => {
+      if (leave) {
+        this.IRmethods.logout().then(() => {
+          window.location.reload();
+        }, (error) => {
+          // console.log(error.message);
+        })
+      }
 
-      buttons: [
-        {
-          text: 'Yes',
-          handler: () => {
-            this.IRmethods.logout().then(() => {
-              this.navCtrl.push(RegisterPage, { out: 'logout' });
-            }, (error) => {
-              // console.log(error.message);
-            })
-
-          }
-        },
-        {
-          text: 'No',
-          handler: () => {
-            // console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    confirm.present();
-
+    })
   }
 
 
@@ -628,25 +599,25 @@ export class HomePage implements OnInit {
   Rehab = 0;
 
   ngOnInit() {
-   this.initMap();
+    this.initMap();
   }
 
   initMap() {
-   
+
     setTimeout(() => {
-      this.IRmethods.getLocation(this.lat , this.lng).then((data:any)=>{
+      this.IRmethods.getLocation(this.lat, this.lng).then((data: any) => {
         // console.log(data);
-        this.userLocation = data ;
+        this.userLocation = data;
         // console.log(this.userLocation);
-        })
-      
+      })
+
     }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
       duration: 15000
     });
-    // loading.present();
+    loading.present();
 
     // console.log(this.lng)
     const options = {
@@ -669,37 +640,37 @@ export class HomePage implements OnInit {
       //animation: google.maps.Animation.DROP,
     });
 
-// console.log();
+    // console.log();
 
 
     setTimeout(() => {
       // console.log("show markers");
-      
+
       this.markers();
       // console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
     }, 16000)
-// console.log( this.userLocation);
-setTimeout(() => {
-  var contentString = '<div id="content">' +
-     
+    // console.log( this.userLocation);
+    setTimeout(() => {
+      var contentString = '<div id="content">' +
 
 
-      '</div>' +
-      this.userLocation
+
+        '</div>' +
+        this.userLocation
       '</div>';
 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
 
-    marker.addListener('click', function () {
-      infowindow.open(map, marker);
-      map.setZoom(13);
-      map.setCenter(marker.getPosition());
-    });
-  
-}, 4000);
-    
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+        map.setZoom(13);
+        map.setCenter(marker.getPosition());
+      });
+
+    }, 4000);
+
 
   }
   markers() {
@@ -933,5 +904,5 @@ setTimeout(() => {
   }
 
 
-  
+
 }

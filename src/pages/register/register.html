@@ -1,50 +1,87 @@
-
-
-
-<head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-  <div class="everything">
-        <img class="theRocket" src="../../assets/imgs/4IR logo.png">
-      
-    <!-- <div class="row"> -->
-  
-      <div class="column" style="background-color:#f4f4f4; border: 1px solid rgba(0, 0, 0, 0.2)">
-        <h2 style="color:#0a5e30e0">Sign In</h2>
-        <label for="" class="Labels">
-            <ion-icon name="mail" id="Theicon"  ></ion-icon>
-        </label>
-        <input  class="input-green" name="email" #email="ngModel" type="text" placeholder="Email" ngModel required>
-        <span style="color: red" *ngIf="!email.valid && email.touched" class="help-block">Please enter your email</span>
-        <label for="" class="Labels">
-            <ion-icon name="lock" id="Theicon"  ></ion-icon>
-        </label>
-        <input  class="input-green"  name="password" #password="ngModel" type="password" placeholder="Password" ngModel required>
-        <span style="color: red" *ngIf="!password.valid && password.touched" class="help-block">Please enter your password</span>
-        <button (click)="SignIn(email.value, password.value)">Login</button>
-        <p class="thepassword" (click)="forgotpassword()"> Forgot your password?</p>
-      </div>
-  
-  
-  
-      
-      <div class="column1"   style="background-color:#04592a" >
-        <h2>Sign Up</h2>
-  
-        <label for="" class="Labels">
-            <ion-icon name="mail" id="Theicon2"></ion-icon>
-        </label>
-        <input class="input-green" [(ngModel)]="signUpEmail"  type="text" placeholder="Email" ngModel required>
-        <!-- <span style="color: red" *ngIf="!signUpEmail.valid && signUpEmail.touched" class="help-block">Please enter your email</span> -->
-        <label for="" class="Labels">
-          <ion-icon name="lock" id="Theicon2"></ion-icon>
-        </label>
-        <input class="input-green" [(ngModel)]="signUppassword" type="password" placeholder="Password" ngModel required>
-        <!-- <span style="color: red" *ngIf="!signUppassword.valid && signUppassword.touched" class="help-block">Please enter your password</span> -->
-        <button class="changeColour" (click)="signUp()" style="color: #04592a">Register</button>
-        <br>
-        <p class="thepassword"></p>
-        <!-- <p class="thepassword" (click)="forgotpassword()"> Forgot your password?</p> -->
-      </div>
-    <!-- </div> -->
+<ion-content>
+  <div id="top-part">
+    <img src="../../assets/imgs/4IR logo.png">
   </div>
+  <div id="bottom-part">
+    <!-- Login and Register Cards Start here -->
+    <div id="left-side">
+      <div id="login">
+        <h1>Login</h1>
+        <table>
+          <tr class="input-style" style="margin-bottom: 16px;">
+            <td>
+              <ion-input placeholder="Email" name="email" #email="ngModel" ngModel required></ion-input>
+
+            </td>
+            <td width="10%">
+              <ion-icon name="mail"></ion-icon>
+            </td>
+          </tr>
+          <span style="color: red" *ngIf="!email.valid && email.touched" class="help-block">Please enter your email</span>
+          <tr style="height: 16px;"></tr>
+          <tr class="input-style">
+            <td>
+              <ion-input placeholder="Password" name="password" #password="ngModel" ngModel required> </ion-input>
+            </td>
+            <td width="10%">
+              <ion-icon name="lock"></ion-icon>
+            </td>
+          </tr>
+          <span style="color: red" *ngIf="!password.valid && password.touched" class="help-block">Please enter your password</span>
+        </table>
+        <button ion-button (click)="SignIn(email.value, password.value)">Login</button>
+        <p (click)="forgotpassword()"> Forgot your password?</p>
+      </div>
+    </div>
+    <div id="right-side">
+      <div id="register">
+        <h1>Register</h1>
+        <table>
+          <tr class="input-style" style="margin-bottom: 16px;">
+            <td>
+              <ion-input placeholder="Email" [(ngModel)]="signUpEmail" gModel required></ion-input>
+            </td>
+            <td width="10%">
+              <ion-icon name="mail"></ion-icon>
+            </td>
+          </tr>
+          <tr style="height: 16px;"></tr>
+          <tr class="input-style">
+            <td>
+              <ion-input placeholder="Password" [(ngModel)]="signUppassword" gModel required> </ion-input>
+            </td>
+            <td width="10%">
+              <ion-icon name="lock"></ion-icon>
+            </td>
+          </tr>
+        </table>
+        <button ion-button (click)="signUp()">Register</button>
+        <p>
+          <span>by registering, you agree to</span>
+          <a href=""> terms and conditions</a>
+        </p>
+      </div>
+    </div>
+    <!-- Login and Register Cards End here -->
+    <!-- Forgot Password Card Start here -->
+    <!-- <div id="forgot-password" *ngIf="!isForgotPassword">
+          <h1>Forgot Password</h1>
+          <table>
+            <tr class="input-style" style="margin-bottom: 16px;">
+              <td>
+                <ion-input placeholder="Email"></ion-input>
+              </td>
+              <td width="10%" class="icon-style">
+                <ion-icon name="mail"></ion-icon>
+              </td>
+            </tr>
+            <tr style="height: 16px;"></tr>
+          </table>
+          <button ion-button>Reset Password</button>
+          <p>
+              <span>Already have an account?</span>
+              <a href="">Login</a>
+            </p>
+        </div> -->
+  </div>
+  <!-- </div> -->
