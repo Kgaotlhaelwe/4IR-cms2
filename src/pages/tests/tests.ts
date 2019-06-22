@@ -57,5 +57,4 @@ ProgramIntroductionHint() {
   hidephoneHint(){
     this.showPhoneHint = false ;
   }
-
 }
