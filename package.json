@@ -32,7 +32,7 @@
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^8.12.1",
+    "sweetalert2": "^8.13.0",
     "zone.js": "0.8.29"
   },
   "devDependencies": {
