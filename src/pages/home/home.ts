@@ -7,6 +7,7 @@ import { OnBoardingPage } from '../on-boarding/on-boarding';
 import { ViewInformationPage } from '../view-information/view-information';
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { TestsPage } from '../tests/tests';
 
 
 declare var firebase;
@@ -233,7 +234,7 @@ export class HomePage implements OnInit {
 
   }
   addProgramme() {
-    this.navCtrl.push(OnBoardingPage, { pushid: '1' })
+    this.navCtrl.push(TestsPage, { pushid: '1' })
   }
 
   ionViewWillEnter() {

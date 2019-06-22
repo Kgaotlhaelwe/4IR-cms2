@@ -20,10 +20,11 @@
               <input type="tel" class="inputText" placeholder="Phone"
                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
               <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
+              <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea>
 
             </div>
             <div class="navButtons">
-              <button ion-button icon-end>
+              <button ion-button icon-end (click)="moveToPage2()">
                 Continue
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
@@ -90,31 +91,31 @@
                     <option value="Coffee Shop">Coffee Shop</option>
                   </select>
                   <br>
-                  <div class="customSelect" (click)="HEIservices()">
-                    Select your services *ngIf="showheiServices"
+                  <div class="customSelect" (click)="HEIservices()" *ngIf="showheiServices">
+                    Select your services 
                     <!-- {{catService.title}} -->
                   </div>
                   <br>
   
   
-                  <div class="customSelect" (click)="LibraryServices()">
-                    Select your services *ngIf="showLibaryServices" 
+                  <div class="customSelect" (click)="LibraryServices()" *ngIf="showLibaryServices" >
+                    Select your services 
                     <!-- {{catService}} -->
                   </div>
                   <br>
-                  <div class="customSelect" (click)="internetCafe()">
-                    Select your services *ngIf="showinternetCafeServices"
+                  <div class="customSelect" (click)="internetCafe()" *ngIf="showinternetCafeServices">
+                    Select your services 
                     <!-- {{catService}} -->
                   </div>
                   <br>
-                  <div class="customSelect" (click)="learningCenter()">
-                    Select your services *ngIf="showlearningCenterServices"
+                  <div class="customSelect" (click)="learningCenter()" *ngIf="showlearningCenterServices">
+                    Select your services 
                   </div>
-                  <div class="customSelect" (click)="mall()">
-                      *ngIf="showMallServices"
+                  <div class="customSelect" (click)="mall()" *ngIf="showMallServices">
+                      
                   </div>
-                  <div class="customSelect" (click)=" Coffeeshops()">
-                    Select your services *ngIf="showCoffeeShopServices"
+                  <div class="customSelect" (click)=" Coffeeshops()" *ngIf="showCoffeeShopServices">
+                    Select your services 
                   </div>
   
                   <div>
@@ -134,7 +135,7 @@
                     <ion-icon name="arrow-back"></ion-icon>
                     BACK
                   </button>
-                  <button ion-button icon-end (click)="moveToPage3()">NEXT
+                  <button ion-button icon-end (click)="moveToPage4()">NEXT
                     <ion-icon name="arrow-forward"></ion-icon>
                   </button>
               </div>
@@ -155,20 +156,20 @@
                       <h3>{{orgName}}</h3>
                       <p>
                         <b>Address</b>
-                        <br> 4877 Ugago Street</p>
+                        <br> {{orgAdress}}</p>
                       <p>
-                        <b>Tel:</b> 0813917127</p>
+                        <b>Tel:</b> {{orgPhone}}</p>
                       <p>
-                        <b>Website:</b> Website</p>
+                        <b>Website:</b>  {{orgWebsite}}</p>
                       <p>
                         <b>Description</b>
-                        <br> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut perspiciatis similique deserunt numquam vel eligendi sunt itaque, atque assumenda mollitia! Quos doloribus vel dolores perferendis voluptatibus recusandae labore. Iste, repellat.</p>
+                        <br> {{orgDescription}}</p>
                       <p>
-                        <b>WiFi Connectivity:</b> Yes</p>
+                        <b>WiFi Connectivity:</b>{{offerWifi}}</p>
                       <p>
-                        <b>Free WiFi:</b> None</p>
+                        <b>Free WiFi:</b> {{wifi}}</p>
                       <p>
-                        <b>WiFi Range:</b>Undefined</p>
+                        <b>WiFi Range:</b>{{chooseWifiRange}}</p>
   
                     </div>
   

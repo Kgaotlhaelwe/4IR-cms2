@@ -63,7 +63,7 @@ page-tests {
       // margin-top: 50px;
     }
 
-    .inputText,
+    .inputText, textarea,
     input {
       border-bottom: 1px solid rgb(0, 0, 0);
       border-right: 0;
@@ -114,11 +114,10 @@ page-tests {
     overflow-y: hidden;
     animation: 1s faderIn;
   }
-  #page1,
-  #page2,
-  #page3 {
-    display: none;
-  }
+  // #page2
+  // {
+  //   display: none;
+  // }
   .steps {
     text-align: right;
     padding: 5px;
@@ -187,7 +186,7 @@ page-tests {
     margin-left: 50%;
     transform: translateX(-50%);
     background: whitesmoke;
-    border-radius: 20px;
+    // border-radius: 20px;
     padding: 10px;
   }
   @media screen and (max-width: 800px) {

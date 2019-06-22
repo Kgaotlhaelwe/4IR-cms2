@@ -174,7 +174,7 @@ export class OnBoardingPage {
   pushid = this.navParams.get('pushid')
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _ngZone: NgZone, public IRmethods: IrMethodsProvider, public loadingCtrl: LoadingController) {
-    console.log(this.pushid);
+    // console.log(this.pushid);
   }
 
   ionViewDidLoad() {
@@ -883,39 +883,30 @@ export class OnBoardingPage {
   }
 
   RegistrationType() {
-
-
     if (this.program == undefined) {
-
       if (this.pushid == "1") {
-        this.showRegistionProgs = true;
-        this.showRegistionOrgs = false;
-        this.hideRegisterAs = false
+        this.showRegistionProgs = false;
+        this.showRegistionOrgs = true;
+        this.hideRegisterAs = true
         thePlaceholder.style.display = "none"
-
       } else {
-        this.showRegistionProgs = true;
-        this.showRegistionOrgs = false;
-        this.hideRegisterAs = false
+        this.showRegistionProgs = false;
+        this.showRegistionOrgs = true;
+        this.hideRegisterAs = true
         thePlaceholder.style.display = "none"
 
       }
     }
-
-
-
     var thePlaceholder = document.getElementById("placeholderDiv");
     if (this.program == "Programme") {
-      this.showRegistionProgs = true;
-      this.showRegistionOrgs = false;
-      this.hideRegisterAs = false
-      thePlaceholder.style.display = "none"
-
-
-    } else {
-      this.showRegistionOrgs = true;
       this.showRegistionProgs = false;
-      this.hideRegisterAs = false
+      this.showRegistionOrgs = true;
+      this.hideRegisterAs = true
+      thePlaceholder.style.display = "none"
+    } else {
+      this.showRegistionOrgs = false;
+      this.showRegistionProgs = true;
+      this.hideRegisterAs = true
       thePlaceholder.style.display = "none"
     }
 
@@ -923,8 +914,6 @@ export class OnBoardingPage {
   }
 
   moveToPage2progs() {
-
-
 
     let currentTime = new Date();
     let currentDate = moment(currentTime).format('YYYY-MM-DD')

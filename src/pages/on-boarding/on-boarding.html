@@ -114,37 +114,37 @@
 
                 <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
                   Select your services
-                  <!-- {{catService.title}} -->
+                  {{catService.title}}
 
-                  <!--                     
+                                      
                       <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
                         <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
                         <ion-option value="Rapid prototype">Rapid prototype</ion-option>
                         <ion-option value="Consulation" selected="true"> Consulation</ion-option>
                         <ion-option value="Research">Research</ion-option>
                         <ion-option value="Applied Research">Applied Research</ion-option>
-                         </ion-select> -->
+                         </ion-select>
                 </div>
                 <br>
 
 
                 <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
                   Select your services
-                  <!-- {{catService}} -->
-                  <!-- <ion-item>
+                  {{catService}}
+                  <ion-item>
                       
                         <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
                           <ion-option value="Research" selected="true">Research</ion-option>
                           <ion-option value=">Training">Training</ion-option>
                          </ion-select>
-                      </ion-item> -->
+                      </ion-item>
                 </div>
                 <br>
 
                 <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
                   Select your services
-                  <!-- {{catService}} -->
-                  <!-- <ion-item>
+                  {{catService}}
+                  <ion-item>
                       
                         <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
                           <ion-option value="internet" selected="true">internet</ion-option>
@@ -152,7 +152,7 @@
                           <ion-option value="fax">fax</ion-option>
                          
                          </ion-select>
-                      </ion-item> -->
+                      </ion-item>
                 </div>
                 <br>
 
@@ -169,11 +169,11 @@
                   Select your services
 
                   <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
-                      <ion-option value="Training" selected="true">Training</ion-option>
+                      <!-- <ion-option value="Training" selected="true">Training</ion-option>
                       <ion-option value="Skill development">Skill development</ion-option>
                       <ion-option value="Research">Research</ion-option>
                       <ion-option value="Incubation">Incubation</ion-option>
-                    </ion-select> -->
+                    </ion-select> --> -->
                 </div>
 
                 <div *ngFor="let a of catService">

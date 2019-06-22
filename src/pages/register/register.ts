@@ -8,6 +8,7 @@ import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { TestsPage } from '../tests/tests';
 declare var google;
 declare var firebase;
 /**
@@ -275,7 +276,7 @@ export class RegisterPage {
           type: "success",
           title: "Please continue to finish signing up"
         });
-        this.navCtrl.push(OnBoardingPage, { email: this.signUpEmail })
+        this.navCtrl.push(TestsPage, { email: this.signUpEmail })
       }).catch((error) => {
         if (
           error.message ==
