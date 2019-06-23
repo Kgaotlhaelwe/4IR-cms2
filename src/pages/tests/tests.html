@@ -197,7 +197,7 @@
           </div>
         </div>
         <div class="for-progs">
-          <div id="page1">
+          <div id="page1" class="page1prog">
             <div class="steps">
               <p>Step 1 of 4</p>
             </div>
@@ -287,12 +287,12 @@
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>
-              <button ion-button icon-end (click)="moveToPage3()">DONE
+              <button ion-button icon-end (click)="moveToPage2progs()">NEXT
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
             </div>
           </div>
-          <div id="page2">
+          <div id="page2"  class="page2prog">
               <div class="steps">
                 <p>Step 2 of 4</p>
               </div>
@@ -328,13 +328,13 @@
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>
-              <button ion-button icon-end (click)="moveToPage3()">NEXT
+              <button ion-button icon-end (click)="moveToPage3progs()">NEXT
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
             </div>
 
           </div>
-          <div id="page3">
+          <div id="page3"  class="page3prog">
               <div class="steps">
                 <p>Step 3 of 4</p>
               </div>
@@ -382,7 +382,7 @@
             </div>
 
           </div>
-          <div id="page4">
+          <div id="page4"  class="page4prog">
               <div class="steps">
                 <p>Step 4 of 4</p>
               </div>
@@ -420,11 +420,11 @@
                 </div>
             </div>
             <div class="navButtons">
-              <button ion-button icon-start (click)="backToPage1()">
+              <button ion-button icon-start (click)="backToPage3()">
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>
-              <button ion-button icon-end (click)="moveToPage3()">DONE
+              <button ion-button icon-end (click)="uploadInfoDone()">DONE
                 <ion-icon name="checkmark"></ion-icon>
               </button>
             </div>
