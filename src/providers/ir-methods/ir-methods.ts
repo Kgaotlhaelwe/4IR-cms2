@@ -38,6 +38,21 @@ export class IrMethodsProvider {
       })
     })
   }
+
+  calculateAndDisplayRoute(location, destination, directionsDisplay, directionsService) {
+    directionsService.route({
+      origin: location,
+      destination: destination,
+      travelMode: 'DRIVING'
+    }, function (response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+        directionsDisplay.setOptions({ suppressMarkers: true });
+
+      } else {
+      }
+    });
+  }
   GetUserProfile() {
     return new Promise((accpt, rejc) => {
       this.ngzone.run(() => {
@@ -95,7 +110,8 @@ export class IrMethodsProvider {
               downloadurl: "assets/download.png",
               downloadurlLogo: "assets/download.png",
               service: [service],
-              address: address
+              address: address,
+              applied:0
             });
           var user = firebase.auth().currentUser;
           user.sendEmailVerification().then(function () {

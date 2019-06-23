@@ -8,7 +8,7 @@
         <div class="clicker" (click)="decideState()">
           <i class="material-icons" id="myArrow"></i>
         </div>
-        <b >
+        <b style="color:black">
           organisations
         </b>
 
@@ -16,16 +16,22 @@
           <ion-slides slidesPerView="5.125">
             <ion-slide class="card-background-page" *ngFor="let i of orgArray">
               <div class="row" id="rowSlide">
-                <div class="column1" id="toGrow">
+                <div class="column1">
                   <div class="row">
                     <div class="column-left-2">
                       <img class="org-img-2" src="{{i.img}}" />
                     </div>
-                    <div class="column-right-2">
-                      <p class="org-name-2">{{ i.programCategory }}</p>
-                      Opening Date:<p>{{i.programStartDate}}</p>
-                      Closing Date:<p>{{i.programCloseDate}}</p>
+                      <div class="column-right-2">
+                        <p class="org-name-2">{{ i.programCategory }}</p>
+                        <div class="scroll">
+                        <div class="date">
+                          <p> Opening Date:{{i.programStartDate}}</p>
+                         <p> Closing Date:{{i.programCloseDate}}</p>
+                         <p>TargetMarket:{{i.targetAudience}}</p>
+                        </div>
+                      </div>
                     </div>
+              
                   </div>
                 </div>
               </div>
@@ -49,17 +55,7 @@
       <div class="WebName" style="display: flex; flex-direction: row; align-content: center; align-items: center; justify-content: center;">
         <img src="../../assets/imgs/4IR logo.png" alt=""> 4IR Resources Hub
       </div>
-      <!-- <div class="action">
-          <p id="my2001" (click)="goToProfile()">
-            <b id="Orgo">ORGANISATION PROFILE</b>
-          </p>
-      </div> -->
     </div>
-    <!-- <ion-fab id="search">
-              <button ion-fab mini>
-                <ion-icon name="search"></ion-icon>
-              </button>
-            </ion-fab> -->
     <ion-searchbar class="searchBar" [(ngModel)]="searchItem" placeholder="Search by category" (ionInput)="getItems($event)">
     </ion-searchbar>
     <div class="results">
@@ -67,9 +63,6 @@
         {{ item}}
       </ion-item>
     </div>
-
-
-
     <div class="tab">
       <div class="action">
         <div>
@@ -80,8 +73,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="profOverlay">
       <input type="file" accept="image/*" id="coverUploader" (change)="UploadProfilePic($event)">
       <input type="file" accept="image/*" id="logoUploader" (change)="UploadLogo($event)">
@@ -149,7 +140,7 @@
         <div class="coverPhoto">
           <ion-fab bottom right>
 
-            <label class="imageSaver" ion-fab mini (click)="EditPrfile()">
+            <label class="imageSaver" ion-fab mini (click)="UpdateCover()">
 
               <!-- <ion-icon name="images">
                         </ion-icon> -->
@@ -162,6 +153,12 @@
           <div class="about">
             <label for="logoUploader">
               <img src="{{downloadurlLogo}}" alt="" class="logo">
+              <label class="imageSaver" ion-fab mini (click)="UpdateLogo()()">
+
+                <!-- <ion-icon name="images">
+                          </ion-icon> -->
+                <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+              </label>
             </label>
             <h6>About</h6>
             <p class="font" id="breaker">{{desc}}</p>
@@ -194,9 +191,6 @@
         </div>
       </div>
     </div>
-
-
-
 
     <div class="content" #map id="map">
     </div>

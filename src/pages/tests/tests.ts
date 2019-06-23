@@ -151,7 +151,6 @@ export class TestsPage {
 
   showApplicationLink: boolean = false;
 
-
   showProgramBenefits: boolean = false;
   showAdditionalBenefits: boolean = false;
   showEligibleCriteria: boolean = false;
@@ -1155,7 +1154,6 @@ export class TestsPage {
       type: 'checkbox',
       label: 'Testing & Analystical',
       value: 'Testing & Analystical',
-
     });
 
     alert.addInput({
@@ -1344,7 +1342,9 @@ export class TestsPage {
     this.showPhoneHint = false;
   }
 
-  test() {
+ 
+
+  test(){
     console.log("regfsgfs");
   }
 }

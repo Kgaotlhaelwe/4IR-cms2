@@ -1,291 +1,1211 @@
 page-register{
-  .theRocket{
-    position: absolute;
-    height: 25%;
-    width :auto;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center
-    }
-    #Theicon2{
-      color: white;
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Fresca&display=swap');
+
+    ion-content {
+              background-image:linear-gradient(to bottom, rgb(239, 239, 239) ,rgba(193, 193, 193, 0.592)),url('../../assets/imgs/parl.jpg');
+              background-size: cover;
     }
 
-.everything{
-  //position: absolute;
-  display: flex;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-  background-image:linear-gradient(to bottom, rgb(239, 239, 239) ,rgba(193, 193, 193, 0.592)),url('../../assets/imgs/parl.jpg');
-  // background: url("../../assets/imgs/parl.jpg");
-  // background-color:rgba(252, 246, 246, 0.523);
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  will-change: scroll-position;
-  contain: size style layout;
-}
-.inputColor {
-  color: #04592a;
-  background: rgb(156, 156, 156);
-  height: 45px !important;
-  border: 0px solid transparent;
-}
-.input-green{
-  background: rgba(116, 116, 116, 0.472);
-  border: 0px solid rgb(128, 128, 128);
-  height: 50px !important;
-  width: 80%;
-  margin-top: 10px;
-  border-radius: 50px;
-  .text-input{
-    // background: red;
-    height: 100%;
-    margin: auto 10px;
-  }
-}
-.input, .inputColor{
-  // height: 100px;
-}
-/* Create two equal columns that floats next to each other */
-.column {
-    height: 40%; /* Should be removed. Only for demonstration */
-    width: 100%;   
-    justify-content: center;
-    align-items: center;    
-    display: flex;
-    flex-direction: column;
-     margin-left: 2%;
-     position: relative;
-     top: 10%
-}
-.column1 {
-    height: 40%; /* Should be removed. Only for demonstration */
-    width: 100%;   
-    justify-content: center;
-    align-items: center;    
-    display: flex;
-    flex-direction: column;
-    margin-right: 2%;
-    position: relative;
-    top: 10%
-}
 
-.Account {
-  text-align: left;
-}
-h1 {
-  font-weight: 100;
-  color      : white;
-  font-size  : 3.8em;
-  position   : relative;
-  bottom     : 10px;
-}
-h2 {
-  text-align : left;
-  width      : 80%;
-  font-size  : 3em;
-   color   : #ffffff;
-  font-weight: 100;
- 
-}
-h3 {
-  font-size  : 1.5em;
-  font-weight: 100;
-  color      : white;
-}
-p {
-  width     : 80%;
-  text-align: center;
-  color     : white;
-}
-.column1 p {
-  color    : white;
-  font-size: 1.2em;
+    #top-part {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-}
-input {
-  width           : 80%;
-  min-width       : 300px;
-  margin          : 9px;
-  border-radius   : 50px;
-  background-color: rgba(255, 255, 255, 0);
-  font-size       : 100%;
-  padding-left    : 20px;
-  color           : white;
-}
-::-webkit-input-placeholder {
-  color: white;
-}
-button {
-  cursor          : pointer;
-  height          : 45px;
-  width           : 300px;
-  border          : #04592a 2px solid;
-  box-shadow      : 0 0 10px #04592a;
-  border-radius   : 100px;
-  background-color: white;
-  color           : white;
-  font-size       : 1em;
-  font-weight     : 100;
-  background-color: #04592a;
-  margin-top      : 30px;
-}
-.person {
-  height      : 25px;
-  margin-right: -50px;
-  position    : relative;
-  right       : 25px;
-  top         : 5px;
-}
-.theRocket {
-  position: absolute;
-  height: 25%;
-  width :auto;
-  top: 0;
-  margin: 10px auto
-}
-.inputColor {
-  color: #04592a
-}
-.thepassword {
-  cursor     : pointer;
-  text-align : center;
-  padding-top: 20px;
-  color      : #04592a;
-  //position: absolute;
-  bottom: 10px;
-  // right: 10px;
-}
-.changeColour{
-  background-color: white;
-  color: #495f539e;
-  font-weight: 500;
-}
-#Theicon {
-  color   : #04592a;
-  text-align: center;
-  font-size: 2rem;
-}
-#Theicon {
-  // position: absolute;
-  // color   : #04592a;
-  // font-size: 2rem;
-  // left: 100%;
-}
-#Theicon2 {
-  // position: absolute;
-  // color   : white;
-  // font-size: 2rem;
-  // left: 100%;
-}
-.Labels {
-  position : relative;
-  top      : 10.5%;
-  color    : #04592a;
-  left     : 30%;
-  // border: 2px solid red;
-}
-#greenButton{
-  height: 45px;
-}
-button{
-  height: 50px;
-}
-.alert-wrapper,.alert-head, .alert-button-group,.alert-message,.alert-input-group {
-  background-color: #04592a;
-  color: #ffffff;
-  border: 0;
-}
-@media only screen and (max-width: 600px){
-  .everything{
-          // position: absolute;
-           display: block;
-           // top: 0;
-           // bottom: 0;
-           // left: 0;
-           // right: 0;
-           width: 100%;
-           height: 100%;
-          //  justify-content: center;
-          //  align-items: center;
-           font-family: Arial, Helvetica, sans-serif;
-           // background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23018790' fill-opacity='0.4'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-           background-size: cover;
-           background-repeat: no-repeat;
-         }
-         .column {
-          padding: 10px;
-          height: 60%; /* Should be removed. Only for demonstration */
-          width: 100%;   
-          justify-content: center;
-          align-items: center;    
-          display: flex;
-          flex-direction: column;
-           margin-left: 0%;
-           position: relative;
-           top: 10%;
-           min-width: 320px;
-        }  
-        .column1 {
-          padding: 10px;
-          height: 60%; /* Should be removed. Only for demonstration */
-          width: 100%;   
-          justify-content: center;
-          align-items: center;    
-          display: flex;
-          flex-direction: column;
-          margin-right: 0%;
-          position: relative;
-          top: 10%;
-          min-width: 320px;
+        img {
+            height: 50%;
+            width: auto;
+
+        }
+
+    }
+
+
+    #register ion-input .text-input-md{
+      color:white;
+    }
+    #register .button-inner{
+      background:white;
+      color:black !important;
+    }
+    #login .button-inner{
+      background: #055705;
+    }
+
+    
+
+    #bottom-part {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            #left-side {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                // background: grey;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex-direction: column;
+    
+                // align-items: 
+    
+                #login {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 75%;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                      box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+    
+                        .input-style {
+                            background: whitesmoke;
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+                        ion-icon {
+                            color: gray;
+                        }
+    
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: rgb(5, 87, 5);
+
+                    }
+                    p{
+                        color: gray;
+                    }
+                }
+    
+            }
+    
+            #register .button-inner{
+              background:white
+            }
+            #right-side {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                // background: goldenrod;
+                display: flex;
+    
+                #register {
+                  // border:2px solid red;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 75%;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    background: rgba(5, 87, 5, 0.892);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        color: white;
+                        font-family: 'Fresca', sans-serif;
+                    }
+
+                    p {
+                        font-size: 90%;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        
+                        .input-style {
+                            background: rgb(8, 104, 8);
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+    
+                        ion-icon {
+                            color: ghostwhite;
+                        }
+    
+    
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: white;
+                        color: black;
+                    }
+                    p {
+                        color: white;
+                        span {
+                            color: grey;
+                        }
+                        a {
+                            color: whitesmoke;
+                        }
+                    }
+              
+    
+                }
+    
+            }
+    
+            // FORGOT PASSWORD STYLE STARTS HERE
+            // FORGOT PASSWORD STYLE STARTS HERE
+            #forgot-password {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                // height: 85%;
+                // margin-bottom: 16px;
+                width: 85%;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                background: rgba(255, 255, 255, 0.604);
+                display: flex;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                
+                h1 {
+                    color: rgb(75, 75, 75);
+                    font-family: 'Fresca', sans-serif;
+                }
+    
+                table {
+                    width: 90%;
+                    margin-top: 16px;
+                    tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    
+                    .input-style {
+                        background: rgb(211, 211, 211);
+                        margin-bottom: 16px;
+                        border-top-left-radius: 50px;
+                    }
+
+                    ion-input {
+                        padding-left: 8px;
+                    }
+
+                    .icon-style {
+                        text-align: center;
+                    }
+    
+                    ion-icon {
+                        color: grey;
+                        margin: auto;
+                        text-align: right;
+                    }
+    
+    
+                }
+    
+                button {
+                    width: 80%;
+                    border-radius: 50px;
+                    margin-top: 16px;
+                    background: rgb(5, 87, 5);
+                    color: white;
+                }
+                p {
+                    color: black;
+                    span {
+                        color: rgb(67, 67, 67);
+                    }
+                    a {
+                        color: rgb(5, 87, 5);
+                    }
+                }
+            }
+        }
+        
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            #left-side {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                // background: grey;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex-direction: column;
+    
+                // align-items: 
+    
+                #login {
+               
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 95%;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                      box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+    
+                        .input-style {
+                            background: whitesmoke;
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+                        ion-icon {
+                            color: gray;
+                        }
+    
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: rgb(5, 87, 5);
+                        
+    
+                    }
+                    p{
+                        color: gray;
+                    }
+                }
+    
+            }
+    
+            #right-side {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                // background: goldenrod;
+                display: flex;
+    
+                #register {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 95%;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    background: rgba(5, 87, 5, 0.892);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        color: white;
+                        font-family: 'Fresca', sans-serif;
+                    }
+
+                    p {
+                        font-size: 90%;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        
+                        .input-style {
+                            background: rgb(8, 104, 8);
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+    
+                        ion-icon {
+                            color: ghostwhite;
+                        }
+    
+    
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: white;
+                        color: black;
+                    }
+                    p {
+                        color: white;
+                        span {
+                            color: grey;
+                        }
+                        a {
+                            color: whitesmoke;
+                        }
+                    }
+    
+                }
+    
+            }
+    
+            // FORGOT PASSWORD STYLE STARTS HERE
+            // FORGOT PASSWORD STYLE STARTS HERE
+            #forgot-password {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                // height: 85%;
+                // margin-bottom: 16px;
+                width: 85%;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                background: rgba(255, 255, 255, 0.604);
+                display: flex;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                
+                h1 {
+                    color: rgb(75, 75, 75);
+                    font-family: 'Fresca', sans-serif;
+                }
+    
+                table {
+                    width: 90%;
+                    margin-top: 16px;
+                    tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    
+                    .input-style {
+                        background: rgb(211, 211, 211);
+                        margin-bottom: 16px;
+                        border-top-left-radius: 50px;
+                    }
+
+                    ion-input {
+                        padding-left: 8px;
+                    }
+
+                    .icon-style {
+                        text-align: center;
+                    }
+    
+                    ion-icon {
+                        color: grey;
+                        margin: auto;
+                        text-align: right;
+                    }
+    
+    
+                }
+    
+                button {
+                    width: 80%;
+                    border-radius: 50px;
+                    margin-top: 16px;
+                    background: rgb(5, 87, 5);
+                    color: white;
+                }
+                p {
+                    color: black;
+                    span {
+                        color: rgb(67, 67, 67);
+                    }
+                    a {
+                        color: rgb(5, 87, 5);
+                    }
+                }
+            }
+        }
+        
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            #left-side {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                // background: grey;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex-direction: column;
+    
+                // align-items: 
+    
+                #login {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 75%;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                      box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+    
+                        .input-style {
+                            background: whitesmoke;
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+                        ion-icon {
+                            color: gray;
+                        }
+    
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: rgb(5, 87, 5);
+                        
+    
+                    }
+                    p{
+                        color: gray;
+                    }
+                }
+    
+            }
+    
+            #right-side {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                // background: goldenrod;
+                display: flex;
+    
+                #register {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    height: 75%;
+                    width: 75%;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    background: rgba(5, 87, 5, 0.892);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        color: white;
+                        font-family: 'Fresca', sans-serif;
+                    }
+
+                    p {
+                        font-size: 90%;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        
+                        .input-style {
+                            background: rgb(8, 104, 8);
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+    
+                        ion-icon {
+                            color: ghostwhite;
+                        }
+    
+    
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: white;
+                        color: black;
+                    }
+                    p {
+                        color: white;
+                        span {
+                            color: grey;
+                        }
+                        a {
+                            color: whitesmoke;
+                        }
+                    }
+    
+                }
+    
+            }
+    
+            // FORGOT PASSWORD STYLE STARTS HERE
+            // FORGOT PASSWORD STYLE STARTS HERE
+            #forgot-password {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                // height: 85%;
+                // margin-bottom: 16px;
+                width: 85%;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                background: rgba(255, 255, 255, 0.604);
+                display: flex;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                
+                h1 {
+                    color: rgb(75, 75, 75);
+                    font-family: 'Fresca', sans-serif;
+                }
+    
+                table {
+                    width: 90%;
+                    margin-top: 16px;
+                    tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    
+                    .input-style {
+                        background: rgb(211, 211, 211);
+                        margin-bottom: 16px;
+                        border-top-left-radius: 50px;
+                    }
+
+                    ion-input {
+                        padding-left: 8px;
+                    }
+
+                    .icon-style {
+                        text-align: center;
+                    }
+    
+                    ion-icon {
+                        color: grey;
+                        margin: auto;
+                        text-align: right;
+                    }
+    
+    
+                }
+    
+                button {
+                    width: 80%;
+                    border-radius: 50px;
+                    margin-top: 16px;
+                    background: rgb(5, 87, 5);
+                    color: white;
+                }
+                p {
+                    color: black;
+                    span {
+                        color: rgb(67, 67, 67);
+                    }
+                    a {
+                        color: rgb(5, 87, 5);
+                    }
+                }
+            }
         } 
-   .theRocket {
-    height: 20%;
-    width: auto;
-    top: 0;
-    margin: 10px auto;
-    position: initial;
-}
-.column1,.column{
-  padding-top: 0;
-  h2{
-    margin-top: 0;
-  }
-  #Theicon2 {
-    // position: absolute;
-    color   : white;
-    font-size: 2rem;
-    // top: 0;
-    // left: 1em;
-  }
-.Labels {
-  position : relative;
-  top      : 9%;
-  color    : #04592a;
-  left     : 30%;
-  // border: 2px solid red;
-}
-}
+        
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            #left-side {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                // background: grey;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex-direction: column;
+    
+                // align-items: 
+    
+                #login {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 55%;
+                    width: 75%;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+    
+                        .input-style {
+                            background: whitesmoke;
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+                        ion-icon {
+                            color: gray;
+                        }
+    
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: rgb(5, 87, 5);
+                        
+    
+                    }
+                    p{
+                        color: gray;
+                    }
+                }
+    
+            }
+    
+            #right-side {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                // background: goldenrod;
+                display: flex;
+    
+                #register {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    height: 55%;
+                    width: 75%;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    background: rgba(5, 87, 5, 0.892);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        color: white;
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        
+                        .input-style {
+                            background: rgb(8, 104, 8);
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+    
+                        ion-icon {
+                            color: ghostwhite;
+                        }
+    
+    
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: white;
+                        color: black;
+                    }
+                    p {
+                        color: white;
+                        span {
+                            color: grey;
+                        }
+                        a {
+                            color: whitesmoke;
+                        }
+                    }
+    
+                }
+    
+            }
+    
+            // FORGOT PASSWORD STYLE STARTS HERE
+            #forgot-password {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                // height: 85%;
+                // margin-bottom: 16px;
+                width: 35%;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                background: rgba(255, 255, 255, 0.604);
+                display: flex;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                
+                h1 {
+                    color: rgb(75, 75, 75);
+                    font-family: 'Fresca', sans-serif;
+                }
+    
+                table {
+                    width: 90%;
+                    margin-top: 16px;
+                    tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    
+                    .input-style {
+                        background: rgb(211, 211, 211);
+                        margin-bottom: 16px;
+                        border-top-left-radius: 50px;
+                    }
 
-}
-@media only screen and (max-width: 415px){
-  .Labels {
-    position : relative;
-    top      : 10% !important;
-    color    : #04592a;
-    left     : 30%;
-    // border: 2px solid red;
-  }
-}
+                    ion-input {
+                        padding-left: 8px;
+                    }
+
+                    .icon-style {
+                        text-align: center;
+                    }
+    
+                    ion-icon {
+                        color: grey;
+                        margin: auto;
+                        text-align: right;
+                    }
+    
+    
+                }
+    
+                button {
+                    width: 80%;
+                    border-radius: 50px;
+                    margin-top: 16px;
+                    background: rgb(5, 87, 5);
+                    color: white;
+                }
+                p {
+                    color: black;
+                    span {
+                        color: rgb(67, 67, 67);
+                    }
+                    a {
+                        color: rgb(5, 87, 5);
+                    }
+                }
+            }
+        } 
+        
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+                    /* Extra large devices (large laptops and desktops, 1200px and up) */
+            #left-side {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                // background: grey;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex-direction: column;
+    
+                // align-items: 
+    
+                #login {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 55%;
+                    width: 55%;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+    
+                        .input-style {
+                            background: whitesmoke;
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+                        ion-icon {
+                            color: gray;
+                        }
+    
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: rgb(5, 87, 5);
+                        
+    
+                    }
+                    p{
+                        color: gray;
+                    }
+                }
+    
+            }
+    
+            #right-side {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                // background: goldenrod;
+                display: flex;
+    
+                #register {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    height: 55%;
+                    width: 55%;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    background: rgba(5, 87, 5, 0.892);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                    h1 {
+                        color: white;
+                        font-family: 'Fresca', sans-serif;
+                    }
+    
+                    table {
+                        width: 90%;
+                        margin-top: 16px;
+                        tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                        tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                        
+                        .input-style {
+                            background: rgb(8, 104, 8);
+                            margin-bottom: 16px;
+                            border-top-left-radius: 50px;
+                        }
+    
+                        ion-icon {
+                            color: ghostwhite;
+                        }
+    
+    
+                    }
+    
+                    button {
+                        width: 80%;
+                        border-radius: 50px;
+                        margin-top: 16px;
+                        background: white;
+                        color: black;
+                    }
+                    p {
+                        color: white;
+                        span {
+                            color: grey;
+                        }
+                        a {
+                            color: whitesmoke;
+                        }
+                    }
+    
+                }
+    
+            }
+    
+            // FORGOT PASSWORD STYLE STARTS HERE
+            // FORGOT PASSWORD STYLE STARTS HERE
+            #forgot-password {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                // height: 85%;
+                // margin-bottom: 16px;
+                width: 25%;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                background: rgba(255, 255, 255, 0.604);
+                display: flex;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+                box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    
+                
+                h1 {
+                    color: rgb(75, 75, 75);
+                    font-family: 'Fresca', sans-serif;
+                }
+    
+                table {
+                    width: 90%;
+                    margin-top: 16px;
+                    tr:first-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:first-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    tr:last-child td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+                    tr:last-child td:last-child { border-top-right-radius: 50px;  border-bottom-right-radius: 50px;}
+                    
+                    .input-style {
+                        background: rgb(211, 211, 211);
+                        margin-bottom: 16px;
+                        border-top-left-radius: 50px;
+                    }
+
+                    ion-input {
+                        padding-left: 8px;
+                    }
+
+                    .icon-style {
+                        text-align: center;
+                    }
+    
+                    ion-icon {
+                        color: grey;
+                        margin: auto;
+                        text-align: right;
+                    }
+    
+    
+                }
+    
+                button {
+                    width: 80%;
+                    border-radius: 50px;
+                    margin-top: 16px;
+                    background: rgb(5, 87, 5);
+                    color: white;
+                }
+                p {
+                    color: black;
+                    span {
+                        color: rgb(67, 67, 67);
+                    }
+                    a {
+                        color: rgb(5, 87, 5);
+                    }
+                }
+            }
+        }
+      }
 }
