@@ -24,8 +24,7 @@
               <p>Step 1 of 4</p>
             </div>
             <div class="user-inputs">
-              <p id="intro-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus impedit repellat
-                ipsa accusamus earum sunt, doloremque illo consequuntur qui. Iusto!</p>
+              <p id="intro-text">Let's get started by adding a few of your details and get the wheel going!</p>
               <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
               <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
                 (change)="setAddress()">
@@ -171,22 +170,20 @@
                 <h3>{{orgName}}</h3>
                 <p>
                   <b>Address</b>
-                  <br> 4877 Ugago Street</p>
+                  <br>{{orgAdress}}</p>
                 <p>
-                  <b>Tel:</b> 0813917127</p>
+                  <b>Tel:</b> {{orgPhone}}</p>
                 <p>
-                  <b>Website:</b> Website</p>
+                  <b>Website:</b> {{orgWebsite}}</p>
                 <p>
                   <b>Description</b>
-                  <br> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut perspiciatis similique deserunt
-                  numquam vel eligendi sunt itaque, atque assumenda mollitia! Quos doloribus vel dolores perferendis
-                  voluptatibus recusandae labore. Iste, repellat.</p>
+                  <br> {{orgDescription}}</p>
                 <p>
-                  <b>WiFi Connectivity:</b> Yes</p>
+                  <b>WiFi Connectivity:</b> {{offerWifi}}</p>
                 <p>
-                  <b>Free WiFi:</b> None</p>
+                  <b>Free WiFi:</b> {{wifi}}</p>
                 <p>
-                  <b>WiFi Range:</b>Undefined</p>
+                  <b>WiFi Range:</b>{{chooseWifiRange}}</p>
 
               </div>
 

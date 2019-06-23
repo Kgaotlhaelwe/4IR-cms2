@@ -274,18 +274,18 @@ export class TestsPage {
 
   moveToPage4() {
     // var nextPage = document.getElementById("page3");
-    if (this.category != undefined && this.catService.length != 0) {
       // nextPage.style.display = "none"
-      var nextPage = document.getElementsByClassName("page1org") as HTMLCollectionOf<HTMLElement>;
+      var nextPage = document.getElementsByClassName("page3org") as HTMLCollectionOf<HTMLElement>;
 
       nextPage[0].style.animation = "1s faderOutUp";
       setTimeout(() => {
         nextPage[0].style.display = "none";
         nextPage[0].style.animation = "0s faderOutUpnull";
       }, 1000);
-    } else {
-      this.alert("Complete all the Details")
-    }
+    // if (this.category != undefined && this.catService.length != 0) {
+    // } else {
+    //   this.alert("Complete all the Details")
+    // }
 
   }
 
