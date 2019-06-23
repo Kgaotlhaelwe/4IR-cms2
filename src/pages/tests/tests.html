@@ -7,8 +7,19 @@
           repellat hic vero, culpa quis, placeat doloremque impedit esse? Illum cumque ut sed expedita! Laboriosam.</p>
       </div>
       <div class="div-right">
+        <div class="choose-dest">
+          <div class="Instructor">
+            <i>Let's get you started to add your details.</i><br>
+            
+            Which would you choose?
+          </div>
+          <div class="chooser">
+            <div (click)="gotToOrg()">I am an Organisation</div>
+            <div (click)="gotToProg()">I am a Programme</div>
+          </div>
+        </div>
         <div class="for-orgs">
-          <div id="page1">
+          <div id="page1" class="page1org">
             <div class="steps">
               <p>Step 1 of 4</p>
             </div>
@@ -17,9 +28,9 @@
                 ipsa accusamus earum sunt, doloremque illo consequuntur qui. Iusto!</p>
               <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
               <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-              <input type="tel" class="inputText" (change)="yell()" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
+              <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
               <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
-
+              <textarea name="" class="inputText" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea>
             </div>
             <div class="navButtons">
               <button ion-button icon-end (click)="moveToPage2()">
@@ -29,7 +40,7 @@
             </div>
           </div>
           <!-- ========================================================================================================================================================================= -->
-          <div id="page2">
+          <div id="page2" class="page2org">
             <div class="steps">
               <p>Step 2 of 4</p>
             </div>
@@ -73,7 +84,7 @@
               </button>
             </div>
           </div>
-          <div id="page3">
+          <div id="page3" class="page3org">
             <div class="steps">
               <p>Step 3 of 4</p>
             </div>
@@ -87,33 +98,34 @@
                 <option value="InterCafe">InterCafe</option>
                 <option value="Mall">Mall</option>
                 <option value="Coffee Shop">Coffee Shop</option>
+                <option value="Other">Other</option>
               </select>
               <br>
-              <div class="customSelect" (click)="HEIservices()">
-                Select your services *ngIf="showheiServices"
+              <div class="customSelect" *ngIf="showheiServices" (click)="HEIservices()">
+                Select your services
                 <!-- {{catService.title}} -->
               </div>
               <br>
 
 
-              <div class="customSelect" (click)="LibraryServices()">
-                Select your services *ngIf="showLibaryServices"
+              <div class="customSelect" *ngIf="showLibaryServices" (click)="LibraryServices()">
+                Select your services
                 <!-- {{catService}} -->
               </div>
               <br>
-              <div class="customSelect" (click)="internetCafe()">
-                Select your services *ngIf="showinternetCafeServices"
+              <div class="customSelect" *ngIf="showinternetCafeServices" (click)="internetCafe()">
+                Select your services
                 <!-- {{catService}} -->
               </div>
               <br>
-              <div class="customSelect" (click)="learningCenter()">
-                Select your services *ngIf="showlearningCenterServices"
+              <div class="customSelect" *ngIf="showlearningCenterServices" (click)="learningCenter()">
+                Select your services
               </div>
-              <div class="customSelect" (click)="mall()">
-                *ngIf="showMallServices"
+              <div class="customSelect"*ngIf="showMallServices" (click)="mall()">
+                Select your services
               </div>
-              <div class="customSelect" (click)=" Coffeeshops()">
-                Select your services *ngIf="showCoffeeShopServices"
+              <div class="customSelect" *ngIf="showCoffeeShopServices" (click)=" Coffeeshops()">
+                Select your services
               </div>
 
               <div>
@@ -126,10 +138,10 @@
 
               </div>
               <br>
-              <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
+              <textarea name="" id="orgDesc" class="inputText" *ngIf="showOther" placeholder="Please provide details" cols="4"></textarea>
             </div>
             <div class="navButtons">
-              <button ion-button icon-start (click)="backToPage1()">
+              <button ion-button icon-start (click)="backToPage2()">
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>
@@ -139,7 +151,7 @@
             </div>
 
           </div>
-          <div id="page4">
+          <div id="page4" class="page4org">
             <div class="steps">
               <p>Step 4 of 4</p>
             </div>
@@ -183,7 +195,7 @@
               </div>
             </div>
             <div class="navButtons">
-              <button ion-button icon-start (click)="backToPage1()">
+              <button ion-button icon-start (click)="backToPage2()">
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>

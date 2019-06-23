@@ -254,7 +254,15 @@ export class RegisterPage {
   signUp() {
     this.alertMessage = "Verifying details...";
     let b = window.innerHeight;
+    // if(this.signUpEmail == "" || this.signUpEmail == undefined ){
 
+    // }
+    // else if(){
+
+    // }
+    // else {
+
+    // }
     Swal.fire({
       title: "Loading",
       html: this.alertMessage,

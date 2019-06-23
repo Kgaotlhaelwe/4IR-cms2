@@ -43,7 +43,8 @@ export class TestsPage {
   showlearningCenterServices: boolean = false;
   showMallServices: boolean = false;
   showCoffeeShopServices: boolean = false;
-  showWebsiteHintInfo: boolean = false
+  showWebsiteHintInfo: boolean = false;
+  showOther: boolean = false;
   websiteValidation;
   applicationLink;
   promPhone;
@@ -165,8 +166,6 @@ export class TestsPage {
   trackcloseProgram;
 
   programContactValidation;
-
-  showOther: boolean = false;
   showProgramcategory: boolean = true;
 
   pushid = this.navParams.get('pushid')
@@ -191,10 +190,25 @@ export class TestsPage {
     this.alert(this.orgPhone)
 
   }
+  gotToOrg(){
+    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf <HTMLElement>;
+    var orgShow = document.getElementsByClassName("for-orgs") as HTMLCollectionOf <HTMLElement>;
+
+    orgShow[0].style.display="block";
+    destHide[0].style.display = "none";
+
+  }
+  gotToProg(){
+    var progShow = document.getElementsByClassName("for-progs") as HTMLCollectionOf <HTMLElement>;
+    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf <HTMLElement>;
+    progShow[0].style.display = "block";
+    destHide[0].style.display = "none";
+
+  }
   moveToPage2() {
     // var nextPage = document.getElementById("page1");
 
-    var nextPage = document.getElementById("page1org");
+    var nextPage = document.getElementsByClassName("page1org") as HTMLCollectionOf <HTMLElement>;
     this.phonenumberValidatin();
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
@@ -217,9 +231,9 @@ export class TestsPage {
 
     } else {
 
-      nextPage.style.animation = "1s faderOutUp";
+      nextPage[0].style.animation = "1s faderOutUp";
       setTimeout(() => {
-        nextPage.style.display = "none";
+        nextPage[0].style.display = "none";
         nextPage[0].style.animation = "0s faderOutUpnull";
       }, 1000);
     }
@@ -268,12 +282,16 @@ export class TestsPage {
   }
   backToPage2() {
     var prevPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
-
+    var prevPageOrg = document.getElementsByClassName("page2org") as HTMLCollectionOf <HTMLElement>;
     prevPage[0].style.display = "block";
+    prevPageOrg[0].style.display = "block";
+    var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
   }
   backToPage1() {
     var prevPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
+    var prevPageOrg = document.getElementsByClassName("page1org") as HTMLCollectionOf <HTMLElement>;
     prevPage[0].style.display = "block";
+    prevPageOrg[0].style.display = "block";
     var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
   }
   saveToDB() {
@@ -319,15 +337,16 @@ export class TestsPage {
       this.showlearningCenterServices = false;
       this.showMallServices = false;
       this.catService = this.HeiServices;
+      this.showOther = false;
 
     } else if (this.category == "Library") {
       this.showLibaryServices = true;
       this.showheiServices = false;
       this.showheiServices = false;
-
       this.showinternetCafeServices = false;
       this.showlearningCenterServices = false;
       this.showMallServices = false;
+      this.showOther = false;
     } else if (this.category == "InterCafe") {
       this.showinternetCafeServices = true;
       this.showLibaryServices = false;
@@ -335,6 +354,7 @@ export class TestsPage {
       this.showheiServices = false;
       this.showlearningCenterServices = false;
       this.showMallServices = false;
+      this.showOther = false;
 
     } else if (this.category == "Learning Center") {
       this.showlearningCenterServices = true;
@@ -342,8 +362,8 @@ export class TestsPage {
       this.showLibaryServices = false;
       this.showheiServices = false;
       this.showheiServices = false;
-
       this.showMallServices = false;
+      this.showOther = false;
 
     } else if (this.category == "Mall") {
       this.showMallServices = true;
@@ -352,16 +372,26 @@ export class TestsPage {
       this.showLibaryServices = false;
       this.showheiServices = false;
       this.showheiServices = false;
+      this.showOther = false;
 
     } else if (this.category == "Coffee Shop") {
-      this.showCoffeeShopServices = true
+      this.showCoffeeShopServices = true;
       this.showlearningCenterServices = false;
       this.showinternetCafeServices = false;
       this.showLibaryServices = false;
       this.showheiServices = false;
       this.showheiServices = false;
       this.showMallServices = false;
-
+      this.showOther = false;
+    } else if (this.category == "Other") {
+      this.showCoffeeShopServices = false;
+      this.showlearningCenterServices = false;
+      this.showinternetCafeServices = false;
+      this.showLibaryServices = false;
+      this.showheiServices = false;
+      this.showheiServices = false;
+      this.showMallServices = false;
+      this.showOther = true;
     }
 
 
