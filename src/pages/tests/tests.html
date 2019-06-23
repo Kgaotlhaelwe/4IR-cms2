@@ -17,7 +17,7 @@
                 ipsa accusamus earum sunt, doloremque illo consequuntur qui. Iusto!</p>
               <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
               <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-              <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
+              <input type="tel" class="inputText" (change)="yell()" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
               <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
 
             </div>

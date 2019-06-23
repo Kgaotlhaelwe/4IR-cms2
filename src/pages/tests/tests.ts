@@ -188,6 +188,10 @@ export class TestsPage {
 
 
   }
+  yell(){
+    this.alert(this.orgPhone)
+
+  }
   moveToPage2() {
     // var nextPage = document.getElementById("page1");
 
@@ -202,13 +206,13 @@ export class TestsPage {
       this.alert("Enter Address  ")
     } else if (this.contactValidation == 1) {
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    } else if (this.websiteValidation == 1) {
+    }else if (this.websiteValidation == 1) {
       this.alert("The website address you have entered is invalid, please enter a valid website address ")
     } else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
     }
     else if (this.orgPhone == undefined) {
-      this.alert("Enter Phone numbers  ")
+      this.alert("Enter Phone numbers")
     } else if (this.orgDescription == undefined || this.orgDescription == "" || this.orgDescription == " ") {
       this.alert("Enter Phone numbers  ")
 
