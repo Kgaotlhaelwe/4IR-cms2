@@ -51,7 +51,7 @@ export class TestsPage {
   facebook;
   programService;
   serviceArrayTemp = []
-  showPhoneHint :boolean =false ;
+  showPhoneHint: boolean = false;
 
   heiServices = [{ title: "Testing & Analytical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
@@ -88,15 +88,15 @@ export class TestsPage {
   allServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
   { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
   { title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
- 
+
   { title: "Skill Development", description: " is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools." },
   { title: "Enterpreneurship Programme", description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses." },
-  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" } ,
+  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" },
   { title: "Applied Development, Engineering and Design", description: 'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies' },
-  {tittle:"Internet" , description:"provider is a company that provides access to the Internet. Most ISPs require you to subscribe in order to use their services, but there are ways to connect to the Internet for free"} ,
-  
+  { tittle: "Internet", description: "provider is a company that provides access to the Internet. Most ISPs require you to subscribe in order to use their services, but there are ways to connect to the Internet for free" },
+
   { title: "Printing", description: 'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.' }
-]
+  ]
 
 
 
@@ -150,7 +150,6 @@ export class TestsPage {
   Programemail;
 
   showApplicationLink: boolean = false;
-  
 
   showProgramBenefits: boolean = false;
   showAdditionalBenefits: boolean = false;
@@ -189,14 +188,16 @@ export class TestsPage {
 
   }
   moveToPage2() {
-    var nextPage = document.getElementById("page1");
+    // var nextPage = document.getElementById("page1");
+
+    var nextPage = document.getElementById("page1org");
     this.phonenumberValidatin();
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Please complete all details ")
-    } else if (this.orgName == undefined) {
+    } else if (this.orgName == undefined || this.orgName == "" || this.orgName == " ") {
       this.alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
+    } else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress ==  " ") {
       this.alert("Enter Address  ")
     } else if (this.contactValidation == 1) {
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
@@ -207,11 +208,16 @@ export class TestsPage {
     }
     else if (this.orgPhone == undefined) {
       this.alert("Enter Phone numbers  ")
-    } else if (this.orgDescription == undefined) {
+    } else if (this.orgDescription == undefined || this.orgDescription == "" || this.orgDescription == " ") {
       this.alert("Enter Phone numbers  ")
 
     } else {
-      nextPage.style.display = "none"
+
+      nextPage.style.animation = "1s faderOutUp";
+      setTimeout(() => {
+        nextPage.style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUp";
+      }, 1000);
     }
 
 
@@ -230,7 +236,7 @@ export class TestsPage {
     }
     if (this.offerWifi != undefined) {
       if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-      nextPage.style.display = "none"
+        nextPage.style.display = "none"
       } else {
         this.alert("Please complete all details")
       }
@@ -246,28 +252,25 @@ export class TestsPage {
     if (this.category != undefined && this.catService.length != 0) {
       nextPage.style.display = "none"
     } else {
-      this.alert("Complete all the Details ")
+      this.alert("Complete all the Details")
     }
 
   }
 
   backToPage3() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
-    progressBar.style.width = "75%"
+    var prevPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
+
+    prevPage[0].style.display = "block";
   }
   backToPage2() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
-    progressBar.style.width ="50%"
+    var prevPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
+
+    prevPage[0].style.display = "block";
   }
   backToPage1() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "0%";
-    progressBar.style.width ="25%"
+    var prevPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
+    prevPage[0].style.display = "block";
+    var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
   }
   saveToDB() {
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
@@ -306,7 +309,7 @@ export class TestsPage {
     console.log(this.category);
     if (this.category == "Higher Education Institution") {
       this.showheiServices = true;
-// 
+      // 
       this.showLibaryServices = false;
       this.showinternetCafeServices = false;
       this.showlearningCenterServices = false;
@@ -908,7 +911,7 @@ export class TestsPage {
 
     if (this.promName == undefined && this.openApplicationDate == undefined && this.closeApplicationDate == undefined && this.programStartDate == undefined && this.programCloseDate == undefined && this.Programcategory == undefined) {
       this.alert("Please enter all details")
-    } else if (this.promName == undefined) {
+    } else if (this.promName == undefined || this.promName == " " || this.promName == "") {
       this.alert("Please enter Programme Name")
 
     } else if (this.openApplicationDate == undefined) {
@@ -934,10 +937,14 @@ export class TestsPage {
     }
     else {
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
-      this.progressBar = this.progressBar + 25
-      progressBar.style.width = "50%";
+      var nextPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
+
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none"
+        nextPage[0].style.animation = "0s faderOutUpnull"
+      }, 1000);
     }
 
 
@@ -949,61 +956,63 @@ export class TestsPage {
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
-    } else if (this.ProgramIntroduction == undefined) {
+    } else if (this.ProgramIntroduction == undefined || this.ProgramIntroduction == "" || this.ProgramIntroduction == " ") {
       this.alert("Please enter introduction  ")
-    } else if (this.targetAudience == undefined) {
+    } else if (this.targetAudience == undefined || this.targetAudience == "" || this.targetAudience == " ") {
       this.alert("Please choose target audience")
-    } else if (this.objectives == undefined) {
+    } else if (this.objectives == undefined || this.objectives == "" || this.objectives == " ") {
       this.alert("Please enter the objectives")
-    } else if (this.programDescription == undefined) {
+    } else if (this.programDescription == undefined || this.programDescription == "" || this.programDescription == " ") {
       this.alert("Please enter  program description ")
 
     } else {
+      var nextPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-50%";
-      this.progressBar = this.progressBar + 25;
-      progressBar.style.width = "75%";
-    // var toSlide = document.getElementById("page1");
-    // toSlide.style.marginLeft = "-50%"
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull"
+      }, 1000);
     }
 
   }
 
   moveToPage4progs() {
-    var  progressBar = document.getElementById("theDot")
+    // var progressBar = document.getElementById("theDot")
     console.log(this.programBenefits);
     console.log(this.programAdditionalBenefits);
     console.log(this.EligibleCriteria)
     console.log(this.programServicez);
 
-    if (this.programBenefits == undefined && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
+    if (this.programBenefits == undefined ||this.programBenefits == "" || this.programBenefits == " " && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
       this.alert("Please enter all details ")
 
-    } else if (this.programBenefits == undefined) {
+    } else if (this.programBenefits == undefined || this.programBenefits == "" || this.programBenefits ==  " ") {
       this.alert("Please enter program benefits")
-    } else if (this.EligibleCriteria == undefined) {
+    } else if (this.EligibleCriteria == undefined || this.EligibleCriteria == "" || this.EligibleCriteria ==  " ") {
       this.alert("Please enter eligible criteria")
 
     }
 
 
-    else if (this.orgAdress == undefined) {
-      this.alert("please enter address")
+    else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress == " ") {
+      this.alert("please enter the address")
 
     } else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
 
     }
 
-
     else {
+      var nextPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
 
-
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-75%";
-      this.progressBar = this.progressBar + 25;
-      progressBar.style.width = "100%";
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull";
+      }, 1000);
     }
 
 
@@ -1033,10 +1042,10 @@ export class TestsPage {
 
     if (atpos < 1 || (dotpos - atpos < 2)) {
       this.emailtrack
-      
-      
-      
-      = 1
+
+
+
+        = 1
       console.log("wrong email");
 
     } else {
@@ -1065,7 +1074,7 @@ export class TestsPage {
       this.facebook = " "
     }
 
-    if(this.programAdditionalBenefits == undefined){
+    if (this.programAdditionalBenefits == undefined) {
       this.programAdditionalBenefits == ""
     }
 
@@ -1074,7 +1083,6 @@ export class TestsPage {
       content: "Please wait...",
       duration: 3000
     });
-    loader.present();
 
     if (this.promPhone == undefined && this.Programemail == undefined && this.applicationLink == undefined) {
       this.alert("Please enter all the details")
@@ -1096,16 +1104,17 @@ export class TestsPage {
       this.IRmethods.addProgram(this.promName, this.openApplicationDate, this.closeApplicationDate, this.programStartDate, this.programCloseDate, this.Programcategory, this.ProgramIntroduction, this.objectives, this.targetAudience, this.programDescription, this.programServicez, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgAdress, this.programBenefits, this.programAdditionalBenefits, this.EligibleCriteria, this.applicationLink, this.promPhone, this.twitter, this.facebook, this.Programemail).then(() => {
         console.log("successfully");
         this.navCtrl.push(HomePage);
-        
-    
-    Swal.fire({
-      imageUrl: "../../assets/imgs/4IR logo.png",
-      imageHeight: 300,
-      imageAlt: 'A tall image',
-      text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
-    })
+
+
+        loader.present();
+        Swal.fire({
+          imageUrl: "../../assets/imgs/4IR logo.png",
+          imageHeight: 300,
+          imageAlt: 'A tall image',
+          text: "Welcome to the 4IR Content Management System. Click OK to get started, to edit your profile or add programmes, click 'ORGANISATION PROFILE' on the top right of the screen.",
+        })
       })
-      
+
 
     }
 
@@ -1141,7 +1150,6 @@ export class TestsPage {
       type: 'checkbox',
       label: 'Testing & Analystical',
       value: 'Testing & Analystical',
-      
     });
 
     alert.addInput({
@@ -1184,7 +1192,7 @@ export class TestsPage {
     alert.addButton({
       text: 'Okay',
       handler: (data) => {
-        this. serviceArrayTemp = data ;
+        this.serviceArrayTemp = data;
         var tempArray = []
         console.log(data);
         for (let index = 0; index < data.length; index++) {
@@ -1199,10 +1207,10 @@ export class TestsPage {
 
 
           } else if (data[index] == "Enterpreneurship Programme") {
-          
-           
 
-            
+
+
+
             tempArray.push(this.allServices[4])
           } else if (data[index] == "Testing & Analystical") {
             console.log(0);
@@ -1222,10 +1230,10 @@ export class TestsPage {
 
           } else if (data[index] == "Internet") {
             console.log("internet");
-            
+
             tempArray.push(this.allServices[7])
 
-          } else if (data[index] == "Printing" ){
+          } else if (data[index] == "Printing") {
             tempArray.push(this.allServices[8])
           }
 
@@ -1322,13 +1330,15 @@ export class TestsPage {
   }
 
 
-  phoneHint(){
-    this.showPhoneHint = true ;
+  phoneHint() {
+    this.showPhoneHint = true;
   }
 
-  hidephoneHint(){
-    this.showPhoneHint = false ;
+  hidephoneHint() {
+    this.showPhoneHint = false;
   }
+
+ 
 
   test(){
     console.log("regfsgfs");
