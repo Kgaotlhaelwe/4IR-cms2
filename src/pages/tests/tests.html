@@ -3,14 +3,14 @@
     <div class="inner-div">
       <div class="div-left">
         <div id="logoBG"></div>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, tenetur fugit laudantium modi itaque error
-          repellat hic vero, culpa quis, placeat doloremque impedit esse? Illum cumque ut sed expedita! Laboriosam.</p>
+        <p>The 4IR Reesources Hub is a resources broker aimed at bringing all ICT related organisations and programmes
+          into one hub to make them more accessible in a centralized destination.</p>
       </div>
       <div class="div-right">
         <div class="choose-dest">
           <div class="Instructor">
             <i>Let's get you started to add your details.</i><br>
-            
+
             Which would you choose?
           </div>
           <div class="chooser">
@@ -27,10 +27,13 @@
               <p id="intro-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus impedit repellat
                 ipsa accusamus earum sunt, doloremque illo consequuntur qui. Iusto!</p>
               <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
-              <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-              <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
+              <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
+                (change)="setAddress()">
+              <input type="tel" class="inputText" placeholder="Phone"
+                onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
               <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
-              <textarea name="" class="inputText" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea>
+              <textarea name="" class="inputText" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
+                [(ngModel)]="orgDescription"></textarea>
             </div>
             <div class="navButtons">
               <button ion-button icon-end (click)="moveToPage2()">
@@ -121,7 +124,7 @@
               <div class="customSelect" *ngIf="showlearningCenterServices" (click)="learningCenter()">
                 Select your services
               </div>
-              <div class="customSelect"*ngIf="showMallServices" (click)="mall()">
+              <div class="customSelect" *ngIf="showMallServices" (click)="mall()">
                 Select your services
               </div>
               <div class="customSelect" *ngIf="showCoffeeShopServices" (click)=" Coffeeshops()">
@@ -138,7 +141,8 @@
 
               </div>
               <br>
-              <textarea name="" id="orgDesc" class="inputText" *ngIf="showOther" placeholder="Please provide details" cols="4"></textarea>
+              <textarea name="" id="orgDesc" class="inputText" *ngIf="showOther" placeholder="Please provide details"
+                cols="4"></textarea>
             </div>
             <div class="navButtons">
               <button ion-button icon-start (click)="backToPage2()">
@@ -298,35 +302,40 @@
               </button>
             </div>
           </div>
-          <div id="page2"  class="page2prog">
-              <div class="steps">
-                <p>Step 2 of 4</p>
-              </div>
+          <div id="page2" class="page2prog">
+            <div class="steps">
+              <p>Step 2 of 4</p>
+            </div>
             <div class="user-inputs">
-                <p>Getting there, please provide your Introduction,Objectives and a Full Discription of your programme.</p>
-                <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="Introduction" cols="4" [(ngModel)]="ProgramIntroduction"></textarea>
+              <p>Getting there, please provide your Introduction,Objectives and a Full Discription of your programme.
+              </p>
+              <div class="imput-field">
+                <textarea name="" id="orgDesc" placeholder="Introduction" cols="4"
+                  [(ngModel)]="ProgramIntroduction"></textarea>
 
-                  <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()' class="dot">?</span>
+                <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()'
+                  class="dot">?</span>
 
-                  <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief explanation or summary of the Program.
+                <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief
+                  explanation or summary of the Program.
 
-                  </div>
                 </div>
-                <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="Objectives" cols="4" [(ngModel)]="objectives"></textarea>
+              </div>
+              <div class="imput-field">
+                <textarea name="" id="orgDesc" placeholder="Objectives" cols="4" [(ngModel)]="objectives"></textarea>
 
 
-                  <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
+                <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
 
-                  <div *ngIf='showObjective' class="info">All planning and strategic activities of the program</div>
-                </div>
-                <select class="select-css" [(ngModel)]="targetAudience">
-                  <option value="Do you offer WiFi" disabled> Target Audience </option>
-                  <option value="18 -25">18 - 25</option>
-                  <option value="18-35">18 - 35 </option>
-                </select>
-                <textarea name="" id="orgDesc" placeholder="Full description" cols="4" [(ngModel)]="programDescription"></textarea>
+                <div *ngIf='showObjective' class="info">All planning and strategic activities of the program</div>
+              </div>
+              <select class="select-css" [(ngModel)]="targetAudience">
+                <option value="Do you offer WiFi" disabled> Target Audience </option>
+                <option value="18 -25">18 - 25</option>
+                <option value="18-35">18 - 35 </option>
+              </select>
+              <textarea name="" id="orgDesc" placeholder="Full description" cols="4"
+                [(ngModel)]="programDescription"></textarea>
 
             </div>
             <div class="navButtons">
@@ -340,41 +349,45 @@
             </div>
 
           </div>
-          <div id="page3"  class="page3prog">
-              <div class="steps">
-                <p>Step 3 of 4</p>
-              </div>
+          <div id="page3" class="page3prog">
+            <div class="steps">
+              <p>Step 3 of 4</p>
+            </div>
             <div class="user-inputs">
 
-                <p>Almost there, please provide a category for the Programme.</p>
-                <div class="customSelect" (click)="services()">
-                  Services
-                </div>
-                <div class="showSelected">
+              <p>Almost there, please provide a category for the Programme.</p>
+              <div class="customSelect" (click)="services()">
+                Services
+              </div>
+              <div class="showSelected">
 
-                  <b>Selected Services</b>
-                  <div class="services">
-                    <p *ngFor="let a of serviceArrayTemp">{{a}}</p>
+                <b>Selected Services</b>
+                <div class="services">
+                  <p *ngFor="let a of serviceArrayTemp">{{a}}</p>
 
-                  </div>
                 </div>
-                <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-                <br>
-                <div class="input-field">
-                  <textarea name="" id="orgDesc" placeholder="Programme Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
-                  <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
-                  <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
+              </div>
+              <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+              <br>
+              <div class="input-field">
+                <textarea name="" id="orgDesc" placeholder="Programme Benefits" cols="4"
+                  [(ngModel)]="programBenefits"></textarea>
+                <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
+                <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
+              </div>
+              <div class="imput-field">
+                <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4"
+                  [(ngModel)]="programAdditionalBenefits"></textarea>
+                <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
+                <div *ngIf="showAdditionalBenefits" class="info">Extra information apart from the already mentioned.
                 </div>
-                <div class="imput-field">
-                  <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4" [(ngModel)]="programAdditionalBenefits"></textarea>
-                  <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
-                  <div *ngIf="showAdditionalBenefits" class="info">Extra information apart from the already mentioned.
-                  </div>
-                </div>
-                <div class="input-field"></div>
-                <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4" [(ngModel)]="EligibleCriteria"></textarea>
-                <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()' class="dot">?</span>
-                <div *ngIf="showEligibleCriteria" class="info">Who can apply for this program e.g. South African Citizen and must be the age of 18-35 years </div>
+              </div>
+              <div class="input-field"></div>
+              <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4"
+                [(ngModel)]="EligibleCriteria"></textarea>
+              <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()' class="dot">?</span>
+              <div *ngIf="showEligibleCriteria" class="info">Who can apply for this program e.g. South African Citizen
+                and must be the age of 18-35 years </div>
 
             </div>
             <div class="navButtons">
@@ -388,42 +401,45 @@
             </div>
 
           </div>
-          <div id="page4"  class="page4prog">
-              <div class="steps">
-                <p>Step 4 of 4</p>
-              </div>
+          <div id="page4" class="page4prog">
+            <div class="steps">
+              <p>Step 4 of 4</p>
+            </div>
             <div class="user-inputs">
 
-                <p>We are done after provide your social media details.</p>
+              <p>We are done after provide your social media details.</p>
 
-                <div class="description" id="progDesc" padding>
-                  <div class="input-field">
-                    <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink" required>
-                    <span id="linkz" (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
-                    <div *ngIf="showApplicationLink" class="info">Please type links that will direct users to the application form
-                    </div>
+              <div class="description" id="progDesc" padding>
+                <div class="input-field">
+                  <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink"
+                    required>
+                  <span id="linkz" (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()'
+                    class="dot">?</span>
+                  <div *ngIf="showApplicationLink" class="info">Please type links that will direct users to the
+                    application form
                   </div>
-                  <input class="fixSize" type="email" placeholder="Email" [(ngModel)]="Programemail" required>
-                  <div class="numbers">
+                </div>
+                <input class="fixSize" type="email" placeholder="Email" [(ngModel)]="Programemail" required>
+                <div class="numbers">
 
-                    <input type="tel" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" class="fixSize" type="tel" placeholder="Phone (No space in between)"
-                      [(ngModel)]="promPhone">
-
-                    <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
-                  <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
-                  </div> -->
-                  </div>
-
+                  <input type="tel" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" class="fixSize" type="tel"
+                    placeholder="Phone (No space in between)" [(ngModel)]="promPhone">
 
                   <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
                   <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
                   </div> -->
-
-                  <input class="fixSize" type="text" placeholder="Twitter" [(ngModel)]="twitter">
-                  <br>
-                  <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
-                  <br>
                 </div>
+
+
+                <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
+                  <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
+                  </div> -->
+
+                <input class="fixSize" type="text" placeholder="Twitter" [(ngModel)]="twitter">
+                <br>
+                <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
+                <br>
+              </div>
             </div>
             <div class="navButtons">
               <button ion-button icon-start (click)="backToPage3()">
