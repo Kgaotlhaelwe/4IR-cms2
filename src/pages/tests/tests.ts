@@ -186,21 +186,21 @@ export class TestsPage {
 
 
   }
-  yell(){
+  yell() {
     this.alert(this.orgPhone)
 
   }
-  gotToOrg(){
-    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf <HTMLElement>;
-    var orgShow = document.getElementsByClassName("for-orgs") as HTMLCollectionOf <HTMLElement>;
+  gotToOrg() {
+    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf<HTMLElement>;
+    var orgShow = document.getElementsByClassName("for-orgs") as HTMLCollectionOf<HTMLElement>;
 
-    orgShow[0].style.display="block";
+    orgShow[0].style.display = "block";
     destHide[0].style.display = "none";
 
   }
-  gotToProg(){
-    var progShow = document.getElementsByClassName("for-progs") as HTMLCollectionOf <HTMLElement>;
-    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf <HTMLElement>;
+  gotToProg() {
+    var progShow = document.getElementsByClassName("for-progs") as HTMLCollectionOf<HTMLElement>;
+    var destHide = document.getElementsByClassName("choose-dest") as HTMLCollectionOf<HTMLElement>;
     progShow[0].style.display = "block";
     destHide[0].style.display = "none";
 
@@ -208,18 +208,17 @@ export class TestsPage {
   moveToPage2() {
     // var nextPage = document.getElementById("page1");
 
-    var nextPage = document.getElementsByClassName("page1org") as HTMLCollectionOf <HTMLElement>;
     this.phonenumberValidatin();
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Please complete all details ")
     } else if (this.orgName == undefined || this.orgName == "" || this.orgName == " ") {
       this.alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress ==  " ") {
+    } else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress == " ") {
       this.alert("Enter Address  ")
     } else if (this.contactValidation == 1) {
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    }else if (this.websiteValidation == 1) {
+    } else if (this.websiteValidation == 1) {
       this.alert("The website address you have entered is invalid, please enter a valid website address ")
     } else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
@@ -230,6 +229,7 @@ export class TestsPage {
       this.alert("Enter Phone numbers  ")
 
     } else {
+      var nextPage = document.getElementsByClassName("page1org") as HTMLCollectionOf<HTMLElement>;
 
       nextPage[0].style.animation = "1s faderOutUp";
       setTimeout(() => {
@@ -244,7 +244,7 @@ export class TestsPage {
 
   }
   moveToPage3() {
-    var nextPage = document.getElementById("page2");
+    // var nextPage = document.getElementById("page2");
     if (this.offerWifi == "No") {
       if (this.wifi == undefined) {
         this.wifi = "No"
@@ -254,7 +254,14 @@ export class TestsPage {
     }
     if (this.offerWifi != undefined) {
       if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-        nextPage.style.display = "none"
+        // nextPage.style.display = "none"
+      var nextPage = document.getElementsByClassName("page2org") as HTMLCollectionOf<HTMLElement>;
+
+      nextPage[0].style.animation = "1s faderOutUp";
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull";
+      }, 1000);
       } else {
         this.alert("Please complete all details")
       }
@@ -266,9 +273,16 @@ export class TestsPage {
 
 
   moveToPage4() {
-    var nextPage = document.getElementById("page3");
+    // var nextPage = document.getElementById("page3");
     if (this.category != undefined && this.catService.length != 0) {
-      nextPage.style.display = "none"
+      // nextPage.style.display = "none"
+      var nextPage = document.getElementsByClassName("page1org") as HTMLCollectionOf<HTMLElement>;
+
+      nextPage[0].style.animation = "1s faderOutUp";
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull";
+      }, 1000);
     } else {
       this.alert("Complete all the Details")
     }
@@ -276,23 +290,23 @@ export class TestsPage {
   }
 
   backToPage3() {
-    var prevPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
+    var prevPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf<HTMLElement>;
 
     prevPage[0].style.display = "block";
   }
   backToPage2() {
-    var prevPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
-    var prevPageOrg = document.getElementsByClassName("page2org") as HTMLCollectionOf <HTMLElement>;
+    var prevPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf<HTMLElement>;
+    var prevPageOrg = document.getElementsByClassName("page2org") as HTMLCollectionOf<HTMLElement>;
     prevPage[0].style.display = "block";
     prevPageOrg[0].style.display = "block";
-    var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
+    var animDown = document.getElementById("page1").style.animation = "1s faderInDown";
   }
   backToPage1() {
-    var prevPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
-    var prevPageOrg = document.getElementsByClassName("page1org") as HTMLCollectionOf <HTMLElement>;
+    var prevPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf<HTMLElement>;
+    var prevPageOrg = document.getElementsByClassName("page1org") as HTMLCollectionOf<HTMLElement>;
     prevPage[0].style.display = "block";
     prevPageOrg[0].style.display = "block";
-    var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
+    var animDown = document.getElementById("page1").style.animation = "1s faderInDown";
   }
   saveToDB() {
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
@@ -315,15 +329,18 @@ export class TestsPage {
       this.ShowWifi = true;
     } else {
       this.ShowWifi = false;
+      this.wifi = "No";
+      this.chooseWifiRange = "No";
     }
-
   }
 
   checkWifipayment() {
     if (this.wifi == "Yes") {
       this.ShowChooseRange = true
-    } else {
+    }
+    if (this.wifi == "No") {
       this.ShowChooseRange = false
+      this.chooseWifiRange = "No";
     }
   }
 
@@ -971,10 +988,10 @@ export class TestsPage {
     }
     else {
 
-      var nextPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
+      var nextPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf<HTMLElement>;
 
       nextPage[0].style.animation = "1s faderOutUp";
-  
+
       setTimeout(() => {
         nextPage[0].style.display = "none"
         nextPage[0].style.animation = "0s faderOutUpnull"
@@ -1000,10 +1017,10 @@ export class TestsPage {
       this.alert("Please enter  program description ")
 
     } else {
-      var nextPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
+      var nextPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf<HTMLElement>;
 
       nextPage[0].style.animation = "1s faderOutUp";
-  
+
       setTimeout(() => {
         nextPage[0].style.display = "none";
         nextPage[0].style.animation = "0s faderOutUpnull"
@@ -1019,12 +1036,12 @@ export class TestsPage {
     console.log(this.EligibleCriteria)
     console.log(this.programServicez);
 
-    if (this.programBenefits == undefined ||this.programBenefits == "" || this.programBenefits == " " && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
+    if (this.programBenefits == undefined || this.programBenefits == "" || this.programBenefits == " " && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
       this.alert("Please enter all details ")
 
-    } else if (this.programBenefits == undefined || this.programBenefits == "" || this.programBenefits ==  " ") {
+    } else if (this.programBenefits == undefined || this.programBenefits == "" || this.programBenefits == " ") {
       this.alert("Please enter program benefits")
-    } else if (this.EligibleCriteria == undefined || this.EligibleCriteria == "" || this.EligibleCriteria ==  " ") {
+    } else if (this.EligibleCriteria == undefined || this.EligibleCriteria == "" || this.EligibleCriteria == " ") {
       this.alert("Please enter eligible criteria")
 
     }
@@ -1039,10 +1056,10 @@ export class TestsPage {
     }
 
     else {
-      var nextPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
+      var nextPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf<HTMLElement>;
 
       nextPage[0].style.animation = "1s faderOutUp";
-  
+
       setTimeout(() => {
         nextPage[0].style.display = "none";
         nextPage[0].style.animation = "0s faderOutUpnull";
@@ -1372,9 +1389,9 @@ export class TestsPage {
     this.showPhoneHint = false;
   }
 
- 
 
-  test(){
+
+  test() {
     console.log("regfsgfs");
   }
 }

@@ -52,7 +52,7 @@
                 <option value="No">No</option>
               </select>
               <br>
-              <div>
+              <div *ngIf="ShowWifi">
                 <p>Is it free?</p>
                 <select class="select-css" [(ngModel)]="wifi" (change)="checkWifipayment()">
                   <option value="Is it free?" disabled>Is it free?</option>
@@ -62,7 +62,7 @@
                 <br>
 
               </div>
-              <div>
+              <div *ngIf="ShowChooseRange">
                 <p>What is your pricing?</p>
                 <select class="select-css" [(ngModel)]="chooseWifiRange">
                   <option value="Choose Range" disabled>Choose Range</option>
@@ -145,7 +145,7 @@
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>
-              <button ion-button icon-end (click)="moveToPage3()">NEXT
+              <button ion-button icon-end (click)="moveToPage4()">NEXT
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
             </div>
