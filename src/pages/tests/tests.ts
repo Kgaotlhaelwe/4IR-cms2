@@ -521,7 +521,7 @@ export class TestsPage {
         for (let index = 0; index < data.length; index++) {
 
           if (data[index] == "Training") {
-
+            console.log(0);
             temArray.push(this.libraryService[1])
 
           } else if (data[index] == "Research") {
@@ -532,7 +532,7 @@ export class TestsPage {
         }
 
         this.catService = temArray;
-
+        console.log(this.catService = temArray);
 
       }
 
@@ -588,7 +588,7 @@ export class TestsPage {
         }
 
         this.catService = temArray;
-
+        console.log(this.catService = temArray);
       }
 
     });
@@ -644,6 +644,7 @@ export class TestsPage {
         }
 
         this.catService = temArray;
+        console.log(this.catService = temArray);
 
       }
 
@@ -688,7 +689,7 @@ export class TestsPage {
         }
 
         this.catService = temArray;
-
+        console.log(this.catService = temArray);
       }
 
     });
@@ -751,7 +752,8 @@ export class TestsPage {
       }
       else {
         this.contactValidation = 1;
-
+        console.log(this.orgPhone.match(phoneno));
+        console.log("wrong");
 
       }
 
