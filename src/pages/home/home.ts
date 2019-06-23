@@ -270,7 +270,7 @@ export class HomePage implements OnInit {
     setTimeout(() => {
 
       if (this.name == undefined) {
-        this.navCtrl.setRoot(OnBoardingPage);
+        this.navCtrl.setRoot(RegisterPage);
         // alert("Not visited the landing page");
       }
     }, 5000);

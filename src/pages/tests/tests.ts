@@ -220,7 +220,7 @@ export class TestsPage {
       nextPage.style.animation = "1s faderOutUp";
       setTimeout(() => {
         nextPage.style.display = "none";
-        nextPage[0].style.animation = "0s faderOutUp";
+        nextPage[0].style.animation = "0s faderOutUpnull";
       }, 1000);
     }
 

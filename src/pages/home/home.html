@@ -140,26 +140,24 @@
         <div class="coverPhoto">
           <ion-fab bottom right>
 
-            <label class="imageSaver" ion-fab mini (click)="UpdateCover()">
+            <label class="imageSaver" ion-button mini (click)="UpdateCover()">
 
-              <!-- <ion-icon name="images">
-                        </ion-icon> -->
-              <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+                        Upload Cover
             </label>
           </ion-fab>
           <div id="signOut" (click)="signOut()">
             <p>Sign Out</p>
           </div>
           <div class="about">
+            <div class="displayPicturee">
+
             <label for="logoUploader">
               <img src="{{downloadurlLogo}}" alt="" class="logo">
-              <label class="imageSaver" ion-fab mini (click)="UpdateLogo()()">
-
-                <!-- <ion-icon name="images">
-                          </ion-icon> -->
-                <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
-              </label>
             </label>
+            <label class="imageSaver2" ion-button mini (click)="UpdateLogo()">
+              Upload Logo
+            </label>
+            </div>
             <h6>About</h6>
             <p class="font" id="breaker">{{desc}}</p>
             <h6>Address</h6>
