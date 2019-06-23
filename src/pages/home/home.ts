@@ -267,13 +267,13 @@ export class HomePage implements OnInit {
   ionViewDidLoad() {
 
 
-    setTimeout(() => {
+    // setTimeout(() => {
 
-      if (this.name == undefined) {
-        this.navCtrl.setRoot(RegisterPage);
-        // alert("Not visited the landing page");
-      }
-    }, 5000);
+    //   if (this.name == undefined) {
+    //     this.navCtrl.setRoot(RegisterPage);
+    //     // alert("Not visited the landing page");
+    //   }
+    // }, 5000);
   }
   UpdateCover() {
     this.alertMessage = "Please Wait...";
