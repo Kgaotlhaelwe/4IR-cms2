@@ -16,15 +16,13 @@
               <p id="intro-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus impedit repellat
                 ipsa accusamus earum sunt, doloremque illo consequuntur qui. Iusto!</p>
               <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
-              <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
-                (change)="setAddress()">
-              <input type="tel" class="inputText" placeholder="Phone"
-                onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
+              <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+              <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
               <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
 
             </div>
             <div class="navButtons">
-              <button ion-button icon-end>
+              <button ion-button icon-end (click)="moveToPage2()">
                 Continue
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
@@ -283,10 +281,6 @@
             </div>
 
             <div class="navButtons">
-              <button ion-button icon-start (click)="backToPage1()">
-                <ion-icon name="arrow-back"></ion-icon>
-                BACK
-              </button>
               <button ion-button icon-end (click)="moveToPage2progs()">NEXT
                 <ion-icon name="arrow-forward"></ion-icon>
               </button>
@@ -372,7 +366,7 @@
 
             </div>
             <div class="navButtons">
-              <button ion-button icon-start (click)="backToPage1()">
+              <button ion-button icon-start (click)="backToPage2()">
                 <ion-icon name="arrow-back"></ion-icon>
                 BACK
               </button>

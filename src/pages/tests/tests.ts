@@ -196,9 +196,9 @@ export class TestsPage {
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alert("Please complete all details ")
-    } else if (this.orgName == undefined) {
+    } else if (this.orgName == undefined || this.orgName == "" || this.orgName == " ") {
       this.alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
+    } else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress ==  " ") {
       this.alert("Enter Address  ")
     } else if (this.contactValidation == 1) {
       this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
@@ -209,14 +209,15 @@ export class TestsPage {
     }
     else if (this.orgPhone == undefined) {
       this.alert("Enter Phone numbers  ")
-    } else if (this.orgDescription == undefined) {
+    } else if (this.orgDescription == undefined || this.orgDescription == "" || this.orgDescription == " ") {
       this.alert("Enter Phone numbers  ")
 
     } else {
 
       nextPage.style.animation = "1s faderOutUp";
       setTimeout(() => {
-        nextPage.style.display = "none"
+        nextPage.style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUp";
       }, 1000);
     }
 
@@ -252,28 +253,25 @@ export class TestsPage {
     if (this.category != undefined && this.catService.length != 0) {
       nextPage.style.display = "none"
     } else {
-      this.alert("Complete all the Details ")
+      this.alert("Complete all the Details")
     }
 
   }
 
   backToPage3() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
-    progressBar.style.width = "75%"
+    var prevPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
+
+    prevPage[0].style.display = "block";
   }
   backToPage2() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
-    progressBar.style.width = "50%"
+    var prevPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
+
+    prevPage[0].style.display = "block";
   }
   backToPage1() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "0%";
-    progressBar.style.width = "25%"
+    var prevPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
+    prevPage[0].style.display = "block";
+    var animDown = document.getElementById("page1").style.animation ="1s faderInDown";
   }
   saveToDB() {
     this.IRmethods.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.catService, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
@@ -914,7 +912,7 @@ export class TestsPage {
 
     if (this.promName == undefined && this.openApplicationDate == undefined && this.closeApplicationDate == undefined && this.programStartDate == undefined && this.programCloseDate == undefined && this.Programcategory == undefined) {
       this.alert("Please enter all details")
-    } else if (this.promName == undefined) {
+    } else if (this.promName == undefined || this.promName == " " || this.promName == "") {
       this.alert("Please enter Programme Name")
 
     } else if (this.openApplicationDate == undefined) {
@@ -941,7 +939,13 @@ export class TestsPage {
     else {
 
       var nextPage = document.getElementsByClassName("page1prog") as HTMLCollectionOf <HTMLElement>;
-      nextPage[0].style.display = "none"
+
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none"
+        nextPage[0].style.animation = "0s faderOutUpnull"
+      }, 1000);
     }
 
 
@@ -953,49 +957,48 @@ export class TestsPage {
 
     if (this.Programcategory == undefined && this.ProgramIntroduction == undefined && this.targetAudience == undefined && this.objectives == undefined && this.programDescription == undefined) {
       this.alert("Please enter all details")
-    } else if (this.ProgramIntroduction == undefined) {
+    } else if (this.ProgramIntroduction == undefined || this.ProgramIntroduction == "" || this.ProgramIntroduction == " ") {
       this.alert("Please enter introduction  ")
-    } else if (this.targetAudience == undefined) {
+    } else if (this.targetAudience == undefined || this.targetAudience == "" || this.targetAudience == " ") {
       this.alert("Please choose target audience")
-    } else if (this.objectives == undefined) {
+    } else if (this.objectives == undefined || this.objectives == "" || this.objectives == " ") {
       this.alert("Please enter the objectives")
-    } else if (this.programDescription == undefined) {
+    } else if (this.programDescription == undefined || this.programDescription == "" || this.programDescription == " ") {
       this.alert("Please enter  program description ")
 
     } else {
-
       var nextPage = document.getElementsByClassName("page2prog") as HTMLCollectionOf <HTMLElement>;
-      nextPage[0].style.display = "none"
-      // var toSlide = document.getElementById("page1");
-      // toSlide.style.marginLeft = "-50%";
-      // this.progressBar = this.progressBar + 25;
-      // progressBar.style.width = "75%";
-      // var toSlide = document.getElementById("page1");
-      // toSlide.style.marginLeft = "-50%"
+
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull"
+      }, 1000);
     }
 
   }
 
   moveToPage4progs() {
-    var progressBar = document.getElementById("theDot")
+    // var progressBar = document.getElementById("theDot")
     console.log(this.programBenefits);
     console.log(this.programAdditionalBenefits);
     console.log(this.EligibleCriteria)
     console.log(this.programServicez);
 
-    if (this.programBenefits == undefined && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
+    if (this.programBenefits == undefined ||this.programBenefits == "" || this.programBenefits == " " && this.EligibleCriteria == undefined && this.orgAdress == undefined) {
       this.alert("Please enter all details ")
 
-    } else if (this.programBenefits == undefined) {
+    } else if (this.programBenefits == undefined || this.programBenefits == "" || this.programBenefits ==  " ") {
       this.alert("Please enter program benefits")
-    } else if (this.EligibleCriteria == undefined) {
+    } else if (this.EligibleCriteria == undefined || this.EligibleCriteria == "" || this.EligibleCriteria ==  " ") {
       this.alert("Please enter eligible criteria")
 
     }
 
 
-    else if (this.orgAdress == undefined) {
-      this.alert("please enter address")
+    else if (this.orgAdress == undefined || this.orgAdress == "" || this.orgAdress == " ") {
+      this.alert("please enter the address")
 
     } else if (this.checkAddress == 1) {
       this.alert("The address you have entered is invalid, please enter a valid address ")
@@ -1003,10 +1006,14 @@ export class TestsPage {
     }
 
     else {
-
-
       var nextPage = document.getElementsByClassName("page3prog") as HTMLCollectionOf <HTMLElement>;
-      nextPage[0].style.display = "none"
+
+      nextPage[0].style.animation = "1s faderOutUp";
+  
+      setTimeout(() => {
+        nextPage[0].style.display = "none";
+        nextPage[0].style.animation = "0s faderOutUpnull";
+      }, 1000);
     }
 
 
@@ -1077,7 +1084,6 @@ export class TestsPage {
       content: "Please wait...",
       duration: 3000
     });
-    loader.present();
 
     if (this.promPhone == undefined && this.Programemail == undefined && this.applicationLink == undefined) {
       this.alert("Please enter all the details")
@@ -1101,6 +1107,7 @@ export class TestsPage {
         this.navCtrl.push(HomePage);
 
 
+        loader.present();
         Swal.fire({
           imageUrl: "../../assets/imgs/4IR logo.png",
           imageHeight: 300,
